@@ -414,4 +414,65 @@ the workshop, page 12 four times, 78 s each. The test's folder
 **Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ built and checked by numbers — **his eyes
 and ears on it pending** · ► B4 the stage set-ups, at his word.
 
+## §6. A mastering pass — the question, and the state of things
+
+His words (after B3 was handed to him, before he had looked at it):
+
+"One thing I forgot to do is do a mastering bus pass on the sound files. I'm not sure if
+that was done. I doubt it. There might be a plan or a sketch of how to do this in the last
+piece. Approaching. So if we can write up a plan to repass the audio and what the
+mastering stage should look like, just some basic like low pass and compression if
+necessary and limiter. Alternatively, another possibility is I just run the current sound
+file in Reaper through some plugins. That's okay too. Either way, let's figure out a plan
+to do this if it hasn't been done already and where I would do it in the Live Electronics
+Engine repo or here. Uh, either way, we should build the mastering stage infrastructure
+into the Live Electronics engine repo as well."
+
+Taken as a planning question: his planning method (`/plan-item`), phase 1 — the data
+first. Nothing is decided in this entry.
+
+**Was it done? No.** What version 1 went through is the engine's own bus, as it played
+(`engine/playhead-engine.js`, the "ensemble bus" of engine journal §113–114), and the
+recording is taken after it:
+
+| stage | setting |
+|---|---|
+| high-pass | 30 Hz |
+| "glue" compressor (the dry path) | −18 dB, 2:1, 6 dB knee, 30 / 250 ms |
+| "safety limiter" | the browser's compressor at −1 dB, 20:1, 2 ms attack — no look-ahead |
+| low-pass | none |
+
+**Version 1 as it stands, measured** (`ffmpeg` `ebur128`, and `version.json`):
+
+| | |
+|---|---|
+| integrated loudness | −17.3 LUFS |
+| loudness range | 16.3 LU (−29.1 … −12.8 LUFS) |
+| true peak | 0.0 dBFS |
+| the loudest sample before packing | +0.16 dB — 15 samples over full scale, clipped when packed to 16 bits |
+| RMS | −22.8 dB |
+
+So the "safety limiter" does not hold its −1 dB: it is a compressor with a 2 ms attack,
+and peaks pass it.
+
+**The sketch in the last piece** — piece 6, *Approaching* (`decibel_TENOR_2026`): its
+`docs/RUNNING_LOG.md` §164 and `docs/PLAN.md` 11.6, "the bus", built 2026-10-06 in
+SuperCollider (`electronics/sc/synths.scd`, `\leMaster`; the generic engine is
+`live-electronics-system`):
+
+- high-pass 30 Hz · a low-pass (there, switched off) · the glue as a soft-knee RMS
+  compressor (the same −18 dB, 2:1, 6 dB, 30 / 250 ms) · a LINKED LOOK-AHEAD LIMITER,
+  ceiling −1 dB, 5 ms, which cannot overshoot · a clip · a meter: loudness (LUFS) and
+  true peak.
+- Proven there by an offline battery (`bus_test.scd`). "NOT CLAIMED: his ear on any of
+  it."
+- Its own note (that log's §1736): his memory of "a mastering bus built in SuperCollider"
+  had been of THIS browser bus — high-pass, glue, safety.
+
+**Two repos, near in name:** `live-electronics-engine` is the browser sandbox this piece
+was made in — its bus is the table above. `live-electronics-system` is the SuperCollider
+engine — it has the real bus. His "Live Electronics engine repo" is read as the first.
+
+**Also found, not read:** `jwy_audioEngineering/archive/Mastering-Log.md`.
+
 ---

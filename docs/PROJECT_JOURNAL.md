@@ -58,6 +58,12 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
 - **► THE NEXT CONCRETE STEP: his look at the player** — eyes and ears; nobody has seen
   or heard it. **Then, at his word, B4 — the stage set-ups** (S4): put its proposal to
   him first (proposal → his go → build → verify → write down → commit).
+- **OPEN, BEING PLANNED (his, 2026-10-12 — log §6): a mastering pass on the sound.** Not
+  done: version 1 went through the engine's own bus only (high-pass · glue · a "safety
+  limiter" that does not hold) — −17.3 LUFS, true peak 0.0 dBFS, 15 samples clipped. A
+  real bus exists in piece 6 (`decibel_TENOR_2026` RUNNING_LOG §164). His planning method,
+  phase 1; nothing decided yet. He also wants the stage built into
+  `live-electronics-engine`.
 - **`Resume reads:`** `docs/PLAN.md` (the build order; S4) · `docs/RUNNING_LOG.md` §5 ·
   `player/player.js` (its head; `W`, `H` are the two lines the fixed shape changes) ·
   `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 (the sync model S4 is taken from) ·
