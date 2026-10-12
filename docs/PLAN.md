@@ -10,7 +10,8 @@
 > "He" and "his" are the composer.
 
 > **The piece is named *Sýnthesi Alpha* (his, §257, §259); its repo
-> will be `synthesi-alpha`, public (§258).** "v-alpha" is the name of
+> is `synthesi-alpha`, public (§258) — on GitHub since 2026-10-12
+> (log §3).** "v-alpha" is the name of
 > the VOICE it is made from (§256).
 >
 > **THE PLAN IS WHOLE — 2026-10-12 (§259).** All six steps agreed and
@@ -37,7 +38,8 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
 - **B2 ☑ The piece's repo, on this machine** (S6, first half) —
   `synthesi-alpha` made by the protocol's kit, LEAN (his "a", §261);
   the piece and the workshop copied in and tried; version 1 on its
-  shelf. **Not pushed; no remote.**
+  shelf. **Public and pushed 2026-10-12, with the licence — at his
+  word, ahead of B6 (log §2, §3).**
 - **B3 ► The player, and the shelf it opens on** (S3 · S5) — written
   here.
 - **B4 The stage set-ups** (S4) — the small server, screens that keep
@@ -45,7 +47,8 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
 - **B5 A new seed in one step** (S5) — the seed in the address, the
   samples a seed; a first batch of candidates.
 - **B6 The repo finished** (S6) — the front page, the pointers, the
-  fresh-clone test; public at his word; Hetzner, his sign-in.
+  fresh-clone test; ~~public at his word~~ ☑ done early (log §3);
+  Hetzner, his sign-in.
 - **B7 The video** (S3's fallback).
 
 ## The top line

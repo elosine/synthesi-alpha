@@ -19,9 +19,10 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► The repo is made
-on his machine and NOT PUSHED (B2). Version 1 is on the shelf. Next:
-B3, the player. `docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
+**State of the piece (keep this line current):** **► The repo is
+PUBLIC and pushed — `github.com/elosine/synthesi-alpha` (2026-10-12).
+The licence is in. Version 1 is on the shelf. Next: B3, the player.
+`docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
 
 ## READ FIRST — how to work here
 
@@ -64,10 +65,20 @@ its `http://localhost:8733/…` link.
 
 **Every preview is also a real sound file, sent to him.**
 
-**Git.** Commits are local. **The push rule has not been asked for
-this repo** — the repo is to be PUBLIC, made on GitHub at his word
-(engine journal §258). Until he says: no remote, no push. Whether a
-licence goes in is his to say (deviations register).
+**Git.** The repo is PUBLIC — `github.com/elosine/synthesi-alpha` —
+made and pushed at his word (2026-10-12, log §3). **Everything pushed
+is published.** **The push rule has been asked and not yet answered:**
+until he says, commit locally and ask "push now?" at session end.
+
+**The licence** (his, log §2).
+
+- `LICENSE` — MIT — covers the program only: `engine/`, `tools/`.
+- `LICENSE-PIECE.md` — the piece and its record (`voices/`,
+  `versions/`, `picture/`, `docs/`) are © 2026 elosine, all rights
+  reserved.
+- **A new top-level folder is named in `LICENSE-PIECE.md` the day it
+  is made** — on the program's side or the piece's. Unnamed, it falls
+  on the piece's side.
 
 ## Orient from docs, not from scanning
 

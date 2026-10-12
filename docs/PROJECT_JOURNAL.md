@@ -33,12 +33,19 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2 OPENS ON THIS (written 2026-10-12, at the end of the session that made the repo) — the repo exists on his machine, not pushed; version 1 is on the shelf; next is the player
+### SESSION 2, IN PROGRESS (2026-10-12) — the repo is PUBLIC and pushed, with its licence; version 1 is on the shelf; next is the player
 
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
 - **Where it stands · the deliverable:** B1 ☑ make a version (built in the engine,
   carried here) · B2 ☑ this repo, made and tried (RUNNING_LOG §1). On the shelf:
   `versions/seed-1/` — the final draft, 35 MB lossless, ten minutes.
+- **Done this session (his "a, go"):**
+  - the licence ☑ (log §2) — `LICENSE`, MIT, the program only (`engine/`, `tools/`) ·
+    `LICENSE-PIECE.md`, the piece and its record, © 2026 elosine, all rights reserved;
+  - public ☑ (log §3) — https://github.com/elosine/synthesi-alpha, `main` pushed, read
+    back from GitHub.
+- **Carry into B3:** a new top-level folder (the player's) is named in
+  `LICENSE-PIECE.md` the day it is made — unnamed, it falls on the piece's side.
 - **► THE NEXT CONCRETE STEP: B3, the player.** Put its proposal to him first (the chunk
   cadence: proposal → his go → build → verify → write down → commit). What it is: a page
   that plays a version — `sound.flac` — and draws the picture from `picture.json`, both
@@ -50,8 +57,8 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
 - **Pending him:**
   - his ear on version 1 — nobody has heard it;
-  - the licence, for a public repo that holds the recording — asked before any push;
-  - his word to make the repo public on GitHub (nothing is pushed; there is no remote);
+  - the push rule for this repo — asked 2026-10-12, not yet answered. Until he says:
+    commit locally, "push now?" at session end;
   - whether the score-drawing tool should travel here too (it did not);
   - the build order B1 … B7 is the AI's — his to change.
 - **Not proven:** the picture's record (`picture.json`) has been written and never

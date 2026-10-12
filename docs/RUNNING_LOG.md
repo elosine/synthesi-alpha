@@ -170,4 +170,49 @@ no e-mail address is written into the repo.
 **Not done, not claimed.** The piece's notice is plain words, the AI's — not a lawyer's
 drafting.
 
+## §3. The repo is public
+
+His word (the same message as §2): "your word to make the repo public. yes public" — and
+then "a, go" on the agenda put to him: the licence in, then the repo public and `main`
+pushed.
+
+**What was put to him before the push**, in one line: public shows the whole repo —
+`docs/history/` (the engine's journal, with his quoted words) and this log among it —
+"say if anything should stay out". He answered "a, go" and named nothing.
+
+**Looked at before the push.** The tracked text, searched for keys, tokens, passwords and
+e-mail addresses: none found (one hit, a variable named `rangeToken`). The largest file:
+`versions/seed-1/sound.flac`, 33.4 MB — under GitHub's 100 MB limit for a file.
+
+**What was done.** `gh repo create elosine/synthesi-alpha --public`, with the remote
+`origin` and the push of `main`, in one command.
+
+**Read back from GitHub, not assumed:**
+
+| | |
+|---|---|
+| the address | https://github.com/elosine/synthesi-alpha |
+| visibility | PUBLIC |
+| the licence GitHub names | MIT License |
+| the description | "Sýnthesi Alpha — a piece for a player and fixed electronics, with an animated score" |
+| `main` there · `main` here | `8c82fc8` · `8c82fc8` — the same commit |
+| files | 140 |
+
+**Decided by the AI, told to him:** the repo's one-line description on GitHub (the
+README's first line) · the commit that holds this entry is pushed too, so that the public
+repo does not say less than is true of it.
+
+**Asked, not answered:** the push rule for this repo from here on. Until he says: commit
+locally, and "push now?" at session end.
+
+**Not done, not claimed.** The page was not opened in a browser: what a visitor SEES is
+not checked, only what GitHub reports · GitHub names the licence "MIT" for the whole
+repo; that the piece is reserved is said in `LICENSE-PIECE.md` and the README, which a
+visitor has to read · no fresh clone was made or tried (B6) · every commit carries his
+name and e-mail address as its author, and they are public with it · the pointers both
+ways (the plan's S6 — `composition-system`'s INDEX, the Hetzner page) were not touched.
+
+**Where the build stands:** B1 ☑ make a version · B2 ☑ this repo — now public ·
+**► B3 the player.**
+
 ---
