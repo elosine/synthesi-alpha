@@ -742,4 +742,130 @@ was not given a master (it is not in git there; one command if wanted).
 **Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ (his eyes and ears pending) · BM ☑ the
 master · **► B4 the stage set-ups, at his word.**
 
+## §11. Clicks in the last two pages — found: the buffer override's joins
+
+**He listened** (the first report of anyone's ear on version 1), and said:
+
+"there is some clicking in the last two pages, I couldn't tell you for sure what it is. It
+might sound a little bit like small attacks not properly enveloped. It's a little bit like
+that sound when there's an, a, uh, an attack or when a sound plays and there's no ramp up
+a little bit. Or the other thing it sounds a bit like is if there were some CPU or
+processing power issues. But the last two pages has a lot of it. and these weren't there
+in the previous final draft in the old repo. So something about the rendering process this
+time, or perhaps the mastering process. I'm not sure how to tell you to diagnose, but
+maybe you have a solution."
+
+And, while it was being looked for:
+
+"when we were building it, it might have been the case that when with the combination
+effects, we rendered the IC effect first on the sections and then use those rendered sound
+files and applied additional effects to those like the tremolo and buffer override, etc.
+I'm not 100% sure this was the case, but this might be a potential fix."
+
+**What was tried, in order.**
+
+*1. Is it the mastering?* A click counted as a kink in the wave far over what is around
+it: 975 in the sound as made, 974 in the master, page for page the same. **Not the
+mastering.**
+
+*2. What kind of click?* The sharpest, printed sample by sample: the wave runs smoothly,
+then two neighbouring samples stand half of full scale apart, both channels alike (at
+563.5775 s: … +0.265 +0.356 +0.253 | −0.378 −0.351 …). A HARD BREAK — a cut, not an
+attack. Counted as such (a step over 0.12 of full scale, six times the steps beside it):
+
+| the version, as made | hard breaks |
+|---|---|
+| pages 1 … 10 (0 – 480 s) | 6 |
+| page 11 (480 – 530 s) | 53 |
+| page 12 and the play-out (530 – 606 s) | 46 |
+
+His ear and the count agree: the last two pages.
+
+*3. Whose break?* Often in pairs, the same distance apart again and again (533, 1279,
+2556 samples) — so something that repeats, not chance. The pre-processed samples of pages
+8 … 12 were looked at one by one: breaks in page 11's `set45` (3) and page 12's `set46`
+(6), `set47` (17), `set48` (2) — every one a sample the BUFFER OVERRIDE had been over; none
+in a sample that is icy only.
+
+*4. Proof.* Each of the 99 breaks from page 11 on was set against the sounds sounding at
+that moment (the picture's record) and the place each was reading in its sample (the
+page's manifest). First answer: 0 of 99 — every one about 574 samples off. That was the
+engine's own bus: two of the browser's compressors in a row (the glue, the safety
+limiter), 6 ms of look-ahead each — **the sound leaves the engine 12 ms after it is
+played.** With those 12 ms allowed for:
+
+| a break at that very place in the sample being read | 99 of 99 |
+|---|---|
+| page 11 `set45` (override) | 61 |
+| page 12 `set47` (icy + override) | 20 |
+| page 12 `set46` (icy + override) | 14 |
+| page 12 `set48` (icy + override) | 4 |
+| in no sample | 0 |
+
+**The clicks are in four sample files, and are heard each time a cursor or an attack reads
+across them.** `set45` holds only three — and was read across sixty-one times. Not the
+making of the version, not the recorder, not the master, not the player.
+
+*5. Were they in the final draft?* The four files are the same in `live-electronics-
+engine`, byte for byte, and unchanged since its tag `v-alpha-final-draft` (they were last
+made at 15:12 on 2026-10-12 — "the buffer override 3 dB up", engine journal §245; the tag
+is 15:21). **So the final draft's own samples have these breaks, at these places.** This
+does not agree with what he remembers; it is what the files say.
+
+*6. His hint.* Right: page 12's samples ARE made that way — the icy first, then the
+override over the render ("it's like in layers", engine journal §243; `tools/
+page_samples.py`). And it is that second step that breaks — on page 11 the override
+alone.
+
+**What the break is** — three places where the override joins two pieces of sound without
+a crossfade. The loop is the same in `engine/override-processor.js` (the live unit) and in
+`tools/page_samples.py` (the samples):
+
+1. *A forced buffer begins.* The sliver that was repeating is dropped mid-wave and the new
+   sound cuts in — no join at all.
+2. *A pass begins shorter than the one before* (the rate rising; or the forced buffer
+   running out). The pass that fades out is read on from where a pass of the NEW length
+   would have ended, not from where it did end.
+3. *A last pass of a few samples* — when a pass ends just as the forced buffer runs out, a
+   pass eight samples long is begun, with a join of one sample.
+
+On a quiet or broken sound these are small. On an icy render — one long loud wave, and the
+override 3 dB up — each is a step of up to half of full scale.
+
+**The mend, tried on a copy** (a scratch script; nothing in the repo was written):
+
+1. the new forced buffer crosses in over one join's length, the old sliver running on
+   under it (sine and cosine: the power held, no corner);
+2. the fading pass is read on from where it ended;
+3. a last pass shorter than 64 samples is not begun: the one sounding runs on.
+
+| the sample, remade | hard breaks: as it is → mended | all breaks, the small ones too (a step over 0.02) |
+|---|---|---|
+| page 11 `set45` (4.3 s) | 3 → 0 | 26 → 0 |
+| page 12 `set47` (12.8 s) | 22 → 0 | 68 → 0 |
+| page 12 `set46` (27.5 s) | 7 → 0 | 121 → 0 |
+
+The level is the same to the hundredth of a dB. (The first two mends alone left 2, 6 and
+18: every one of them where a pass of eight samples had begun — which is how the third was
+found.) The remade "as it is" stands 15 … 22 dB under the kept files in difference — the
+kept ones are Vorbis, and for the icy ones the grain's small stray is drawn afresh.
+
+**Previews, real files, sent to him:** `build/click-previews/` — `page12-set47` and
+`page11-set45`, each "as it is" and "mended".
+
+**Rejected.** *The player, the recorder, the processor being short of breath:* the breaks
+are in the files the piece reads, before any of them. *Mending by ear in an editor:* 99
+places, and every new seed makes more.
+
+**Not decided — put to him:** to mend the override at its source (both homes of the loop),
+make the samples of pages 9 … 12 again, and play the piece again — a new take, since the
+samples it reads are part of it; or to keep this take and mend the breaks in the finished
+file.
+
+**Not done, not claimed.** Nothing in the repo is changed: not the tool, not the unit, not
+a sample, not version 1 · his ear on the mended samples · the live unit's page (page 6's
+override on the bus) was not listened to or counted apart — pages 1 … 10 hold 6 hard
+breaks between them · whether the 12 ms of the bus matter to the picture: it is the same
+live as in a version, and the score's lag was set by his eye with it there.
+
 ---

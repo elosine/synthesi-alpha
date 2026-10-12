@@ -40,7 +40,17 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   B3 ☑ the player — http://localhost:8733/player/ (log §5) · BM ☑ the master (the plan's
   S7, log §6 … §10) · **► B4 next, at his word.** On the shelf: `versions/seed-1/` — the
   final draft: `sound.flac` as it was made, and `master.flac`, which the player plays.
-- **► THE NEXT CONCRETE STEP: B4, the stage set-ups (S4)** — put its proposal to him
+- **OPEN, FIRST (his ear, 2026-10-12 — log §11): CLICKS in pages 11 and 12.** Found and
+  proven: 99 of 99 are hard breaks inside four pre-processed samples the BUFFER OVERRIDE
+  made (page 11 `set45`; page 12 `set46` `set47` `set48`) — three joins the override
+  makes without a crossfade, in `tools/page_samples.py` AND `engine/override-processor.js`.
+  Not the version's making, not the master, not the player. The same files are in the
+  engine's final draft. A mend was tried on a copy: breaks 215 → 0 on three samples, the
+  level the same; previews sent (`build/click-previews/`). **NOTHING IN THE REPO IS
+  CHANGED. His word is awaited: (a) mend at the source, remake the samples of pages
+  9 … 12 and the piece — a new take; or (b) keep this take, mend the finished file.**
+  The scratch mend is in the log's §11, in words: three changes to the override's loop.
+- **► THEN: B4, the stage set-ups (S4)** — put its proposal to him
   first (proposal → his go → build → verify → write down → commit). And still open
   before or beside it: **his look at the player** — nobody has seen or heard it.
 - **The master, in short (S7 — his: for THE HALL; the steps the AI's, at his word "I don't
