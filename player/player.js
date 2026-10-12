@@ -63,7 +63,8 @@ async function openShelf() {
   body.innerHTML = '';
   for (const v of rows) {
     const f = v.facts, tr = document.createElement('tr');
-    const cells = [v.folder, v.what || '', f.seed, fmtT(f.sound.seconds), f.made,
+    // the file a version plays: its master when one is kept (the shelf's "plays" — PLAN S7.5), else as it was made
+    const cells = [v.folder, v.what || '', f.seed, fmtT(f.sound.seconds), f.made, v.plays ? 'mastered' : 'as made',
                    v.verdict || 'not heard yet', `${f.workshop.repo} · ${String(f.workshop.commit).slice(0, 7)}`];
     for (const c of cells) tr.appendChild(document.createElement('td')).textContent = c;
     tr.addEventListener('click', () => pick(v, tr).catch(e => console.error(e)));
@@ -91,7 +92,7 @@ async function pick(v, tr) {
       stripDoc = new DOMParser().parseFromString(await (await fetch(STRIP, { cache: 'no-store' })).text(), 'image/svg+xml');
     }
     if (stale()) return;
-    const bytes = await getBytes(v.dir + v.facts.sound.file,
+    const bytes = await getBytes(v.dir + (v.plays || v.facts.sound.file),
       f => { if (!stale()) say(`${v.folder} — the sound… ${(f * 100) | 0}%`); });
     if (stale()) return;
     say(`${v.folder} — unpacking the sound…`);

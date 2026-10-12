@@ -24,6 +24,9 @@ gets a line in it:
 - `what` — a few words on what it is
 - `verdict` — the composer's, once he has heard it; `null` until then
   (the player then says "not heard yet")
+- `plays` — the file the player plays: `master.flac` once a master is
+  kept (`tools/master.py --keep` writes it). Without it, the sound as
+  it was made
 
 The rest of what the player shows — the seed, the length, the date,
 what made it — it reads from the version's own `version.json`.
@@ -36,6 +39,8 @@ what made it — it reads from the version's own `version.json`.
 | `picture.json` | the record of what the picture did (below) |
 | `version.json` | the seed · the length · the levels · the check against the roll · the commit of the workshop that made it |
 | `scenario.json` | the scenario file as it stood |
+| `master.flac` | the MASTER, once one is kept — the same take, the same length, made safe for a hall: nothing over −1 dB. Made from `sound.flac` by `tools/master.py`; `sound.flac` itself is never written over |
+| `master.json` | the master's report — its dials, the figures before and after, what the limiter did |
 
 ## `picture.json` — what a player draws from
 

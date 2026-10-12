@@ -43,6 +43,28 @@ ENTER. ESCAPE stops it.
 
 Needs Python 3 and a current browser.
 
+## To master a version
+
+A version's MASTER is the same take made safe for a hall: nothing over
+−1 dB. The player plays it when there is one.
+
+```
+python tools/master.py --candidates versions/seed-1
+```
+
+makes a few candidates into `build/masters/seed-1/`. Then listen to
+them side by side: http://localhost:8733/engine/master.html?v=seed-1
+
+```
+python tools/master.py --keep NAME versions/seed-1
+```
+
+keeps the one named as `versions/seed-1/master.flac`.
+
+- The version's own sound is never written over.
+- `python tools/master.py --selftest` checks the tool.
+- Needs `numpy`, `soundfile` and `ffmpeg`.
+
 ## To make a version
 
 ```
@@ -67,7 +89,7 @@ then ENTER. Leave it ten minutes; the tab may sit in the background.
 |---|---|
 | `versions/` | the shelf — the kept versions. Each a folder: the sound, the record of what the picture did, the seed and scenario that made it |
 | `player/` | the player — plays a kept version: its sound file, and the picture drawn from its record. No engine inside |
-| `engine/` · `tools/` | the workshop — the program that plays the piece and makes a version |
+| `engine/` · `tools/` | the workshop — the program that plays the piece, makes a version, and masters it |
 | `voices/v-alpha/` | what the piece is made from — the recording, its map, the scenario, the nineteen played sequences, the pre-processed samples |
 | `picture/` | the drawn score |
 | `docs/PLAN.md` | the plan of the standalone piece, and where the build stands |

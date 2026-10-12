@@ -19,12 +19,14 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► The player is
-built (B3) and checked by numbers — http://localhost:8733/player/ —
-and HIS EYES AND EARS ON IT ARE PENDING. The repo is public
-(`github.com/elosine/synthesi-alpha`); the licence is in; version 1 is
-on the shelf. Next, at his word: B4, the stage set-ups.
-`docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
+**State of the piece (keep this line current):** **► The mastering
+stage is built (BM, the plan's S7) and version 1's four candidate
+masters are made — HIS EAR ON THEM IS THE NEXT THING:
+http://localhost:8733/engine/master.html?v=seed-1 . The player is
+built (B3), his eyes and ears on it pending:
+http://localhost:8733/player/ . The repo is public
+(`github.com/elosine/synthesi-alpha`). After the master: B4, the stage
+set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
 
 ## READ FIRST — how to work here
 
@@ -110,6 +112,9 @@ locally; ask "push now?" at session end. No push in between.
 | `engine/version.js` · `version-recorder.js` | a version's sound, taken sample for sample |
 | `tools/serve.py` | the server — port **8733** |
 | `tools/icy_render.py` · `page_samples.py` | make the pre-processed samples of pages 8 … 12 from the seed |
+| `tools/master.py` | THE MASTERING STAGE — a version's finished sound in, its master out. `--selftest` · `--candidates` · `--keep`. The same file is in `live-electronics-engine` — keep the two the same |
+| `engine/master.html` | the listening page — a version's candidate masters, side by side |
+| `voices/v-alpha/master.json` | the piece's mastering dials, and the candidates put to his ear |
 | `voices/v-alpha/` | the recording (FLAC, lossless) · the map · the scenario · the sequences · the samples |
 | `picture/` | the drawn score, as built — the tool that drew it stays in the engine repo |
 | `versions/` | the shelf — `shelf.json` is the list the player opens on |

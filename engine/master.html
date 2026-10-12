@@ -1,0 +1,151 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the master, by ear</title>
+<style>
+  html,body { margin:0; background:#fff; color:#111; font-family:Consolas,ui-monospace,monospace; }
+  #wrap { max-width:1100px; margin:0 auto; padding:26px 20px 60px; display:flex; flex-direction:column; gap:16px; }
+  #title { font-size:20px; }
+  .dim { color:#777; font-size:13px; line-height:1.6; }
+  #box { overflow:auto; border:1px solid #ddd; border-radius:6px; }
+  table { border-collapse:collapse; font-size:14px; width:100%; }
+  th { text-align:left; font-weight:normal; color:#777; font-size:12px; padding:8px 14px 6px; border-bottom:1px solid #ddd; white-space:nowrap; }
+  td { padding:10px 14px; vertical-align:top; }
+  td.n { white-space:nowrap; }
+  td .dim { font-size:12px; }
+  tbody tr { cursor:pointer; border-top:1px solid #f0f0f0; }
+  tbody tr:hover { background:#f3f3f3; }
+  tbody tr.on { background:#111; color:#fff; }
+  tbody tr.on .dim { color:#bbb; }
+  #bar { position:relative; height:26px; background:#eee; border-radius:4px; cursor:pointer; overflow:hidden; }
+  #fill { position:absolute; left:0; top:0; bottom:0; width:0; background:#111; }
+  #bar i { position:absolute; top:0; bottom:0; width:1px; background:#fff; mix-blend-mode:difference; }
+  #row { display:flex; gap:18px; align-items:center; flex-wrap:wrap; font-size:14px; }
+  #pos { font-size:18px; min-width:9em; }
+  button { font:inherit; font-size:13px; padding:5px 11px; border:1px solid #111; background:#fff; border-radius:5px; cursor:pointer; color:#111; }
+  #play { font-size:16px; padding:8px 22px; }
+  #jumps { display:flex; gap:6px; flex-wrap:wrap; align-items:center; font-size:13px; }
+  label { font-size:13px; cursor:pointer; }
+</style>
+
+<div id="wrap">
+  <div id="title">the master, by ear &mdash; <span id="ver"></span></div>
+  <div class="dim">Click a row to hear it. It goes on from where the piece is &mdash; only the sound changes.<br>
+    SPACE plays and stops &middot; TAB goes to the next row</div>
+  <div id="box"><table>
+    <thead><tr><th>the master</th><th>what it is</th><th>loudness</th><th>range</th><th>the limiter worked</th><th>measured against the first</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+  <div id="bar"><div id="fill"></div></div>
+  <div id="row">
+    <button id="play" disabled>play</button>
+    <div id="pos">0:00.0</div>
+    <label><input type="checkbox" id="match" checked> the same loudness for all &mdash; so that what differs is not the volume</label>
+  </div>
+  <div id="jumps"><span class="dim">go to page</span></div>
+  <div id="lst" class="dim">loading&hellip;</div>
+</div>
+
+<script type="module">
+// THE MASTER, BY EAR — one file in two repos, kept the same (synthesi-alpha docs/PLAN.md S7.4 ·
+// live-electronics-engine docs/plan/mastering-stage.md). The candidate masters of one version, side by
+// side: the same take, switched in place. Made by `python tools/master.py --candidates <version>`
+// into build/masters/<version>/, which this page reads (candidates.json). ?v=<version>.
+//
+// His interface preferences: stored things as table rows, click to hear · SPACE the audition ·
+// TAB cycles · chords are the browser's · levels match across candidates ("what varies between
+// candidates must be the thing under audition, never volume").
+const V = new URLSearchParams(location.search).get('v') || 'seed-1';
+const DIR = `../build/masters/${V}/`;
+const $ = id => document.getElementById(id);
+const say = m => { $('lst').textContent = m; };
+const fmtT = t => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
+const sign = (v, unit) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v)}${unit}`;
+$('ver').textContent = V;
+
+let list, els = [], cur = 0, playing = false, dur = 0;
+const el = () => els[cur];
+function levels() {                                   // every row at the quietest one's loudness, or each as it is
+  const L = list.candidates.map(c => c.after.lufs), low = Math.min(...L);
+  els.forEach((a, i) => { a.volume = $('match').checked ? Math.min(1, 10 ** ((low - L[i]) / 20)) : 1; });
+}
+function paintRows() { [...$('rows').children].forEach((tr, i) => tr.classList.toggle('on', i === cur)); }
+function choose(i) {
+  if (i === cur || !els[i]) return;
+  const t = el().currentTime;
+  el().pause();
+  cur = i;
+  el().currentTime = t;
+  if (playing) el().play();
+  paintRows();
+}
+function setPlaying(on) {
+  playing = on;
+  if (on) el().play(); else el().pause();
+  $('play').textContent = on ? 'stop' : 'play';
+}
+function go(t) { el().currentTime = Math.max(0, Math.min(dur - 0.2, t)); paintPos(); }
+function paintPos() {
+  const t = els.length ? el().currentTime : 0;
+  $('pos').textContent = `${fmtT(t)} / ${fmtT(dur)}`;
+  $('fill').style.width = (dur ? 100 * t / dur : 0) + '%';
+}
+
+try {
+  const r = await fetch(DIR + 'candidates.json', { cache: 'no-store' });
+  if (!r.ok) throw new Error(`no candidates for ${V} — make them: python tools/master.py --candidates <the version's folder>`);
+  list = await r.json();
+  dur = list.seconds;
+  const b = list.before;
+  for (const [i, c] of list.candidates.entries()) {
+    const a = c.after, lim = c.limiter, d = c.againstTheFirst, tr = document.createElement('tr');
+    const cell = (html, cls) => { const td = tr.appendChild(document.createElement('td')); td.innerHTML = html; if (cls) td.className = cls; };
+    cell(c.name, 'n');
+    cell(c.says + (c.compressor ? `<div class="dim">the compressor: up to ${c.compressor.deepestDb} dB down, then ${c.compressor.madeUpDb ?? 0} dB up</div>` : '')
+                + (c.dials.lowpassHz ? `<div class="dim">the low-pass: ${c.dials.lowpassHz} Hz, 12 dB an octave</div>` : ''));
+    cell(`${a.lufs} LUFS`, 'n');
+    cell(`${a.rangeLu} LU`, 'n');
+    cell(`${lim.secondsTurnedDown} s of the piece<div class="dim">${lim.moments} moments · ${lim.deepestDb} dB at most</div>`, 'n');
+    cell(!d ? `<span class="dim">as made: ${b.lufs} LUFS · ${b.rangeLu} LU · peak ${b.truePeakDb} dB</span>`
+            : `range ${sign(d.rangeLu, ' LU')} · brightness ${sign(+(d.centroid * 100).toFixed(1), ' %')}`
+              + `<div class="dim">${c.clearsTheScreen ? 'more than a just-noticeable difference' : 'UNDER a just-noticeable difference — by the numbers, nothing to hear'}</div>`);
+    tr.addEventListener('click', () => choose(i));
+    $('rows').appendChild(tr);
+  }
+  // each file whole, in memory, so that going to a place never waits on the server
+  for (const [i, c] of list.candidates.entries()) {
+    say(`loading… ${c.name} (${i + 1} of ${list.candidates.length})`);
+    const a = new Audio(URL.createObjectURL(await (await fetch(DIR + c.file, { cache: 'no-store' })).blob()));
+    a.preload = 'auto';
+    a.addEventListener('ended', () => { if (els[cur] === a) setPlaying(false); });
+    els.push(a);
+  }
+  levels();
+  paintRows();
+  // the pages, and the loudest moment
+  list.pages.forEach((t, k) => {
+    const bt = $('jumps').appendChild(document.createElement('button'));
+    bt.textContent = k < 12 ? String(k + 1) : 'the end';
+    bt.addEventListener('click', () => go(t));
+    const tick = $('bar').appendChild(document.createElement('i'));
+    tick.style.left = (100 * t / dur) + '%';
+  });
+  const loud = $('jumps').appendChild(document.createElement('button'));
+  loud.textContent = 'the loudest moment';
+  loud.addEventListener('click', () => go(list.loudestSecond - 3));
+  for (const bt of document.querySelectorAll('button')) { bt.tabIndex = -1; bt.addEventListener('mousedown', e => e.preventDefault()); }   // never take the keyboard
+  $('play').disabled = false;
+  say(`ready — ${list.candidates.length} masters of ${V}, made ${list.made}. Tell the AI the one to keep.`);
+} catch (e) { say('FAILED: ' + e.message); throw e; }
+
+$('play').addEventListener('click', () => setPlaying(!playing));
+$('match').addEventListener('change', levels);
+$('bar').addEventListener('click', e => { const r = $('bar').getBoundingClientRect(); go(dur * (e.clientX - r.left) / r.width); });
+addEventListener('keydown', e => {
+  if (!els.length || e.ctrlKey || e.metaKey || e.altKey) return;      // chords are the browser's
+  if (e.code === 'Space') { e.preventDefault(); if (!e.repeat) setPlaying(!playing); }
+  else if (e.code === 'Tab') { e.preventDefault(); choose((cur + (e.shiftKey ? els.length - 1 : 1)) % els.length); }
+});
+setInterval(paintPos, 100);
+window.listen = { els, choose, go, setPlaying, cur: () => cur, playing: () => playing, list: () => list };
+</script>

@@ -44,7 +44,12 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   here: `player/`. Built and checked by numbers (log §5): version 1
   replayed whole, and the replay held against the workshop's live
   picture. **How it looks and sounds is his to say — pending.**
-- **B4 ► The stage set-ups** (S4) — the small server, screens that keep
+- **BM ► The master** (S7) — put in here at his word, 2026-10-12 (log
+  §6 … §9): a mastering pass on a version's sound, for the hall.
+  ◐ Built: the tool, version 1's four candidates, the listening page,
+  the player's part; the same in the engine repo. **Open: his ear on
+  the candidates; then the one he names is kept.**
+- **B4 The stage set-ups** (S4) — the small server, screens that keep
   to the sound, the trim, the fixed shape; measured.
 - **B5 A new seed in one step** (S5) — the seed in the address, the
   samples a seed; a first batch of candidates.
@@ -63,6 +68,7 @@ Order confirmed by him (§249): "order is good".
 4. **S4 The stage set-ups** — one laptop · two or three machines kept together
 5. **S5 The versions** — how many are kept, as what, how a new one is made
 6. **S6 The piece's own repo** — what moves there, what stays here, where the recording lives
+7. **S7 The master** — added 2026-10-12 (log §6): the target · the source · the stage · his ear · where the master lives · the same stage in `live-electronics-engine`
 
 "I come to the venue with what?" is not a step: it is the kit list
 that falls out of S2, S3 and S4.
@@ -304,6 +310,112 @@ other repo ... So we'll just need some things to connect everything."
 - The test that says it is done — a fresh clone, on another machine,
   plays version 1 and makes a version, with nothing fetched from
   anywhere else.
+
+**S7. The master** (a mastering pass on a version's finished sound, for
+the hall — his, 2026-10-12, log §6 … §9) ◐ built (log §9); HIS EAR on
+the candidates pending; no master kept yet
+
+*How it was agreed:* the question and the target are his (log §6, §7:
+"a" — the hall). The top line below is his too ("yes"). The sub-steps
+are the AI's, at his word — "I don't need to see the steps, write plan
+or go with build if plan done" (log §8). **Each is his to reverse.**
+
+Result when done: every version on the shelf has a MASTER beside its
+sound as it was made — the same take, the same length, made safe and
+clean for a hall's PA: nothing over −1 dB, the top softened if his ear
+wants it, the pages evened only if the quiet ones get lost. One tool
+makes it from the finished file, at dials he has set once by ear. The
+player plays the master. The same tool is in `live-electronics-engine`.
+
+**S7.1 The target** (what "mastered for the hall" means, in numbers) ☑
+
+- The ceiling: the true peak is never over −1.0 dB.
+- Loudness is NOT chased — no target level. "Loudness is the house's
+  fader." *(Corrected at the build, log §9: the compressor, when it is
+  on, is made up to the loudness the file was MADE at — or it would
+  only make the file quieter. Nothing is made louder than it was.)*
+- The low-pass and the compressor are DIALS: off, unless his ear turns
+  them on. The limiter is always on.
+- Measured before and after, and written beside the master: loudness
+  (LUFS), loudness range, true peak.
+- *Why:* a concert file is turned up by the house. What it must not do
+  is clip, or lose its quiet pages.
+
+**S7.2 The source** (the kept version's own sound file) ☑
+
+- The master is made FROM `sound.flac`, the version as it was made.
+  The piece is NOT played again: another take is another version (the
+  hall of the reverb is drawn fresh each time).
+- `sound.flac` is never written over. The master is a second file
+  beside it.
+- Same length, same rate, not moved by a sample — so the one picture
+  record fits both.
+- The workshop is not changed. (Its "safety limiter" lets peaks past
+  −1 dB, and 15 samples of version 1 were clipped at packing: log §6.
+  The master's limiter is what holds the ceiling.)
+- *Why:* "The recording is the version."
+
+**S7.3 The stage** (`tools/master.py` — file in, file out) ☑ built,
+self-test passing (log §9)
+
+- The chain, in order: the low-pass → the compressor → the limiter →
+  16 bits, packed lossless.
+  - the low-pass: 12 dB an octave, no phase shift.
+  - the compressor: both channels as one, on the sound's running
+    level, a soft knee.
+  - the limiter: looks ahead, both channels as one, reads the true
+    peak, cannot overshoot.
+- Nothing in it moves the sound in time.
+- With only the limiter on, every sample it does not turn down stays
+  the sample it was.
+- It needs only what the repo already needs: Python with `numpy` and
+  `soundfile`, and `ffmpeg`.
+- A self-test (`--selftest`): the ceiling held on a tone 6 dB over ·
+  nothing changed under it · the low-pass's curve · the compressor's
+  curve · no shift in time.
+- A report beside every master: the dials, the figures before and
+  after, what the limiter and the compressor did.
+- *Why this and not the others:* the browser's own compressor is the
+  "safety limiter" that does not hold; SuperCollider has the real bus
+  (piece 6) but this repo does not need SuperCollider; Reaper by hand
+  is forgotten in two years and has to be done again for every seed.
+
+**S7.4 His ear** (the dials set by listening) ◐ the candidates and the
+page are made (log §9) — **his ear is the next thing**
+
+- A few candidates, SCREENED BY MEASUREMENT FIRST (the engine's choice
+  methodology): a choice is offered only if it moves something by more
+  than a just-noticeable difference.
+- Made into `build/masters/<version>/` — candidates, not in git.
+  *(Version 1's four: `safe` · `softened` · `evened` · `evened-more`.
+  The screen's finding: the piece is already dark — by the numbers a
+  low-pass is not a choice on it.)*
+- A listening page: the candidates side by side, switched in place,
+  at the same loudness — what differs is the thing listened for.
+  *(http://localhost:8733/engine/master.html?v=seed-1)*
+- He names the one to keep. Its dials become the piece's:
+  `voices/v-alpha/master.json`.
+
+**S7.5 Where the master lives** (beside the version; the player plays
+it) ◐ the player and `--keep` are built (log §9); nothing is kept
+
+- The kept master: `versions/seed-N/master.flac` and its report
+  `master.json`. Onto the shelf only at his word — git never forgets.
+- `versions/shelf.json` says which file a version plays. The player
+  plays the master when there is one.
+- "A new seed in one step" (B5) ends with the master, at the piece's
+  dials.
+
+**S7.6 The same stage in `live-electronics-engine`** (the tool and
+the listening page, there too) ☑ there, committed, not pushed (its
+journal 263)
+
+- The same `tools/master.py` and the same listening page, copied: a
+  version made there is mastered there.
+- Its plan, its journal and its front page say where it is.
+- NOT part of this, and named: the engine's LIVE bus keeps its "safety
+  limiter" that does not hold. A real one in the browser changes what
+  every page there sounds like — its own item, his ear first.
 
 ## Outside the plan — his
 

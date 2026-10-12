@@ -501,4 +501,200 @@ the same master. Reaper stays open for a one-off.
 
 **Next:** the top line of the plan item, put to him (phase 2).
 
+## §8. The top line is his; the steps are handed to the AI
+
+**The top line put to him** — a new item in the plan, "S7. The master": 1 the target · 2
+the source · 3 the stage · 4 his ear · 5 where the master lives · 6 the same stage in
+`live-electronics-engine`. "Is this the order?"
+
+**His answer:** "yes I don't need to see the steps, write plan or go with build if plan
+done"
+
+**What that was taken to mean.** The order stands. His planning method's third phase —
+each step's goal and sub-steps talked through one at a time — he waived for this item: the
+AI lays the steps out, writes them into the plan, and builds. So every sub-step of S7 is
+the AI's decision, written as such in `docs/PLAN.md` ("each is his to reverse"), and the
+reasons are here and in §9.
+
+**Decided by the AI, for him to reverse** — the ones that are choices and not arithmetic:
+
+| | decided | rather than | why |
+|---|---|---|---|
+| S7.1 | the ceiling is a TRUE peak of −1.0 dB | a sample's peak (piece 6's live bus) | a file can afford to read the wave between the samples; a live bus cannot without delay |
+| S7.1 | loudness is not chased | a target level (−16, −14 LUFS) | his "a": the hall, the house's fader |
+| S7.2 | the master is made from the kept file | playing the piece again, before the engine's own limiter | another take is another version; and the engine's bus is what he composed through |
+| S7.2 | the workshop is not changed | a real limiter in the browser now | it changes what every page sounds like — his ear first, another day |
+| S7.3 | a Python tool, numpy only | the browser · SuperCollider · Reaper | below, §9 |
+| S7.4 | few candidates, screened first | a panel of dials | the engine's choice methodology — "I don't want too much knob fiddling" |
+| S7.5 | a kept master goes into git only at his word | made and committed now | 35 MB a time, and git never forgets |
+| S7.6 | the same two files, copied | a shared module | the plan's S6: a frozen copy is what is not forgotten |
+
+**Where it sits in the build order:** a chunk of its own, "BM, the master", put in after
+B3 and before B4 — the stage set-ups play whatever file the shelf names, so the master is
+better settled first.
+
+## §9. BM — the mastering stage, built; version 1's candidates made
+
+**What was built.**
+
+| | |
+|---|---|
+| `tools/master.py` | THE STAGE — file in, file out; `--selftest` · `--candidates` · `--keep` |
+| `voices/v-alpha/master.json` | the piece's dials, the named compressor settings, the candidates for his ear |
+| `engine/master.html` | the listening page — the candidates side by side |
+| `player/` | the shelf row's `plays` names the file a version plays; a column "sound" |
+| in `live-electronics-engine` | the same three files, and its journal 263, its `docs/plan/mastering-stage.md` |
+
+**The chain, as built.**
+
+- *The low-pass:* 12 dB an octave, −3 dB at the named frequency, no phase shift — the
+  whole file's spectrum is shaped at once.
+- *The compressor:* both channels as one · the running level over 30 ms · a 6 dB knee ·
+  30 / 250 ms · then made up to the loudness the file was made at. Under its knee it
+  multiplies by exactly 1.
+- *The limiter:* looks ahead · both channels as one · reads the true peak, four points a
+  sample · comes down 1 dB in 1.5 ms, lets go 1 dB in 60 ms. Where nothing is over the
+  ceiling its gain is exactly 1. It cannot overshoot: the gain is "the largest of every
+  peak's own straight line", which a running maximum gives exactly.
+- *16 bits, packed.* With the limiter alone there is NO dither: a sample it did not turn
+  down stays the sample it was. With the low-pass or the compressor on, every sample has
+  changed, and the rounding is dithered from a fixed seed.
+- *The ceiling is held by a second meter.* The made file is measured by `ffmpeg` (EBU
+  R 128); if its true peak stands over the ceiling the limiter is asked for that much
+  less and the file is made again.
+
+**The self-test** (`python tools/master.py --selftest` — made-up sounds whose right answer
+is known). MASTER SELFTEST PASS:
+
+| | |
+|---|---|
+| under the ceiling the limiter changes nothing | the largest difference 0.0 |
+| white noise at −6 dB (its samples under the ceiling, the wave between them not) | the wave's peak −0.48 → −0.995 dB; then the second meter's turn |
+| a tone 6 dB over full scale — 60 · 220 · 1000 Hz | leaves at −1.001 dB, true peak −1.001 |
+| a struck burst 6 dB over, 1 ms to rise | −1.002 dB |
+| a tone whose every sample sits 3 dB under its own peak | the peak read 0.000 dB (it is 0); held at −1.001 |
+| a click through each stage | not moved — at sample 24000, put at 24000 |
+| the low-pass at 2 kHz: 200 Hz · 2 kHz · 8 kHz | −0.0 · −3.01 · −24.1 dB (0 · −3.01 · −24.1) |
+| the compressor: 9 dB over its threshold · 6 under · on it | −4.51 · 0.00 · −0.381 dB (−4.5 · 0 · −0.375) |
+| a 16-bit file through it, the limiter alone | 0 untouched samples changed · true peak +1.3 → −1.0 dB by ffmpeg |
+
+**Version 1's sound, looked at before choosing what to offer.**
+
+| | |
+|---|---|
+| samples over −1 dB | 444 — nine thousandths of a second, in 36 of the 605 seconds |
+| samples over −3 dB · −6 dB | 0.13 s · 1.14 s |
+| the middle of its spectrum | 1.3 kHz |
+| its energy, band by band (of the whole) | 100–300 Hz −15.8 dB · 300 Hz–1 kHz −5.9 · 1–3 kHz −1.6 · 3–6 kHz −15.9 · 6–9 kHz −37.3 · 9–12 kHz −42.0 · 12–16 kHz −48.7 · over 16 kHz −52.7 |
+
+**The screen** (the engine's choice methodology: a choice is offered only if it moves
+something by a just-noticeable difference — about 2 dB in level or range, about 15 % in
+where the spectrum sits):
+
+| the low-pass at | moves the spectrum's middle by | the level by |
+|---|---|---|
+| 12 kHz | −0.2 % | 0.00 dB |
+| 9 kHz | −0.6 % | −0.01 |
+| 6 kHz | −2.2 % | −0.05 |
+| 4.5 kHz | −4.1 % | −0.12 |
+| 3.5 kHz | −6.2 % | −0.23 |
+| 2.5 kHz | −10.2 % | −0.56 |
+
+**The finding: the piece is already dark, and by the numbers a low-pass is not a choice on
+it.** There is almost nothing over 6 kHz to take away. One is offered all the same — at
+3.5 kHz, marked on the page as under the screen — because the numbers are the first cut
+and his ear is the verdict.
+
+| the compressor | loudness range (16.3 LU as made) |
+|---|---|
+| 1.5:1 from −24 dB | 13.9 LU |
+| 2:1 from −24 dB | 12.6 LU |
+| 2:1 from −30 dB | 10.9 LU |
+| 3:1 from −30 dB | 9.1 LU |
+
+Two are offered, about 3.5 LU apart: 2:1 from −24, and 3:1 from −30.
+
+**The candidates of version 1** — `python tools/master.py --candidates versions/seed-1`,
+89 s, into `build/masters/seed-1/` (not in git):
+
+| name | what | loudness | range | true peak | the limiter worked | against "safe" |
+|---|---|---|---|---|---|---|
+| *as made* | | −17.3 LUFS | 16.3 LU | 0.0 dB | | |
+| `safe` | the limiter only | −17.4 | 16.3 | −1.0 | 2.16 s of the piece, 51 moments, 1.03 dB at most | — |
+| `softened` | + the low-pass at 3.5 kHz | −17.7 | 16.4 | −1.0 | 1.10 s, 39 moments, 1.06 dB | brightness −6.2 % — UNDER the screen |
+| `evened` | + the compressor, 2:1 from −24 dB (8.5 dB down at most, 3.9 up) | −17.3 | 12.6 | −1.0 | 2.86 s, 63 moments, 2.82 dB | range −3.7 LU — a choice |
+| `evened-more` | + the compressor, 3:1 from −30 dB (15.3 dB down at most, 8.4 up) | −17.4 | 9.3 | −1.0 | 8.12 s, 93 moments, 4.88 dB | range −7.0 LU — a choice |
+
+Checked on the files, apart from the tool's own report: every one is 29,079,296 frames at
+48 kHz, as the source; not moved by a sample (the source against each, at three places);
+its loudest sample at −1.000 dB. In `safe`, of the samples the limiter did not turn down,
+**0 differ from the source's.**
+
+**Tried and changed, in order.**
+
+- *The true-peak meter.* A 16-point curve between the samples read a tone at a quarter of
+  the rate 0.12 dB high (in part the test's own fault: it measured a slice, whose cut
+  ends ring), and `ffmpeg` read a noisy test file at −0.8 dB where the tool's own meter
+  read −1.0. Made 32 points under a Kaiser window: 0.000 dB on the tone; the two meters
+  then agreed on the file. And the second meter was given the last word (above).
+- *The first self-test of "under the ceiling" failed rightly:* white noise at −6 dB is
+  not under a true-peak ceiling of −1 — between its samples the wave reaches −0.5 dB. The
+  test was wrong, not the limiter; it became two tests.
+- *The compressor's make-up.* First none: the files came out 2.7 and 4.8 dB quieter.
+  Then "to the ceiling" — the loudest peak back at −1 dB: it bought only 1.1 dB, because
+  a compressor that takes 30 ms lets the transients through — the loud pages had come
+  down and the peaks had not. Now "to its own loudness": back to the loudness it was made
+  at, the limiter taking the peaks. All four candidates stand within 0.4 LU of each
+  other — so what differs between them is not the volume (his interface preferences).
+  **This departs from the plan's first wording ("no make-up"), and the plan was corrected
+  to say so.**
+
+**Rejected.**
+
+- *The browser for the stage:* its compressor is the "safety limiter" that does not hold.
+- *SuperCollider:* the real bus is there (piece 6), but this repo needs no SuperCollider,
+  and the plan's test of done is a fresh clone that fetches nothing.
+- *Reaper by hand* — his own alternative: fine for a one-off; forgotten in two years, and
+  to be done again for every seed.
+- *scipy:* it is on this machine and would have given the filters ready-made; the repo
+  asks only for numpy and soundfile, so the tool is written with those.
+- *Dither with the limiter alone:* it would change 29 million samples to round a few
+  thousand.
+
+**The listening page** — `engine/master.html?v=seed-1`. Rows, as his stored things are
+listed: click one to hear it; it goes on from where the piece is. SPACE plays and stops,
+TAB goes to the next. Buttons to each of the twelve pages, the end, and the loudest
+moment (6 min 13 s). "The same loudness for all" is on as it opens. Checked in the
+running app, by numbers: four rows, each 605.819 s · loaded in 0.8 s · SPACE plays (2.47 s
+after 2.5 s) · TAB goes to row 2 and keeps the place (3.8 s) · "5" goes to page 5's start
+(187.3 s) · a click on row 4 keeps the place, and only one sounds at a time · SPACE stops
+all.
+
+**The player** — a shelf row's `plays` names the file a version plays. Checked: with none
+named it holds the as-made sound (loudest sample 0.0 dB); with `safe.flac` named it holds
+that (−1.0 dB), the same 29,079,296 frames. The row shows "as made" or "mastered".
+
+**In `live-electronics-engine`** — the same `tools/master.py`, `engine/master.html` and
+`voices/v-alpha/master.json`; the self-test passes there; the four candidates made there
+from its own `build/versions/seed-1/` are **the same files as here, byte for byte**. Its
+journal 263, with three clips (as made · safe · evened, the same 15 s);
+`docs/plan/mastering-stage.md`. Committed there, not pushed. Its LIVE bus was left as it
+is — named there as its own item.
+
+**Not done, not claimed.**
+
+- **His ear has not been on any of it** — not the candidates, not the page.
+- **No master is kept.** `versions/seed-1/` holds what it held. `--keep` has not been run
+  on a real version.
+- The page was not SEEN: the pane does not draw.
+- "A new seed in one step" (B5) does not yet end with the master.
+- The limiter's two speeds (1.5 ms and 60 ms a dB) and the compressor's times are the
+  AI's starting numbers; nobody has listened for them.
+
+**The checks made sound on his machine:** a few seconds of each of two masters.
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ (his eyes and ears pending) · **BM ◐ the
+master — built; HIS EAR on the four candidates is the next thing** · B4 the stage
+set-ups.
+
 ---

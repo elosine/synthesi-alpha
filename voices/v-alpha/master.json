@@ -1,0 +1,42 @@
+{
+ "schema": 1,
+ "kind": "master dials",
+ "dials": {
+  "ceilingDb": -1.0,
+  "lowpassHz": null,
+  "compressor": null
+ },
+ "compressors": {
+  "evened": {
+   "thresholdDb": -24,
+   "ratio": 2,
+   "makeup": "to its own loudness"
+  },
+  "evened more": {
+   "thresholdDb": -30,
+   "ratio": 3,
+   "makeup": "to its own loudness"
+  }
+ },
+ "candidates": [
+  {
+   "name": "safe",
+   "says": "as it was made, made safe — the limiter only"
+  },
+  {
+   "name": "softened",
+   "says": "the top softened — a low-pass at 3.5 kHz",
+   "lowpassHz": 3500
+  },
+  {
+   "name": "evened",
+   "says": "the pages evened — the quiet ones up, the loud ones down, as loud overall",
+   "compressor": "evened"
+  },
+  {
+   "name": "evened-more",
+   "says": "the pages evened more",
+   "compressor": "evened more"
+  }
+ ]
+}
