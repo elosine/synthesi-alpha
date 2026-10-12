@@ -19,9 +19,11 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► The repo is
-PUBLIC and pushed — `github.com/elosine/synthesi-alpha` (2026-10-12).
-The licence is in. Version 1 is on the shelf. Next: B3, the player.
+**State of the piece (keep this line current):** **► The player is
+built (B3) and checked by numbers — http://localhost:8733/player/ —
+and HIS EYES AND EARS ON IT ARE PENDING. The repo is public
+(`github.com/elosine/synthesi-alpha`); the licence is in; version 1 is
+on the shelf. Next, at his word: B4, the stage set-ups.
 `docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
 
 ## READ FIRST — how to work here
@@ -72,7 +74,8 @@ locally; ask "push now?" at session end. No push in between.
 
 **The licence** (his, log §2).
 
-- `LICENSE` — MIT — covers the program only: `engine/`, `tools/`.
+- `LICENSE` — MIT — covers the program only: `engine/`, `tools/`,
+  `player/`.
 - `LICENSE-PIECE.md` — the piece and its record (`voices/`,
   `versions/`, `picture/`, `docs/`) are © 2026 elosine, all rights
   reserved.
@@ -98,6 +101,8 @@ locally; ask "push now?" at session end. No push in between.
 
 | | |
 |---|---|
+| `player/index.html` · `player.js` | THE PLAYER — plays a kept version: the sound file, and the picture drawn from `picture.json`. No engine inside |
+| `player/record.js` | how a picture record is read — pure, no page; the one place that says what the record means |
 | `engine/perform.html` | THE WORKSHOP — plays the piece live; `?make` records a version |
 | `engine/scenario.js` | the scenario runner: the form, the pages, `makeVersion()` |
 | `engine/voices.js` · `patterns.js` | what the cursors play, and his sequences sounded again |
@@ -107,7 +112,7 @@ locally; ask "push now?" at session end. No push in between.
 | `tools/icy_render.py` · `page_samples.py` | make the pre-processed samples of pages 8 … 12 from the seed |
 | `voices/v-alpha/` | the recording (FLAC, lossless) · the map · the scenario · the sequences · the samples |
 | `picture/` | the drawn score, as built — the tool that drew it stays in the engine repo |
-| `versions/` | the shelf |
+| `versions/` | the shelf — `shelf.json` is the list the player opens on |
 
 ## Machine notes
 
@@ -120,5 +125,10 @@ Windows. Python 3 with `numpy` and `soundfile`; `ffmpeg` on the path.
   §260).
 - The AI's browser pane does not draw. A picture is checked there by
   structure and numbers only; how it LOOKS is his to see.
+- **When the pane is hidden it gives no frames at all** (log §5): a
+  page's frame loop stands still, and the workshop's live picture with
+  it. To check one there, pace the page's own loops from a worker's
+  timer — set before [begin]. A background tab is the same.
+- **A check in the pane plays its sound out of his speakers.**
 - The engine's own server is port 8732; this repo's is 8733. Both can
   run.

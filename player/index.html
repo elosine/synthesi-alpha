@@ -1,0 +1,53 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sýnthesi Alpha</title>
+<style>
+  html,body { margin:0; background:#fff; height:100%; overflow:hidden;
+              font-family:Consolas,ui-monospace,monospace; color:#111; }
+  /* the picture — the workshop's view 1 */
+  #v1 { position:fixed; inset:0; overflow:hidden; display:none; }
+  #v1 .strip { position:absolute; top:0; left:0; transform-origin:0 0; }
+  .lens { position:absolute; top:0; pointer-events:none; }
+  #over { position:fixed; inset:0; pointer-events:none; z-index:6; }
+  /* the shelf */
+  #start { position:fixed; inset:0; background:#fff; display:flex;
+           flex-direction:column; gap:14px; align-items:center;
+           justify-content:center; z-index:9; padding:20px; box-sizing:border-box; }
+  #title { font-size:20px; }
+  #sub, #keys { color:#777; font-size:13px; }
+  #shelfbox { max-height:50vh; max-width:100%; overflow:auto; border:1px solid #ddd;
+              border-radius:6px; }
+  table { border-collapse:collapse; font-size:14px; white-space:nowrap; }
+  th { text-align:left; font-weight:normal; color:#777; font-size:12px;
+       padding:8px 14px 6px; border-bottom:1px solid #ddd; position:sticky;
+       top:0; background:#fff; }
+  td { padding:9px 14px; }
+  tbody tr { cursor:pointer; }
+  tbody tr:hover { background:#f3f3f3; }
+  tbody tr.on { background:#111; color:#fff; }
+  #lst { font-size:13px; color:#555; min-height:1.3em; }
+  #go { font:inherit; font-size:18px; padding:12px 30px; border:1px solid #111;
+        background:#fff; border-radius:6px; cursor:pointer; color:#111; }
+  #go:disabled { border-color:#ccc; color:#bbb; cursor:default; }
+</style>
+
+<div id="v1"><div class="strip" id="strip1"></div><div id="over"></div></div>
+<div id="start">
+  <div id="title">S&yacute;nthesi Alpha</div>
+  <div id="sub">the shelf &mdash; the kept versions</div>
+  <div id="shelfbox">
+    <table>
+      <thead><tr><th>version</th><th>what it is</th><th>seed</th><th>length</th>
+                 <th>made</th><th>verdict</th><th>made by</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <div id="lst">loading&hellip;</div>
+  <button id="go" disabled>begin</button>
+  <div id="keys">then ENTER plays it from the top &middot; ESCAPE stops</div>
+</div>
+
+<script src="../picture/score-data.js"></script>
+<script src="../engine/score-anim.js"></script>
+<script type="module" src="player.js"></script>

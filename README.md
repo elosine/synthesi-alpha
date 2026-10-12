@@ -9,12 +9,26 @@ plays along with the electronics; nothing listens back.
 This repo is the whole piece: what it is made from, the workshop that
 makes a version of it, and the versions that are kept.
 
-## To hear it
+## To play it
 
-- `versions/seed-1/sound.flac` plays in any audio player. It is
-  version 1 — the final draft.
-- **The player — the sound and the animated score together — is not
-  built yet** (`docs/PLAN.md`, build chunk B3).
+The player plays a kept version — its sound and the animated score
+together.
+
+```
+python tools/serve.py
+```
+
+Then open http://localhost:8733/player/
+
+- Click a version on the shelf. It loads whole — a second or two.
+- [begin], then ENTER plays it from the top. ESCAPE stops.
+- After ENTER nothing is fetched from anywhere.
+- To go back to the shelf, reload the page.
+
+Needs Python 3 and a current browser.
+
+To hear it without the picture: `versions/seed-1/sound.flac` plays in
+any audio player. It is version 1 — the final draft.
 
 ## To run the workshop
 
@@ -52,6 +66,7 @@ then ENTER. Leave it ten minutes; the tab may sit in the background.
 | | |
 |---|---|
 | `versions/` | the shelf — the kept versions. Each a folder: the sound, the record of what the picture did, the seed and scenario that made it |
+| `player/` | the player — plays a kept version: its sound file, and the picture drawn from its record. No engine inside |
 | `engine/` · `tools/` | the workshop — the program that plays the piece and makes a version |
 | `voices/v-alpha/` | what the piece is made from — the recording, its map, the scenario, the nineteen played sequences, the pre-processed samples |
 | `picture/` | the drawn score |
@@ -77,8 +92,8 @@ and is the piece's own from there on.
 
 ## Rights
 
-- **The program** — `engine/`, `tools/` — is free to use under the MIT
-  licence: [`LICENSE`](LICENSE).
+- **The program** — `engine/`, `tools/`, `player/` — is free to use
+  under the MIT licence: [`LICENSE`](LICENSE).
 - **The piece** — the recording, the versions, the drawn score, the
   record — is © 2026 elosine, all rights reserved:
   [`LICENSE-PIECE.md`](LICENSE-PIECE.md).

@@ -15,6 +15,19 @@ in each grain's length).
 Only a version the composer has heard and kept is put here. Candidates
 are made into `build/versions/`, which git does not keep.
 
+## The shelf's list — `shelf.json`
+
+The player (`player/`) opens on this list. A version put on the shelf
+gets a line in it:
+
+- `folder` — its folder here
+- `what` — a few words on what it is
+- `verdict` — the composer's, once he has heard it; `null` until then
+  (the player then says "not heard yet")
+
+The rest of what the player shows — the seed, the length, the date,
+what made it — it reads from the version's own `version.json`.
+
 ## What a version folder holds
 
 | file | what |

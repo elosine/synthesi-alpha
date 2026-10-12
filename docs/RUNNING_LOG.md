@@ -231,4 +231,187 @@ Asked because the plan says so — S6: "the push rule asked when it is made".
 **Decided:** commit locally; "push now?" at session end; no push in between. Written into
 `CLAUDE.md`. The two pushes of §3 stand — they were the making of the public repo.
 
+## §5. B3 — the player
+
+His words: "a, next B3" — and, to the proposal below, "a, go".
+
+**What was put to him.** What it is: one new page that plays a kept version — the sound
+from `sound.flac`, the picture redrawn from `picture.json`, no engine inside. The one
+thing to understand: this is the first time the picture's record is read back; if it
+lacks something the picture did, it shows here. The build's top line: the shelf · the
+sound · the clock · the picture · the check. The one decision:
+
+| | |
+|---|---|
+| a | as the plan says — [begin], then ENTER plays from the top; ESCAPE stops. The AI's pick |
+| b | the same, plus start from any page — for rehearsal; not in the plan, cheap to add later |
+
+**His answer:** "a, go"
+
+**What was built.**
+
+| | |
+|---|---|
+| `player/index.html` | the page: the shelf, [begin], the stage |
+| `player/player.js` | the shelf, the loading, the sound and its clock, the drawing |
+| `player/record.js` | how a picture record is read — `mainAt`, `soundAt`, `fracAt`. Pure: no page, no sound |
+| `versions/shelf.json` | the list the page opens on |
+
+- **The drawing is the workshop's, copied** — `paintV1` and `makeLens` from
+  `engine/perform.html`, `paintPic` from `engine/scenario.js` — and fed from the record
+  where the workshop feeds it from the live engine. **The workshop was not touched.** The
+  animation core is not copied: both pages load the one `engine/score-anim.js`.
+- **The sound is loaded whole and unpacked before [begin].** The audio context runs at the
+  file's own rate (48 kHz), so nothing is resampled.
+- **The one clock:** the context's time since the start, less the output latency — "what
+  is being heard now", as the workshop reckons it. At rest it holds where it stopped.
+- **Keys:** ENTER plays from the top · ESCAPE stops (out over about 50 ms, no click) · a
+  second ENTER while it plays does nothing · chords are left to the browser.
+- **The stage is the whole window** — two lines in `player.js` (`W`, `H`) are all B4's
+  fixed 1920 × 1080 shape has to change.
+
+**Decided by the AI, told to him.**
+
+- *The sound whole in memory, not streamed by the browser's own audio player.* After ENTER
+  nothing is fetched — his floor rule (the plan's S4: the network gone, nothing stops) —
+  and the clock is the workshop's own. The cost: 233 MB of memory for version 1
+  (605.8 s × 48,000 × 2 channels × 4 bytes), and a wait at the pick — 1.4 s on this
+  machine, from this machine's own server.
+- *The shelf's list is a plain file* (`versions/shelf.json`), not a question to the
+  server: it works the same from a folder, the small server, or a share.
+- *His verdict lives in that file*; empty, the page says "not heard yet".
+- *Back to the shelf = reload the page.* Nothing built for it.
+
+**What was tried, in order — all in the running app, this machine, Chromium (the AI's
+pane).**
+
+*1. The page.* The shelf shows one row: seed-1 · the final draft · 1 · 10:05.8 ·
+2026-10-12 · not heard yet · live-electronics-engine · f66ec1e. A click loads it in
+1.40 s: 29,079,296 frames, 48 kHz, 2 channels — `version.json`'s own figures; 13 runs,
+848 sounds.
+
+*2. The sound against the file.* Three sums a channel — of the samples, of their sizes,
+and of each sample times its place (mod 1000) — taken in the page and, from the FLAC, in
+Python.
+
+- First: **different.** Half the page's samples were not on the 16-bit grid.
+- Found: the browser's own conversion of 16 bits to its 32-bit floats divides a positive
+  sample by 32,767 and a negative one by 32,768.
+- With that — and a half rounded up, as the page rounds — **the same, both channels, all
+  three sums** (channel 0: 38,731,150 · 34,700,670,934 · 8,849,449,231; channel 1:
+  153,694,992 · 34,856,351,558 · 66,015,505,154).
+- So: every sample is in its place. A positive sample is 1 part in 32,767 larger than in
+  the file (0.00027 dB); about 25,500 samples a channel move by one 16-bit step. This is
+  Chromium's, on any page that plays a 16-bit file — not the player's to change, and far
+  under hearing.
+
+*3. The keys.* ENTER: playing; the clock went 7.919 s in 8.002 s of wall time (the first
+reading fell inside the 0.14 s before the first sample is heard). A second ENTER: no
+restart — 22.348 s and counting. ESCAPE: stopped at 22.359 s, and still there a second
+later. ENTER again: from the top (1.86 s after 2 s).
+
+*4. Version 1 replayed whole* — the picture painted at 2,424 moments, every quarter second
+from 0 to 605.8 s, and the page read back each time:
+
+| | |
+|---|---|
+| errors | 0 |
+| the scroll off the record's line | 0 (worst 0.049 px — a style is read back to 6 digits) |
+| the lenses on screen ≠ the sounds the record says are in the picture | 0 moments |
+| a phrase's cursor off its read | 0 |
+| sounds seen | 848 of 848 |
+| most at once | 20, at 381 s |
+| a lens with no marks | 0 |
+| at the end | 0 lenses, 0 marks still lifted out of the still score |
+
+(The first run of this called the scroll "off" at 179 moments: the tolerance was tighter
+than the 6 digits a style is read back with. The scroll was right.)
+
+*5. What a frame costs* — script time, at true frame steps (1/60 s), 22 s a stretch:
+
+| stretch | mean | worst | frames over 16.7 ms |
+|---|---|---|---|
+| 370 … 392 s, the busiest | 2.90 ms | 12.7 ms | 0 of 1,321 |
+| 20 … 42 s | 2.16 ms | 10.2 ms | 0 |
+| 540 … 562 s | 2.96 ms | 15.1 ms | 0 |
+
+SCRIPT time only. The pane does not draw: what the browser then spends putting the frame
+on a screen is not in these figures.
+
+*6. Against the workshop's live picture — the thing B3 had to prove.* A short pass made in
+the workshop, here (page 12, the stand cut to 4 s: 54 sounds, 77.8 s; rolled 27.341 s,
+held 27.338 s — §1's figures again), with every lens it painted written down — the
+frame's time, the stretch, the scroll, the time its notation showed. Then the record that
+pass wrote, read by `player/record.js` at the same moments.
+
+It took four tries, and the first three are worth keeping:
+
+- *In a background tab:* the browser gave the page no frames. Nothing was drawn; nothing
+  to compare.
+- *In the front tab, the pane hidden:* the same — 0 frames in 20 s. (Earlier the same
+  pane had given about 100 a second; whether it was on show then was not looked at.)
+- *The page's own frame loops paced from a worker's timer* (62.5 a second; set before
+  [begin]): the workshop's picture ran. The comparison showed 34.7 ms — but the log had
+  read the clock at each lens, after the lenses before it in that frame were built, not
+  at the frame's own moment.
+- *The frame's own time taken where the page takes it:* the figures below.
+
+| the lenses | |
+|---|---|
+| drawn live · in the record · matched | 54 · 54 · 54 (46 attacks, 2 phrases forward, 6 reversed) |
+| the stretch lifted | the same, every one (0 difference) |
+| the time its notation shows, 12,741 frames | median 0.033 ms apart · 99.9 % within 0.1 ms · worst 2.7 ms (one audio block is 2.667 ms: the clock ticking between the log's reading and the page's) |
+| a lens on screen before its time | never (−0.2 ms) |
+| a lens on screen after its time | 1 frame of 12,742, by 0.033 ms — the record is written to 4 decimals |
+
+| the scroll: the record ahead of the workshop, ms of score | frames | least | median | most |
+|---|---|---|---|---|
+| at rest | 3,606 | −0.046 | −0.046 | 0 |
+| in steady motion | 1,248 | −2.7 | +2.7 | +24.0 |
+| within 0.1 s of a start | 24 | −2.7 | +2.7 | +40.0 |
+| within 0.1 s of a stop | 23 | −40.0 | −0.046 | +8.0 |
+
+**What the last two rows are — a real, small difference between the two pictures.** The
+workshop places the score from the engine's position reports, less the output latency
+(40 ms on this machine) for as long as the engine is moving. When the ENGINE stops, that
+allowance goes — 40 ms before the stop is HEARD — and its score snaps the last 40 ms:
+2.8 px of the strip, 5 px on a 1080 screen. At a start, the mirror of it. The player has
+only the record, and glides in and out with what is heard. In steady motion the workshop
+trails the true place by a few ms (its reports come every 10.7 ms). So the player is not
+the workshop's picture to the pixel at the thirteen starts and stops: it is the nearer of
+the two to the sound.
+
+*7. The curved reads* — six in version 1, all on page 5; none in the page-12 pass, so by
+arithmetic: the record's 33 points fit the workshop's curve to 7 parts in a million; read
+straight between them, as the player does, they stray 4.2 ms of score at most — half a
+pixel on a 1080 screen.
+
+**What was rejected.** Streaming the sound through the browser's own audio player: it
+starts sooner and holds 35 MB, not 233 — but it may still be fetching when the network
+drops, and its clock is coarser than the context's. · Copying `score-anim.js` into
+`player/`: two copies of the one thing that says how the marks move.
+
+**Not done, not claimed.**
+
+- **Nobody has seen it.** The pane does not draw. Every figure above is where things were
+  PUT, not how they look.
+- **Nobody has heard it through the player.**
+- Only Chromium, only this machine. Not Firefox, not Safari, not an iPad — where 233 MB
+  for the sound may be too much.
+- Live, against the workshop: page 12's short pass only. Pages 1 … 11 and the curved
+  reads were replayed against version 1's own record, not against a live pass.
+- Two sounds that begin inside one frame, on marks they share: the workshop lays their
+  lenses in the order they were called for, the player in the order they began. Not
+  measured; the figures above did not show it.
+- From a share (Hetzner), and the video: not built — S3's other half.
+- With the page hidden, the player's own frame loop stands still as any page's does; the
+  sound goes on.
+
+**The checks made sound on his machine:** the player, about half a minute of version 1;
+the workshop, page 12 four times, 78 s each. The test's folder
+(`build/versions/b3-check/`) was removed.
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ built and checked by numbers — **his eyes
+and ears on it pending** · ► B4 the stage set-ups, at his word.
+
 ---

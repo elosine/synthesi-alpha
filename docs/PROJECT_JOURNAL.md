@@ -33,35 +33,46 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2, IN PROGRESS (2026-10-12) — the repo is PUBLIC and pushed, with its licence; version 1 is on the shelf; next is the player
+### SESSION 2, IN PROGRESS (2026-10-12) — the player is built and checked by numbers; HIS EYES AND EARS ON IT ARE PENDING; the repo is public, with its licence
 
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
-- **Where it stands · the deliverable:** B1 ☑ make a version (built in the engine,
-  carried here) · B2 ☑ this repo, made and tried (RUNNING_LOG §1). On the shelf:
+- **Where it stands · the deliverable:** B1 ☑ make a version · B2 ☑ this repo, public ·
+  **B3 ☑ the player — http://localhost:8733/player/** (log §5). On the shelf:
   `versions/seed-1/` — the final draft, 35 MB lossless, ten minutes.
-- **Done this session (his "a, go"):**
-  - the licence ☑ (log §2) — `LICENSE`, MIT, the program only (`engine/`, `tools/`) ·
-    `LICENSE-PIECE.md`, the piece and its record, © 2026 elosine, all rights reserved;
-  - public ☑ (log §3) — https://github.com/elosine/synthesi-alpha, `main` pushed, read
-    back from GitHub;
+- **Done this session:**
+  - the licence ☑ (log §2) — `LICENSE`, MIT, the program only (`engine/`, `tools/`,
+    `player/`) · `LICENSE-PIECE.md`, the piece and its record, © 2026 elosine, all
+    rights reserved. **A new top-level folder is named there the day it is made.**
+  - public ☑ (log §3) — https://github.com/elosine/synthesi-alpha.
   - the push rule ☑ (log §4) — his: commit locally, "push now?" at session end.
-- **Carry into B3:** a new top-level folder (the player's) is named in
-  `LICENSE-PIECE.md` the day it is made — unnamed, it falls on the piece's side.
-- **► THE NEXT CONCRETE STEP: B3, the player.** Put its proposal to him first (the chunk
-  cadence: proposal → his go → build → verify → write down → commit). What it is: a page
-  that plays a version — `sound.flac` — and draws the picture from `picture.json`, both
-  off the sound's clock, with NO engine inside; it opens on the shelf (S3, S5). The
-  drawing to reuse is in `engine/perform.html` (`paintV1`, `makeLens`), `engine/
-  score-anim.js` and `engine/scenario.js` (`paintPic`); what it draws FROM is described
-  in `versions/README.md`.
-- **`Resume reads:`** `docs/PLAN.md` (the build order; S3; S5) · `versions/README.md` ·
+    **Commits since the last push are local.**
+  - B3 ☑ (log §5) — `player/` (the page · `player.js` · `record.js`) and
+    `versions/shelf.json`. His "a": [begin], ENTER from the top, ESCAPE stops; starting
+    from a page was offered and not taken. The workshop was not touched.
+- **What B3's check showed (log §5, all by numbers):** version 1 replayed whole — 848 of
+  848 sounds, no error · the sound the page holds is the file, every sample in its place
+  · against the workshop's LIVE picture (page 12's short pass): the same lenses, the
+  notation's time within 0.1 ms in 99.9 % of frames · one small real difference — at a
+  start or a stop the workshop's scroll snaps 40 ms (5 px at 1080); the player glides
+  with what is heard.
+- **► THE NEXT CONCRETE STEP: his look at the player** — eyes and ears; nobody has seen
+  or heard it. **Then, at his word, B4 — the stage set-ups** (S4): put its proposal to
+  him first (proposal → his go → build → verify → write down → commit).
+- **`Resume reads:`** `docs/PLAN.md` (the build order; S4) · `docs/RUNNING_LOG.md` §5 ·
+  `player/player.js` (its head; `W`, `H` are the two lines the fixed shape changes) ·
+  `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 (the sync model S4 is taken from) ·
   `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
 - **Pending him:**
-  - his ear on version 1 — nobody has heard it;
+  - his eyes and ears on the player, and with it his ear on version 1;
+  - his verdict on version 1 — it goes into `versions/shelf.json` (today: "not heard yet");
   - whether the score-drawing tool should travel here too (it did not);
   - the build order B1 … B7 is the AI's — his to change.
-- **Not proven:** the picture's record (`picture.json`) has been written and never
-  replayed. The AI's browser pane does not draw: how the player LOOKS is his to see.
+- **Not proven:** how the player LOOKS and SOUNDS (the AI's pane does not draw, and has
+  no ears) · any browser but Chromium, any machine but this one — an iPad least of all:
+  the sound is 233 MB unpacked · pages 1 … 11 and the six curved reads against a LIVE
+  pass (they were replayed against version 1's own record).
+- **To check a picture in the AI's pane:** hidden, it gives no frames — pace the page's
+  own loops from a worker's timer, set before [begin] (log §5, `CLAUDE.md` machine notes).
 - **Deliberately uncommitted:** nothing.
 
 ---

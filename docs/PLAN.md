@@ -40,9 +40,11 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   the piece and the workshop copied in and tried; version 1 on its
   shelf. **Public and pushed 2026-10-12, with the licence — at his
   word, ahead of B6 (log §2, §3).**
-- **B3 ► The player, and the shelf it opens on** (S3 · S5) — written
-  here.
-- **B4 The stage set-ups** (S4) — the small server, screens that keep
+- **B3 ☑ The player, and the shelf it opens on** (S3 · S5) — written
+  here: `player/`. Built and checked by numbers (log §5): version 1
+  replayed whole, and the replay held against the workshop's live
+  picture. **How it looks and sounds is his to say — pending.**
+- **B4 ► The stage set-ups** (S4) — the small server, screens that keep
   to the sound, the trim, the fixed shape; measured.
 - **B5 A new seed in one step** (S5) — the seed in the address, the
   samples a seed; a first batch of candidates.
@@ -82,7 +84,7 @@ that falls out of S2, S3 and S4.
 
 **S2. What a version is** (one finished recording, made by the engine
 from a seed — agreed by him, §250: "a is good") ☑ built (§260); the
-picture's record unproven until B3
+picture's record replayed in B3 (log §5)
 
 Result when done: a version of v-alpha is a folder you can hold — one
 finished sound file, the record of what the picture did, and the seed
@@ -95,8 +97,8 @@ computed in time.
   *(§260: `perform.html?make`, ENTER; engine/version-recorder.js ·
   version.js · tools/serve.py `/version-…`.)*
 - ☑ The same pass writes down what the picture did — where the score
-  was, which marks moved, when. *(`picture.json`. WRITTEN, NEVER
-  REPLAYED: nothing reads it until the player, B3.)*
+  was, which marks moved, when. *(`picture.json`. Replayed by the
+  player, B3 — log §5: it holds what the picture did.)*
 - ☑ A version is a folder: the sound file · the picture's record · the
   seed and the scenario that made it. *(`build/versions/seed-N/` —
   candidates; not in git.)*
@@ -117,7 +119,8 @@ computed in time.
   things the seed does not reach (§246, §247).
 
 **S3. What plays it** (a web page; a video as fallback — agreed by
-him, §251: "a") ☐ not built
+him, §251: "a") ◐ the player page built (B3, log §5); the Hetzner
+share and the video not
 
 Result when done: one player — a web page that plays a version's sound
 file and draws the picture from its record, both off one clock, with
@@ -126,10 +129,14 @@ no internet, and from his Hetzner share for anyone with the link. For
 a machine that can do neither, any version can be printed as a video
 file.
 
-- A player page — loads a version; [begin], then ENTER; sound from the
-  one file, picture from the record.
-- It runs from a folder on his laptop, with the small server, as
-  today.
+- ☑ A player page — loads a version; [begin], then ENTER; sound from
+  the one file, picture from the record. *(`player/` — log §5. ENTER
+  plays from the top, ESCAPE stops; a second ENTER while it plays does
+  nothing. The sound is loaded whole before [begin]: after ENTER
+  nothing is fetched. Starting from a page was offered and not taken —
+  his "a".)*
+- ☑ It runs from a folder on his laptop, with the small server, as
+  today. *(http://localhost:8733/player/)*
 - The same folder goes on the Hetzner share — opened by link.
 - A way to print a version as a video file — 1920 × 1080, picture and
   sound together. (How is not known yet: the picture has to be
@@ -216,7 +223,8 @@ coordinated".
   thing the audience hears the picture against.
 
 **S5. The versions** (a shelf of a few kept versions; one step makes
-another — agreed by him, §255) ☐ not built
+another — agreed by him, §255) ◐ the shelf and its list built (B3,
+log §5); a new seed in one step not (B5)
 
 Result when done: v-alpha has a shelf of versions — a few, each a
 folder named by its seed, each heard and kept by him — and one step
@@ -241,10 +249,11 @@ is the final draft. On stage he picks a version, then GO.
 - How many: "just a few to actually hold" (his). The ceiling for the
   repo: about a dozen (0.3–0.8 GB, against GitHub's guidance of
   about 1 GB).
-- The shelf — a list: seed · length · the date made · his verdict ·
-  what made it (the workshop's commit).
-- The player opens on the shelf, and loads ONLY the version picked —
-  its sound file and the picture. Never the others.
+- ☑ The shelf — a list: seed · length · the date made · his verdict ·
+  what made it (the workshop's commit). *(`versions/shelf.json` — log
+  §5; the rest is read from each version's own `version.json`.)*
+- ☑ The player opens on the shelf, and loads ONLY the version picked —
+  its sound file and the picture. Never the others. *(B3, log §5.)*
 - A first batch of a few candidates; he listens; the kept ones go on
   the shelf.
 

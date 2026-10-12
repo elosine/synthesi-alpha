@@ -4,8 +4,8 @@ Two things live here, under two different terms.
 
 ## The program — MIT
 
-`engine/` and `tools/` — the workshop that plays the piece and makes a
-version of it.
+`engine/`, `tools/` and `player/` — the workshop that plays the piece
+and makes a version of it, and the player that plays a kept version.
 
 Free to use, copy, change and pass on, under the MIT licence:
 [`LICENSE`](LICENSE).

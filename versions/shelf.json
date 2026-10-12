@@ -1,0 +1,7 @@
+{
+ "schema": 1,
+ "kind": "shelf",
+ "versions": [
+  { "folder": "seed-1", "what": "the final draft", "verdict": null }
+ ]
+}
