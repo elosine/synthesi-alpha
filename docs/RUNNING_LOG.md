@@ -215,4 +215,20 @@ ways (the plan's S6 — `composition-system`'s INDEX, the Hetzner page) were not
 **Where the build stands:** B1 ☑ make a version · B2 ☑ this repo — now public ·
 **► B3 the player.**
 
+## §4. The push rule
+
+Asked because the plan says so — S6: "the push rule asked when it is made".
+
+**What was put to him:**
+
+| | |
+|---|---|
+| a | ask "push now?" at session end — everything pushed is now published, so he gets a look first. The AI's pick |
+| b | push with every commit, as in the engine |
+
+**His answer:** "a, next B3"
+
+**Decided:** commit locally; "push now?" at session end; no push in between. Written into
+`CLAUDE.md`. The two pushes of §3 stand — they were the making of the public repo.
+
 ---

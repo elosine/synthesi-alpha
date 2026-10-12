@@ -43,7 +43,8 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   - the licence ☑ (log §2) — `LICENSE`, MIT, the program only (`engine/`, `tools/`) ·
     `LICENSE-PIECE.md`, the piece and its record, © 2026 elosine, all rights reserved;
   - public ☑ (log §3) — https://github.com/elosine/synthesi-alpha, `main` pushed, read
-    back from GitHub.
+    back from GitHub;
+  - the push rule ☑ (log §4) — his: commit locally, "push now?" at session end.
 - **Carry into B3:** a new top-level folder (the player's) is named in
   `LICENSE-PIECE.md` the day it is made — unnamed, it falls on the piece's side.
 - **► THE NEXT CONCRETE STEP: B3, the player.** Put its proposal to him first (the chunk
@@ -57,8 +58,6 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
 - **Pending him:**
   - his ear on version 1 — nobody has heard it;
-  - the push rule for this repo — asked 2026-10-12, not yet answered. Until he says:
-    commit locally, "push now?" at session end;
   - whether the score-drawing tool should travel here too (it did not);
   - the build order B1 … B7 is the AI's — his to change.
 - **Not proven:** the picture's record (`picture.json`) has been written and never

@@ -67,8 +67,8 @@ its `http://localhost:8733/…` link.
 
 **Git.** The repo is PUBLIC — `github.com/elosine/synthesi-alpha` —
 made and pushed at his word (2026-10-12, log §3). **Everything pushed
-is published.** **The push rule has been asked and not yet answered:**
-until he says, commit locally and ask "push now?" at session end.
+is published.** **The push rule (his, 2026-10-12, log §4):** commit
+locally; ask "push now?" at session end. No push in between.
 
 **The licence** (his, log §2).
 
