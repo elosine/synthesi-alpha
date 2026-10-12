@@ -117,3 +117,57 @@ machine only — the fresh-clone test on another is B6 · nothing of the player 
 **Where the build stands:** B1 ☑ make a version · B2 ☑ this repo · **► B3 the player.**
 
 ---
+
+# 2026-10-12 — session 2 (the first session held in this repo)
+
+## §2. The licence
+
+His words, opening the session — his answers to the two things the journal held pending
+him:
+
+"the licence: whatever is the common one for this type of code, MIT?  · your word to make
+the repo public. yes public"
+
+**What was looked at.** The licences in his other repos on this machine:
+`composition-system` and `septet_LGMF_2026` carry MIT, "Copyright (c) 2026 elosine" ·
+`for_seven_tubas` and `for_bass_clarinet_harp_and_accordion` carry CC0 ·
+`string_quartet_no1-composer` carries Apache 2.0.
+
+**The answer given.** Yes — MIT is the common one for this kind of code. But a licence at
+the root covers everything in the repo unless it says otherwise, and this repo holds the
+recording, the kept versions and the drawn score.
+
+**What was put to him** — one decision, three ways:
+
+| | |
+|---|---|
+| a | MIT for the code; the piece — recording, versions, score — © 2026 elosine, all rights reserved. The AI's pick |
+| b | MIT for everything, one file, as in `composition-system` |
+| c | MIT for the code; a Creative Commons licence for the piece |
+
+**His answer:** "a, go"
+
+**Why a rather than b** (the AI's reason, put to him with the options): a licence once
+given cannot be taken back from the copies already out; "all rights reserved" can be
+opened up on any later day.
+
+**What was done.**
+
+- `LICENSE` — the MIT text, word for word the lineage's, "Copyright (c) 2026 elosine".
+  Kept as the bare text, nothing added, so that it is recognisable as MIT.
+- `LICENSE-PIECE.md` — says which is which. The program is `engine/` and `tools/`: MIT.
+  Everything else is the piece and its record — `voices/`, `versions/`, `picture/`,
+  `docs/` — all rights reserved; look and listen freely, any other use needs his yes.
+- `README.md` — a "Rights" section pointing at both.
+- The deviations register — a new line (2.4: LICENSE carried now, and split).
+
+**Decided by the AI, told to him:** `docs/` falls on the reserved side — it is not code,
+and what he was asked about was the recording, the versions and the score · the notice
+names "performing it" among the uses that need his yes; that is what "all rights
+reserved" covers, but the word is the AI's, not his · where to ask is his GitHub page —
+no e-mail address is written into the repo.
+
+**Not done, not claimed.** The piece's notice is plain words, the AI's — not a lawyer's
+drafting.
+
+---

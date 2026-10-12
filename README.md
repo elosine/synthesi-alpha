@@ -75,5 +75,13 @@ the labs, the play-in, the other voices, the full journal. This one is
 a copy of what the piece needs, taken at its commit `3d75010`,
 and is the piece's own from there on.
 
+## Rights
+
+- **The program** — `engine/`, `tools/` — is free to use under the MIT
+  licence: [`LICENSE`](LICENSE).
+- **The piece** — the recording, the versions, the drawn score, the
+  record — is © 2026 elosine, all rights reserved:
+  [`LICENSE-PIECE.md`](LICENSE-PIECE.md).
+
 Orientation for an AI session: `CLAUDE.md`, then
 `docs/PROJECT_JOURNAL.md` §2.
