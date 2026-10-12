@@ -475,4 +475,30 @@ engine — it has the real bus. His "Live Electronics engine repo" is read as th
 
 **Also found, not read:** `jwy_audioEngineering/archive/Mastering-Log.md`.
 
+## §7. The master is for the hall
+
+**What was put to him** with §6's figures — his intention read back (a basic chain: a
+low-pass, compression only if needed, a limiter; as a built stage or by hand in Reaper;
+either way the stage also goes into `live-electronics-engine`), the AI's read, and one
+question: what is the master for, first?
+
+| | |
+|---|---|
+| a | the hall — he on stage, the file through the PA. A clean, safe file: nothing over −1 dB, the top tamed, compression only where quiet pages get lost. Loudness is the house's fader. The AI's pick |
+| b | listening at home or online — the video, the public repo: brought up to a streaming level, more limiting |
+| c | both — one master for the hall, a louder one printed later for the video |
+
+**His answer:** "a"
+
+**Decided:** the master is made for the hall. A louder print for listening was not asked
+for; it can come with the video (B7) if he wants it then.
+
+**The AI's read, put to him in the same turn and not objected to — not yet his word:**
+the stage is BUILT, as a pass on a finished sound file (file in, file out). The piece is
+not played again, so the take and its picture's record stay as they are. Why built and
+not by hand: he wants the stage in the engine anyway, and every new seed's version needs
+the same master. Reaper stays open for a one-off.
+
+**Next:** the top line of the plan item, put to him (phase 2).
+
 ---

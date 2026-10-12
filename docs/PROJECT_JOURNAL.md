@@ -61,9 +61,16 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
 - **OPEN, BEING PLANNED (his, 2026-10-12 — log §6): a mastering pass on the sound.** Not
   done: version 1 went through the engine's own bus only (high-pass · glue · a "safety
   limiter" that does not hold) — −17.3 LUFS, true peak 0.0 dBFS, 15 samples clipped. A
-  real bus exists in piece 6 (`decibel_TENOR_2026` RUNNING_LOG §164). His planning method,
-  phase 1; nothing decided yet. He also wants the stage built into
-  `live-electronics-engine`.
+  real bus exists in piece 6 (`decibel_TENOR_2026` RUNNING_LOG §164). He also wants the
+  stage built into `live-electronics-engine`.
+  - **Decided (log §7): the master is for THE HALL** — a clean, safe file: nothing over
+    −1 dB, the top tamed, compression only where quiet pages get lost; loudness is the
+    house's fader. No louder print for listening now.
+  - **Where the planning stands:** his planning method (`/plan-item`), phase 2 — the top
+    line of the item ("S7. The master") was put to him; **his word on its order is
+    awaited.** Then one step at a time, each written into `docs/PLAN.md` as agreed.
+  - The AI's read, not yet his word: a BUILT stage, a pass on a finished sound file —
+    file in, file out; the piece is not played again.
 - **`Resume reads:`** `docs/PLAN.md` (the build order; S4) · `docs/RUNNING_LOG.md` §5 ·
   `player/player.js` (its head; `W`, `H` are the two lines the fixed shape changes) ·
   `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 (the sync model S4 is taken from) ·
