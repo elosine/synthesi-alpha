@@ -697,4 +697,49 @@ is — named there as its own item.
 master — built; HIS EAR on the four candidates is the next thing** · B4 the stage
 set-ups.
 
+## §10. Version 1's master is kept — `safe`
+
+**What was put to him** with §9: the four candidates as a lettered table (a `safe` — as
+made, the limiter only · b `softened` — plus a low-pass at 3.5 kHz · c `evened` — plus
+gentle compression · d `evened-more` — plus firmer compression), the listening page's
+address, five 30-second previews sent as files (as made, then the four, around the
+loudest moment), and the AI's pick: a, "unless the quiet pages feel lost next to the loud
+ones; then c".
+
+**His answer:** "a, go"
+
+*(Whether he listened before he answered, he did not say. The shelf's verdict on version
+1 still reads "not heard yet": that is his to give.)*
+
+**Decided (his):** version 1's master is `safe` — the limiter only. The low-pass and the
+compressor stay off. Those are the piece's dials from now on
+(`voices/v-alpha/master.json`, unchanged by this: they were the starting dials).
+
+**What was done.**
+
+- The candidates were made once more first — the tool had been uncommitted when they were
+  made, and a kept master's report should name the tool's commit. `safe.flac` came out
+  **the same file, byte for byte** (its hash before and after: `d76b7dd1b4d11b50…`).
+- `python tools/master.py --keep safe versions/seed-1` →
+  `versions/seed-1/master.flac` (34,981,418 bytes) and `master.json`; the shelf row now
+  says `"plays": "master.flac"`.
+
+**The kept master, measured again apart from the tool** (`ffmpeg`, EBU R 128): true peak
+−1.0 dBFS · loudness range 16.3 LU. Its report: −17.4 LUFS · 29,079,296 frames, as the
+source · the limiter worked on 2.16 s of the piece in 51 moments, 1.03 dB at most · of the
+samples it did not turn down, 0 differ from the source's · the tool at commit `0cb96d0`,
+clean.
+
+**`sound.flac` is as it was** — git shows no change to it.
+
+**In the running app:** the player's row reads "mastered"; it loads `master.flac` —
+29,079,296 frames, its loudest sample at −1.0 dB (the as-made sound's is 0.0).
+
+**Not done, not claimed.** His ear on the master through the player · "a new seed in one
+step" (B5) does not yet end with the master · the engine's own `build/versions/seed-1/`
+was not given a master (it is not in git there; one command if wanted).
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ (his eyes and ears pending) · BM ☑ the
+master · **► B4 the stage set-ups, at his word.**
+
 ---

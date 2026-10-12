@@ -33,27 +33,23 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2, IN PROGRESS (2026-10-12) — the mastering stage is built and version 1's four candidate masters are made: HIS EAR ON THEM IS THE NEXT THING. The player is built, his eyes and ears on it pending. The repo is public.
+### SESSION 2, IN PROGRESS (2026-10-12) — version 1 is MASTERED and the player plays the master; the player itself still waits for his eyes and ears. The repo is public.
 
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
 - **Where it stands · the deliverable:** B1 ☑ make a version · B2 ☑ this repo, public ·
-  B3 ☑ the player — http://localhost:8733/player/ (log §5) · **BM ◐ the master (the
-  plan's S7, log §6 … §9)** · then B4. On the shelf: `versions/seed-1/` — the final
-  draft, as it was made; NO master kept yet.
-- **► THE NEXT CONCRETE STEP: his ear on version 1's four candidate masters** —
-  http://localhost:8733/engine/master.html?v=seed-1 (`safe` · `softened` · `evened` ·
-  `evened-more`, in `build/masters/seed-1/`, not in git; if they are gone:
-  `python tools/master.py --candidates versions/seed-1`, 90 s). **He names one; then, at
-  his word:** `python tools/master.py --keep NAME versions/seed-1` — it copies the master
-  beside the version, writes its report, makes its dials the piece's
-  (`voices/v-alpha/master.json`) and sets the shelf row's `plays` — then commit (35 MB;
-  git never forgets, so only the one he keeps).
+  B3 ☑ the player — http://localhost:8733/player/ (log §5) · BM ☑ the master (the plan's
+  S7, log §6 … §10) · **► B4 next, at his word.** On the shelf: `versions/seed-1/` — the
+  final draft: `sound.flac` as it was made, and `master.flac`, which the player plays.
+- **► THE NEXT CONCRETE STEP: B4, the stage set-ups (S4)** — put its proposal to him
+  first (proposal → his go → build → verify → write down → commit). And still open
+  before or beside it: **his look at the player** — nobody has seen or heard it.
 - **The master, in short (S7 — his: for THE HALL; the steps the AI's, at his word "I don't
   need to see the steps, write plan or go with build if plan done" — each his to
-  reverse):** a pass on the version's finished file, `tools/master.py` — the low-pass and
-  the compressor are dials, off; the limiter is always on, true peak −1.0 dB. The same
-  take, the same length, not moved by a sample. **The finding (log §9): the piece is
-  already dark — by the numbers a low-pass is not a choice on it; evening the pages is.**
+  reverse):** a pass on the version's finished file, `tools/master.py`. **Kept for
+  version 1: `safe` — the limiter only, true peak −1.0 dB; his "a" (log §10).** The
+  low-pass and the compressor are dials, off (`voices/v-alpha/master.json`). The same
+  take, the same length, not moved by a sample. The finding (log §9): the piece is
+  already dark — by the numbers a low-pass is not a choice on it.
 - **Done this session:**
   - the licence ☑ (log §2) — MIT for the program (`engine/`, `tools/`, `player/`);
     `LICENSE-PIECE.md`: the piece and its record, © 2026 elosine, all rights reserved.
@@ -64,18 +60,18 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
     `live-electronics-engine` (one commit there, journal 263; its own rule is commit and
     push before the session ends).**
   - B3 ☑ (log §5) — `player/`; his "a": [begin], ENTER from the top, ESCAPE stops.
-  - BM ◐ (log §9) — `tools/master.py` · `voices/v-alpha/master.json` ·
+  - BM ☑ (log §9, §10) — `tools/master.py` · `voices/v-alpha/master.json` ·
     `engine/master.html` · the player's `plays`; the same three files in the engine repo
     (`tools/master.py` is ONE FILE IN TWO REPOS — change both).
-- **Still to do in BM, after his ear:** keep the master he names · "a new seed in one
-  step" (B5) to end with the master · nothing else.
-- **`Resume reads:`** `docs/PLAN.md` (the build order; S7; S4) · `docs/RUNNING_LOG.md`
-  §9 · `tools/master.py` (its head) · for B4: `player/player.js` (its head; `W`, `H`),
-  `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 ·
-  `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
+- **Left of the master, for B5:** "a new seed in one step" ends with the master, at the
+  piece's dials.
+- **`Resume reads:`** `docs/PLAN.md` (the build order; S4) · `docs/RUNNING_LOG.md` §5
+  (the player) · `player/player.js` (its head; `W`, `H` are the two lines the fixed shape
+  changes) · `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 (the sync model S4 is taken from)
+  · `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface
+  work).
 - **Pending him:**
-  - **his ear on the four candidate masters — which one is kept;**
-  - his eyes and ears on the player, and with it his ear on version 1;
+  - his eyes and ears on the player — and through it on version 1 and its master;
   - his verdict on version 1 — it goes into `versions/shelf.json` ("not heard yet");
   - the engine's LIVE bus: its "safety limiter" does not hold −1 dB — a real one there
     is its own item, his to ask for (`live-electronics-engine/docs/plan/
@@ -83,12 +79,14 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   - whether the score-drawing tool should travel here too (it did not);
   - the build order is the AI's — his to change.
 - **Not proven:** how any of it LOOKS or SOUNDS (the AI's pane does not draw, and has no
-  ears) · the limiter's and the compressor's speeds are the AI's starting numbers ·
-  `--keep` has not been run on a real version · any browser but Chromium, any machine
-  but this one — an iPad least of all: the sound is 233 MB unpacked in the player.
+  ears) — whether he listened to the candidates before choosing `safe`, he did not say ·
+  the limiter's speeds are the AI's starting numbers · any browser but Chromium, any
+  machine but this one — an iPad least of all: the sound is 233 MB unpacked in the
+  player.
 - **To check a picture in the AI's pane:** hidden, it gives no frames — pace the page's
   own loops from a worker's timer, set before [begin] (log §5, `CLAUDE.md` machine notes).
-- **Deliberately uncommitted:** nothing. (`build/masters/` is not in git, by design.)
+- **Deliberately uncommitted:** nothing. (`build/masters/` — the candidates — is not in
+  git, by design.)
 
 ---
 

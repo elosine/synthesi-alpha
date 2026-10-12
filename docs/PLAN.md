@@ -44,15 +44,16 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   here: `player/`. Built and checked by numbers (log §5): version 1
   replayed whole, and the replay held against the workshop's live
   picture. **How it looks and sounds is his to say — pending.**
-- **BM ► The master** (S7) — put in here at his word, 2026-10-12 (log
+- **BM ☑ The master** (S7) — put in here at his word, 2026-10-12 (log
   §6 … §9): a mastering pass on a version's sound, for the hall.
-  ◐ Built: the tool, version 1's four candidates, the listening page,
-  the player's part; the same in the engine repo. **Open: his ear on
-  the candidates; then the one he names is kept.**
-- **B4 The stage set-ups** (S4) — the small server, screens that keep
+  ☑ Built: the tool, version 1's four candidates, the listening page,
+  the player's part; the same in the engine repo. **Version 1's master
+  is kept — `safe`, his "a" (log §10) — and the player plays it.**
+- **B4 ► The stage set-ups** (S4) — the small server, screens that keep
   to the sound, the trim, the fixed shape; measured.
 - **B5 A new seed in one step** (S5) — the seed in the address, the
-  samples a seed; a first batch of candidates.
+  samples a seed; a first batch of candidates. **The step ends with
+  the master, at the piece's dials (S7.5).**
 - **B6 The repo finished** (S6) — the front page, the pointers, the
   fresh-clone test; ~~public at his word~~ ☑ done early (log §3);
   Hetzner, his sign-in.
@@ -312,8 +313,9 @@ other repo ... So we'll just need some things to connect everything."
   anywhere else.
 
 **S7. The master** (a mastering pass on a version's finished sound, for
-the hall — his, 2026-10-12, log §6 … §9) ◐ built (log §9); HIS EAR on
-the candidates pending; no master kept yet
+the hall — his, 2026-10-12, log §6 … §10) ☑ built, and version 1's
+master KEPT — `safe`, the limiter only: his "a" (log §10). Left:
+"a new seed in one step" (B5) to end with the master
 
 *How it was agreed:* the question and the target are his (log §6, §7:
 "a" — the hall). The top line below is his too ("yes"). The sub-steps
@@ -380,8 +382,8 @@ self-test passing (log §9)
   (piece 6) but this repo does not need SuperCollider; Reaper by hand
   is forgotten in two years and has to be done again for every seed.
 
-**S7.4 His ear** (the dials set by listening) ◐ the candidates and the
-page are made (log §9) — **his ear is the next thing**
+**S7.4 His ear** (the dials set by listening) ☑ his: "a" — `safe`,
+the limiter only; the low-pass and the compressor stay off (log §10)
 
 - A few candidates, SCREENED BY MEASUREMENT FIRST (the engine's choice
   methodology): a choice is offered only if it moves something by more
@@ -397,7 +399,8 @@ page are made (log §9) — **his ear is the next thing**
   `voices/v-alpha/master.json`.
 
 **S7.5 Where the master lives** (beside the version; the player plays
-it) ◐ the player and `--keep` are built (log §9); nothing is kept
+it) ☑ version 1's master is kept and the player plays it (log §10);
+B5's part is open
 
 - The kept master: `versions/seed-N/master.flac` and its report
   `master.json`. Onto the shelf only at his word — git never forgets.

@@ -19,14 +19,13 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► The mastering
-stage is built (BM, the plan's S7) and version 1's four candidate
-masters are made — HIS EAR ON THEM IS THE NEXT THING:
-http://localhost:8733/engine/master.html?v=seed-1 . The player is
-built (B3), his eyes and ears on it pending:
-http://localhost:8733/player/ . The repo is public
-(`github.com/elosine/synthesi-alpha`). After the master: B4, the stage
-set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
+**State of the piece (keep this line current):** **► Version 1 is
+MASTERED — `safe`, the limiter only, his "a" (BM, the plan's S7) —
+and the player plays the master: http://localhost:8733/player/ . The
+player is built (B3); HIS EYES AND EARS ON IT ARE PENDING. The repo is
+public (`github.com/elosine/synthesi-alpha`). Next, at his word: B4,
+the stage set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start
+block.**
 
 ## READ FIRST — how to work here
 

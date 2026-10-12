@@ -5,7 +5,7 @@ folder named by the seed that made it.
 
 | version | made | length | what it is |
 |---|---|---|---|
-| `seed-1` | 2026-10-12 | 10 min 05.8 s (the last sound at 10 min 00.5 s) | the final draft |
+| `seed-1` | 2026-10-12 | 10 min 05.8 s (the last sound at 10 min 00.5 s) | the final draft — mastered 2026-10-12 (`safe`: the limiter only, true peak −1.0 dB) |
 
 **The recording is the version. The seed is its label** — not a
 promise that it can be made again sample for sample (the hall of the

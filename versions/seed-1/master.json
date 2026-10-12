@@ -1,0 +1,58 @@
+{
+ "schema": 1,
+ "kind": "master",
+ "made": "2026-10-12",
+ "file": "master.flac",
+ "frames": 29079296,
+ "sampleRate": 48000,
+ "channels": 2,
+ "bits": 16,
+ "bytes": 34981418,
+ "source": {
+  "file": "versions/seed-1/sound.flac",
+  "sha256": "37545f97857699b94d2a276f4aae45e06edbe67e825631bb07d29ad41cd957cb",
+  "frames": 29079296
+ },
+ "dials": {
+  "ceilingDb": -1.0,
+  "lowpassHz": null,
+  "compressor": null
+ },
+ "before": {
+  "lufs": -17.3,
+  "rangeLu": 16.3,
+  "truePeakDb": 0.0,
+  "truePeakDbOwn": 0.025,
+  "samplePeakDb": 0.0,
+  "centroidHz": 1318.9
+ },
+ "after": {
+  "lufs": -17.4,
+  "rangeLu": 16.3,
+  "truePeakDb": -1.0,
+  "truePeakDbOwn": -1.0,
+  "samplePeakDb": -1.0,
+  "centroidHz": 1319.1
+ },
+ "limiter": {
+  "ceilingDb": -1.0,
+  "samplesOverIt": 657,
+  "samplesTurnedDown": 103657,
+  "secondsTurnedDown": 2.16,
+  "moments": 51,
+  "deepestDb": 1.03,
+  "attackMsPerDb": 1.5,
+  "releaseMsPerDb": 60.0,
+  "askedOfItDb": -1.0,
+  "rounds": 1
+ },
+ "compressor": null,
+ "untouchedSamplesThatChanged": 0,
+ "tool": {
+  "repo": "synthesi-alpha",
+  "commit": "0cb96d04236f9fdda4db08cb58263dc90ccbc83f",
+  "clean": true
+ },
+ "kept": "2026-10-12",
+ "keptAs": "safe"
+}
