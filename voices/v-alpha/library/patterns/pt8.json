@@ -1,0 +1,143 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt8",
+ "label": "15 hits \u00b7 14.7 s \u00b7 7 attacks, 8 phrases \u00b7 page 2 \u00b7 cresc",
+ "algorithm": "played",
+ "params": {
+  "page": 2,
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 14.685,
+ "events": [
+  {
+   "t": 0,
+   "kind": "phrase",
+   "id": "5a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 60,
+   "vel": 81
+  },
+  {
+   "t": 0.972,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 43,
+   "vel": 125
+  },
+  {
+   "t": 2.106,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 50,
+   "vel": 79
+  },
+  {
+   "t": 3.498,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 38,
+   "vel": 108
+  },
+  {
+   "t": 4.054,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 55,
+   "vel": 119
+  },
+  {
+   "t": 5.7731,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 67,
+   "vel": 117
+  },
+  {
+   "t": 6.688,
+   "kind": "attack",
+   "id": "a8",
+   "note": 40,
+   "vel": 127
+  },
+  {
+   "t": 7.69,
+   "kind": "attack",
+   "id": "a7",
+   "note": 45,
+   "vel": 90
+  },
+  {
+   "t": 7.826,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 43,
+   "vel": 117
+  },
+  {
+   "t": 8.8781,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 38,
+   "vel": 123
+  },
+  {
+   "t": 10.0821,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 50,
+   "vel": 108
+  },
+  {
+   "t": 10.8531,
+   "kind": "phrase",
+   "id": "7b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 53,
+   "vel": 112
+  },
+  {
+   "t": 11.816,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 36,
+   "vel": 123
+  },
+  {
+   "t": 12.4311,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 62,
+   "vel": 117
+  },
+  {
+   "t": 13.494,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 67,
+   "vel": 72
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-12",
+ "journal": "204"
+}

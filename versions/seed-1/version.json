@@ -1,0 +1,53 @@
+{
+ "schema": 1,
+ "kind": "version",
+ "piece": "Sýnthesi Alpha",
+ "voice": "v-alpha",
+ "name": "seed-1",
+ "seed": 1,
+ "made": "2026-10-12",
+ "partial": null,
+ "sound": {
+  "file": "sound.flac",
+  "sampleRate": 48000,
+  "channels": 2,
+  "bits": 16,
+  "frames": 29079296,
+  "seconds": 605.819,
+  "bytes": 34982691,
+  "wavBytes": 116317228,
+  "peakDb": 0.16,
+  "rmsDb": -22.81,
+  "samplesOverFull": 15
+ },
+ "length": {
+  "mainEnds": 582.466,
+  "lastSoundEnds": 600.808,
+  "all": 605.819
+ },
+ "picture": {
+  "file": "picture.json",
+  "runs": 13,
+  "sounds": 848
+ },
+ "recorder": {
+  "gaps": 0,
+  "chunks": 606
+ },
+ "check": {
+  "runs": 13,
+  "stops": 13,
+  "stopWorstMs": 0.354,
+  "startWorstMs": 2.566,
+  "waitWorstMs": 2.566,
+  "runWorstMs": 0.021,
+  "rolled": 582.164,
+  "held": 582.146
+ },
+ "workshop": {
+  "repo": "live-electronics-engine",
+  "commit": "f66ec1edf2098a42d76de2033159ba8717f517e1",
+  "clean": true
+ },
+ "journal": "260"
+}

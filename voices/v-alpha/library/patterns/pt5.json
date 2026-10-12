@@ -1,0 +1,241 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt5",
+ "label": "27 hits \u00b7 28.3 s \u00b7 0 attacks, 27 phrases \u00b7 sets 0\u20134",
+ "algorithm": "played",
+ "params": {
+  "sets": [
+   0,
+   4
+  ],
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 28.332,
+ "events": [
+  {
+   "t": 0,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "plain",
+   "note": 55,
+   "vel": 70
+  },
+  {
+   "t": 2.85,
+   "kind": "phrase",
+   "id": "4a",
+   "variant": "plain",
+   "note": 59,
+   "vel": 85
+  },
+  {
+   "t": 5.4009,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "plain",
+   "note": 55,
+   "vel": 78
+  },
+  {
+   "t": 5.746,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "reverse",
+   "note": 67,
+   "vel": 90
+  },
+  {
+   "t": 8.2599,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "reverse",
+   "note": 69,
+   "vel": 99
+  },
+  {
+   "t": 8.9509,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 75
+  },
+  {
+   "t": 10.4869,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "reverse",
+   "note": 67,
+   "vel": 87
+  },
+  {
+   "t": 11.3869,
+   "kind": "phrase",
+   "id": "0c",
+   "variant": "reverse",
+   "note": 64,
+   "vel": 81
+  },
+  {
+   "t": 11.7649,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "reverse",
+   "note": 60,
+   "vel": 105
+  },
+  {
+   "t": 13.9539,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "reverse",
+   "note": 60,
+   "vel": 84
+  },
+  {
+   "t": 14.553,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "reverse",
+   "note": 62,
+   "vel": 80
+  },
+  {
+   "t": 15.028,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 79
+  },
+  {
+   "t": 16.1679,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "plain",
+   "note": 55,
+   "vel": 90
+  },
+  {
+   "t": 16.7139,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "plain",
+   "note": 50,
+   "vel": 112
+  },
+  {
+   "t": 17.4599,
+   "kind": "phrase",
+   "id": "1a",
+   "variant": "plain",
+   "note": 53,
+   "vel": 101
+  },
+  {
+   "t": 17.4599,
+   "kind": "phrase",
+   "id": "0c",
+   "variant": "plain",
+   "note": 52,
+   "vel": 105
+  },
+  {
+   "t": 18.036,
+   "kind": "phrase",
+   "id": "4a",
+   "variant": "plain",
+   "note": 59,
+   "vel": 112
+  },
+  {
+   "t": 19.409,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "reverse",
+   "note": 69,
+   "vel": 90
+  },
+  {
+   "t": 20.691,
+   "kind": "phrase",
+   "id": "4a",
+   "variant": "reverse",
+   "note": 71,
+   "vel": 52
+  },
+  {
+   "t": 21.376,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "plain",
+   "note": 50,
+   "vel": 127
+  },
+  {
+   "t": 22.158,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "plain",
+   "note": 55,
+   "vel": 114
+  },
+  {
+   "t": 24.137,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 84
+  },
+  {
+   "t": 24.8289,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 75
+  },
+  {
+   "t": 25.495,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "reverse",
+   "note": 62,
+   "vel": 76
+  },
+  {
+   "t": 26.028,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "reverse",
+   "note": 69,
+   "vel": 78
+  },
+  {
+   "t": 26.7339,
+   "kind": "phrase",
+   "id": "1a",
+   "variant": "plain",
+   "note": 53,
+   "vel": 117
+  },
+  {
+   "t": 27.3179,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "reverse",
+   "note": 62,
+   "vel": 105
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-11",
+ "journal": "204"
+}

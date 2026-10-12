@@ -1,0 +1,183 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt7",
+ "label": "22 hits \u00b7 24.7 s \u00b7 18 attacks, 4 phrases \u00b7 sets 0\u20134",
+ "algorithm": "played",
+ "params": {
+  "sets": [
+   0,
+   4
+  ],
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 24.744,
+ "events": [
+  {
+   "t": 0,
+   "kind": "attack",
+   "id": "a3",
+   "note": 38,
+   "vel": 125
+  },
+  {
+   "t": 2.147,
+   "kind": "attack",
+   "id": "a1",
+   "note": 41,
+   "vel": 121
+  },
+  {
+   "t": 3.0331,
+   "kind": "attack",
+   "id": "a10",
+   "note": 38,
+   "vel": 125
+  },
+  {
+   "t": 4.762,
+   "kind": "attack",
+   "id": "m4a",
+   "note": 45,
+   "vel": 121
+  },
+  {
+   "t": 5.004,
+   "kind": "attack",
+   "id": "a1",
+   "note": 41,
+   "vel": 127
+  },
+  {
+   "t": 6.278,
+   "kind": "attack",
+   "id": "a32",
+   "note": 47,
+   "vel": 117
+  },
+  {
+   "t": 7.926,
+   "kind": "attack",
+   "id": "a3",
+   "note": 45,
+   "vel": 107
+  },
+  {
+   "t": 8.102,
+   "kind": "attack",
+   "id": "a10",
+   "note": 41,
+   "vel": 119
+  },
+  {
+   "t": 9.94,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 45,
+   "vel": 121
+  },
+  {
+   "t": 11.7331,
+   "kind": "attack",
+   "id": "a9",
+   "note": 38,
+   "vel": 123
+  },
+  {
+   "t": 12.06,
+   "kind": "attack",
+   "id": "a2",
+   "note": 47,
+   "vel": 127
+  },
+  {
+   "t": 13.598,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "reverse",
+   "note": 62,
+   "vel": 110
+  },
+  {
+   "t": 16.5601,
+   "kind": "phrase",
+   "id": "0b",
+   "variant": "reverse",
+   "note": 62,
+   "vel": 117
+  },
+  {
+   "t": 17.438,
+   "kind": "attack",
+   "id": "a32",
+   "note": 38,
+   "vel": 125
+  },
+  {
+   "t": 18.417,
+   "kind": "attack",
+   "id": "a2",
+   "note": 43,
+   "vel": 121
+  },
+  {
+   "t": 18.5881,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 40,
+   "vel": 125
+  },
+  {
+   "t": 18.768,
+   "kind": "attack",
+   "id": "a1",
+   "note": 41,
+   "vel": 127
+  },
+  {
+   "t": 20.648,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "reverse",
+   "note": 60,
+   "vel": 107
+  },
+  {
+   "t": 22.7391,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "reverse",
+   "note": 60,
+   "vel": 101
+  },
+  {
+   "t": 23.483,
+   "kind": "attack",
+   "id": "a3",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 24.074,
+   "kind": "attack",
+   "id": "a10",
+   "note": 45,
+   "vel": 125
+  },
+  {
+   "t": 24.394,
+   "kind": "attack",
+   "id": "a9",
+   "note": 36,
+   "vel": 121
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-11",
+ "journal": "204"
+}

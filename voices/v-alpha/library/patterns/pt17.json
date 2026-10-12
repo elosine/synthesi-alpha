@@ -1,0 +1,123 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt17",
+ "label": "13 hits \u00b7 21.2 s \u00b7 8 attacks, 5 phrases \u00b7 page 3 \u00b7 trem waves",
+ "algorithm": "played",
+ "params": {
+  "page": 3,
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 21.154,
+ "events": [
+  {
+   "t": 0,
+   "kind": "bus",
+   "name": "trem waves"
+  },
+  {
+   "t": 0,
+   "kind": "attack",
+   "id": "a11",
+   "note": 36,
+   "vel": 110
+  },
+  {
+   "t": 1.2571,
+   "kind": "attack",
+   "id": "a4",
+   "note": 45,
+   "vel": 121
+  },
+  {
+   "t": 3.835,
+   "kind": "attack",
+   "id": "a22",
+   "note": 40,
+   "vel": 121
+  },
+  {
+   "t": 5.77,
+   "kind": "phrase",
+   "id": "9a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 87
+  },
+  {
+   "t": 8.8,
+   "kind": "attack",
+   "id": "a31",
+   "note": 40,
+   "vel": 119
+  },
+  {
+   "t": 8.955,
+   "kind": "attack",
+   "id": "a20",
+   "note": 38,
+   "vel": 125
+  },
+  {
+   "t": 10.922,
+   "kind": "phrase",
+   "id": "12b",
+   "variant": "reverse",
+   "note": 65,
+   "vel": 75
+  },
+  {
+   "t": 13.092,
+   "kind": "phrase",
+   "id": "14a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 108
+  },
+  {
+   "t": 15.7411,
+   "kind": "attack",
+   "id": "a24",
+   "note": 43,
+   "vel": 123
+  },
+  {
+   "t": 15.994,
+   "kind": "phrase",
+   "id": "14a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 98
+  },
+  {
+   "t": 16.979,
+   "kind": "attack",
+   "id": "a34",
+   "note": 41,
+   "vel": 114
+  },
+  {
+   "t": 17.126,
+   "kind": "attack",
+   "id": "a11",
+   "note": 45,
+   "vel": 117
+  },
+  {
+   "t": 19.551,
+   "kind": "phrase",
+   "id": "10a",
+   "variant": "plain",
+   "note": 50,
+   "vel": 80
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-12",
+ "journal": "204"
+}

@@ -1,0 +1,794 @@
+{
+ "updated": "2026-08-29",
+ "piece": "v-alpha",
+ "mix": "v-alpha-05_gran_dense_bcl_s6.wav",
+ "duration_s": 182.131,
+ "lead_in_s": 2.0,
+ "machine_index": [
+  {
+   "t0": 0.0,
+   "t1": 3.64,
+   "family": "rung",
+   "variant": "single partial"
+  },
+  {
+   "t0": 3.64,
+   "t1": 6.28,
+   "family": "suspended",
+   "variant": "frozen bright"
+  },
+  {
+   "t0": 6.28,
+   "t1": 9.18,
+   "family": "spaced",
+   "variant": "jpverb bright tail"
+  },
+  {
+   "t0": 9.18,
+   "t1": 11.9,
+   "family": "suspended",
+   "variant": "smeared"
+  },
+  {
+   "t0": 11.9,
+   "t1": 16.33,
+   "family": "coloured",
+   "variant": "ladder sweepable"
+  },
+  {
+   "t0": 16.33,
+   "t1": 18.88,
+   "family": "suspended",
+   "variant": "wash"
+  },
+  {
+   "t0": 18.88,
+   "t1": 22.39,
+   "family": "suspended",
+   "variant": "greyhole drift"
+  },
+  {
+   "t0": 22.39,
+   "t1": 26.15,
+   "family": "rung",
+   "variant": "high partial"
+  },
+  {
+   "t0": 26.15,
+   "t1": 28.94,
+   "family": "spaced",
+   "variant": "jpverb huge"
+  },
+  {
+   "t0": 28.94,
+   "t1": 31.47,
+   "family": "rung",
+   "variant": "string"
+  },
+  {
+   "t0": 31.47,
+   "t1": 34.43,
+   "family": "suspended",
+   "variant": "frozen"
+  },
+  {
+   "t0": 34.43,
+   "t1": 37.18,
+   "family": "suspended",
+   "variant": "frozen bright"
+  },
+  {
+   "t0": 37.18,
+   "t1": 39.76,
+   "family": "suspended",
+   "variant": "smeared"
+  },
+  {
+   "t0": 39.76,
+   "t1": 42.44,
+   "family": "spaced",
+   "variant": "diffused"
+  },
+  {
+   "t0": 42.44,
+   "t1": 45.07,
+   "family": "spaced",
+   "variant": "greyhole echo"
+  },
+  {
+   "t0": 45.07,
+   "t1": 47.51,
+   "family": "spaced",
+   "variant": "wide"
+  },
+  {
+   "t0": 47.51,
+   "t1": 50.37,
+   "family": "suspended",
+   "variant": "wash"
+  },
+  {
+   "t0": 50.37,
+   "t1": 54.35,
+   "family": "suspended",
+   "variant": "greyhole drift"
+  },
+  {
+   "t0": 54.35,
+   "t1": 56.82,
+   "family": "spaced",
+   "variant": "jpverb dark"
+  },
+  {
+   "t0": 56.82,
+   "t1": 59.77,
+   "family": "suspended",
+   "variant": "frozen"
+  },
+  {
+   "t0": 59.77,
+   "t1": 66.18,
+   "family": "coloured",
+   "variant": "18dB dirty"
+  },
+  {
+   "t0": 66.18,
+   "t1": 68.83,
+   "family": "spaced",
+   "variant": "jpverb bright tail"
+  },
+  {
+   "t0": 68.83,
+   "t1": 72.07,
+   "family": "suspended",
+   "variant": "frozen bright"
+  },
+  {
+   "t0": 72.07,
+   "t1": 82.42,
+   "family": "suspended",
+   "variant": "smeared"
+  },
+  {
+   "t0": 82.42,
+   "t1": 87.8,
+   "family": "spaced",
+   "variant": "jpverb huge"
+  },
+  {
+   "t0": 87.8,
+   "t1": 90.54,
+   "family": "suspended",
+   "variant": "wash"
+  },
+  {
+   "t0": 90.54,
+   "t1": 93.56,
+   "family": "suspended",
+   "variant": "greyhole drift"
+  },
+  {
+   "t0": 93.56,
+   "t1": 96.18,
+   "family": "spaced",
+   "variant": "diffused"
+  },
+  {
+   "t0": 96.18,
+   "t1": 100.06,
+   "family": "coloured",
+   "variant": "resonant distorted"
+  },
+  {
+   "t0": 100.06,
+   "t1": 103.0,
+   "family": "suspended",
+   "variant": "frozen"
+  },
+  {
+   "t0": 103.0,
+   "t1": 105.93,
+   "family": "suspended",
+   "variant": "frozen bright"
+  },
+  {
+   "t0": 105.93,
+   "t1": 108.67,
+   "family": "coloured",
+   "variant": "narrow band"
+  },
+  {
+   "t0": 108.67,
+   "t1": 111.18,
+   "family": "spaced",
+   "variant": "greyhole echo"
+  },
+  {
+   "t0": 111.18,
+   "t1": 113.67,
+   "family": "spaced",
+   "variant": "wide"
+  },
+  {
+   "t0": 113.67,
+   "t1": 116.39,
+   "family": "rung",
+   "variant": "short comb"
+  },
+  {
+   "t0": 116.39,
+   "t1": 127.27,
+   "family": "suspended",
+   "variant": "smeared"
+  },
+  {
+   "t0": 127.27,
+   "t1": 130.96,
+   "family": "suspended",
+   "variant": "wash"
+  },
+  {
+   "t0": 130.96,
+   "t1": 134.08,
+   "family": "spaced",
+   "variant": "jpverb dark"
+  },
+  {
+   "t0": 134.08,
+   "t1": 137.58,
+   "family": "spaced",
+   "variant": "jpverb bright tail"
+  },
+  {
+   "t0": 137.58,
+   "t1": 140.74,
+   "family": "rung",
+   "variant": "long comb"
+  },
+  {
+   "t0": 140.74,
+   "t1": 143.16,
+   "family": "spaced",
+   "variant": "jpverb huge"
+  },
+  {
+   "t0": 143.16,
+   "t1": 146.97,
+   "family": "suspended",
+   "variant": "greyhole drift"
+  },
+  {
+   "t0": 146.97,
+   "t1": 154.21,
+   "family": "suspended",
+   "variant": "frozen"
+  },
+  {
+   "t0": 154.21,
+   "t1": 157.69,
+   "family": "spaced",
+   "variant": "diffused"
+  },
+  {
+   "t0": 157.69,
+   "t1": 161.79,
+   "family": "suspended",
+   "variant": "frozen bright"
+  },
+  {
+   "t0": 161.79,
+   "t1": 166.11,
+   "family": "spaced",
+   "variant": "greyhole echo"
+  },
+  {
+   "t0": 166.11,
+   "t1": 169.29,
+   "family": "spaced",
+   "variant": "wide"
+  },
+  {
+   "t0": 169.29,
+   "t1": 171.79,
+   "family": "rung",
+   "variant": "resonator bank"
+  },
+  {
+   "t0": 171.79,
+   "t1": 174.35,
+   "family": "spaced",
+   "variant": "jpverb dark"
+  },
+  {
+   "t0": 174.35,
+   "t1": 177.03,
+   "family": "suspended",
+   "variant": "smeared"
+  },
+  {
+   "t0": 177.03,
+   "t1": 179.59,
+   "family": "suspended",
+   "variant": "wash"
+  }
+ ],
+ "ear_substrates": [
+  {
+   "t0": 6.875,
+   "t1": 9.69,
+   "species": "commas",
+   "status": "consensus"
+  },
+  {
+   "t0": 9.69,
+   "t1": 11.9,
+   "species": "chains 8a",
+   "status": "consensus"
+  },
+  {
+   "t0": 22.88,
+   "t1": 26.15,
+   "species": "rings 12a",
+   "status": "consensus (ear onset; was FX mark 22.39)"
+  },
+  {
+   "t0": 28.94,
+   "t1": 31.47,
+   "species": "hollow boulders 13",
+   "status": "consensus"
+  },
+  {
+   "t0": 43.93,
+   "t1": 45.07,
+   "species": "plates (re-timed)",
+   "status": "consensus"
+  },
+  {
+   "t0": 60.317,
+   "t1": 66.18,
+   "species": "burrs 15",
+   "status": "consensus (ear onset; was FX mark 59.77)"
+  },
+  {
+   "t0": 113.67,
+   "t1": 116.39,
+   "species": "shards (short comb)",
+   "status": "consensus"
+  },
+  {
+   "t0": 130.96,
+   "t1": 134.08,
+   "species": "tangles 22",
+   "status": "consensus"
+  },
+  {
+   "t0": 137.58,
+   "t1": 140.74,
+   "species": "shards (long comb)",
+   "status": "consensus"
+  },
+  {
+   "t0": 157.69,
+   "t1": 161.79,
+   "species": "blades 18 (frozen skin, sway)",
+   "status": "consensus"
+  },
+  {
+   "t0": 169.29,
+   "t1": 171.79,
+   "species": "blocks 19",
+   "status": "consensus"
+  },
+  {
+   "t0": 174.35,
+   "t1": 177.03,
+   "species": "boulders 2a",
+   "status": "consensus"
+  },
+  {
+   "t0": 180.03,
+   "t1": 182.14,
+   "species": "crosses 16",
+   "status": "consensus"
+  }
+ ],
+ "ear_treatments": [
+  {
+   "t0": 19.443,
+   "t1": 22.39,
+   "wind": "leaf-blower",
+   "status": "consensus"
+  },
+  {
+   "t0": 26.15,
+   "t1": 28.94,
+   "wind": "suction, moderate",
+   "status": "consensus"
+  },
+  {
+   "t0": 50.37,
+   "t1": 54.35,
+   "wind": "reverse pull",
+   "status": "consensus"
+  },
+  {
+   "t0": 66.497,
+   "t1": 68.31,
+   "wind": "slow creep",
+   "status": "consensus (J's ear window)"
+  },
+  {
+   "t0": 82.42,
+   "t1": 87.8,
+   "wind": "pulsed gusts",
+   "status": "consensus"
+  },
+  {
+   "t0": 91.2,
+   "t1": 94.168,
+   "wind": "suction, vigorous",
+   "status": "consensus (measured keeper)"
+  },
+  {
+   "t0": 171.91,
+   "t1": 173.96,
+   "wind": "vortex",
+   "status": "proposed (window found by rule 2; J's ear to verify)"
+  },
+  {
+   "t0": 96.59,
+   "t1": 101.01,
+   "wind": "ribbon glow",
+   "status": "consensus (re-measured to the 1881 Hz partial band, \u00a782; was 96.9-100.67)"
+  }
+ ],
+ "onsets": [
+  {
+   "section": 0.0,
+   "onset": 0.43,
+   "who": "J (correcting rule 1's 0.68)",
+   "status": "consensus ('sound starts at .43'; motion lead to -0.09 is the designed peak-at-cursor wind-up)"
+  },
+  {
+   "section": 3.64,
+   "onset": 3.71,
+   "who": "rule 1, J confirmed",
+   "status": "consensus ('next freeze is good')"
+  },
+  {
+   "section": 6.28,
+   "onset": 6.875,
+   "who": "J",
+   "status": "consensus"
+  },
+  {
+   "section": 9.18,
+   "onset": 9.236,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 11.9,
+   "onset": 11.924,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 16.33,
+   "onset": 16.568,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 18.88,
+   "onset": 18.892,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 22.39,
+   "onset": 22.88,
+   "who": "J (D5->G5 ping; detector says 22.854)",
+   "status": "consensus"
+  },
+  {
+   "section": 26.15,
+   "onset": 26.288,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 28.94,
+   "onset": 29.082,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 31.47,
+   "onset": 31.47,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 34.43,
+   "onset": 34.938,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 37.18,
+   "onset": 37.494,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 39.76,
+   "onset": 39.775,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 42.44,
+   "onset": 43.93,
+   "who": "J",
+   "status": "consensus"
+  },
+  {
+   "section": 45.07,
+   "onset": 45.181,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 47.51,
+   "onset": 47.529,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 50.37,
+   "onset": 50.395,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 54.35,
+   "onset": 54.353,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 56.82,
+   "onset": 57.07,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 59.77,
+   "onset": 60.279,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 66.18,
+   "onset": 66.192,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 68.83,
+   "onset": 68.83,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 72.07,
+   "onset": 72.523,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 82.42,
+   "onset": 82.549,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 87.8,
+   "onset": 87.8,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 90.54,
+   "onset": 90.54,
+   "who": "rule 4 detector",
+   "status": "proposed (rise-only (no clear punch))"
+  },
+  {
+   "section": 93.56,
+   "onset": 94.359,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 96.18,
+   "onset": 96.268,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 100.06,
+   "onset": 101.859,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 103.0,
+   "onset": 103.0,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 105.93,
+   "onset": 106.071,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 108.67,
+   "onset": 108.854,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 111.18,
+   "onset": 111.346,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 113.67,
+   "onset": 114.162,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 116.39,
+   "onset": 117.014,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 127.27,
+   "onset": 127.278,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 130.96,
+   "onset": 131.357,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 134.08,
+   "onset": 134.703,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 137.58,
+   "onset": 137.603,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 140.74,
+   "onset": 140.786,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 143.16,
+   "onset": 143.168,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 146.97,
+   "onset": 146.97,
+   "who": "rule 4 detector",
+   "status": "proposed (rise-only (no clear punch))"
+  },
+  {
+   "section": 154.21,
+   "onset": 154.678,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 157.69,
+   "onset": 157.934,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 161.79,
+   "onset": 162.219,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 166.11,
+   "onset": 166.385,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 169.29,
+   "onset": 169.309,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 171.79,
+   "onset": 171.91,
+   "who": "rule 2",
+   "status": "proposed (with close 173.96)"
+  },
+  {
+   "section": 174.35,
+   "onset": 174.478,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  },
+  {
+   "section": 177.03,
+   "onset": 177.133,
+   "who": "rule 4 detector",
+   "status": "proposed (punch)"
+  }
+ ],
+ "swell_pairs": [
+  {
+   "ani": -0.12,
+   "snd": 0.43,
+   "event": 0.0,
+   "swell_s": 0.43,
+   "kind": "attack-swell",
+   "note": "opening rung partial (J read ani -0.09/-0.3, snd 0.43/0.3; schedule says -0.120)"
+  },
+  {
+   "ani": 6.392,
+   "snd": 6.728,
+   "event": 6.473,
+   "swell_s": 0.25,
+   "kind": "attack-swell",
+   "note": "jpverb bright tail grains; his ani dead on 6.381-6.398"
+  },
+  {
+   "ani": 22.332,
+   "snd": 22.784,
+   "event": 22.448,
+   "swell_s": 0.34,
+   "kind": "entry-masking (reclassified \u00a779-80)",
+   "note": "high partial section entry, not a material attack"
+  },
+  {
+   "ani": 59.82,
+   "snd": 60.317,
+   "event": null,
+   "swell_s": 0.5,
+   "kind": "entry-masking",
+   "note": "burrs/18dB dirty entry; J: internal bursts after the beginning seem synced"
+  }
+ ],
+ "rules": [
+  "1 (\u00a767): section onset = the first characteristic attack - first attack-cluster after the container opens whose level jump crosses a threshold scaled to the section's own peak. Validated at 43.93.",
+  "2 (\u00a770): a wind/suction percept lives in an unbroken decay - opens at the last attack's release, runs while spectral flux stays low, closes at the next brightness jump. Validated at 66.497/68.31; first hunt 171.91-173.96.",
+  "3 (candidate, \u00a774): quiet timbral entries defeat rule 1 - J's 6.875 has no level attack (nearest is 7.94); some sections enter by timbre, needing a spectral-change detector. Undesigned.",
+  "1a (refinement, \u00a775): what 'onset' means depends on context - at the top of the piece J wants the FIRST AUDIBLE SOUND (0.43, quieter than rule 1's threshold caught at 0.68), while at a mid-piece change over faint transitional material he wants the first CHARACTERISTIC attack (43.93). Two targets, one word.",
+  "4 (\u00a780, the masking law): at a section entry over a decaying predecessor, scheduled events are masked until the tail falls below them; a section's ear-onset is its first PUNCH-THROUGH. Unifies 43.93, 6.875, 22.88. Detectable as a floor-crossing - the AI pass can propose every remaining section's ear-onset. Fix pattern: substrate starts at the ear onset; masked entry grains stay sand, whose bursts sit below perception (\u00a777)."
+ ]
+}

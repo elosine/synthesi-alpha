@@ -1,0 +1,362 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt3",
+ "label": "47 hits \u00b7 30.8 s \u00b7 39 attacks, 8 phrases \u00b7 sets 0\u20134",
+ "algorithm": "played",
+ "params": {
+  "sets": [
+   0,
+   4
+  ],
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 30.759,
+ "events": [
+  {
+   "t": 0,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 40,
+   "vel": 121
+  },
+  {
+   "t": 1.4199,
+   "kind": "attack",
+   "id": "a10",
+   "note": 40,
+   "vel": 127
+  },
+  {
+   "t": 2.9689,
+   "kind": "attack",
+   "id": "m4a",
+   "note": 40,
+   "vel": 119
+  },
+  {
+   "t": 3.2139,
+   "kind": "attack",
+   "id": "a1",
+   "note": 40,
+   "vel": 123
+  },
+  {
+   "t": 3.617,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 4.684,
+   "kind": "attack",
+   "id": "a9",
+   "note": 43,
+   "vel": 121
+  },
+  {
+   "t": 4.8869,
+   "kind": "attack",
+   "id": "a10",
+   "note": 45,
+   "vel": 123
+  },
+  {
+   "t": 6.2399,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 112
+  },
+  {
+   "t": 6.366,
+   "kind": "attack",
+   "id": "a2",
+   "note": 41,
+   "vel": 123
+  },
+  {
+   "t": 7.026,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "plain",
+   "note": 55,
+   "vel": 117
+  },
+  {
+   "t": 8.0079,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 127
+  },
+  {
+   "t": 10.2199,
+   "kind": "attack",
+   "id": "a32",
+   "note": 41,
+   "vel": 121
+  },
+  {
+   "t": 11.3019,
+   "kind": "phrase",
+   "id": "1a",
+   "variant": "reverse",
+   "note": 65,
+   "vel": 96
+  },
+  {
+   "t": 13.0409,
+   "kind": "attack",
+   "id": "a3",
+   "note": 38,
+   "vel": 125
+  },
+  {
+   "t": 13.1509,
+   "kind": "attack",
+   "id": "a1",
+   "note": 40,
+   "vel": 127
+  },
+  {
+   "t": 13.3589,
+   "kind": "attack",
+   "id": "a9",
+   "note": 40,
+   "vel": 127
+  },
+  {
+   "t": 13.518,
+   "kind": "attack",
+   "id": "a2",
+   "note": 43,
+   "vel": 127
+  },
+  {
+   "t": 14.1999,
+   "kind": "attack",
+   "id": "a3",
+   "note": 36,
+   "vel": 127
+  },
+  {
+   "t": 16.3609,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "reverse",
+   "note": 67,
+   "vel": 79
+  },
+  {
+   "t": 17.7789,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 45,
+   "vel": 127
+  },
+  {
+   "t": 17.9019,
+   "kind": "attack",
+   "id": "m4a",
+   "note": 41,
+   "vel": 125
+  },
+  {
+   "t": 18.133,
+   "kind": "attack",
+   "id": "a32",
+   "note": 43,
+   "vel": 127
+  },
+  {
+   "t": 18.7509,
+   "kind": "phrase",
+   "id": "2a",
+   "variant": "plain",
+   "note": 55,
+   "vel": 127
+  },
+  {
+   "t": 19.7289,
+   "kind": "attack",
+   "id": "a10",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 20.0529,
+   "kind": "phrase",
+   "id": "3a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 127
+  },
+  {
+   "t": 23.3319,
+   "kind": "attack",
+   "id": "a3",
+   "note": 45,
+   "vel": 127
+  },
+  {
+   "t": 23.4739,
+   "kind": "attack",
+   "id": "a9",
+   "note": 41,
+   "vel": 127
+  },
+  {
+   "t": 23.7189,
+   "kind": "attack",
+   "id": "a2",
+   "note": 43,
+   "vel": 127
+  },
+  {
+   "t": 24.345,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 25.001,
+   "kind": "attack",
+   "id": "m4a",
+   "note": 45,
+   "vel": 123
+  },
+  {
+   "t": 25.1899,
+   "kind": "attack",
+   "id": "a10",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 25.6829,
+   "kind": "attack",
+   "id": "a1",
+   "note": 43,
+   "vel": 123
+  },
+  {
+   "t": 25.9069,
+   "kind": "attack",
+   "id": "a32",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 26.3589,
+   "kind": "attack",
+   "id": "a3",
+   "note": 43,
+   "vel": 119
+  },
+  {
+   "t": 26.5659,
+   "kind": "attack",
+   "id": "a32",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 26.8109,
+   "kind": "attack",
+   "id": "a10",
+   "note": 45,
+   "vel": 127
+  },
+  {
+   "t": 27.252,
+   "kind": "attack",
+   "id": "a1",
+   "note": 41,
+   "vel": 127
+  },
+  {
+   "t": 27.6549,
+   "kind": "attack",
+   "id": "a2",
+   "note": 47,
+   "vel": 127
+  },
+  {
+   "t": 27.6619,
+   "kind": "phrase",
+   "id": "0a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 114
+  },
+  {
+   "t": 28.373,
+   "kind": "attack",
+   "id": "a9",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 28.382,
+   "kind": "attack",
+   "id": "m4a",
+   "note": 36,
+   "vel": 88
+  },
+  {
+   "t": 28.5859,
+   "kind": "attack",
+   "id": "m1a",
+   "note": 43,
+   "vel": 127
+  },
+  {
+   "t": 28.8229,
+   "kind": "attack",
+   "id": "a32",
+   "note": 40,
+   "vel": 127
+  },
+  {
+   "t": 29.229,
+   "kind": "attack",
+   "id": "a10",
+   "note": 41,
+   "vel": 127
+  },
+  {
+   "t": 29.7009,
+   "kind": "attack",
+   "id": "a3",
+   "note": 41,
+   "vel": 125
+  },
+  {
+   "t": 30.1739,
+   "kind": "attack",
+   "id": "a2",
+   "note": 41,
+   "vel": 127
+  },
+  {
+   "t": 30.4089,
+   "kind": "attack",
+   "id": "a1",
+   "note": 38,
+   "vel": 127
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-11",
+ "journal": "204"
+}

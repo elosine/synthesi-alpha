@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "synthesi-alpha",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "tools/serve.py"
+      ],
+      "port": 8733
+    }
+  ]
+}

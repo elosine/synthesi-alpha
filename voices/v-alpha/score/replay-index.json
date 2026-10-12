@@ -1,0 +1,2696 @@
+{
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "tool": "tools/replay_scan.py",
+ "journal": "200, 201, 202",
+ "params": {
+  "minLen": 0.4,
+  "maxLen": 1.6,
+  "perSection": 3,
+  "preRoll": 0.012,
+  "minPunchDb": 4.0,
+  "clearDb": 10.0,
+  "weights": {
+   "punch": 1.0,
+   "dip": 1.0,
+   "activity": 0.7,
+   "level": 0.7
+  },
+  "normWin": 0.05,
+  "normClampDb": 9.0,
+  "impactAccent": {
+   "db": 4,
+   "ms": 40
+  }
+ },
+ "_about": "phrases: t0..t1 is what a cursor reads (t0 = the onset less the pre-roll). clearDb = the attack over the 60 ms before it; under 10 dB the start gets fadeIn. dipDb = how far the end sits under the phrase's own level. impacts: from 'library' = J's accepted attacks; 'scan' = proposed. loudDb = an impact's loudest 50 ms under its envelope; gainDb = what brings it to the median of his attacks (the page applies it when normalizing is on).",
+ "summary": {
+  "onsets": 289,
+  "candidates": 230,
+  "phrases": 67,
+  "sectionsWith": [
+   9,
+   24,
+   11,
+   7
+  ],
+  "lenMin": 0.413,
+  "lenMedian": 0.821,
+  "lenMax": 1.612,
+  "startsClear": 42,
+  "startsNeedFadeIn": 25,
+  "endsDeep": 40,
+  "impactsLibrary": 35,
+  "impactsScan": 34,
+  "sectionsNoImpact": 12,
+  "rejectedKnown": 44,
+  "heardKept": 7,
+  "takenOut": 1,
+  "impactTargetDb": -23.6,
+  "impactLoudMinDb": -38.1,
+  "impactLoudMaxDb": -13.9,
+  "impactsClamped": 2
+ },
+ "sections": [
+  {
+   "set": 0,
+   "t0": 0.0,
+   "t1": 3.64,
+   "phrases": [
+    {
+     "t0": 0.5693,
+     "t1": 1.105,
+     "len": 0.536,
+     "onset": 0.5813,
+     "attackAt": 0.5971,
+     "punchDb": 28.8,
+     "clearDb": 23.0,
+     "dipDb": 46.0,
+     "endDb": -81.2,
+     "levelDb": -35.2,
+     "onsets": 3,
+     "activity": 2.435,
+     "riseMs": 97.5,
+     "score": 1.656,
+     "verdict": "keep",
+     "id": "0a",
+     "name": "set 0 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 1.172,
+     "t1": 1.8225,
+     "len": 0.651,
+     "onset": 1.184,
+     "attackAt": 1.2012,
+     "punchDb": 21.5,
+     "clearDb": 21.7,
+     "dipDb": 39.8,
+     "endDb": -76.6,
+     "levelDb": -36.8,
+     "onsets": 3,
+     "activity": 2.26,
+     "riseMs": 112.5,
+     "score": 0.279,
+     "verdict": "keep",
+     "id": "0b",
+     "name": "set 0 \u00b7 phrase b",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 2.0307,
+     "t1": 3.49,
+     "len": 1.459,
+     "onset": 2.0427,
+     "attackAt": 2.0587,
+     "punchDb": 16.7,
+     "clearDb": 15.7,
+     "dipDb": 46.2,
+     "endDb": -78.3,
+     "levelDb": -32.1,
+     "onsets": 9,
+     "activity": 3.525,
+     "riseMs": 170.0,
+     "score": 0.82,
+     "verdict": "keep",
+     "id": "0c",
+     "name": "set 0 \u00b7 phrase c",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a9",
+     "at": 2.735,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 0 \u00b7 attack a9",
+     "loudDb": -22.2,
+     "gainDb": -1.4
+    },
+    {
+     "id": "a32",
+     "at": 3.0987,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 0 \u00b7 attack a32",
+     "loudDb": -19.5,
+     "gainDb": -4.1
+    }
+   ]
+  },
+  {
+   "set": 1,
+   "t0": 3.64,
+   "t1": 6.28,
+   "phrases": [
+    {
+     "t0": 3.6947,
+     "t1": 5.2925,
+     "len": 1.598,
+     "onset": 3.7067,
+     "attackAt": 3.7291,
+     "punchDb": 13.2,
+     "clearDb": 30.1,
+     "dipDb": 19.6,
+     "endDb": -60.6,
+     "levelDb": -41.1,
+     "onsets": 1,
+     "activity": 1.074,
+     "riseMs": 12.5,
+     "score": -2.423,
+     "verdict": "keep",
+     "id": "1a",
+     "name": "set 1 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m1a",
+     "name": "set 1 \u00b7 scan attack a",
+     "at": 3.7067,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 13.2,
+     "verdict": "keep",
+     "loudDb": -22.3,
+     "gainDb": -1.3
+    }
+   ]
+  },
+  {
+   "set": 2,
+   "t0": 6.28,
+   "t1": 9.18,
+   "phrases": [
+    {
+     "t0": 7.8867,
+     "t1": 9.0575,
+     "len": 1.171,
+     "onset": 7.8987,
+     "attackAt": 7.9182,
+     "punchDb": 17.6,
+     "clearDb": 17.8,
+     "dipDb": 14.1,
+     "endDb": -48.8,
+     "levelDb": -34.7,
+     "onsets": 1,
+     "activity": 3.404,
+     "riseMs": 12.5,
+     "score": -0.928,
+     "verdict": "keep",
+     "id": "2a",
+     "name": "set 2 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a1",
+     "at": 8.05,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 2 \u00b7 attack a1",
+     "loudDb": -24.2,
+     "gainDb": 0.6
+    }
+   ]
+  },
+  {
+   "set": 3,
+   "t0": 9.18,
+   "t1": 11.9,
+   "phrases": [
+    {
+     "t0": 9.8653,
+     "t1": 11.1725,
+     "len": 1.307,
+     "onset": 9.8773,
+     "attackAt": 9.8906,
+     "punchDb": 13.7,
+     "clearDb": 11.8,
+     "dipDb": 10.2,
+     "endDb": -43.7,
+     "levelDb": -33.5,
+     "onsets": 5,
+     "activity": 6.129,
+     "riseMs": 12.5,
+     "score": -0.788,
+     "verdict": "keep",
+     "id": "3a",
+     "name": "set 3 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a2",
+     "at": 10.235,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 3 \u00b7 attack a2",
+     "loudDb": -20.5,
+     "gainDb": -3.1
+    },
+    {
+     "id": "a3",
+     "at": 11.865,
+     "dur": 0.35,
+     "env": "rexpodec",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 3 \u00b7 attack a3",
+     "loudDb": -29.2,
+     "gainDb": 5.6
+    },
+    {
+     "id": "a10",
+     "at": 11.865,
+     "dur": 0.35,
+     "env": "sinc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 3 \u00b7 attack a10",
+     "loudDb": -25.1,
+     "gainDb": 1.5
+    }
+   ]
+  },
+  {
+   "set": 4,
+   "t0": 11.9,
+   "t1": 16.33,
+   "phrases": [
+    {
+     "t0": 11.9347,
+     "t1": 13.545,
+     "len": 1.61,
+     "onset": 11.9467,
+     "attackAt": 11.9603,
+     "punchDb": 15.5,
+     "clearDb": 9.0,
+     "dipDb": 48.9,
+     "endDb": -82.5,
+     "levelDb": -33.5,
+     "onsets": 4,
+     "activity": 4.108,
+     "riseMs": 10.0,
+     "score": 0.804,
+     "verdict": "keep",
+     "id": "4a",
+     "name": "set 4 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m4a",
+     "name": "set 4 \u00b7 scan attack a",
+     "at": 11.9467,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 15.5,
+     "verdict": "keep",
+     "loudDb": -18.0,
+     "gainDb": -5.6
+    }
+   ]
+  },
+  {
+   "set": 5,
+   "t0": 16.33,
+   "t1": 18.88,
+   "phrases": [
+    {
+     "t0": 16.5747,
+     "t1": 17.6425,
+     "len": 1.068,
+     "onset": 16.5867,
+     "attackAt": 16.599,
+     "punchDb": 57.1,
+     "clearDb": 54.5,
+     "dipDb": 5.4,
+     "endDb": -44.1,
+     "levelDb": -38.7,
+     "onsets": 0,
+     "activity": 3.403,
+     "riseMs": 5.0,
+     "score": 2.923,
+     "verdict": null,
+     "id": "5a",
+     "name": "set 5 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 18.436,
+     "t1": 18.86,
+     "len": 0.424,
+     "onset": 18.448,
+     "attackAt": 18.4636,
+     "punchDb": 12.0,
+     "clearDb": 9.0,
+     "dipDb": 2.7,
+     "endDb": -35.8,
+     "levelDb": -33.1,
+     "onsets": 0,
+     "activity": 5.06,
+     "riseMs": 12.5,
+     "score": -1.573,
+     "verdict": null,
+     "id": "5b",
+     "name": "set 5 \u00b7 phrase b",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a7",
+     "at": 17.2,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 5 \u00b7 attack a7",
+     "loudDb": -31.5,
+     "gainDb": 7.9
+    },
+    {
+     "id": "a8",
+     "at": 17.2,
+     "dur": 0.35,
+     "env": "sinc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 5 \u00b7 attack a8",
+     "loudDb": -38.1,
+     "gainDb": 9.0
+    },
+    {
+     "id": "a33",
+     "at": 18.448,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 5 \u00b7 attack a33",
+     "loudDb": -23.7,
+     "gainDb": 0.1
+    }
+   ]
+  },
+  {
+   "set": 6,
+   "t0": 18.88,
+   "t1": 22.39,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 7,
+   "t0": 22.39,
+   "t1": 26.15,
+   "phrases": [
+    {
+     "t0": 23.0013,
+     "t1": 23.5525,
+     "len": 0.551,
+     "onset": 23.0133,
+     "attackAt": 23.028,
+     "punchDb": 19.4,
+     "clearDb": 34.3,
+     "dipDb": 44.8,
+     "endDb": -81.0,
+     "levelDb": -36.2,
+     "onsets": 4,
+     "activity": 3.012,
+     "riseMs": 95.0,
+     "score": 0.519,
+     "verdict": null,
+     "id": "7a",
+     "name": "set 7 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 24.292,
+     "t1": 25.3875,
+     "len": 1.096,
+     "onset": 24.304,
+     "attackAt": 24.3186,
+     "punchDb": 29.3,
+     "clearDb": 22.7,
+     "dipDb": 41.8,
+     "endDb": -81.1,
+     "levelDb": -39.2,
+     "onsets": 1,
+     "activity": 1.349,
+     "riseMs": 2.5,
+     "score": 0.829,
+     "verdict": null,
+     "id": "7b",
+     "name": "set 7 \u00b7 phrase b",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m7a",
+     "name": "set 7 \u00b7 scan attack a",
+     "at": 24.304,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 29.3,
+     "verdict": null,
+     "loudDb": -25.6,
+     "gainDb": 2.0
+    },
+    {
+     "id": "m7b",
+     "name": "set 7 \u00b7 scan attack b",
+     "at": 25.76,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 21.2,
+     "verdict": null,
+     "loudDb": -31.7,
+     "gainDb": 8.1
+    }
+   ]
+  },
+  {
+   "set": 8,
+   "t0": 26.15,
+   "t1": 28.94,
+   "phrases": [
+    {
+     "t0": 27.6467,
+     "t1": 28.8375,
+     "len": 1.191,
+     "onset": 27.6587,
+     "attackAt": 27.6735,
+     "punchDb": 16.7,
+     "clearDb": 13.5,
+     "dipDb": 5.5,
+     "endDb": -39.9,
+     "levelDb": -34.4,
+     "onsets": 0,
+     "activity": 4.743,
+     "riseMs": 10.0,
+     "score": -1.093,
+     "verdict": null,
+     "id": "8a",
+     "name": "set 8 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m8a",
+     "name": "set 8 \u00b7 scan attack a",
+     "at": 27.6587,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 16.7,
+     "verdict": null,
+     "loudDb": -21.3,
+     "gainDb": -2.3
+    }
+   ]
+  },
+  {
+   "set": 9,
+   "t0": 28.94,
+   "t1": 31.47,
+   "phrases": [
+    {
+     "t0": 29.8333,
+     "t1": 31.02,
+     "len": 1.187,
+     "onset": 29.8453,
+     "attackAt": 29.8617,
+     "punchDb": 33.7,
+     "clearDb": 36.3,
+     "dipDb": 32.9,
+     "endDb": -60.2,
+     "levelDb": -27.3,
+     "onsets": 8,
+     "activity": 6.4,
+     "riseMs": 55.0,
+     "score": 3.399,
+     "verdict": null,
+     "id": "9a",
+     "name": "set 9 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a11",
+     "at": 31.28,
+     "dur": 0.35,
+     "env": "rexpodec",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 9 \u00b7 attack a11",
+     "loudDb": -32.6,
+     "gainDb": 9.0
+    }
+   ]
+  },
+  {
+   "set": 10,
+   "t0": 31.47,
+   "t1": 34.43,
+   "phrases": [
+    {
+     "t0": 31.652,
+     "t1": 33.255,
+     "len": 1.603,
+     "onset": 31.664,
+     "attackAt": 31.7168,
+     "punchDb": 14.0,
+     "clearDb": 24.3,
+     "dipDb": 10.9,
+     "endDb": -37.6,
+     "levelDb": -26.7,
+     "onsets": 1,
+     "activity": 6.103,
+     "riseMs": 42.5,
+     "score": -0.015,
+     "verdict": null,
+     "id": "10a",
+     "name": "set 10 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a4",
+     "at": 31.86,
+     "dur": 0.35,
+     "env": "sinc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 10 \u00b7 attack a4",
+     "loudDb": -22.6,
+     "gainDb": -1.0
+    }
+   ]
+  },
+  {
+   "set": 11,
+   "t0": 34.43,
+   "t1": 37.18,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 12,
+   "t0": 37.18,
+   "t1": 39.76,
+   "phrases": [
+    {
+     "t0": 38.1,
+     "t1": 39.265,
+     "len": 1.165,
+     "onset": 38.112,
+     "attackAt": 38.1239,
+     "punchDb": 18.5,
+     "clearDb": 15.1,
+     "dipDb": 8.0,
+     "endDb": -46.4,
+     "levelDb": -38.5,
+     "onsets": 3,
+     "activity": 3.59,
+     "riseMs": 280.0,
+     "score": -1.468,
+     "verdict": null,
+     "id": "12a",
+     "name": "set 12 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 39.316,
+     "t1": 39.76,
+     "len": 0.444,
+     "onset": 39.328,
+     "attackAt": 39.3436,
+     "punchDb": 14.0,
+     "clearDb": 6.6,
+     "dipDb": 7.2,
+     "endDb": -46.4,
+     "levelDb": -39.1,
+     "onsets": 1,
+     "activity": 3.65,
+     "riseMs": 115.0,
+     "score": -2.089,
+     "verdict": null,
+     "id": "12b",
+     "name": "set 12 \u00b7 phrase b",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a22",
+     "at": 38.4693,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 12 \u00b7 attack a22",
+     "loudDb": -28.8,
+     "gainDb": 5.2
+    },
+    {
+     "id": "a24",
+     "at": 39.4347,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 12 \u00b7 attack a24",
+     "loudDb": -28.8,
+     "gainDb": 5.2
+    }
+   ]
+  },
+  {
+   "set": 13,
+   "t0": 39.76,
+   "t1": 42.44,
+   "phrases": [
+    {
+     "t0": 39.892,
+     "t1": 40.305,
+     "len": 0.413,
+     "onset": 39.904,
+     "attackAt": 39.9174,
+     "punchDb": 12.5,
+     "clearDb": 6.1,
+     "dipDb": 0.8,
+     "endDb": -38.8,
+     "levelDb": -38.0,
+     "onsets": 1,
+     "activity": 4.173,
+     "riseMs": 142.5,
+     "score": -2.334,
+     "verdict": null,
+     "id": "13a",
+     "name": "set 13 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a31",
+     "at": 40.0373,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 13 \u00b7 attack a31",
+     "loudDb": -28.1,
+     "gainDb": 4.5
+    }
+   ]
+  },
+  {
+   "set": 14,
+   "t0": 42.44,
+   "t1": 45.07,
+   "phrases": [
+    {
+     "t0": 43.9507,
+     "t1": 44.5475,
+     "len": 0.597,
+     "onset": 43.9627,
+     "attackAt": 44.0108,
+     "punchDb": 16.7,
+     "clearDb": 14.3,
+     "dipDb": 14.2,
+     "endDb": -44.7,
+     "levelDb": -30.5,
+     "onsets": 1,
+     "activity": 5.667,
+     "riseMs": 67.5,
+     "score": -0.038,
+     "verdict": null,
+     "id": "14a",
+     "name": "set 14 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a20",
+     "at": 44.0213,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 14 \u00b7 attack a20",
+     "loudDb": -18.9,
+     "gainDb": -4.7
+    },
+    {
+     "id": "a34",
+     "at": 43.9627,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 14 \u00b7 attack a34",
+     "loudDb": -20.7,
+     "gainDb": -2.9
+    }
+   ]
+  },
+  {
+   "set": 15,
+   "t0": 45.07,
+   "t1": 47.51,
+   "phrases": [
+    {
+     "t0": 45.1827,
+     "t1": 45.85,
+     "len": 0.667,
+     "onset": 45.1947,
+     "attackAt": 45.2163,
+     "punchDb": 14.6,
+     "clearDb": 12.9,
+     "dipDb": 18.1,
+     "endDb": -53.0,
+     "levelDb": -34.9,
+     "onsets": 0,
+     "activity": 2.727,
+     "riseMs": 15.0,
+     "score": -1.277,
+     "verdict": null,
+     "id": "15a",
+     "name": "set 15 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 45.9827,
+     "t1": 46.715,
+     "len": 0.732,
+     "onset": 45.9947,
+     "attackAt": 46.0162,
+     "punchDb": 19.1,
+     "clearDb": 20.1,
+     "dipDb": 14.9,
+     "endDb": -45.6,
+     "levelDb": -30.7,
+     "onsets": 3,
+     "activity": 4.687,
+     "riseMs": 65.0,
+     "score": 0.02,
+     "verdict": null,
+     "id": "15b",
+     "name": "set 15 \u00b7 phrase b",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 46.9853,
+     "t1": 47.475,
+     "len": 0.49,
+     "onset": 46.9973,
+     "attackAt": 47.0109,
+     "punchDb": 10.3,
+     "clearDb": 3.8,
+     "dipDb": 10.5,
+     "endDb": -37.3,
+     "levelDb": -26.8,
+     "onsets": 2,
+     "activity": 5.928,
+     "riseMs": 10.0,
+     "score": -0.527,
+     "verdict": null,
+     "id": "15c",
+     "name": "set 15 \u00b7 phrase c",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a12",
+     "at": 46.05,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 15 \u00b7 attack a12",
+     "loudDb": -18.8,
+     "gainDb": -4.8
+    },
+    {
+     "id": "a25",
+     "at": 47.0773,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 15 \u00b7 attack a25",
+     "loudDb": -17.2,
+     "gainDb": -6.4
+    },
+    {
+     "id": "a28",
+     "at": 47.2373,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 15 \u00b7 attack a28",
+     "loudDb": -20.4,
+     "gainDb": -3.2
+    }
+   ]
+  },
+  {
+   "set": 16,
+   "t0": 47.51,
+   "t1": 50.37,
+   "phrases": [
+    {
+     "t0": 47.6733,
+     "t1": 48.505,
+     "len": 0.832,
+     "onset": 47.6853,
+     "attackAt": 47.7082,
+     "punchDb": 12.8,
+     "clearDb": 14.2,
+     "dipDb": 7.9,
+     "endDb": -44.7,
+     "levelDb": -36.8,
+     "onsets": 0,
+     "activity": 2.692,
+     "riseMs": 20.0,
+     "score": -2.192,
+     "verdict": null,
+     "id": "16a",
+     "name": "set 16 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 49.1187,
+     "t1": 50.2825,
+     "len": 1.164,
+     "onset": 49.1307,
+     "attackAt": 49.143,
+     "punchDb": 10.8,
+     "clearDb": 8.6,
+     "dipDb": 6.3,
+     "endDb": -40.3,
+     "levelDb": -34.0,
+     "onsets": 2,
+     "activity": 6.165,
+     "riseMs": 10.0,
+     "score": -1.365,
+     "verdict": null,
+     "id": "16b",
+     "name": "set 16 \u00b7 phrase b",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a13",
+     "at": 49.12,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 16 \u00b7 attack a13",
+     "loudDb": -23.6,
+     "gainDb": 0.0
+    },
+    {
+     "id": "a14",
+     "at": 49.7707,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 16 \u00b7 attack a14",
+     "loudDb": -26.2,
+     "gainDb": 2.6
+    },
+    {
+     "id": "a16",
+     "at": 48.6133,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 16 \u00b7 attack a16",
+     "loudDb": -25.4,
+     "gainDb": 1.8
+    }
+   ]
+  },
+  {
+   "set": 17,
+   "t0": 50.37,
+   "t1": 54.35,
+   "phrases": [
+    {
+     "t0": 50.4413,
+     "t1": 50.855,
+     "len": 0.414,
+     "onset": 50.4533,
+     "attackAt": 50.4671,
+     "punchDb": 10.8,
+     "clearDb": 8.7,
+     "dipDb": 7.5,
+     "endDb": -42.4,
+     "levelDb": -34.9,
+     "onsets": 0,
+     "activity": 5.033,
+     "riseMs": 10.0,
+     "score": -1.678,
+     "verdict": null,
+     "id": "17a",
+     "name": "set 17 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": []
+  },
+  {
+   "set": 18,
+   "t0": 54.35,
+   "t1": 56.82,
+   "phrases": [
+    {
+     "t0": 56.3453,
+     "t1": 56.8175,
+     "len": 0.472,
+     "onset": 56.3573,
+     "attackAt": 56.3815,
+     "punchDb": 15.7,
+     "clearDb": 16.0,
+     "dipDb": 6.4,
+     "endDb": -39.7,
+     "levelDb": -33.3,
+     "onsets": 0,
+     "activity": 6.047,
+     "riseMs": 12.5,
+     "score": -0.734,
+     "verdict": null,
+     "id": "18a",
+     "name": "set 18 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m18a",
+     "name": "set 18 \u00b7 scan attack a",
+     "at": 56.3573,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 15.7,
+     "verdict": null,
+     "loudDb": -21.2,
+     "gainDb": -2.4
+    }
+   ]
+  },
+  {
+   "set": 19,
+   "t0": 56.82,
+   "t1": 59.77,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 20,
+   "t0": 59.77,
+   "t1": 66.18,
+   "phrases": [
+    {
+     "t0": 60.2813,
+     "t1": 61.79,
+     "len": 1.509,
+     "onset": 60.2933,
+     "attackAt": 60.3239,
+     "punchDb": 66.4,
+     "clearDb": 64.6,
+     "dipDb": 60.0,
+     "endDb": -180.0,
+     "levelDb": -22.7,
+     "onsets": 14,
+     "activity": 8.119,
+     "riseMs": 15.0,
+     "score": 9.494,
+     "verdict": null,
+     "id": "20a",
+     "name": "set 20 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 63.0547,
+     "t1": 63.76,
+     "len": 0.705,
+     "onset": 63.0667,
+     "attackAt": 63.0806,
+     "punchDb": 34.8,
+     "clearDb": 63.2,
+     "dipDb": 60.0,
+     "endDb": -180.0,
+     "levelDb": -21.1,
+     "onsets": 5,
+     "activity": 8.348,
+     "riseMs": 5.0,
+     "score": 5.965,
+     "verdict": null,
+     "id": "20b",
+     "name": "set 20 \u00b7 phrase b",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 63.908,
+     "t1": 64.575,
+     "len": 0.667,
+     "onset": 63.92,
+     "attackAt": 63.9338,
+     "punchDb": 40.3,
+     "clearDb": 51.9,
+     "dipDb": 60.0,
+     "endDb": -85.5,
+     "levelDb": -15.8,
+     "onsets": 6,
+     "activity": 14.181,
+     "riseMs": 7.5,
+     "score": 8.598,
+     "verdict": null,
+     "id": "20c",
+     "name": "set 20 \u00b7 phrase c",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m20a",
+     "name": "set 20 \u00b7 scan attack a",
+     "at": 63.0667,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 34.8,
+     "verdict": null,
+     "loudDb": -14.7,
+     "gainDb": -8.9
+    },
+    {
+     "id": "m20b",
+     "name": "set 20 \u00b7 scan attack b",
+     "at": 63.92,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 40.3,
+     "verdict": null,
+     "loudDb": -17.2,
+     "gainDb": -6.4
+    }
+   ]
+  },
+  {
+   "set": 21,
+   "t0": 66.18,
+   "t1": 68.83,
+   "phrases": [
+    {
+     "t0": 66.196,
+     "t1": 67.665,
+     "len": 1.469,
+     "onset": 66.208,
+     "attackAt": 66.225,
+     "punchDb": 24.6,
+     "clearDb": 33.6,
+     "dipDb": 18.1,
+     "endDb": -42.6,
+     "levelDb": -24.5,
+     "onsets": 3,
+     "activity": 7.951,
+     "riseMs": 197.5,
+     "score": 2.274,
+     "verdict": null,
+     "id": "21a",
+     "name": "set 21 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m21a",
+     "name": "set 21 \u00b7 scan attack a",
+     "at": 66.208,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 24.6,
+     "verdict": null,
+     "loudDb": -14.9,
+     "gainDb": -8.7
+    },
+    {
+     "id": "m21b",
+     "name": "set 21 \u00b7 scan attack b",
+     "at": 68.576,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 16.3,
+     "verdict": null,
+     "loudDb": -20.8,
+     "gainDb": -2.8
+    }
+   ]
+  },
+  {
+   "set": 22,
+   "t0": 68.83,
+   "t1": 72.07,
+   "phrases": [
+    {
+     "t0": 68.8307,
+     "t1": 70.4425,
+     "len": 1.612,
+     "onset": 68.8427,
+     "attackAt": 68.8572,
+     "punchDb": 8.9,
+     "clearDb": 6.4,
+     "dipDb": 24.2,
+     "endDb": -63.8,
+     "levelDb": -39.5,
+     "onsets": 0,
+     "activity": 1.645,
+     "riseMs": 10.0,
+     "score": -2.404,
+     "verdict": null,
+     "id": "22a",
+     "name": "set 22 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a26",
+     "at": 68.8427,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 22 \u00b7 attack a26",
+     "loudDb": -22.9,
+     "gainDb": -0.7
+    }
+   ]
+  },
+  {
+   "set": 23,
+   "t0": 72.07,
+   "t1": 82.42,
+   "phrases": [
+    {
+     "t0": 73.1933,
+     "t1": 74.0475,
+     "len": 0.854,
+     "onset": 73.2053,
+     "attackAt": 73.2147,
+     "punchDb": 11.8,
+     "clearDb": 5.8,
+     "dipDb": 10.3,
+     "endDb": -48.3,
+     "levelDb": -38.1,
+     "onsets": 1,
+     "activity": 4.056,
+     "riseMs": 7.5,
+     "score": -1.997,
+     "verdict": null,
+     "id": "23a",
+     "name": "set 23 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m23a",
+     "name": "set 23 \u00b7 scan attack a",
+     "at": 73.2053,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 11.8,
+     "verdict": null,
+     "loudDb": -27.6,
+     "gainDb": 4.0
+    },
+    {
+     "id": "m23b",
+     "name": "set 23 \u00b7 scan attack b",
+     "at": 73.3387,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 10.4,
+     "verdict": null,
+     "loudDb": -25.9,
+     "gainDb": 2.3
+    }
+   ]
+  },
+  {
+   "set": 24,
+   "t0": 82.42,
+   "t1": 87.8,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 25,
+   "t0": 87.8,
+   "t1": 90.54,
+   "phrases": [
+    {
+     "t0": 88.4573,
+     "t1": 89.345,
+     "len": 0.888,
+     "onset": 88.4693,
+     "attackAt": 88.5235,
+     "punchDb": 21.1,
+     "clearDb": 16.2,
+     "dipDb": 7.3,
+     "endDb": -38.8,
+     "levelDb": -31.5,
+     "onsets": 1,
+     "activity": 7.958,
+     "riseMs": 47.5,
+     "score": 0.606,
+     "verdict": null,
+     "id": "25a",
+     "name": "set 25 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 90.036,
+     "t1": 90.455,
+     "len": 0.419,
+     "onset": 90.048,
+     "attackAt": 90.0581,
+     "punchDb": 8.5,
+     "clearDb": 5.6,
+     "dipDb": 2.1,
+     "endDb": -32.2,
+     "levelDb": -30.1,
+     "onsets": 0,
+     "activity": 8.267,
+     "riseMs": 10.0,
+     "score": -0.92,
+     "verdict": null,
+     "id": "25b",
+     "name": "set 25 \u00b7 phrase b",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a15",
+     "at": 88.5333,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 25 \u00b7 attack a15",
+     "loudDb": -21.3,
+     "gainDb": -2.3
+    }
+   ]
+  },
+  {
+   "set": 26,
+   "t0": 90.54,
+   "t1": 93.56,
+   "phrases": [
+    {
+     "t0": 90.6707,
+     "t1": 91.09,
+     "len": 0.419,
+     "onset": 90.6827,
+     "attackAt": 90.694,
+     "punchDb": 8.2,
+     "clearDb": 6.5,
+     "dipDb": 8.5,
+     "endDb": -40.4,
+     "levelDb": -32.0,
+     "onsets": 0,
+     "activity": 6.214,
+     "riseMs": 7.5,
+     "score": -1.346,
+     "verdict": null,
+     "id": "26a",
+     "name": "set 26 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m26a",
+     "name": "set 26 \u00b7 scan attack a",
+     "at": 90.6827,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 8.2,
+     "verdict": null,
+     "loudDb": -21.9,
+     "gainDb": -1.7
+    }
+   ]
+  },
+  {
+   "set": 27,
+   "t0": 93.56,
+   "t1": 96.18,
+   "phrases": [
+    {
+     "t0": 94.036,
+     "t1": 94.685,
+     "len": 0.649,
+     "onset": 94.048,
+     "attackAt": 94.0609,
+     "punchDb": 4.2,
+     "clearDb": 5.6,
+     "dipDb": 2.2,
+     "endDb": -34.7,
+     "levelDb": -32.4,
+     "onsets": 1,
+     "activity": 3.37,
+     "riseMs": 10.0,
+     "score": -2.863,
+     "verdict": null,
+     "id": "27a",
+     "name": "set 27 \u00b7 phrase a",
+     "fadeIn": 0.04
+    },
+    {
+     "t0": 94.74,
+     "t1": 96.045,
+     "len": 1.305,
+     "onset": 94.752,
+     "attackAt": 94.7746,
+     "punchDb": 8.8,
+     "clearDb": 6.1,
+     "dipDb": 1.7,
+     "endDb": -34.6,
+     "levelDb": -32.8,
+     "onsets": 2,
+     "activity": 2.673,
+     "riseMs": 17.5,
+     "score": -2.554,
+     "verdict": null,
+     "id": "27b",
+     "name": "set 27 \u00b7 phrase b",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m27a",
+     "name": "set 27 \u00b7 scan attack a",
+     "at": 94.4853,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 7.7,
+     "verdict": null,
+     "loudDb": -24.2,
+     "gainDb": 0.6
+    },
+    {
+     "id": "m27b",
+     "name": "set 27 \u00b7 scan attack b",
+     "at": 94.752,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 8.8,
+     "verdict": null,
+     "loudDb": -23.1,
+     "gainDb": -0.5
+    }
+   ]
+  },
+  {
+   "set": 28,
+   "t0": 96.18,
+   "t1": 100.06,
+   "phrases": [
+    {
+     "t0": 96.5747,
+     "t1": 98.085,
+     "len": 1.51,
+     "onset": 96.5867,
+     "attackAt": 96.6378,
+     "punchDb": 20.3,
+     "clearDb": 19.9,
+     "dipDb": 5.2,
+     "endDb": -23.0,
+     "levelDb": -17.8,
+     "onsets": 12,
+     "activity": 7.611,
+     "riseMs": 40.0,
+     "score": 1.756,
+     "verdict": null,
+     "id": "28a",
+     "name": "set 28 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m28a",
+     "name": "set 28 \u00b7 scan attack a",
+     "at": 96.5867,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 20.3,
+     "verdict": null,
+     "loudDb": -16.0,
+     "gainDb": -7.6
+    },
+    {
+     "id": "m28b",
+     "name": "set 28 \u00b7 scan attack b",
+     "at": 96.6773,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 9.3,
+     "verdict": null,
+     "loudDb": -22.5,
+     "gainDb": -1.1
+    }
+   ]
+  },
+  {
+   "set": 29,
+   "t0": 100.06,
+   "t1": 103.0,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 30,
+   "t0": 103.0,
+   "t1": 105.93,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 31,
+   "t0": 105.93,
+   "t1": 108.67,
+   "phrases": [
+    {
+     "t0": 107.7587,
+     "t1": 108.3625,
+     "len": 0.604,
+     "onset": 107.7707,
+     "attackAt": 107.7873,
+     "punchDb": 23.6,
+     "clearDb": 29.3,
+     "dipDb": 57.2,
+     "endDb": -88.7,
+     "levelDb": -31.5,
+     "onsets": 1,
+     "activity": 1.029,
+     "riseMs": 12.5,
+     "score": 1.623,
+     "verdict": null,
+     "id": "31a",
+     "name": "set 31 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m31a",
+     "name": "set 31 \u00b7 scan attack a",
+     "at": 107.7707,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 23.6,
+     "verdict": null,
+     "loudDb": -14.8,
+     "gainDb": -8.8
+    },
+    {
+     "id": "m31b",
+     "name": "set 31 \u00b7 scan attack b",
+     "at": 108.0693,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 29.1,
+     "verdict": null,
+     "loudDb": -23.1,
+     "gainDb": -0.5
+    }
+   ]
+  },
+  {
+   "set": 32,
+   "t0": 108.67,
+   "t1": 111.18,
+   "phrases": [
+    {
+     "t0": 108.8573,
+     "t1": 110.0525,
+     "len": 1.195,
+     "onset": 108.8693,
+     "attackAt": 108.8865,
+     "punchDb": 51.6,
+     "clearDb": 62.7,
+     "dipDb": 10.0,
+     "endDb": -44.0,
+     "levelDb": -34.0,
+     "onsets": 1,
+     "activity": 3.986,
+     "riseMs": 5.0,
+     "score": 3.126,
+     "verdict": null,
+     "id": "32a",
+     "name": "set 32 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m32a",
+     "name": "set 32 \u00b7 scan attack a",
+     "at": 109.2213,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 12.9,
+     "verdict": null,
+     "loudDb": -22.9,
+     "gainDb": -0.7
+    }
+   ]
+  },
+  {
+   "set": 33,
+   "t0": 111.18,
+   "t1": 113.67,
+   "phrases": [
+    {
+     "t0": 112.612,
+     "t1": 113.195,
+     "len": 0.583,
+     "onset": 112.624,
+     "attackAt": 112.6432,
+     "punchDb": 11.4,
+     "clearDb": 9.6,
+     "dipDb": 9.4,
+     "endDb": -34.1,
+     "levelDb": -24.7,
+     "onsets": 4,
+     "activity": 11.27,
+     "riseMs": 15.0,
+     "score": 1.076,
+     "verdict": null,
+     "id": "33a",
+     "name": "set 33 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m33a",
+     "name": "set 33 \u00b7 scan attack a",
+     "at": 112.624,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 11.4,
+     "verdict": null,
+     "loudDb": -15.1,
+     "gainDb": -8.5
+    },
+    {
+     "id": "m33b",
+     "name": "set 33 \u00b7 scan attack b",
+     "at": 113.328,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 10.1,
+     "verdict": null,
+     "loudDb": -16.4,
+     "gainDb": -7.2
+    }
+   ]
+  },
+  {
+   "set": 34,
+   "t0": 113.67,
+   "t1": 116.39,
+   "phrases": [
+    {
+     "t0": 115.8973,
+     "t1": 116.3275,
+     "len": 0.43,
+     "onset": 115.9093,
+     "attackAt": 115.9344,
+     "punchDb": 8.2,
+     "clearDb": 7.3,
+     "dipDb": 3.3,
+     "endDb": -25.6,
+     "levelDb": -22.3,
+     "onsets": 0,
+     "activity": 10.394,
+     "riseMs": 22.5,
+     "score": 0.438,
+     "verdict": null,
+     "id": "34a",
+     "name": "set 34 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m34a",
+     "name": "set 34 \u00b7 scan attack a",
+     "at": 115.8187,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 6.9,
+     "verdict": null,
+     "loudDb": -19.4,
+     "gainDb": -4.2
+    },
+    {
+     "id": "m34b",
+     "name": "set 34 \u00b7 scan attack b",
+     "at": 115.9093,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 8.2,
+     "verdict": null,
+     "loudDb": -13.9,
+     "gainDb": -9.0
+    }
+   ]
+  },
+  {
+   "set": 35,
+   "t0": 116.39,
+   "t1": 127.27,
+   "phrases": [
+    {
+     "t0": 118.0147,
+     "t1": 119.6125,
+     "len": 1.598,
+     "onset": 118.0267,
+     "attackAt": 118.036,
+     "punchDb": 9.3,
+     "clearDb": 4.1,
+     "dipDb": 11.7,
+     "endDb": -54.2,
+     "levelDb": -42.5,
+     "onsets": 0,
+     "activity": 2.155,
+     "riseMs": 7.5,
+     "score": -3.15,
+     "verdict": null,
+     "id": "35a",
+     "name": "set 35 \u00b7 phrase a",
+     "fadeIn": 0.04
+    },
+    {
+     "t0": 123.4653,
+     "t1": 124.855,
+     "len": 1.39,
+     "onset": 123.4773,
+     "attackAt": 123.4945,
+     "punchDb": 12.8,
+     "clearDb": 9.6,
+     "dipDb": 12.2,
+     "endDb": -55.0,
+     "levelDb": -42.7,
+     "onsets": 2,
+     "activity": 2.083,
+     "riseMs": 12.5,
+     "score": -2.749,
+     "verdict": null,
+     "id": "35b",
+     "name": "set 35 \u00b7 phrase b",
+     "fadeIn": 0.04
+    },
+    {
+     "t0": 125.844,
+     "t1": 127.1825,
+     "len": 1.339,
+     "onset": 125.856,
+     "attackAt": 125.8721,
+     "punchDb": 20.5,
+     "clearDb": 14.0,
+     "dipDb": 11.8,
+     "endDb": -52.7,
+     "levelDb": -40.9,
+     "onsets": 1,
+     "activity": 2.338,
+     "riseMs": 7.5,
+     "score": -1.604,
+     "verdict": null,
+     "id": "35c",
+     "name": "set 35 \u00b7 phrase c",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a30",
+     "at": 118.0267,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 35 \u00b7 attack a30",
+     "loudDb": -27.5,
+     "gainDb": 3.9
+    },
+    {
+     "id": "a35",
+     "at": 123.4773,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 35 \u00b7 attack a35",
+     "loudDb": -28.8,
+     "gainDb": 5.2
+    }
+   ]
+  },
+  {
+   "set": 36,
+   "t0": 127.27,
+   "t1": 130.96,
+   "phrases": [
+    {
+     "t0": 127.3213,
+     "t1": 128.1425,
+     "len": 0.821,
+     "onset": 127.3333,
+     "attackAt": 127.3454,
+     "punchDb": 8.4,
+     "clearDb": 3.6,
+     "dipDb": 5.0,
+     "endDb": -46.9,
+     "levelDb": -41.9,
+     "onsets": 0,
+     "activity": 2.455,
+     "riseMs": 10.0,
+     "score": -3.445,
+     "verdict": null,
+     "id": "36a",
+     "name": "set 36 \u00b7 phrase a",
+     "fadeIn": 0.04
+    },
+    {
+     "t0": 130.436,
+     "t1": 130.8775,
+     "len": 0.441,
+     "onset": 130.448,
+     "attackAt": 130.4621,
+     "punchDb": 12.0,
+     "clearDb": 10.2,
+     "dipDb": 5.9,
+     "endDb": -40.1,
+     "levelDb": -34.2,
+     "onsets": 0,
+     "activity": 5.627,
+     "riseMs": 10.0,
+     "score": -1.394,
+     "verdict": null,
+     "id": "36b",
+     "name": "set 36 \u00b7 phrase b",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a18",
+     "at": 130.448,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 36 \u00b7 attack a18",
+     "loudDb": -24.1,
+     "gainDb": 0.5
+    }
+   ]
+  },
+  {
+   "set": 37,
+   "t0": 130.96,
+   "t1": 134.08,
+   "phrases": [
+    {
+     "t0": 132.2173,
+     "t1": 132.965,
+     "len": 0.748,
+     "onset": 132.2293,
+     "attackAt": 132.2418,
+     "punchDb": 18.1,
+     "clearDb": 9.6,
+     "dipDb": 9.2,
+     "endDb": -40.2,
+     "levelDb": -31.0,
+     "onsets": 1,
+     "activity": 4.198,
+     "riseMs": 250.0,
+     "score": -0.525,
+     "verdict": null,
+     "id": "37a",
+     "name": "set 37 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m37a",
+     "name": "set 37 \u00b7 scan attack a",
+     "at": 131.8773,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 19.4,
+     "verdict": null,
+     "loudDb": -28.2,
+     "gainDb": 4.6
+    },
+    {
+     "id": "m37b",
+     "name": "set 37 \u00b7 scan attack b",
+     "at": 132.2293,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 18.1,
+     "verdict": null,
+     "loudDb": -23.6,
+     "gainDb": 0.0
+    }
+   ]
+  },
+  {
+   "set": 38,
+   "t0": 134.08,
+   "t1": 137.58,
+   "phrases": [
+    {
+     "t0": 135.1507,
+     "t1": 135.5875,
+     "len": 0.437,
+     "onset": 135.1627,
+     "attackAt": 135.1789,
+     "punchDb": 16.6,
+     "clearDb": 17.9,
+     "dipDb": 13.0,
+     "endDb": -46.7,
+     "levelDb": -33.7,
+     "onsets": 0,
+     "activity": 2.694,
+     "riseMs": 7.5,
+     "score": -1.169,
+     "verdict": null,
+     "id": "38a",
+     "name": "set 38 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 135.828,
+     "t1": 137.1875,
+     "len": 1.359,
+     "onset": 135.84,
+     "attackAt": 135.8559,
+     "punchDb": 21.8,
+     "clearDb": 12.1,
+     "dipDb": 10.1,
+     "endDb": -41.3,
+     "levelDb": -31.2,
+     "onsets": 5,
+     "activity": 4.883,
+     "riseMs": 170.0,
+     "score": 0.104,
+     "verdict": null,
+     "id": "38b",
+     "name": "set 38 \u00b7 phrase b",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m38a",
+     "name": "set 38 \u00b7 scan attack a",
+     "at": 135.84,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 21.8,
+     "verdict": null,
+     "loudDb": -23.9,
+     "gainDb": 0.3
+    },
+    {
+     "id": "m38b",
+     "name": "set 38 \u00b7 scan attack b",
+     "at": 137.2,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 17.8,
+     "verdict": null,
+     "loudDb": -19.6,
+     "gainDb": -4.0
+    }
+   ]
+  },
+  {
+   "set": 39,
+   "t0": 137.58,
+   "t1": 140.74,
+   "phrases": [
+    {
+     "t0": 138.5,
+     "t1": 139.265,
+     "len": 0.765,
+     "onset": 138.512,
+     "attackAt": 138.5252,
+     "punchDb": 14.1,
+     "clearDb": 11.8,
+     "dipDb": 34.1,
+     "endDb": -66.1,
+     "levelDb": -32.1,
+     "onsets": 5,
+     "activity": 5.355,
+     "riseMs": 237.5,
+     "score": 0.373,
+     "verdict": null,
+     "id": "39a",
+     "name": "set 39 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 139.3427,
+     "t1": 140.1375,
+     "len": 0.795,
+     "onset": 139.3547,
+     "attackAt": 139.3705,
+     "punchDb": 14.2,
+     "clearDb": 14.3,
+     "dipDb": 33.7,
+     "endDb": -66.5,
+     "levelDb": -32.8,
+     "onsets": 4,
+     "activity": 4.002,
+     "riseMs": 5.0,
+     "score": -0.039,
+     "verdict": null,
+     "id": "39b",
+     "name": "set 39 \u00b7 phrase b",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a23",
+     "at": 138.88,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 39 \u00b7 attack a23",
+     "loudDb": -21.4,
+     "gainDb": -2.2
+    },
+    {
+     "id": "a29",
+     "at": 139.872,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 39 \u00b7 attack a29",
+     "loudDb": -21.0,
+     "gainDb": -2.6
+    }
+   ]
+  },
+  {
+   "set": 40,
+   "t0": 140.74,
+   "t1": 143.16,
+   "phrases": [
+    {
+     "t0": 140.7933,
+     "t1": 141.21,
+     "len": 0.417,
+     "onset": 140.8053,
+     "attackAt": 140.8191,
+     "punchDb": 11.3,
+     "clearDb": 12.4,
+     "dipDb": 9.3,
+     "endDb": -42.4,
+     "levelDb": -33.1,
+     "onsets": 1,
+     "activity": 3.929,
+     "riseMs": 5.0,
+     "score": -1.613,
+     "verdict": null,
+     "id": "40a",
+     "name": "set 40 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 141.5027,
+     "t1": 141.9575,
+     "len": 0.455,
+     "onset": 141.5147,
+     "attackAt": 141.5288,
+     "punchDb": 10.7,
+     "clearDb": 10.0,
+     "dipDb": 3.5,
+     "endDb": -38.7,
+     "levelDb": -35.3,
+     "onsets": 0,
+     "activity": 4.226,
+     "riseMs": 10.0,
+     "score": -2.122,
+     "verdict": null,
+     "id": "40b",
+     "name": "set 40 \u00b7 phrase b",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 142.0627,
+     "t1": 143.03,
+     "len": 0.967,
+     "onset": 142.0747,
+     "attackAt": 142.1238,
+     "punchDb": 10.9,
+     "clearDb": 6.4,
+     "dipDb": 4.8,
+     "endDb": -33.7,
+     "levelDb": -28.9,
+     "onsets": 1,
+     "activity": 9.462,
+     "riseMs": 45.0,
+     "score": -0.086,
+     "verdict": null,
+     "id": "40c",
+     "name": "set 40 \u00b7 phrase c",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a5",
+     "at": 142.105,
+     "dur": 0.35,
+     "env": "rexpodec",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 40 \u00b7 attack a5",
+     "loudDb": -25.6,
+     "gainDb": 2.0
+    },
+    {
+     "id": "a6",
+     "at": 142.105,
+     "dur": 0.35,
+     "env": "expodec",
+     "amp": 0.9,
+     "natural": false,
+     "from": "library",
+     "name": "set 40 \u00b7 attack a6",
+     "loudDb": -19.2,
+     "gainDb": -4.4
+    },
+    {
+     "id": "a17",
+     "at": 142.2933,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 40 \u00b7 attack a17",
+     "loudDb": -19.2,
+     "gainDb": -4.4
+    }
+   ]
+  },
+  {
+   "set": 41,
+   "t0": 143.16,
+   "t1": 146.97,
+   "phrases": [
+    {
+     "t0": 143.2947,
+     "t1": 144.495,
+     "len": 1.2,
+     "onset": 143.3067,
+     "attackAt": 143.3163,
+     "punchDb": 5.2,
+     "clearDb": 2.4,
+     "dipDb": 7.5,
+     "endDb": -40.8,
+     "levelDb": -33.3,
+     "onsets": 0,
+     "activity": 5.678,
+     "riseMs": 10.0,
+     "score": -2.018,
+     "verdict": null,
+     "id": "41a",
+     "name": "set 41 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": []
+  },
+  {
+   "set": 42,
+   "t0": 146.97,
+   "t1": 154.21,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 43,
+   "t0": 154.21,
+   "t1": 157.69,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 44,
+   "t0": 157.69,
+   "t1": 161.79,
+   "phrases": [],
+   "impacts": []
+  },
+  {
+   "set": 45,
+   "t0": 161.79,
+   "t1": 166.11,
+   "phrases": [
+    {
+     "t0": 162.2387,
+     "t1": 163.135,
+     "len": 0.896,
+     "onset": 162.2507,
+     "attackAt": 162.2623,
+     "punchDb": 10.5,
+     "clearDb": 10.9,
+     "dipDb": 12.8,
+     "endDb": -47.8,
+     "levelDb": -35.0,
+     "onsets": 0,
+     "activity": 3.269,
+     "riseMs": 10.0,
+     "score": -1.899,
+     "verdict": null,
+     "id": "45a",
+     "name": "set 45 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 163.1773,
+     "t1": 163.8525,
+     "len": 0.675,
+     "onset": 163.1893,
+     "attackAt": 163.2022,
+     "punchDb": 20.3,
+     "clearDb": 21.9,
+     "dipDb": 15.1,
+     "endDb": -46.5,
+     "levelDb": -31.4,
+     "onsets": 1,
+     "activity": 4.166,
+     "riseMs": 7.5,
+     "score": -0.028,
+     "verdict": null,
+     "id": "45b",
+     "name": "set 45 \u00b7 phrase b",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 163.9453,
+     "t1": 164.91,
+     "len": 0.965,
+     "onset": 163.9573,
+     "attackAt": 163.9711,
+     "punchDb": 16.5,
+     "clearDb": 17.0,
+     "dipDb": 11.1,
+     "endDb": -44.1,
+     "levelDb": -33.0,
+     "onsets": 0,
+     "activity": 3.849,
+     "riseMs": 10.0,
+     "score": -0.918,
+     "verdict": null,
+     "id": "45c",
+     "name": "set 45 \u00b7 phrase c",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a27",
+     "at": 163.328,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 45 \u00b7 attack a27",
+     "loudDb": -21.7,
+     "gainDb": -1.9
+    }
+   ]
+  },
+  {
+   "set": 46,
+   "t0": 166.11,
+   "t1": 169.29,
+   "phrases": [
+    {
+     "t0": 167.5293,
+     "t1": 168.2975,
+     "len": 0.768,
+     "onset": 167.5413,
+     "attackAt": 167.5637,
+     "punchDb": 24.1,
+     "clearDb": 20.0,
+     "dipDb": 14.6,
+     "endDb": -47.0,
+     "levelDb": -32.4,
+     "onsets": 1,
+     "activity": 2.673,
+     "riseMs": 165.0,
+     "score": -0.071,
+     "verdict": null,
+     "id": "46a",
+     "name": "set 46 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 168.3933,
+     "t1": 169.28,
+     "len": 0.887,
+     "onset": 168.4053,
+     "attackAt": 168.4295,
+     "punchDb": 18.2,
+     "clearDb": 21.6,
+     "dipDb": 14.2,
+     "endDb": -47.6,
+     "levelDb": -33.4,
+     "onsets": 1,
+     "activity": 3.257,
+     "riseMs": 12.5,
+     "score": -0.752,
+     "verdict": null,
+     "id": "46b",
+     "name": "set 46 \u00b7 phrase b",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m46a",
+     "name": "set 46 \u00b7 scan attack a",
+     "at": 167.5413,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 24.1,
+     "verdict": null,
+     "loudDb": -21.7,
+     "gainDb": -1.9
+    },
+    {
+     "id": "m46b",
+     "name": "set 46 \u00b7 scan attack b",
+     "at": 168.4053,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 18.2,
+     "verdict": null,
+     "loudDb": -19.6,
+     "gainDb": -4.0
+    }
+   ]
+  },
+  {
+   "set": 47,
+   "t0": 169.29,
+   "t1": 171.79,
+   "phrases": [
+    {
+     "t0": 169.4333,
+     "t1": 170.185,
+     "len": 0.752,
+     "onset": 169.4453,
+     "attackAt": 169.4588,
+     "punchDb": 13.7,
+     "clearDb": 8.7,
+     "dipDb": 26.1,
+     "endDb": -57.3,
+     "levelDb": -31.2,
+     "onsets": 2,
+     "activity": 2.564,
+     "riseMs": 145.0,
+     "score": -0.65,
+     "verdict": null,
+     "id": "47a",
+     "name": "set 47 \u00b7 phrase a",
+     "fadeIn": 0.04
+    },
+    {
+     "t0": 170.1853,
+     "t1": 170.935,
+     "len": 0.75,
+     "onset": 170.1973,
+     "attackAt": 170.212,
+     "punchDb": 33.8,
+     "clearDb": 42.1,
+     "dipDb": 29.5,
+     "endDb": -51.6,
+     "levelDb": -22.0,
+     "onsets": 3,
+     "activity": 4.974,
+     "riseMs": 5.0,
+     "score": 3.451,
+     "verdict": null,
+     "id": "47b",
+     "name": "set 47 \u00b7 phrase b",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 171.0013,
+     "t1": 171.415,
+     "len": 0.414,
+     "onset": 171.0133,
+     "attackAt": 171.0277,
+     "punchDb": 12.8,
+     "clearDb": 5.4,
+     "dipDb": 19.5,
+     "endDb": -50.1,
+     "levelDb": -30.6,
+     "onsets": 1,
+     "activity": 3.144,
+     "riseMs": 10.0,
+     "score": -0.872,
+     "verdict": null,
+     "id": "47c",
+     "name": "set 47 \u00b7 phrase c",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m47a",
+     "name": "set 47 \u00b7 scan attack a",
+     "at": 169.4453,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 13.7,
+     "verdict": null,
+     "loudDb": -18.0,
+     "gainDb": -5.6
+    },
+    {
+     "id": "m47b",
+     "name": "set 47 \u00b7 scan attack b",
+     "at": 171.0133,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 12.8,
+     "verdict": null,
+     "loudDb": -18.8,
+     "gainDb": -4.8
+    }
+   ]
+  },
+  {
+   "set": 48,
+   "t0": 171.79,
+   "t1": 174.35,
+   "phrases": [
+    {
+     "t0": 171.8013,
+     "t1": 172.855,
+     "len": 1.054,
+     "onset": 171.8133,
+     "attackAt": 171.8253,
+     "punchDb": 8.0,
+     "clearDb": 4.6,
+     "dipDb": 11.1,
+     "endDb": -43.8,
+     "levelDb": -32.7,
+     "onsets": 0,
+     "activity": 2.87,
+     "riseMs": 10.0,
+     "score": -2.135,
+     "verdict": null,
+     "id": "48a",
+     "name": "set 48 \u00b7 phrase a",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": []
+  },
+  {
+   "set": 49,
+   "t0": 174.35,
+   "t1": 177.03,
+   "phrases": [
+    {
+     "t0": 175.6253,
+     "t1": 176.9725,
+     "len": 1.347,
+     "onset": 175.6373,
+     "attackAt": 175.6494,
+     "punchDb": 19.5,
+     "clearDb": 11.1,
+     "dipDb": 12.8,
+     "endDb": -49.0,
+     "levelDb": -36.2,
+     "onsets": 5,
+     "activity": 4.388,
+     "riseMs": 222.5,
+     "score": -0.682,
+     "verdict": null,
+     "id": "49a",
+     "name": "set 49 \u00b7 phrase a",
+     "fadeIn": 0.0
+    }
+   ],
+   "impacts": [
+    {
+     "id": "a19",
+     "at": 175.856,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 49 \u00b7 attack a19",
+     "loudDb": -22.9,
+     "gainDb": -0.7
+    },
+    {
+     "id": "a21",
+     "at": 176.2933,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "natural": true,
+     "from": "library",
+     "name": "set 49 \u00b7 attack a21",
+     "loudDb": -28.0,
+     "gainDb": 4.4
+    }
+   ]
+  },
+  {
+   "set": 50,
+   "t0": 177.03,
+   "t1": 179.59,
+   "phrases": [
+    {
+     "t0": 177.1453,
+     "t1": 177.7475,
+     "len": 0.602,
+     "onset": 177.1573,
+     "attackAt": 177.1684,
+     "punchDb": 21.1,
+     "clearDb": 20.5,
+     "dipDb": 4.5,
+     "endDb": -41.8,
+     "levelDb": -37.3,
+     "onsets": 1,
+     "activity": 3.756,
+     "riseMs": 7.5,
+     "score": -1.163,
+     "verdict": null,
+     "id": "50a",
+     "name": "set 50 \u00b7 phrase a",
+     "fadeIn": 0.0
+    },
+    {
+     "t0": 177.7533,
+     "t1": 179.35,
+     "len": 1.597,
+     "onset": 177.7653,
+     "attackAt": 177.8181,
+     "punchDb": 10.3,
+     "clearDb": 9.1,
+     "dipDb": 8.8,
+     "endDb": -44.4,
+     "levelDb": -35.6,
+     "onsets": 1,
+     "activity": 5.162,
+     "riseMs": 50.0,
+     "score": -1.716,
+     "verdict": null,
+     "id": "50b",
+     "name": "set 50 \u00b7 phrase b",
+     "fadeIn": 0.04
+    }
+   ],
+   "impacts": [
+    {
+     "id": "m50a",
+     "name": "set 50 \u00b7 scan attack a",
+     "at": 177.7653,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 10.3,
+     "verdict": null,
+     "loudDb": -27.9,
+     "gainDb": 4.3
+    },
+    {
+     "id": "m50b",
+     "name": "set 50 \u00b7 scan attack b",
+     "at": 178.112,
+     "dur": 0.35,
+     "env": "perc",
+     "amp": 0.9,
+     "from": "scan",
+     "punchDb": 8.5,
+     "verdict": null,
+     "loudDb": -24.2,
+     "gainDb": 0.6
+    }
+   ]
+  }
+ ]
+}

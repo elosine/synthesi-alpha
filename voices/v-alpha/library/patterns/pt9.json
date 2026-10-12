@@ -1,0 +1,246 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt9",
+ "label": "28 hits \u00b7 29.0 s \u00b7 14 attacks, 14 phrases \u00b7 page 2 \u00b7 cresc",
+ "algorithm": "played",
+ "params": {
+  "page": 2,
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 29.003,
+ "events": [
+  {
+   "t": 0,
+   "kind": "phrase",
+   "id": "7a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 52,
+   "vel": 108
+  },
+  {
+   "t": 1.198,
+   "kind": "phrase",
+   "id": "7a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 52,
+   "vel": 84
+  },
+  {
+   "t": 1.915,
+   "kind": "attack",
+   "id": "a33",
+   "note": 43,
+   "vel": 121
+  },
+  {
+   "t": 2.776,
+   "kind": "phrase",
+   "id": "7b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 53,
+   "vel": 78
+  },
+  {
+   "t": 3.579,
+   "kind": "attack",
+   "id": "a7",
+   "note": 38,
+   "vel": 96
+  },
+  {
+   "t": 4.0421,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 41,
+   "vel": 91
+  },
+  {
+   "t": 4.3331,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 36,
+   "vel": 123
+  },
+  {
+   "t": 5.678,
+   "kind": "attack",
+   "id": "a8",
+   "note": 43,
+   "vel": 119
+  },
+  {
+   "t": 6.61,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 47,
+   "vel": 117
+  },
+  {
+   "t": 7.897,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 67,
+   "vel": 68
+  },
+  {
+   "t": 10.022,
+   "kind": "phrase",
+   "id": "5a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 48,
+   "vel": 110
+  },
+  {
+   "t": 10.2021,
+   "kind": "attack",
+   "id": "a33",
+   "note": 47,
+   "vel": 121
+  },
+  {
+   "t": 11.555,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 45,
+   "vel": 107
+  },
+  {
+   "t": 12.1641,
+   "kind": "phrase",
+   "id": "5a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 48,
+   "vel": 107
+  },
+  {
+   "t": 12.6281,
+   "kind": "phrase",
+   "id": "5a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 60,
+   "vel": 123
+  },
+  {
+   "t": 13.293,
+   "kind": "phrase",
+   "id": "5a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 60,
+   "vel": 85
+  },
+  {
+   "t": 14.1041,
+   "kind": "attack",
+   "id": "a33",
+   "note": 41,
+   "vel": 123
+  },
+  {
+   "t": 14.915,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 50,
+   "vel": 112
+  },
+  {
+   "t": 15.3541,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 62,
+   "vel": 83
+  },
+  {
+   "t": 16.515,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 45,
+   "vel": 123
+  },
+  {
+   "t": 16.8261,
+   "kind": "phrase",
+   "id": "7a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 64,
+   "vel": 117
+  },
+  {
+   "t": 18.291,
+   "kind": "attack",
+   "id": "a8",
+   "note": 36,
+   "vel": 101
+  },
+  {
+   "t": 18.445,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 40,
+   "vel": 114
+  },
+  {
+   "t": 18.663,
+   "kind": "attack",
+   "id": "a7",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 19.1211,
+   "kind": "attack",
+   "id": "a8",
+   "note": 45,
+   "vel": 119
+  },
+  {
+   "t": 20.557,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 55,
+   "vel": 101
+  },
+  {
+   "t": 24.4001,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 67,
+   "vel": 55
+  },
+  {
+   "t": 27.9071,
+   "kind": "phrase",
+   "id": "7b",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 65,
+   "vel": 44
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-12",
+ "journal": "204"
+}

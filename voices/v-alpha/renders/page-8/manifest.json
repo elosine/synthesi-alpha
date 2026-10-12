@@ -1,0 +1,89 @@
+{
+ "_about": "A page's containers pre-processed through icy (tools/icy_render.py; journal 242). For a container: the icy it was read through, how long the render lasts, and its speed - a place p (s) in the container is at (p - t0) / speed seconds of the render; with a speed [from, to] it is at lasts * ln(1 + f (r - 1)) / ln r, f = (p - t0) / (t1 - t0), r = to / from.",
+ "page": 8,
+ "seed": 1,
+ "tool": "tools/icy_render.py",
+ "journal": "242",
+ "sampleRate": 48000,
+ "containers": [
+  {
+   "set": 31,
+   "t0": 105.93,
+   "t1": 108.67,
+   "icy": "icy decel",
+   "speed": [
+    0.5,
+    0.05
+   ],
+   "win": 0.6,
+   "overlaps": 17,
+   "window": "expodec",
+   "rand": 0.2,
+   "lasts": 14.02,
+   "gainDb": -1.6,
+   "file": "set31.ogg"
+  },
+  {
+   "set": 32,
+   "t0": 108.67,
+   "t1": 111.18,
+   "icy": "icy 17x",
+   "speed": 0.0588,
+   "win": 0.6,
+   "overlaps": 17,
+   "window": "expodec",
+   "rand": 0.2,
+   "lasts": 42.687,
+   "gainDb": -2.3,
+   "file": "set32.ogg"
+  },
+  {
+   "set": 33,
+   "t0": 111.18,
+   "t1": 113.67,
+   "icy": "icy 10x",
+   "speed": 0.1,
+   "win": 0.6,
+   "overlaps": 17,
+   "window": "expodec",
+   "rand": 0.2,
+   "lasts": 24.9,
+   "gainDb": -2.3,
+   "file": "set33.ogg"
+  },
+  {
+   "set": 34,
+   "t0": 113.67,
+   "t1": 116.39,
+   "icy": "icy accel",
+   "speed": [
+    0.05,
+    0.5
+   ],
+   "win": 0.6,
+   "overlaps": 17,
+   "window": "expodec",
+   "rand": 0.2,
+   "lasts": 13.918,
+   "gainDb": 0.3,
+   "file": "set34.ogg"
+  },
+  {
+   "set": 35,
+   "t0": 116.39,
+   "t1": 121.084,
+   "icy": "icy accel long",
+   "speed": [
+    0.02,
+    0.25
+   ],
+   "win": 0.6,
+   "overlaps": 17,
+   "window": "expodec",
+   "rand": 0.2,
+   "lasts": 51.547,
+   "gainDb": -7.3,
+   "file": "set35.ogg"
+  }
+ ]
+}

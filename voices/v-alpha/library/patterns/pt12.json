@@ -1,0 +1,120 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt12",
+ "label": "12 hits \u00b7 17.6 s \u00b7 5 attacks, 7 phrases \u00b7 page 2 \u00b7 cresc",
+ "algorithm": "played",
+ "params": {
+  "page": 2,
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 17.607,
+ "events": [
+  {
+   "t": 0,
+   "kind": "phrase",
+   "id": "7a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 64,
+   "vel": 46
+  },
+  {
+   "t": 2.6841,
+   "kind": "phrase",
+   "id": "7a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 64,
+   "vel": 54
+  },
+  {
+   "t": 4.43,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 55,
+   "vel": 59
+  },
+  {
+   "t": 6.4831,
+   "kind": "phrase",
+   "id": "7b",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 65,
+   "vel": 44
+  },
+  {
+   "t": 9.294,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 45,
+   "vel": 96
+  },
+  {
+   "t": 10.005,
+   "kind": "phrase",
+   "id": "7a",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 64,
+   "vel": 32
+  },
+  {
+   "t": 10.869,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "reverse",
+   "overlay": "cresc",
+   "note": 62,
+   "vel": 56
+  },
+  {
+   "t": 12.113,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 41,
+   "vel": 91
+  },
+  {
+   "t": 14.153,
+   "kind": "attack",
+   "id": "a8",
+   "note": 38,
+   "vel": 114
+  },
+  {
+   "t": 16.0261,
+   "kind": "phrase",
+   "id": "5b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 50,
+   "vel": 68
+  },
+  {
+   "t": 17.0381,
+   "kind": "attack",
+   "id": "a33",
+   "note": 45,
+   "vel": 110
+  },
+  {
+   "t": 17.257,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 47,
+   "vel": 108
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-12",
+ "journal": "204"
+}

@@ -1,0 +1,5 @@
+# Shell scripts must stay LF (carried from the lineage's .gitattributes, 2026-09-03).
+*.sh text eol=lf
+*.flac binary
+*.ogg binary
+*.mp3 binary

@@ -1,0 +1,161 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt15",
+ "label": "18 hits \u00b7 13.6 s \u00b7 10 attacks, 8 phrases \u00b7 page 3 \u00b7 trem waves",
+ "algorithm": "played",
+ "params": {
+  "page": 3,
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 13.634,
+ "events": [
+  {
+   "t": 0,
+   "kind": "bus",
+   "name": "trem waves"
+  },
+  {
+   "t": 0,
+   "kind": "phrase",
+   "id": "12a",
+   "variant": "plain",
+   "note": 52,
+   "vel": 103
+  },
+  {
+   "t": 1.61,
+   "kind": "phrase",
+   "id": "12a",
+   "variant": "plain",
+   "note": 52,
+   "vel": 117
+  },
+  {
+   "t": 2.387,
+   "kind": "phrase",
+   "id": "14a",
+   "variant": "plain",
+   "note": 57,
+   "vel": 108
+  },
+  {
+   "t": 3.5729,
+   "kind": "attack",
+   "id": "a22",
+   "note": 41,
+   "vel": 119
+  },
+  {
+   "t": 3.755,
+   "kind": "attack",
+   "id": "a34",
+   "note": 45,
+   "vel": 121
+  },
+  {
+   "t": 4.462,
+   "kind": "phrase",
+   "id": "9a",
+   "variant": "reverse",
+   "note": 60,
+   "vel": 119
+  },
+  {
+   "t": 5.1479,
+   "kind": "attack",
+   "id": "a4",
+   "note": 38,
+   "vel": 127
+  },
+  {
+   "t": 5.8779,
+   "kind": "phrase",
+   "id": "13a",
+   "variant": "reverse",
+   "note": 67,
+   "vel": 108
+  },
+  {
+   "t": 7.0509,
+   "kind": "attack",
+   "id": "a24",
+   "note": 43,
+   "vel": 119
+  },
+  {
+   "t": 7.1839,
+   "kind": "attack",
+   "id": "a11",
+   "note": 45,
+   "vel": 127
+  },
+  {
+   "t": 7.7549,
+   "kind": "attack",
+   "id": "a22",
+   "note": 38,
+   "vel": 121
+  },
+  {
+   "t": 8.564,
+   "kind": "phrase",
+   "id": "14a",
+   "variant": "reverse",
+   "note": 69,
+   "vel": 107
+  },
+  {
+   "t": 9.7049,
+   "kind": "phrase",
+   "id": "9a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 125
+  },
+  {
+   "t": 11.819,
+   "kind": "attack",
+   "id": "a31",
+   "note": 38,
+   "vel": 121
+  },
+  {
+   "t": 11.9019,
+   "kind": "attack",
+   "id": "a20",
+   "note": 41,
+   "vel": 112
+  },
+  {
+   "t": 11.9029,
+   "kind": "attack",
+   "id": "a4",
+   "note": 43,
+   "vel": 117
+  },
+  {
+   "t": 12.2249,
+   "kind": "attack",
+   "id": "a11",
+   "note": 45,
+   "vel": 83
+  },
+  {
+   "t": 12.4469,
+   "kind": "phrase",
+   "id": "9a",
+   "variant": "plain",
+   "note": 48,
+   "vel": 119
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-12",
+ "journal": "204"
+}

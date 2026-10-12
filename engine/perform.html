@@ -1,0 +1,572 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sýnthesi Alpha — the workshop</title>
+<style>
+  html,body { margin:0; background:#fff; height:100%; overflow:hidden;
+              font-family:Consolas,ui-monospace,monospace; }
+  #v1 { position:fixed; inset:0; overflow:hidden; display:none; }
+  #v1 .strip { position:absolute; top:0; left:0; transform-origin:0 0; }
+  #v2 { position:fixed; inset:0; display:none; }
+  .lane { position:absolute; overflow:hidden; }
+  .lane img { position:absolute; top:0; display:block; user-select:none;
+              -webkit-user-drag:none; }
+  .lens { position:absolute; top:0; pointer-events:none; }
+  .cursor { position:absolute; top:0; bottom:0; width:1.5px;
+            pointer-events:none; }
+  #hud { position:fixed; left:12px; bottom:10px; font-size:12px; color:#555;
+         background:rgba(255,255,255,.92); border:1px solid #ddd;
+         border-radius:6px; padding:8px 12px; display:none; z-index:8;
+         line-height:1.6; white-space:pre; }
+  #start { position:fixed; inset:0; background:#fff; display:flex;
+           flex-direction:column; gap:14px; align-items:center;
+           justify-content:center; z-index:9; color:#111; }
+  #start button { font:inherit; font-size:18px; padding:12px 30px;
+                  border:1px solid #111; background:#fff; border-radius:6px;
+                  cursor:pointer; }
+  #lst { color:#777; font-size:13px; }
+</style>
+
+<div id="v1"><div class="strip" id="strip1"></div></div>
+<div id="v2"></div>
+<div id="hud"></div>
+<div id="start">
+  <div style="font-size:15px">S&yacute;nthesi Alpha &mdash; the workshop</div>
+  <div id="mk" style="display:none; font-size:14px; color:#b00020; border:1px solid #b00020; border-radius:6px; padding:6px 14px">THIS PAGE MAKES A VERSION &mdash; ENTER plays the piece and RECORDS it</div>
+  <div id="lst">loading&hellip;</div>
+  <button id="go" disabled>begin</button>
+</div>
+
+<script src="../picture/score-data.js?v=3"></script>
+<script src="score-anim.js?v=3"></script>
+<script src="env-curves.js"></script>
+<script type="module">
+import { PlayheadEngine } from './playhead-engine.js';
+import { initScenario } from './scenario.js';
+
+const SD = window.SCORE_DATA;
+if (!SD || !SD.EXTR) {
+  document.getElementById('lst').textContent =
+    'stale score-data.js in cache — hard-reload this page (CTRL+SHIFT+R)';
+  throw new Error('SCORE_DATA missing EXT');
+}
+const AUDIO = '../voices/v-alpha/layers/v-alpha-05_gran_dense_bcl_s6.flac';   // the recording, packed lossless
+const INDEX = '../voices/v-alpha/score/section-index.json';
+const STRIP = '../picture/score-strip.svg?v=2';
+const CONST = { MID: SD.MID, TON0: SD.TON0, TON1: SD.TON1, PXS: SD.PXS, X0: SD.X0 };
+const CURLAG = 0.20;                 // J's calibration, carried from the score page
+const LENS_BACK = 6, LENS_FWD = 2;   // s of live animation around each cursor
+const PH_COLORS = ['#111', '#0a5bd4', '#c22a1c', '#0a8a3c'];
+// view 2 shows only the strip's content band - the top border and the
+// timecode strip are cropped so the whole lane height is displacement
+// (J: "maximum displacement upward ... would touch the top of the window")
+const CY0 = 26, CH = 600;            // content band: mid +/- HW inside the 656
+const $ = id => document.getElementById(id);
+const lst = m => { $('lst').textContent = m; };
+
+let engine, stripDoc, view = 1, selected = 0, gateOn = false;
+const rig = {}; window.rig = rig;
+
+// sorted grain onsets for lens membership lookups
+const ORDER = SD.G.map((g, i) => [g[0], i]).sort((a, b) => a[0] - b[0]);
+function grainsIn(t0, t1) {
+  let lo = 0, hi = ORDER.length;
+  while (lo < hi) { const m = (lo + hi) >> 1; (ORDER[m][0] < t0) ? lo = m + 1 : hi = m; }
+  const out = [];
+  for (let k = lo; k < ORDER.length && ORDER[k][0] < t1; k++) out.push(ORDER[k][1]);
+  return out;
+}
+
+// ---------- load ----------
+// ?make — the page makes a VERSION (docs/plan/v-alpha-standalone-plan.md S2,
+// journal §260): ENTER plays the piece and records it. The recording is the
+// sound's own rate, 48 kHz, whatever the sound card runs at.
+const MAKE = new URLSearchParams(location.search).has('make');
+// it says so, before anything is pressed — J took it for the plain page (journal §261)
+if (MAKE) { $('mk').style.display = 'block'; document.title += ' — MAKES A VERSION'; }
+const ctx = new AudioContext(MAKE ? { sampleRate: 48000 } : undefined);
+try {
+  engine = await PlayheadEngine.create(ctx, './playhead-processor.js');
+  await engine.loadIndex(INDEX);
+  const svgText = await (await fetch(STRIP, { cache: 'no-store' })).text();
+  stripDoc = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+  // raster with a TRANSPARENT background, so the lane bars (or the
+  // page white) show through behind the ink
+  window.STRIP_IMG = URL.createObjectURL(new Blob(
+    [svgText.replace(/<rect width="\d+" height="\d+" fill="#ffffff"\/>/, '')],
+    { type: 'image/svg+xml' }));
+  lst('strip parsed — fetching audio…');
+  await engine.loadBuffer(AUDIO, f => lst(`audio… ${(f * 100) | 0}%`));
+  lst(`ready — ${SD.DUR.toFixed(1)} s · ${engine.sections.length} sections · SPACE for sound, V for views, H for keys`);
+  $('go').disabled = false;
+} catch (e) { lst('FAILED: ' + e.message); throw e; }
+
+// ---------- playheads ----------
+const phs = [];
+function addPlayhead(t) {
+  const ph = engine.createPlayhead();
+  ph.gain = 0.9;
+  ph.setGrain({ winsz: 0.2, overlaps: 8, jitter: 0 });
+  ph.seek(t);
+  // the escape hatch (J): a fresh page holds still and silent - the
+  // playhead exists frozen; SPACE starts sound and motion TOGETHER
+  ph.tempo = 0;
+  ph._runTempo = 1;      // the tempo SPACE will run at
+  phs.push(ph);
+  if (view === 2) layoutV2();
+  return ph;
+}
+function setRunning(on, at = null) {
+  // a start asked for AT a context time (the scenario's waits, journal §260):
+  // the worklet begins it then, and the page is told (rig.began) — until
+  // then it is at rest, and SPACE means what it means at rest
+  if (on && at != null) {
+    phs.forEach(p => { p.start(p._runTempo ?? 1, p._fadeIn || 0, at); p._fadeIn = 0; });
+    return;
+  }
+  gateOn = on;
+  phs.forEach(p => {
+    // 0 is a real run tempo (freeze); start = tempo at once + gate (§197);
+    // _fadeIn = a one-time fade-in asked for this start (the sampler, §200)
+    if (on) { p.start(p._runTempo ?? 1, p._fadeIn || 0); p._fadeIn = 0; }
+    else { if (p.tempo !== 0) p._runTempo = p.tempo; p.tempo = 0; p.gate(false); }
+  });
+}
+const tVis = ph => Math.max(0, ph.t - (ctx.outputLatency || ctx.baseLatency || 0) * ph.tempo);
+
+// ---------- view 1: the clean scroll ----------
+const v1 = $('v1'), strip1 = $('strip1');
+let anim1 = null;
+function initV1() {
+  strip1.appendChild(document.importNode(stripDoc.documentElement, true));
+  anim1 = ScoreAnim(strip1, SD.G, SD.ENV, CONST);
+}
+function paintV1() {
+  const tv = tVis(phs[0]), tn = tv - CURLAG;
+  const s = innerHeight / CH;      // content band fills the height
+  const tx = innerWidth / (2 * s) - SD.X0 - tn * SD.PXS;
+  strip1.style.transform = `scale(${s}) translate(${tx}px,${-CY0}px)`;
+  anim1.paintAt(tv);
+}
+
+// ---------- view 2: the whole piece in lanes ----------
+const v2 = $('v2');
+let lanes = [];            // {t0, t1, x0px, el, s, minY, extH, h, xpad, top, spanW}
+let rectsOn = false;       // layout-inspection bars retired by J; R re-shows
+const lenses = new Map();  // "phIdx:laneIdx" -> {svg, holder, anim, have:Set, extras:Set}
+// measured vertical extent of the RESTING ink in [t0, t1) - lanes are
+// sized to what is printed; flights/plume spill beyond while sounding
+function spanExtent(t0, t1) {
+  const b0 = Math.max(0, Math.floor(t0 / SD.BEXT));
+  const b1 = Math.min(SD.EXTR.length - 1, Math.ceil(t1 / SD.BEXT));
+  let lo = 1e9, hi = -1e9;
+  for (let b = b0; b <= b1; b++) {
+    if (SD.EXTR[b][0] < lo) lo = SD.EXTR[b][0];
+    if (SD.EXTR[b][1] > hi) hi = SD.EXTR[b][1];
+  }
+  return [lo, hi];
+}
+function layoutV2() {
+  lenses.forEach(l => l.holder.remove()); lenses.clear();
+  v2.innerHTML = ''; lanes = [];
+  const W = innerWidth, H = innerHeight;
+  // ONE uniform scale for every lane, aspect true (J: "same Zoom ...
+  // unequal lane height is just so you can accommodate one lane ...
+  // that might have a greater displacement"). For each candidate N
+  // the scale is set by whichever dimension binds - lane width
+  // filling the window, or the measured lane heights filling it -
+  // and the N that MAXIMIZES the shared scale wins. This kills the
+  // knife-edge where N+1 lanes missed fitting by a few px and all
+  // the slack became one giant void (J's 1280x598 -> gap 338px).
+  // ?lanes=4 in the URL forces a lane count, for side-by-side
+  // comparison against the optimizer's choice (no keys - J retired
+  // them; the URL is the one override)
+  const forceN = +new URLSearchParams(location.search).get('lanes') || 0;
+  let best = null;
+  for (let N = 1; N <= 16; N++) {
+    if (forceN && N !== forceN) continue;
+    const laneDur = SD.DUR / N;
+    const ext = [];
+    let sumExt = 0;
+    for (let k = 0; k < N; k++) {
+      const [lo, hi] = spanExtent(k * laneDur, (k + 1) * laneDur);
+      ext.push([lo, hi]);
+      sumExt += hi - lo;
+    }
+    const sW = W * N / SD.W;                        // width-limited
+    const sH = H / sumExt;                          // height-limited
+    const s = Math.min(sW, sH);
+    if (s > 0 && (!best || s > best.s)) best = { N, s, ext };
+  }
+  const { N, s, ext } = best;
+  const laneDur = SD.DUR / N;
+  const sumH = ext.reduce((a, e) => a + (e[1] - e[0]) * s, 0);
+  // lanes tile the window top to bottom, NO gaps (J) - the leftover
+  // height is absorbed INTO the lanes as equal breathing room around
+  // each lane's ink, so the bars always run edge to edge
+  const gap = 0;
+  const padC = (H - sumH) / N / s;   // extra content-px per lane
+  // when the height binds, lanes are a hair narrower than the window
+  // - centre the block horizontally
+  const xpad = Math.max(0, (W - laneDur * SD.PXS * s) / 2);
+  let top = 0;
+  for (let k = 0; k < N; k++) {
+    let lo = ext[k][0] - padC / 2, hi = ext[k][1] + padC / 2;
+    if (lo < 0) { hi = Math.min(SD.H, hi - lo); lo = 0; }
+    if (hi > SD.H) { lo = Math.max(0, lo - (hi - SD.H)); hi = SD.H; }
+    const minY = lo, maxY = hi;
+    const h = (maxY - minY) * s;
+    const el = document.createElement('div');
+    el.className = 'lane';
+    const x0px = (SD.X0 + k * laneDur * SD.PXS) * s - (k === 0 ? SD.X0 * s : 0);
+    Object.assign(el.style, {
+      left: 0, width: W + 'px', top: top + 'px', height: h + 'px',
+      zIndex: 1,   // notation above the layout bars
+    });
+    // clip strictly to this lane's own span - without this, lanes on
+    // height-bound windows bled neighbouring material to the window
+    // edge (J's "several repetitions of v alpha")
+    const spanW = (laneDur * SD.PXS + (k === 0 ? SD.X0 : 0)) * s + 1;
+    const clip = document.createElement('div');
+    Object.assign(clip.style, {
+      position: 'absolute', overflow: 'hidden', top: 0,
+      left: xpad + 'px', width: spanW + 'px', height: h + 'px',
+    });
+    const img = document.createElement('img');
+    img.src = window.STRIP_IMG || STRIP;
+    img.style.position = 'absolute';
+    img.style.width = (SD.W * s) + 'px';
+    img.style.height = (SD.H * s) + 'px';    // uniform scale...
+    img.style.top = (-minY * s) + 'px';      // ...cropped to this lane's band
+    img.style.left = (-x0px) + 'px';
+    clip.appendChild(img);
+    el.appendChild(clip);
+    el.dataset.lane = k;
+    v2.appendChild(el);
+    lanes.push({ t0: k * laneDur, t1: (k + 1) * laneDur, x0px, el, s,
+                 minY, extH: maxY - minY, h, xpad, top, spanW });
+    top += h + gap;
+  }
+  // J's layout bars: one rectangle per lane, alternating grays,
+  // UNDER the notation (the raster background is transparent, so the
+  // ink reads on the bar). R toggles.
+  if (rectsOn) {
+    lanes.forEach((ln, k) => {
+      const r = document.createElement('div');
+      Object.assign(r.style, {
+        position: 'absolute', left: ln.xpad + 'px', top: ln.top + 'px',
+        width: ln.spanW + 'px', height: ln.h + 'px',
+        background: k % 2 ? '#4a4a4a' : '#9a9a9a',
+        zIndex: 0, pointerEvents: 'none',
+      });
+      v2.appendChild(r);
+    });
+  }
+  rig.lanes = N; rig.laneScale = s;
+  // the layout decision, self-reported - a screenshot of the HUD (H)
+  // carries the numbers that produced what it shows
+  rig.layout = `${W}x${H} -> ${N} lanes${forceN ? ' (FORCED)' : ''} ` +
+    `@ s=${s.toFixed(3)} · lanes ` +
+    lanes.map(l => Math.round(l.h)).join('/') + 'px · tiled, no gaps';
+  console.log('[layout]', rig.layout);
+}
+function laneXofT(t, lane) { return (SD.X0 + t * SD.PXS) * lane.s - lane.x0px + lane.xpad; }
+
+function lensFor(pi, li) {
+  const key = pi + ':' + li;
+  let L = lenses.get(key);
+  if (L) return L;
+  const lane = lanes[li];
+  // the lens floats at v2 root (NOT inside the lane's clipping box)
+  // and its viewBox spans the full strip height: flights, plume and
+  // rings SPILL over the lane edge while sounding (J: "they don't
+  // clip. They just flow into the next lane"). Only the lane's own
+  // rest band gets the opaque background that hides raster twins;
+  // outside it the lens is transparent over the neighbours.
+  const holder = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  holder.classList.add('lens');
+  holder.setAttribute('height', SD.H * lane.s);
+  holder.style.top = (lane.top - lane.minY * lane.s) + 'px';
+  holder.style.zIndex = 3;
+  const defs = stripDoc.querySelector('defs');
+  const lensFill = rectsOn ? (li % 2 ? '#4a4a4a' : '#9a9a9a') : '#ffffff';
+  const bg = `<rect class="lensbg" x="0" y="${lane.minY}" width="10" height="${lane.extH}" fill="${lensFill}"/>`;
+  holder.innerHTML = (defs ? new XMLSerializer().serializeToString(defs) : '')
+    + (stripDoc.querySelector('filter#toneblur') ? new XMLSerializer().serializeToString(stripDoc.querySelector('filter#toneblur')) : '')
+    + bg
+    + `<line class="lensmid" x1="0" y1="${SD.MID}" x2="0" y2="${SD.MID}" stroke="#d4d4d4"/>`
+    + `<ellipse id="pl0" cx="0" cy="${SD.MID}" rx="0" ry="0" fill="url(#dust)" opacity="0"/>`;
+  v2.appendChild(holder);
+  L = { svg: holder, holder, anim: null, have: new Set(), extras: new Set(), lane: li };
+  L.anim = ScoreAnim(holder, SD.G, SD.ENV, CONST);
+  lenses.set(key, L);
+  return L;
+}
+function updateLensMembership(L, t0, t1) {
+  const need = new Set(grainsIn(t0, t1));
+  let changed = false;
+  for (const i of [...L.have]) {
+    if (!need.has(i)) {
+      for (let j = 0; j < 4; j++) {
+        const el = L.svg.querySelector('[id="g' + i + '_' + j + '"]');
+        if (el) el.remove();
+      }
+      L.have.delete(i); changed = true;
+    }
+  }
+  for (const i of need) {
+    if (!L.have.has(i)) {
+      for (let j = 0; j < 4; j++) {
+        const src = stripDoc.querySelector('[id="g' + i + '_' + j + '"]');
+        if (src) L.svg.appendChild(document.importNode(src, true));
+      }
+      L.have.add(i); changed = true;
+    }
+  }
+  // the ribbon rides along when the window touches its band
+  const wantTone = t1 > SD.TON0 - 1 && t0 < SD.TON1 + 1;
+  if (wantTone && !L.extras.has('tone')) {
+    for (const id of ['toneg', 'tone']) {
+      const src = stripDoc.querySelector('[id="' + id + '"]');
+      if (src) L.svg.appendChild(document.importNode(src, true));
+    }
+    L.extras.add('tone'); changed = true;
+  } else if (!wantTone && L.extras.has('tone')) {
+    for (const id of ['toneg', 'tone']) {
+      const el = L.svg.querySelector('[id="' + id + '"]');
+      if (el) el.remove();
+    }
+    L.extras.delete('tone'); changed = true;
+  }
+  if (changed) L.anim.rescan();
+}
+function paintV2() {
+  const seen = new Set();
+  phs.forEach((ph, pi) => {
+    const tv = tVis(ph), tn = tv - CURLAG;
+    const w0 = tn - LENS_BACK, w1 = tn + LENS_FWD;
+    lanes.forEach((lane, li) => {
+      // cursor line
+      let cur = lane.el.querySelector('[data-cur="' + pi + '"]');
+      if (tn >= lane.t0 && tn < lane.t1) {
+        if (!cur) {
+          cur = document.createElement('div');
+          cur.className = 'cursor'; cur.dataset.cur = pi;
+          cur.style.background = PH_COLORS[pi % PH_COLORS.length];
+          lane.el.appendChild(cur);
+        }
+        cur.style.left = laneXofT(tn, lane) + 'px';
+      } else if (cur) cur.remove();
+      // lens where the window intersects this lane
+      const i0 = Math.max(w0, lane.t0), i1 = Math.min(w1, lane.t1);
+      const key = pi + ':' + li;
+      if (i1 > i0) {
+        seen.add(key);
+        const L = lensFor(pi, li);
+        const vx = SD.X0 + i0 * SD.PXS - 4, vw = (i1 - i0) * SD.PXS + 8;
+        L.svg.setAttribute('viewBox', `${vx} 0 ${vw} ${SD.H}`);
+        L.svg.setAttribute('width', vw * lane.s);
+        L.svg.setAttribute('height', SD.H * lane.s);
+        L.svg.style.left = (laneXofT(i0, lane) - 4 * lane.s) + 'px';
+        const bg = L.svg.querySelector('.lensbg');
+        bg.setAttribute('x', vx); bg.setAttribute('width', vw);
+        const ml = L.svg.querySelector('.lensmid');
+        ml.setAttribute('x1', vx); ml.setAttribute('x2', vx + vw);
+        updateLensMembership(L, w0, w1);
+        L.anim.paintAt(tv);
+      } else if (lenses.has(key)) {
+        lenses.get(key).holder.remove(); lenses.delete(key);
+      }
+    });
+  });
+}
+
+// ---------- a lens in view 1 (first-scenario plan P2d, journal §211; whole marks, §245) ----------
+// The notation under a sound: for a stretch a … b of the score, the marks
+// that BEGIN in it — lifted out of the still score and animated, at any time
+// the caller gives. The scenario makes one for each sounding phrase and each
+// attack.
+//
+// WHOLE MARKS, NO PAPER (J, §244–245: "can we eliminate the cut paper
+// aspect? ... they are whole objects/particles"). The first lens was a copy
+// of the stretch on an opaque white rectangle laid over the score: at its
+// edges a mark was sliced by a straight line, and whatever the animation
+// threw past the edge was cut off. Now there is no rectangle and nothing is
+// clipped. A mark either belongs to the stretch — it begins inside it — or it
+// does not: one that belongs is hidden in the still score and its copy moves
+// here, all of it, wherever it goes; every other mark stays where it is,
+// whole and still. Moving marks cross still ones ink over ink.
+//
+// Of two sounds on one place THE LATEST WINS (J, §210) — mark by mark: a mark
+// that a later lens takes is let go by the one that had it, and comes back to
+// it when the later one is gone.
+let stripById = null, baseById = null;
+const holders = new Map();                          // grain → the lenses showing it, the latest last
+function makeLens(a, b) {
+  if (!stripById) {
+    stripById = new Map();
+    stripDoc.querySelectorAll('[id]').forEach(e => stripById.set(e.id, e));
+  }
+  if (!baseById) {
+    baseById = new Map();
+    strip1.querySelectorAll('[id]').forEach(e => baseById.set(e.id, e));
+  }
+  const still = (i, on) => {                         // the mark in the still score: shown, or lifted out
+    for (let j = 0; j < 4; j++) { const e = baseById.get('g' + i + '_' + j); if (e) e.style.visibility = on ? '' : 'hidden'; }
+  };
+  const NS = 'http://www.w3.org/2000/svg', ser = n => new XMLSerializer().serializeToString(n);
+  const svg = document.createElementNS(NS, 'svg');
+  svg.classList.add('lens');
+  svg.style.zIndex = 2;
+  svg.style.overflow = 'visible';                  // nothing is cut at its box
+  const pad = 6;                                   // strip px beyond the stretch, each end
+  const vx = SD.X0 + a * SD.PXS - pad, vw = (b - a) * SD.PXS + 2 * pad;
+  const defs = stripDoc.querySelector('defs'), tb = stripDoc.querySelector('filter#toneblur');
+  svg.innerHTML = (defs ? ser(defs) : '') + (tb ? ser(tb) : '')
+    + `<ellipse id="pl0" cx="0" cy="${SD.MID}" rx="0" ry="0" fill="url(#dust)" opacity="0"/>`;
+  svg.setAttribute('viewBox', `${vx} ${CY0} ${vw} ${CH}`);
+  svg.setAttribute('preserveAspectRatio', 'none');
+  const mine = new Map();                          // grain → its copies here
+  const me = {
+    a, b, svg, marks: mine,
+    show(i, on) { for (const e of mine.get(i) || []) e.style.display = on ? '' : 'none'; },
+  };
+  for (const i of grainsIn(a, b)) {                 // the marks that BEGIN in the stretch
+    const copies = [];
+    for (let j = 0; j < 4; j++) {
+      const src = stripById.get('g' + i + '_' + j);
+      if (src) copies.push(svg.appendChild(document.importNode(src, true)));
+    }
+    if (!copies.length) continue;
+    mine.set(i, copies);
+    const had = holders.get(i) || [];
+    holders.set(i, had);
+    if (had.length) had[had.length - 1].show(i, false); else still(i, false);
+    had.push(me);
+  }
+  v1.appendChild(svg);
+  const anim = ScoreAnim(svg, SD.G, SD.ENV, CONST);
+  // tn = the score time under the centre cursor now (the lens rides the
+  // scroll); t = the time this stretch's notation is to show
+  me.paint = (tn, t) => {
+    const s = innerHeight / CH;
+    svg.setAttribute('width', vw * s);
+    svg.setAttribute('height', innerHeight);
+    svg.style.left = (innerWidth / 2 + s * (SD.PXS * (a - tn) - pad)) + 'px';
+    anim.paintAt(t);
+  };
+  me.remove = () => {                               // each mark goes back: to the lens before, or to the still score
+    for (const i of mine.keys()) {
+      const had = holders.get(i) || [], at = had.indexOf(me);
+      if (at < 0) continue;
+      const top = at === had.length - 1;
+      had.splice(at, 1);
+      if (top) { if (had.length) had[had.length - 1].show(i, true); else still(i, true); }
+      if (!had.length) holders.delete(i);
+    }
+    svg.remove();
+  };
+  return me;
+}
+
+// ---------- frame loop ----------
+function frame() {
+  if (view === 1) paintV1(); else paintV2();
+  if (hudOn) paintHud();
+  requestAnimationFrame(frame);
+}
+
+// ---------- views / input ----------
+function setView(n) {
+  view = n;
+  v1.style.display = n === 1 ? 'block' : 'none';
+  v2.style.display = n === 2 ? 'block' : 'none';
+  if (n === 2) layoutV2();
+}
+let hudOn = false;
+function paintHud() {
+  const ph = phs[selected];
+  $('hud').textContent =
+    `view ${view} · ph${selected + 1}/${phs.length} · t ${ph.t.toFixed(2)} · ` +
+    `tempo ${(gateOn ? ph.tempo : ph._runTempo || 1).toFixed(3)} · ` +
+    `${gateOn ? 'running' : 'stopped'}\n` +
+    `SPACE run/stop · V view · F freeze · B backward · -/= tempo\n` +
+    `arrows ±1s (shift .1) · HOME 0 · L loop section · ESC unloop\n` +
+    `A add playhead · TAB select · M mono · R lane rects · H hide\n` +
+    `ENTER start the scenario · ESC stops it · G go to · wheel scrolls` +
+    (rig.layout ? `\n${rig.layout}` : '');
+}
+addEventListener('resize', () => { if (view === 2) layoutV2(); });
+addEventListener('keydown', e => {
+  if (!phs.length) return;
+  const ph = phs[selected];
+  if (e.code === 'Space') { e.preventDefault(); setRunning(!gateOn); }
+  else if (e.key === 'v' || e.key === 'V') setView(view === 1 ? 2 : 1);
+  else if (e.key === 'h' || e.key === 'H') { hudOn = !hudOn; $('hud').style.display = hudOn ? 'block' : 'none'; }
+  else if (e.key === 'r' || e.key === 'R') { rectsOn = !rectsOn; if (view === 2) layoutV2(); }
+  else if (e.key === 'f' || e.key === 'F') { if (gateOn) ph.tempo = ph.tempo !== 0 ? (ph._last = ph.tempo, 0) : (ph._last || 1); }
+  else if (e.key === 'b' || e.key === 'B') { if (gateOn) ph.tempo = -ph.tempo; else ph._runTempo = -(ph._runTempo || 1); }
+  else if (e.key === '-') { if (gateOn) ph.tempo = ph.tempo / 2; else ph._runTempo = (ph._runTempo || 1) / 2; }
+  else if (e.key === '=' || e.key === '+') { if (gateOn) ph.tempo = ph.tempo === 0 ? 0.02 : ph.tempo * 2; else ph._runTempo = (ph._runTempo || 0.02) * 2; }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); ph.seek(ph.t + (e.shiftKey ? .1 : 1)); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); ph.seek(Math.max(0, ph.t - (e.shiftKey ? .1 : 1))); }
+  else if (e.key === 'Home') ph.seek(0);
+  else if (e.key === 'l' || e.key === 'L') {
+    const s = engine.sections.find(s => ph.t >= s.t0 && ph.t < s.t1);
+    if (s) { ph.setLoop(true, s.onset, s.t1); }
+  }
+  else if (e.key === 'Escape') ph.setLoop(false);
+  else if (e.key === 'a' || e.key === 'A') {
+    const p = addPlayhead(ph.t);
+    if (gateOn) { p.tempo = p._runTempo; p.gate(true); }
+    selected = phs.length - 1;
+  }
+  else if (e.key === 'Tab') { e.preventDefault(); selected = (selected + 1) % phs.length; }
+  else if (e.key === 'm' || e.key === 'M') { engine._mono = !engine._mono; engine.setMono(engine._mono); }
+});
+// click to seek the selected playhead, in either view
+v1.addEventListener('click', e => {
+  const s = innerHeight / CH;
+  const tn = tVis(phs[0]) - CURLAG;
+  const tx = innerWidth / (2 * s) - SD.X0 - tn * SD.PXS;
+  phs[selected].seek(Math.max(0, Math.min(SD.DUR, (e.clientX / s - tx - SD.X0) / SD.PXS + CURLAG)));
+});
+v2.addEventListener('click', e => {
+  // lane by coordinates, not by event target — lenses and any future
+  // overlay float above the lanes and were eating clicks (J: "Curser
+  // is hard to move. Takes me several clicks.")
+  const lane = lanes.find(l => e.clientY >= l.top && e.clientY < l.top + l.h);
+  if (!lane) return;
+  const t = (e.clientX - lane.xpad + lane.x0px - SD.X0 * lane.s) / (SD.PXS * lane.s);
+  phs[selected].seek(Math.max(0, Math.min(SD.DUR, t + CURLAG)));
+});
+
+// ---------- begin ----------
+$('go').addEventListener('click', async () => {
+  await ctx.resume();
+  const t0 = +localStorage.getItem('perform-t') || 0;
+  addPlayhead(t0 >= SD.DUR - 0.5 ? 0 : t0);   // an ended run restores to the top
+  setInterval(() => { try { localStorage.setItem('perform-t', phs[0].t.toFixed(3)); } catch (e) {} }, 2000);
+  initV1();
+  setView(1);
+  $('start').remove();
+  rig.engine = engine; rig.phs = phs; rig.setView = setView;
+  rig.run = setRunning;
+  rig.gate = on => { gateOn = on; phs.forEach(p => p.gate(on)); };
+  rig.isRunning = () => gateOn;
+  rig.getView = () => view;
+  rig.getSelected = () => selected;
+  rig.setSelected = i => { selected = Math.max(0, Math.min(phs.length - 1, i)); };
+  rig.relayout = () => { if (view === 2) layoutV2(); };
+  rig.lanes2 = () => lanes;
+  rig.laneXofT = laneXofT;
+  rig.makeLens = makeLens;
+  rig.lensHolders = holders;
+  rig.ready = true;
+  // the scenario runner (first-scenario plan P1) — armed BEFORE the
+  // sandbox, so its key guard is first in the capture order
+  initScenario({ engine, phs, ctx, SD, CURLAG, CH, setRunning, tVis, rig, make: MAKE,
+                 began: () => { gateOn = true; } });
+  // (the sampler, the play-in and the sandbox are the engine's — live-electronics-engine)
+  frame();
+});
+</script>

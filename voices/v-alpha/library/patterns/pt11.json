@@ -1,0 +1,175 @@
+{
+ "schema": 1,
+ "kind": "pattern",
+ "name": "pt11",
+ "label": "21 hits \u00b7 22.2 s \u00b7 18 attacks, 3 phrases \u00b7 page 2 \u00b7 cresc",
+ "algorithm": "played",
+ "params": {
+  "page": 2,
+  "keys": {
+   "attackBase": 36,
+   "phraseBase": 48,
+   "reverseBase": 60
+  }
+ },
+ "duration": 22.183,
+ "events": [
+  {
+   "t": 0,
+   "kind": "attack",
+   "id": "a8",
+   "note": 45,
+   "vel": 81
+  },
+  {
+   "t": 1.495,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 47,
+   "vel": 78
+  },
+  {
+   "t": 3.0431,
+   "kind": "attack",
+   "id": "a7",
+   "note": 47,
+   "vel": 81
+  },
+  {
+   "t": 3.282,
+   "kind": "attack",
+   "id": "a33",
+   "note": 41,
+   "vel": 107
+  },
+  {
+   "t": 5.001,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 40,
+   "vel": 107
+  },
+  {
+   "t": 6.839,
+   "kind": "attack",
+   "id": "a7",
+   "note": 38,
+   "vel": 93
+  },
+  {
+   "t": 7.195,
+   "kind": "phrase",
+   "id": "7b",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 53,
+   "vel": 76
+  },
+  {
+   "t": 9.63,
+   "kind": "attack",
+   "id": "a8",
+   "note": 40,
+   "vel": 110
+  },
+  {
+   "t": 11.478,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 45,
+   "vel": 98
+  },
+  {
+   "t": 11.974,
+   "kind": "attack",
+   "id": "a33",
+   "note": 36,
+   "vel": 81
+  },
+  {
+   "t": 14.038,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 55,
+   "vel": 93
+  },
+  {
+   "t": 16.234,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 43,
+   "vel": 99
+  },
+  {
+   "t": 16.321,
+   "kind": "attack",
+   "id": "m7a",
+   "note": 40,
+   "vel": 123
+  },
+  {
+   "t": 17.876,
+   "kind": "attack",
+   "id": "m7b",
+   "note": 41,
+   "vel": 74
+  },
+  {
+   "t": 18.729,
+   "kind": "attack",
+   "id": "a7",
+   "note": 43,
+   "vel": 96
+  },
+  {
+   "t": 18.86,
+   "kind": "attack",
+   "id": "a8",
+   "note": 38,
+   "vel": 103
+  },
+  {
+   "t": 19.0161,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 40,
+   "vel": 107
+  },
+  {
+   "t": 19.322,
+   "kind": "attack",
+   "id": "a33",
+   "note": 41,
+   "vel": 117
+  },
+  {
+   "t": 19.702,
+   "kind": "attack",
+   "id": "m8a",
+   "note": 36,
+   "vel": 110
+  },
+  {
+   "t": 20.063,
+   "kind": "attack",
+   "id": "a7",
+   "note": 45,
+   "vel": 108
+  },
+  {
+   "t": 20.992,
+   "kind": "phrase",
+   "id": "8a",
+   "variant": "plain",
+   "overlay": "cresc",
+   "note": 55,
+   "vel": 110
+  }
+ ],
+ "piece": "v-alpha",
+ "audio": "v-alpha-05_gran_dense_bcl_s6",
+ "created": "2026-10-12",
+ "journal": "204"
+}

@@ -1,0 +1,72 @@
+{
+ "_about": "A page's containers pre-processed into the samples its cursors read (tools/page_samples.py; journal 243). kind original = no file: the sound as it is. A place p (s) in a container is, in its render: p - t0 for an override (it keeps the container's length); (p - t0) / speed for an icy; with a speed [from, to], lasts * ln(1 + f (r - 1)) / ln r, f = (p - t0) / (t1 - t0), r = to / from.",
+ "page": 12,
+ "seed": 1,
+ "tool": "tools/page_samples.py",
+ "journal": "243",
+ "recipe": {
+  "mix": [
+   "icy"
+  ],
+  "over half": "override"
+ },
+ "sampleRate": 48000,
+ "containers": [
+  {
+   "set": 46,
+   "t0": 166.536,
+   "t1": 169.29,
+   "kind": "icy + override",
+   "lasts": 27.54,
+   "icy": "icy 10x",
+   "speed": 0.1,
+   "file": "set46.ogg"
+  },
+  {
+   "set": 47,
+   "t0": 169.29,
+   "t1": 171.79,
+   "kind": "icy + override",
+   "lasts": 12.792,
+   "icy": "icy accel",
+   "speed": [
+    0.05,
+    0.5
+   ],
+   "file": "set47.ogg"
+  },
+  {
+   "set": 48,
+   "t0": 171.79,
+   "t1": 174.35,
+   "kind": "icy + override",
+   "lasts": 28.112,
+   "icy": "icy accel long",
+   "speed": [
+    0.02,
+    0.25
+   ],
+   "file": "set48.ogg"
+  },
+  {
+   "set": 49,
+   "t0": 174.35,
+   "t1": 177.03,
+   "kind": "icy",
+   "lasts": 45.578,
+   "icy": "icy 17x",
+   "speed": 0.0588,
+   "file": "set49.ogg"
+  },
+  {
+   "set": 50,
+   "t0": 177.03,
+   "t1": 179.59,
+   "kind": "icy",
+   "lasts": 38.381,
+   "icy": "icy 15x short",
+   "speed": 0.0667,
+   "file": "set50.ogg"
+  }
+ ]
+}
