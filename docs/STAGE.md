@@ -56,6 +56,9 @@ Things that bite:
   it before the audience is in. After ENTER nothing is fetched.
 - A machine that says "ANOTHER MACHINE HAS THE SOUND": it is right — begin it with the
   picture only. (Click the sound button a second time to take the sound there instead.)
+- **To see which machines are on the stage:** `http://localhost:8733/sync/who` — each
+  one's part, its address, and which has the sound. Any page that opens the player on
+  this server is on the same stage: a forgotten tab counts.
 
 ## The trim — a screen whose picture comes late
 

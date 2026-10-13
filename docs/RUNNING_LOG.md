@@ -1327,4 +1327,34 @@ clock's seconds now, so it is always ahead.
 
 **Not claimed.** His second try.
 
+## §17. "still" — and then: "it was the other agent, clear now"
+
+His words, after §16's mend: "still" — and, while it was being looked into: "it was the
+other agent, clear now"
+
+**What the server said when asked.** The sound was held by a machine named
+`reaper5bdebc`; the last words (a play, 42 s of reports, a stop) were another's,
+`reaperdre6pa`; and three machines were on the wire — two there as the sound machine, one
+with the picture only. None of the names was of this session's making: its pages take
+eight letters, and these had twelve, beginning alike. So: other pages, driven by
+something else, were using the same small server — and by his word, another agent.
+
+The refusal he saw the second time was therefore RIGHT: another machine did have the
+sound.
+
+**A correction to §16.** It says his first refusal was the AI's own page. That page was
+there, and by the rule as it then stood it could have been the holder; but the other
+agent's pages may have been there as well, and which of them refused him cannot now be
+told. §16's mend stands either way: a page on its shelf should not hold the sound.
+
+**Added, so that this can be SEEN next time:** `http://localhost:8733/sync/who` — the
+machines on the wire: each one's part, how long since it was heard from, the address it
+asks from, its browser, and which has the sound. Read after the server was started
+again: one machine, from this laptop, there as the sound machine — his.
+
+**A thing this shows about the design, not mended:** the small server is one room. Any
+page that opens the player on it is on the same stage — a second session, a forgotten
+tab. For a concert that is what is wanted. For two people (or two agents) trying things
+at once on one laptop it is not, and nothing tells them apart but `/sync/who`.
+
 ---

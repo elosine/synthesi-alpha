@@ -118,6 +118,7 @@ SYNC = {"n": int(time.time()), "version": None, "sound": None, "playing": False,
         "report": None}
 SYNC_CV = threading.Condition()
 SYNC_SEEN = {}                    # machine -> (role, when last heard from)
+SYNC_FROM = {}                    # machine -> (its address, its browser) - for /sync/who
 SYNC_T0 = time.monotonic()
 
 
@@ -260,6 +261,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if self.path == "/sync/ping":
             self.sync_answer(200, {})
             return
+        if self.path == "/sync/who":          # the machines on the wire, for a person to read
+            with SYNC_CV:
+                now = time.monotonic()
+                rows = [{"machine": k, "part": r or "on its shelf", "heardFrom": round(now - at, 1),
+                         "address": SYNC_FROM.get(k, ("?", "?"))[0], "browser": SYNC_FROM.get(k, ("?", "?"))[1],
+                         "hasTheSound": k == SYNC["sound"]}
+                        for k, (r, at) in sorted(SYNC_SEEN.items(), key=lambda kv: kv[1][1], reverse=True)]
+            self.sync_answer(200, {"machines": rows, "playing": SYNC["playing"]})
+            return
         if self.path.startswith("/sync/wait"):
             m = re.fullmatch(r"/sync/wait\?since=(-?\d+)&id=([a-z0-9]{1,16})&role=([a-z]{0,8})", self.path)
             if not m:
@@ -268,6 +278,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             since, who, role = int(m.group(1)), m.group(2), m.group(3)
             with SYNC_CV:
                 SYNC_SEEN[who] = (role, time.monotonic())
+                SYNC_FROM[who] = (self.client_address[0], (self.headers.get("User-Agent") or "")[-60:])
                 SYNC_CV.wait_for(lambda: SYNC["n"] > since, timeout=15)
                 SYNC_SEEN[who] = (role, time.monotonic())
                 live = [r for r, at in SYNC_SEEN.values() if time.monotonic() - at < 20]
