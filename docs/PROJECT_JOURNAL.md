@@ -33,26 +33,20 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2, IN PROGRESS (2026-10-12) — B5 is built and its first batch is made: THREE CANDIDATES, seeds 2, 3 and 4, wait for HIS EAR. The kept version is `seed-1b`.
+### SESSION 2, IN PROGRESS (2026-10-12) — THE SHELF HOLDS FOUR VERSIONS (`seed-1b`, and seeds 2, 3, 4: "keep all three"). B1 … B5 are built. Pushed. Next, at his word: B6.
 
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
 - **Where it stands · the deliverable:** B1 ☑ · B2 ☑ this repo, public · B3 ☑ the player
   (log §5) · BM ☑ the master (S7, log §6 … §10) · the clicks ☑ (log §11 … §14) · B4 ☑ the
-  stage set-ups (log §15 … §19; his try: "ok works", "works") · **B5 ☑ a new seed in one
-  step (log §20) — its first batch made (log §21)** · then B6.
-  - ON THE SHELF, in git: `versions/seed-1b/` — the final draft, taken again with the
-    buffer override's joins mended; its master is what the player plays. His verdict:
-    "clicks are gone, keep it".
-  - CANDIDATES, not in git: `build/versions/seed-2/`, `seed-3/`, `seed-4/` — each whole
-    (sound, master, picture's record, facts, scenario). 0 sounds late, 0 hard breaks,
-    true peak −1.0 dB, in all three. Seed 3 is 9:28 (the others 10:03, 10:06); their
-    loudness runs −14.9 · −16.6 · −18.0 LUFS (the kept one −17.3).
-- **► THE NEXT CONCRETE STEP: his ear on the three candidates** —
-  http://localhost:8733/player/?candidate=seed-2 · `…=seed-3` · `…=seed-4`. For each one
-  he keeps, at his word and with his words:
-  `python tools/shelve.py seed-N --what "…" --verdict "…"` — then look, and commit
-  (about 70 MB a version; git never forgets). The ones he does not keep stay in `build/`
-  or are removed at his word.
+  stage set-ups (log §15 … §19; his try: "ok works", "works") · B5 ☑ a new seed in one
+  step (log §20 … §22) · **► B6 next, at his word.**
+  - ON THE SHELF, in git: `versions/seed-1b/` (the final draft, the override mended —
+    "clicks are gone, keep it") · `versions/seed-2/`, `seed-3/`, `seed-4/` (other
+    playings, from other seeds — "keep all three"). Each: the sound as made, its master
+    (the limiter only, true peak −1.0 dB), which the player plays, its picture's record,
+    its facts, its scenario. Seed 3 is 9:28; loudness runs −14.9 … −18.0 LUFS.
+  - PUSHED 2026-10-12, at his word ("comitt push") — this repo and
+    `live-electronics-engine`. From here: commit locally, "push now?" at session end.
 - **Then, at his word: B6, the repo finished (S6)** — the front page, the pointers, the
   fresh-clone test; his Hetzner share (his sign-in). Put its proposal to him first.
 - **B5, in short (log §20).** `engine/perform.html?make&seed=N`, [begin], ENTER: the

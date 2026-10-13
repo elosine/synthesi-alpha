@@ -1,0 +1,71 @@
+{
+ "schema": 1,
+ "kind": "version",
+ "piece": "Sýnthesi Alpha",
+ "voice": "v-alpha",
+ "name": "seed-3",
+ "seed": 3,
+ "made": "2026-10-12",
+ "partial": null,
+ "sound": {
+  "file": "sound.flac",
+  "sampleRate": 48000,
+  "channels": 2,
+  "bits": 16,
+  "frames": 27281792,
+  "seconds": 568.371,
+  "bytes": 31781017,
+  "wavBytes": 109127212,
+  "peakDb": 0.37,
+  "rmsDb": -22.81,
+  "samplesOverFull": 26
+ },
+ "length": {
+  "mainEnds": 548.45,
+  "lastSoundEnds": 563.208,
+  "all": 568.371
+ },
+ "picture": {
+  "file": "picture.json",
+  "runs": 13,
+  "sounds": 762
+ },
+ "recorder": {
+  "gaps": 0,
+  "chunks": 569
+ },
+ "check": {
+  "runs": 13,
+  "stops": 13,
+  "stopWorstMs": 0.354,
+  "startWorstMs": 2.449,
+  "waitWorstMs": 2.449,
+  "runWorstMs": 0.021,
+  "rolled": 548.456,
+  "held": 548.439,
+  "sounds": 762,
+  "soundsLate": 0,
+  "soundLateWorstMs": 0
+ },
+ "workshop": {
+  "repo": "synthesi-alpha",
+  "commit": "490a306f0617ceee052e7e4b6a7c72b3336f2bd5",
+  "clean": true
+ },
+ "master": {
+  "file": "master.flac",
+  "dials": {
+   "ceilingDb": -1.0,
+   "lowpassHz": null,
+   "compressor": null
+  },
+  "lufs": -16.6,
+  "rangeLu": 18.8,
+  "truePeakDb": -1.0,
+  "limiter": {
+   "secondsTurnedDown": 2.823,
+   "moments": 67,
+   "deepestDb": 1.13
+  }
+ }
+}

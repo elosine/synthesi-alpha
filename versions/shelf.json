@@ -7,6 +7,24 @@
    "what": "the final draft, taken again — the buffer override's joins mended",
    "verdict": "kept 2026-10-12 — \"clicks are gone, keep it\"",
    "plays": "master.flac"
+  },
+  {
+   "folder": "seed-2",
+   "what": "another playing of the piece, from seed 2 — the loudest of the four, and the widest in range",
+   "verdict": "kept 2026-10-12 — \"keep all three\"",
+   "plays": "master.flac"
+  },
+  {
+   "folder": "seed-3",
+   "what": "another playing of the piece, from seed 3 — the shortest: nine and a half minutes",
+   "verdict": "kept 2026-10-12 — \"keep all three\"",
+   "plays": "master.flac"
+  },
+  {
+   "folder": "seed-4",
+   "what": "another playing of the piece, from seed 4 — the sparest: the fewest sounds, the quietest",
+   "verdict": "kept 2026-10-12 — \"keep all three\"",
+   "plays": "master.flac"
   }
  ]
 }

@@ -19,11 +19,11 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► B5 IS BUILT AND
-ITS FIRST BATCH MADE: three candidates — seeds 2, 3, 4 — wait for HIS
-EAR (`player/?candidate=seed-N`; kept with `tools/shelve.py`). The
-kept version is `seed-1b`. The stage set-ups (B4) work on his try.
-The repo is public (`github.com/elosine/synthesi-alpha`). Next, at
+**State of the piece (keep this line current):** **► THE SHELF HOLDS
+FOUR VERSIONS — `seed-1b` and seeds 2, 3, 4 (his: "keep all three");
+the player plays each one's master: http://localhost:8733/player/ .
+B1 … B5 are built; the stage set-ups work on his try. Pushed
+2026-10-12 (`github.com/elosine/synthesi-alpha`, public). Next, at
 his word: B6, the repo finished. `docs/PROJECT_JOURNAL.md` §2 is the
 cold-start block.**
 

@@ -6,6 +6,9 @@ folder named by the seed that made it.
 | version | made | length | what it is |
 |---|---|---|---|
 | `seed-1b` | 2026-10-12 | 10 min 06.1 s (the last sound at 10 min 00.8 s) | the final draft, taken again with the buffer override's joins mended — heard and kept by the composer ("clicks are gone, keep it"); mastered (`safe`: the limiter only, true peak −1.0 dB) |
+| `seed-2` | 2026-10-12 | 10 min 02.7 s | another playing of the piece, from seed 2 — the loudest of the four, and the widest in range — the composer's word, 2026-10-12: "keep all three"; mastered |
+| `seed-3` | 2026-10-12 | 9 min 28.4 s | another playing of the piece, from seed 3 — the shortest: nine and a half minutes — the composer's word, 2026-10-12: "keep all three"; mastered |
+| `seed-4` | 2026-10-12 | 10 min 05.7 s | another playing of the piece, from seed 4 — the sparest: the fewest sounds, the quietest — the composer's word, 2026-10-12: "keep all three"; mastered |
 
 **Taken off the shelf, 2026-10-12, at his word: `seed-1`** — the final draft's first
 recording. He heard clicks in its pages 11 and 12: the buffer override's joins

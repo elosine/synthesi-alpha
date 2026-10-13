@@ -1596,4 +1596,36 @@ kept goes onto the shelf".
 **Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ · BM ☑ · the clicks ☑ · B4 ☑ · **B5 ☑
 built; its first batch made — HIS EAR on seeds 2, 3 and 4 is the next thing** · then B6.
 
+## §22. "keep all three" — seeds 2, 3 and 4 go on the shelf; commit, and push
+
+His words: "keep all three, comitt push next?"
+
+**What had been put to him** with §21: the three candidates — length, sounds, loudness, and
+an address to hear each — and two things to know first: they are not all one length (seed
+3 is 38 s shorter), and not all one loudness (3 dB between seed 2 and seed 4; the master
+does not chase a level, as he chose). And: say which to keep, with a few words on each.
+
+**Decided (his):** all three are kept. *(He gave no words on each, and did not say he had
+listened: the shelf carries his sentence as it was, and a plain line of fact for what each
+is — the loudest and widest · the shortest · the sparest and quietest. The words on what
+each IS are the AI's, from §21's table; they are his to replace.)*
+
+**Done.** `python tools/shelve.py seed-N --what … --verdict …`, three times: each
+candidate copied to `versions/seed-N/`, six files, each compared and the same as made;
+its row in `versions/shelf.json` with `plays: master.flac`; its line in the shelf's
+table; the candidate's copy cleared. The tool's line had said "heard and kept" — it says
+"the composer's word" now, which is what is known.
+
+**In the running app** (a page kept off the stage's wire): the player opens on four rows —
+`seed-1b` · `seed-2` · `seed-3` · `seed-4` — each "mastered", each with its verdict, and
+picks each with its own master and its own record (848 · 777 · 762 · 691 sounds).
+
+**The shelf now:** four versions, about 270 MB of sound in the repo's tree (two lossless
+files a version); with `seed-1`'s first recording and its master still in the history,
+the repo carries about 340 MB. The plan's ceiling was "about a dozen" versions, against
+GitHub's guidance of about 1 GB.
+
+**Pushed, at his word** — this repo and `live-electronics-engine` (whose own rule is
+commit and push before the session ends).
+
 ---

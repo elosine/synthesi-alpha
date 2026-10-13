@@ -57,8 +57,8 @@ if __name__ == "__main__":
     lines = readme.read_text(encoding="utf-8").split("\n")
     rows = [i for i, l in enumerate(lines) if l.startswith("| `seed-")]
     t = facts["sound"]["seconds"]
-    line = (f"| `{a.name}` | {facts.get('made', '')} | {int(t // 60)} min {t % 60:04.1f} s | {a.what} — heard and kept by the "
-            f"composer (\"{a.verdict}\")" + ("; mastered" if mastered else "") + " |")
+    line = (f"| `{a.name}` | {facts.get('made', '')} | {int(t // 60)} min {t % 60:04.1f} s | {a.what} — the composer's "
+            f"word: {a.verdict}" + ("; mastered" if mastered else "") + " |")
     if rows:
         lines.insert(rows[-1] + 1, line)
         readme.write_text("\n".join(lines), encoding="utf-8", newline="\n")
