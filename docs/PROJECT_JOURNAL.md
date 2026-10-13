@@ -33,88 +33,71 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2, IN PROGRESS (2026-10-12) — B4, the stage set-ups, is BUILT and checked on one machine; two real machines are his to try. The kept version is `seed-1b`. Next, at his word: B5.
+### SESSION 2, IN PROGRESS (2026-10-12) — B5 is built and its first batch is made: THREE CANDIDATES, seeds 2, 3 and 4, wait for HIS EAR. The kept version is `seed-1b`.
 
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
 - **Where it stands · the deliverable:** B1 ☑ · B2 ☑ this repo, public · B3 ☑ the player
-  — http://localhost:8733/player/ (log §5) · BM ☑ the master (S7, log §6 … §10) · the
-  clicks ☑ (log §11 … §14) · **B4 ☑ the stage set-ups (log §15)** · **► B5 next, at his
-  word.**
+  (log §5) · BM ☑ the master (S7, log §6 … §10) · the clicks ☑ (log §11 … §14) · B4 ☑ the
+  stage set-ups (log §15 … §19; his try: "ok works", "works") · **B5 ☑ a new seed in one
+  step (log §20) — its first batch made (log §21)** · then B6.
   - ON THE SHELF, in git: `versions/seed-1b/` — the final draft, taken again with the
-    buffer override's joins mended; `master.flac` (`safe`) is what the player plays. His
-    verdict: "clicks are gone, keep it". (`seed-1` is off the shelf at his word.)
-- **B4, in short (log §15; `docs/STAGE.md` is the page for him).** One machine begins
-  "sound and picture"; the others "picture only" — they fetch no sound, run the picture on
-  their own clocks and keep them to where the sound is (`player/sync.js`), nudged at most
-  1.5 %, never a jump once the score moves. ENTER and ESCAPE on ANY machine begin and stop
-  them all (his "a"). LEFT / RIGHT: a trim per machine. `H`: what a machine knows. The
-  picture keeps 1920 × 1080, bars around. The small server (`tools/serve.py`, `/sync/…`)
-  carries a few words; with it gone, every machine goes on alone.
-  - **Checked on ONE machine, two pages:** the sound 0.14 s after ENTER on the other page
-    · the screen within about 1 ms of the sound · the network pulled 4 min 40 s: 0.4 ms
-    out on return · ESCAPE on either stops both.
-  - **NOT tried — his:** two real machines, a house wifi, an iPad, a projector's delay,
-    a real network pulled, Safari / Firefox. Windows will ask whether Python may be
-    reached from the network.
-- **HIS TRY OF B4: "ok works" (log §18)** — he did not say with which machines. A first
-  refusal ("another machine has the sound") was this session's own page, or another
-  agent's; a second was another agent's, rightly refused (log §16, §17). Mended: a page
-  on its shelf holds no sound. Added: http://localhost:8733/sync/who — who is on the
-  stage.
-- **A START WITHOUT A KEYBOARD (his, log §19: "tablets won't have access to enter").**
-  Built, his "a": [GO] on the resting picture of a touched screen; press and hold two
-  seconds to stop. Checked with made-up touches; NO TABLET HAS BEEN TOUCHED. The trim
-  and `H` are still keys only. `player/?alone` keeps a page off the stage's wire.
-- **ANOTHER AGENT IS USING THE SAME SMALL SERVER for a recording test (2026-10-12).**
-  Until he says it is done: do not start the server again, do not open the player's
-  page, do not make a version.
-- **► THE NEXT CONCRETE STEP: B5, a new seed in one step (S5)** — its proposal WAS PUT
-  to him (log §18): the seed in the address · the seed's own samples · the pass, its
-  timers paced by the page · the check counts late sounds · the master at the end · a
-  first batch. The one decision asked: the first batch — three, seeds 2, 3, 4 (the
-  AI's pick), or his. **His answer is awaited; nothing is built.** If the chat is
-  cleared, put it to him again
-  first. It must hold three things found the hard way: the step ends with the MASTER, at
-  the piece's dials · the make page paces its own timers (`tools/pace_timers.js` is the
-  stop-gap) · a version's check counts the sounds that began late. Then a first batch of
-  candidates; he listens (`player/?candidate=<folder>`); the kept ones go on the shelf.
-- **MAKING A VERSION — read `CLAUDE.md`'s machine notes first (log §13).** A take was
-  lost: made muted in the hidden pane, the browser held the page's timers back and 159
-  sounds began up to a minute late; the version's own check passed it.
-- **Done this session:**
-  - the licence ☑ (log §2) — MIT for the program (`engine/`, `tools/`, `player/`);
-    `LICENSE-PIECE.md`: the piece and its record, © 2026 elosine, all rights reserved.
-    **A new top-level folder is named there the day it is made.**
-  - public ☑ (log §3) — https://github.com/elosine/synthesi-alpha.
-  - the push rule ☑ (log §4) — his: commit locally, "push now?" at session end.
-    **Commits since the last push are local — in this repo AND in
-    `live-electronics-engine` (three commits there, journal 263 … 265; its own rule is
-    commit and push before the session ends).**
-  - B3 ☑ · BM ☑ · the clicks ☑ · B4 ☑ — as above.
+    buffer override's joins mended; its master is what the player plays. His verdict:
+    "clicks are gone, keep it".
+  - CANDIDATES, not in git: `build/versions/seed-2/`, `seed-3/`, `seed-4/` — each whole
+    (sound, master, picture's record, facts, scenario). 0 sounds late, 0 hard breaks,
+    true peak −1.0 dB, in all three. Seed 3 is 9:28 (the others 10:03, 10:06); their
+    loudness runs −14.9 · −16.6 · −18.0 LUFS (the kept one −17.3).
+- **► THE NEXT CONCRETE STEP: his ear on the three candidates** —
+  http://localhost:8733/player/?candidate=seed-2 · `…=seed-3` · `…=seed-4`. For each one
+  he keeps, at his word and with his words:
+  `python tools/shelve.py seed-N --what "…" --verdict "…"` — then look, and commit
+  (about 70 MB a version; git never forgets). The ones he does not keep stay in `build/`
+  or are removed at his word.
+- **Then, at his word: B6, the repo finished (S6)** — the front page, the pointers, the
+  fresh-clone test; his Hetzner share (his sign-in). Put its proposal to him first.
+- **B5, in short (log §20).** `engine/perform.html?make&seed=N`, [begin], ENTER: the
+  seed's samples are made by the server the first time (`build/seeds/seed-N/`, not in
+  git), the piece is played and recorded, checked (`check.soundsLate` must be 0 — the
+  page says SPOILED otherwise, and `tools/shelve.py` refuses it), and mastered beside
+  its sound. The make page paces its own timers. About eleven minutes a version.
+- **MAKING A VERSION in the AI's pane:** commit first · the address with its seed ·
+  [begin] · `rig.engine.out.gain.value = 0` · `rig.scenario.makeVersion()` · one at a
+  time (`CLAUDE.md`, machine notes).
+- **THE STAGE IS ONE ROOM.** Any page that opens the player on this server is on the
+  same stage. He has had a laptop, a tablet and another agent's pages on it. **For any
+  check of the player use `player/?alone`; leave the pane off the player when done;
+  http://localhost:8733/sync/who shows who is there.** Starting the server again cuts
+  the others' wire for a moment (they go on alone and come back).
+- **Done this session:** the licence ☑ (log §2 — MIT for `engine/`, `tools/`, `player/`;
+  the piece and its record all rights reserved; **a new top-level folder is named in
+  `LICENSE-PIECE.md` the day it is made**) · public ☑ (log §3) · the push rule ☑ (log §4:
+  commit locally, "push now?" at session end) · B3 · BM · the clicks · B4 (with the
+  tablet's [GO] and held press, his "a", log §19) · B5.
+  - **Commits since the last push are local — in this repo AND in
+    `live-electronics-engine` (four there: journal 263 … 265, and `tools/master.py`'s
+    `--into`; its own rule is commit and push before the session ends).**
   - ONE FILE IN TWO REPOS, change both: `tools/master.py` · `engine/master.html` ·
-    `engine/override-processor.js` · and, but for the file it reads, `tools/page_samples.py`.
-    (`tools/serve.py` is NOT the engine's: the stage's words and the open connections are
-    this repo's only.)
-- **`Resume reads:`** `docs/PLAN.md` (the build order; S5) · `docs/RUNNING_LOG.md` §13
-  (making a version) and §15 (the stage) · `engine/scenario.js` (`makeVersion`, the seed)
-  · `tools/page_samples.py`, `tools/icy_render.py` (the samples a seed needs) ·
+    `engine/override-processor.js`. NO LONGER the same, by B5 and B4: `engine/scenario.js`,
+    `engine/perform.html`, the two sample tools (their `override` must still match the
+    unit's), `tools/serve.py`.
+- **`Resume reads:`** `docs/RUNNING_LOG.md` §20, §21 · `docs/PLAN.md` (the build order;
+  S6) · `docs/STAGE.md` · `README.md` (B6 finishes it) ·
   `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
 - **Pending him:**
-  - **two real machines on the stage set-ups** (`docs/STAGE.md`) — and what `H` shows
-    there;
-  - his eyes on the player's picture, the fixed shape and its bars — he has listened
-    through the player; he has not said how it looks;
-  - the engine's LIVE bus: its "safety limiter" does not hold −1 dB — a real one there
-    is its own item, his to ask for;
+  - **his ear on seeds 2, 3 and 4 — which are kept;**
+  - two real machines on the stage set-ups, said plainly (he has said "works"; not with
+    what) — and the trim and `H` on a tablet, if he wants them there;
+  - his eyes on the player's picture, the fixed shape and its bars;
+  - the engine's LIVE bus: its "safety limiter" does not hold −1 dB — his to ask for;
   - whether the score-drawing tool should travel here too (it did not);
   - the build order is the AI's — his to change.
-- **Not proven:** how the player LOOKS · anything of B4 off this one machine · the
-  limiter's speeds and the stage's numbers (8 ms, 1.5 %, 4 s, 0.25 s) are the AI's
-  starting numbers · an iPad as the SOUND machine (233 MB unpacked); as a picture-only
-  one it loads no sound.
+- **Not proven:** how any of it LOOKS · a real tablet's own browser · the one step run by
+  HIS hand in his own browser · the stage's numbers (8 ms, 1.5 %, 4 s, 0.25 s) and the
+  limiter's speeds are the AI's starting numbers · an iPad as the SOUND machine (233 MB
+  unpacked).
 - **To check a picture in the AI's pane:** hidden, it gives no frames — pace the page's
-  own loops from a worker's timer, set before [begin] (log §5, `CLAUDE.md` machine notes).
-  A background tab is slower still: front the one being measured.
+  own loops from a worker's timer, set before [begin] (log §5, `CLAUDE.md`). A background
+  tab is slower still: front the one being measured.
 - **Deliberately uncommitted:** nothing. (`build/` is not in git, by design.)
 
 ---

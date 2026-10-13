@@ -59,13 +59,15 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   to the sound, the trim, the fixed shape; measured. **Built and
   checked on ONE machine, two pages (log §15); two real machines, a
   house network and a projector are his to try — `docs/STAGE.md`.**
-- **B5 ► A new seed in one step** (S5) — the seed in the address, the
-  samples a seed; a first batch of candidates. **The step ends with
+- **B5 ☑ A new seed in one step** (S5) — the seed in the address, the
+  samples a seed; a first batch of candidates. **Built (log §20); the
+  first batch made — seeds 2, 3, 4, candidates in `build/versions/`
+  (log §21). ► HIS EAR on them; the kept ones go on the shelf.** **The step ends with
   the master, at the piece's dials (S7.5).** Two things it must also
   hold, found the hard way (log §13): the make page paces its own
   timers, so that a hidden, silent page cannot call the sounds late;
   and a version's check counts the sounds that began late.
-- **B6 The repo finished** (S6) — the front page, the pointers, the
+- **B6 The repo finished** (S6) — next, at his word — the front page, the pointers, the
   fresh-clone test; ~~public at his word~~ ☑ done early (log §3);
   Hetzner, his sign-in.
 - **B7 The video** (S3's fallback).
@@ -261,8 +263,8 @@ coordinated".
   thing the audience hears the picture against.
 
 **S5. The versions** (a shelf of a few kept versions; one step makes
-another — agreed by him, §255) ◐ the shelf and its list built (B3,
-log §5); a new seed in one step not (B5)
+another — agreed by him, §255) ☑ built (B3, B5 — log §5, §20, §21);
+the first batch waits for his ear
 
 Result when done: v-alpha has a shelf of versions — a few, each a
 folder named by its seed, each heard and kept by him — and one step
@@ -272,8 +274,11 @@ is the final draft. On stage he picks a version, then GO.
 - Every version that goes on stage has been heard by him first (his,
   §255: "I don't think I need for it to be B"). The workshop stays
   home; he travels with the shelf.
-- "Make a version" as one step — give a seed; the samples are made,
-  the piece is played and recorded, the folder is written.
+- ☑ "Make a version" as one step — give a seed; the samples are made,
+  the piece is played and recorded, the folder is written. *(One
+  address and ENTER: `engine/perform.html?make&seed=N`. It ends with
+  the check — sounds that began late spoil a take — and the master.
+  Log §20.)*
 - The recording IS the version. The seed is its label — not a promise
   that it can be made again sample for sample (§246, §247).
 - The sound file is kept LOSSLESS and packed (FLAC). A plain WAV of a
@@ -292,8 +297,9 @@ is the final draft. On stage he picks a version, then GO.
   §5; the rest is read from each version's own `version.json`.)*
 - ☑ The player opens on the shelf, and loads ONLY the version picked —
   its sound file and the picture. Never the others. *(B3, log §5.)*
-- A first batch of a few candidates; he listens; the kept ones go on
-  the shelf.
+- ◐ A first batch of a few candidates; he listens; the kept ones go on
+  the shelf. *(Made: seeds 2, 3, 4 — log §21. Heard at
+  `player/?candidate=seed-N`; kept with `tools/shelve.py`.)*
 
 **S6. The piece's own repo** (`synthesi-alpha`, public; one repo holds
 all; nothing to remember — agreed by him, §259: "S6 is good") ☐ not

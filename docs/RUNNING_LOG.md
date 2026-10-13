@@ -1521,4 +1521,79 @@ as a candidate and took its own master. The test's folder was removed.
 
 **Not done, not claimed in this entry.** The batch itself: §21.
 
+## §21. The first batch: seeds 2, 3 and 4 — three candidates
+
+His "a" (§20): three candidates, seeds 2, 3, 4.
+
+**How they were made.** One at a time, each by the one step — the address with its seed,
+[begin], the make — in the AI's pane, hidden, the speakers at nothing; the page pacing its
+own timers; from commit `490a306`, clean. Seed 3's and seed 4's samples were made by the
+server as each page asked.
+
+| | `seed-1b` (kept) | `seed-2` | `seed-3` | `seed-4` |
+|---|---|---|---|---|
+| length | 10:06.1 | 10:02.7 | **9:28.4** | 10:05.7 |
+| electronics main ends | 582.5 s | 570.7 s | 548.5 s | 566.8 s |
+| the last sound ends | 600.8 s | 597.3 s | 563.2 s | 600.6 s |
+| sounds called | 848 | 777 | 762 | 691 |
+| **sounds that began late** | (0, by its record) | **0** | **0** | **0** |
+| worst stop · start | 0.354 · 2.566 ms | 0.354 · 2.646 | 0.354 · 2.449 | 0.354 · 2.613 |
+| rolled · held | 582.164 · 582.146 s | 570.668 · 570.650 | 548.456 · 548.439 | 566.780 · 566.762 |
+| blocks lost | 0 | 0 | 0 | 0 |
+| the loudest sample, as made | +0.16 dB | +0.29 | +0.37 | −0.10 |
+| **hard breaks** | 0 | **0** | **0** | **0** |
+| the master: loudness | −17.3 LUFS | −14.9 | −16.6 | −18.0 |
+| the master: loudness range | 16.3 LU | 19.8 | 18.8 | 16.3 |
+| the master: true peak | −1.0 dB | −1.0 | −1.0 | −1.0 |
+| the limiter worked on | 2.06 s | 2.52 s | 2.82 s | 0.97 s |
+
+Sounds by page, 1 … 12:
+
+| | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `seed-1b` | 50 | 36 | 47 | 3 | 6 | 6 | 69 | 123 | 144 | 111 | 155 | 98 |
+| `seed-2` | 50 | 39 | 47 | 2 | 6 | 7 | 111 | 72 | 139 | 94 | 145 | 65 |
+| `seed-3` | 50 | 39 | 47 | 2 | 6 | 7 | 66 | 92 | 117 | 102 | 131 | 103 |
+| `seed-4` | 54 | 39 | 47 | 2 | 5 | 7 | 54 | 72 | 78 | 130 | 114 | 89 |
+
+**What the table says.**
+
+- **Each is another playing of the same piece** — other waits (seed 2's, before each run:
+  3.0 · 34.8 · 29.9 · 29.4 · 32.5 · 36.5 · 33.6 · 32.0 · 30.3 · 35.4 · 27.4 · 35.4 ·
+  28.4 s), other samples, another deal of the sequences. Pages 1 to 6 are nearly the same
+  count in all four; from page 7 on the seed deals.
+- **The piece is not one length.** Seed 3 is 38 s shorter than the kept version: its
+  waits were rolled shorter. "Ten minutes" is nine and a half to ten.
+- **They are not one loudness.** −14.9 to −18.0 LUFS — three decibels between the loudest
+  and the quietest. The master does not chase a level (his "a", §7: the house's fader),
+  so a version louder as made stays louder. Seed 2 is the loudest and has the widest
+  range.
+- **No clicks, no late sounds, the ceiling held** — in all three.
+
+**Each one's picture record replayed whole in the player** (a picture-only page, kept off
+the stage's wire): `seed-2` 1,206 moments, 777 of 777 sounds · `seed-3` 1,137, 762 of 762 ·
+`seed-4` 1,212, 691 of 691 — 0 errors, the lenses the record's at every moment, nothing
+left at the end. Each is listed as "a CANDIDATE — made, not on the shelf", and plays its
+own master.
+
+**Where they are.** `build/versions/seed-2/`, `seed-3/`, `seed-4/` — each whole: the sound
+as made, its master and the master's report, the picture's record, its facts, its
+scenario with its seed. NOT on the shelf, NOT in git. Full-length copies to carry about:
+`build/versions/previews/synthesi-alpha-seed-N.mp3`, sent to him.
+
+**Decided by the AI, told to him:** nothing was shelved — "only a version he has heard and
+kept goes onto the shelf".
+
+**Not done, not claimed.**
+
+- **His ear on any of the three.** Whether a version three decibels louder, or half a
+  minute shorter, is one he wants: his.
+- The one step was run by the AI's pane, not by his hand in his own browser: the address
+  and ENTER are his to try.
+- The make page's pacing was proven by three passes with 0 sounds late, each hidden and
+  muted the whole way — the conditions that lost a take in §13.
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ · BM ☑ · the clicks ☑ · B4 ☑ · **B5 ☑
+built; its first batch made — HIS EAR on seeds 2, 3 and 4 is the next thing** · then B6.
+
 ---
