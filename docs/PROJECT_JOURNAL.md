@@ -33,35 +33,33 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2, IN PROGRESS (2026-10-12) — he heard CLICKS in pages 11 and 12; found, mended at the source, and the piece taken again: `seed-1b`, a candidate. HIS EAR ON IT IS THE NEXT THING.
+### SESSION 2, IN PROGRESS (2026-10-12) — THE KEPT VERSION IS `seed-1b`: heard by him, kept, mastered, on the shelf; the player plays it. `seed-1` (it clicked) is off the shelf. Next, at his word: B4.
 
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
 - **Where it stands · the deliverable:** B1 ☑ · B2 ☑ this repo, public · B3 ☑ the player
-  (log §5) · BM ☑ the master (S7, log §6 … §10) · **the clicks ☑ mended (log §11 … §13)**
-  · then B4.
-  - ON THE SHELF, in git: `versions/seed-1/` — version 1, the final draft's recording,
-    WITH the clicks; `sound.flac` and `master.flac` (`safe`).
-  - A CANDIDATE, not in git: `build/versions/seed-1b/` — the same piece taken again with
-    the mended samples; its master in `build/masters/seed-1b/master.flac`.
-- **► THE NEXT CONCRETE STEP: his ear on `seed-1b`** —
-  http://localhost:8733/player/?candidate=seed-1b (its picture and its master). Are the
-  clicks gone to him; does the override still sound as he chose it. **Then, at his
-  word, it goes on the shelf:** copy `build/versions/seed-1b/` to `versions/seed-1b/` ·
-  add its row to `versions/shelf.json` · `python tools/master.py --candidates
-  versions/seed-1b` then `--keep safe versions/seed-1b` (or copy the master made and write
-  the row's `plays`) · the table in `versions/README.md` · commit (about 70 MB). **And
-  ask him: does `seed-1` stay on the shelf?**
-- **The clicks, in short (log §11 … §13).** 99 of 99 hard breaks from page 11 on sat
-  inside four samples the BUFFER OVERRIDE had made: three joins it made without a
-  crossfade. Mended in its two homes — `tools/page_samples.py` (`override`) and
-  `engine/override-processor.js` (the live unit; page 6) — the same three changes, said
-  at the head of each. Nine samples made again (pages 9, 11, 12): the same length and
-  level, breaks 287 → 0. `seed-1b`: the same 848 sounds as version 1, each within 8 ms;
-  hard breaks 105 → 0. The same files are in `live-electronics-engine` (its journal 264).
-- **A TAKE WAS LOST, AND WHY (log §13) — read `CLAUDE.md`'s machine notes before making
-  a version.** Made muted in the hidden pane, the browser held the page's timers back and
-  159 sounds began up to a minute late; the version's own check passed it. The good take
-  was made with `tools/pace_timers.js` run before [begin].
+  — http://localhost:8733/player/ (log §5) · BM ☑ the master (S7, log §6 … §10) · the
+  clicks ☑ (log §11 … §14) · **► B4 next, at his word.**
+  - ON THE SHELF, in git: `versions/seed-1b/` — the final draft, taken again with the
+    buffer override's joins mended. `sound.flac` as it was made; `master.flac` (`safe`:
+    the limiter only, true peak −1.0 dB), which the player plays. **His verdict:
+    "clicks are gone, keep it".**
+  - OFF THE SHELF at his word: `seed-1`, the final draft's first recording (the plan's
+    and the log's "version 1"). In git's history; the same sound file is in
+    `live-electronics-engine/build/versions/seed-1/`.
+- **► THE NEXT CONCRETE STEP: B4, the stage set-ups (S4)** — put its proposal to him
+  first (proposal → his go → build → verify → write down → commit).
+- **The clicks, in short (log §11 … §14).** He heard them in pages 11 and 12. 99 of 99
+  hard breaks sat inside four samples the BUFFER OVERRIDE had made: three joins it made
+  without a crossfade. Mended in its two homes — `tools/page_samples.py` (`override`)
+  and `engine/override-processor.js` (the live unit; page 6) — the same three changes,
+  said at the head of each. Nine samples made again (pages 9, 11, 12). `seed-1b`: the
+  same 848 sounds as `seed-1`, each within 8 ms; hard breaks 105 → 0. The same files are
+  in `live-electronics-engine` (its journal 264, 265).
+- **MAKING A VERSION — read `CLAUDE.md`'s machine notes first (log §13).** A take was
+  lost: made muted in the hidden pane, the browser held the page's timers back and 159
+  sounds began up to a minute late; the version's own check passed it. Commit first ·
+  run `tools/pace_timers.js` in the make page before [begin] · look for late sounds in
+  `picture.json` after.
 - **Done this session:**
   - the licence ☑ (log §2) — MIT for the program (`engine/`, `tools/`, `player/`);
     `LICENSE-PIECE.md`: the piece and its record, © 2026 elosine, all rights reserved.
@@ -69,37 +67,36 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   - public ☑ (log §3) — https://github.com/elosine/synthesi-alpha.
   - the push rule ☑ (log §4) — his: commit locally, "push now?" at session end.
     **Commits since the last push are local — in this repo AND in
-    `live-electronics-engine` (two commits there, journal 263, 264; its own rule is commit
-    and push before the session ends).**
-  - B3 ☑ (log §5) — `player/`; his "a": [begin], ENTER from the top, ESCAPE stops. Now
-    also `?candidate=<folder>`.
+    `live-electronics-engine` (three commits there, journal 263 … 265; its own rule is
+    commit and push before the session ends).**
+  - B3 ☑ (log §5) — `player/`; his "a": [begin], ENTER from the top, ESCAPE stops;
+    `?candidate=<folder>` plays a version made and not yet kept.
   - BM ☑ (log §9, §10) — `tools/master.py` · `voices/v-alpha/master.json` ·
     `engine/master.html`; his "a": `safe`, the limiter only. (`tools/master.py` is ONE
-    FILE IN TWO REPOS — change both.)
+    FILE IN TWO REPOS — change both. So are `engine/override-processor.js`,
+    `engine/master.html` and — but for the file it reads — `tools/page_samples.py`.)
 - **For B5, found the hard way:** "a new seed in one step" ends with the master · the make
   page paces its own timers · a version's check counts the sounds that began late.
-- **`Resume reads:`** `docs/RUNNING_LOG.md` §11 … §13 · `docs/PLAN.md` (the build order;
-  S4) · `CLAUDE.md` (machine notes) · for B4: `player/player.js` (its head; `W`, `H`),
-  `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 ·
+- **`Resume reads:`** `docs/PLAN.md` (the build order; S4) · `docs/RUNNING_LOG.md` §5
+  (the player) and §13 (making a version) · `player/player.js` (its head; `W`, `H` are
+  the two lines the fixed shape changes) · `for_seven_tubas/docs/ENGINE_BRIEF.md` §3 ·
   `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
 - **Pending him:**
-  - **his ear on `seed-1b`; whether it is kept; whether `seed-1` stays on the shelf;**
   - his eyes on the player's picture — he has listened through it; he has not said how
     it looks;
-  - his verdict on a version — it goes into `versions/shelf.json` ("not heard yet");
   - the engine's LIVE bus: its "safety limiter" does not hold −1 dB — a real one there
     is its own item, his to ask for (`live-electronics-engine/docs/plan/
     mastering-stage.md`);
   - whether the score-drawing tool should travel here too (it did not);
   - the build order is the AI's — his to change.
-- **Not proven:** his ear on the mended override, in the samples and live on page 6 ·
-  how the player LOOKS · the limiter's speeds are the AI's starting numbers · any browser
-  but Chromium, any machine but this one — an iPad least of all: the sound is 233 MB
-  unpacked in the player.
+- **Not proven:** how the player LOOKS · the limiter's speeds are the AI's starting
+  numbers · the mended override LIVE on page 6, by his ear on its own (he heard the
+  whole take and said the clicks are gone) · any browser but Chromium, any machine but
+  this one — an iPad least of all: the sound is 233 MB unpacked in the player.
 - **To check a picture in the AI's pane:** hidden, it gives no frames — pace the page's
   own loops from a worker's timer, set before [begin] (log §5, `CLAUDE.md` machine notes).
-- **Deliberately uncommitted:** nothing. (`build/` — the candidate `seed-1b`, the
-  masters, the previews — is not in git, by design.)
+- **Deliberately uncommitted:** nothing. (`build/` — the masters' candidates, the
+  previews — is not in git, by design.)
 
 ---
 

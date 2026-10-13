@@ -1080,4 +1080,49 @@ player.
 **the clicks: mended and taken again — HIS EAR on `seed-1b` is the next thing** · then
 B4.
 
+## §14. His ear: "clicks are gone" — `seed-1b` is kept; version 1 comes off the shelf
+
+**What was put to him** with §13: the player's address for the candidate, two 30-second
+files of the same stretch of page 12 (version 1, and `seed-1b`), and two things to listen
+for — are the clicks gone on pages 11 and 12; does the override still sound as he chose
+it. And: say whether to keep it, and whether version 1 stays on the shelf.
+
+**His answer:** "clicks are gone, keep it, take version 1 off the shelf"
+
+This is the first verdict of his ear on a version in this repo — and on the mended
+override. *(Of the override's sound itself he said nothing apart from this.)*
+
+**Done.**
+
+- **`seed-1b` is on the shelf** — `versions/seed-1b/`: its sound, its picture's record,
+  its facts and its scenario copied from the candidate, each compared and the same.
+- **Its master is kept beside it.** Made once more, from the shelf's copy (so that its
+  report names the file it was made from and the tool's commit): `safe.flac` came out
+  **the master he had heard, byte for byte**. `python tools/master.py --keep safe
+  versions/seed-1b` → `master.flac`, `master.json`; the shelf row plays it.
+- **The shelf's list** (`versions/shelf.json`): one row — `seed-1b`, "the final draft,
+  taken again — the buffer override's joins mended", his verdict in his words.
+- **`seed-1` is off the shelf** — its folder removed from the repo (`git rm`), its row
+  gone. It is not lost: it is in git's history, its as-made sound from the repo's first
+  commit on; and the same sound file is on his disk in `live-electronics-engine`
+  (`build/versions/seed-1/`, compared: the same).
+- The candidate's copy in `build/` was cleared, once the shelf's was seen to be the same.
+
+**In the running app:** the player opens on one row — `seed-1b · the final draft, taken
+again … · 1 · 10:06.1 · 2026-10-12 · mastered · kept 2026-10-12 — "clicks are gone, keep
+it" · synthesi-alpha · ee393c5` — and loads its master: 29,094,656 frames, the loudest
+sample at −1.0 dB, 848 sounds in its picture's record.
+
+**What "version 1" means from here.** In this log and the plan it stays the name of
+`seed-1`, the final draft's first recording: everything measured on it (§1, §5, §6, §9,
+§10) is true of it. What was learned there holds for `seed-1b` — the same piece, the same
+848 sounds within 8 ms, the same master's dials — and what was measured afresh on
+`seed-1b` is in §13.
+
+**Not done, not claimed.** His eyes on the player's picture — he has listened through
+the player and has not said how it looks · what the plan still holds (B4 … B7).
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ · BM ☑ · the clicks ☑ ·
+**► B4 the stage set-ups, at his word.**
+
 ---

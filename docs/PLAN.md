@@ -52,9 +52,10 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
 - **(his ear, 2026-10-12 — log §11 … §13) The clicks of pages 11 and
   12.** ☑ Found — the buffer override's joins; mended at the source,
   in the tool and the live unit; nine samples made again; the piece
-  taken again: `seed-1b`, a candidate, mastered. **► His ear on it;
-  then it goes on the shelf at his word.**
-- **B4 The stage set-ups** (S4) — the small server, screens that keep
+  taken again: `seed-1b`. **☑ Heard and kept by him — "clicks are
+  gone, keep it" — and `seed-1` taken off the shelf at his word (log
+  §14).**
+- **B4 ► The stage set-ups** (S4) — the small server, screens that keep
   to the sound, the trim, the fixed shape; measured.
 - **B5 A new seed in one step** (S5) — the seed in the address, the
   samples a seed; a first batch of candidates. **The step ends with
@@ -66,6 +67,12 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   fresh-clone test; ~~public at his word~~ ☑ done early (log §3);
   Hetzner, his sign-in.
 - **B7 The video** (S3's fallback).
+
+> **THE VERSION ON THE SHELF IS `seed-1b`** (log §14). Where this plan
+> says "version 1" it means `seed-1`, the final draft's first
+> recording — made, mastered, found to click in pages 11 and 12, and
+> taken off the shelf. `seed-1b` is the same piece taken again with
+> the override mended; what was learned on version 1 holds for it.
 
 ## The top line
 

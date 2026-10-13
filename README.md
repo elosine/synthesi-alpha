@@ -30,8 +30,8 @@ Then open http://localhost:8733/player/
 
 Needs Python 3 and a current browser.
 
-To hear it without the picture: `versions/seed-1/sound.flac` plays in
-any audio player. It is version 1 — the final draft.
+To hear it without the picture: `versions/seed-1b/master.flac` plays
+in any audio player. It is the kept version — the final draft.
 
 ## To run the workshop
 
@@ -52,17 +52,17 @@ A version's MASTER is the same take made safe for a hall: nothing over
 −1 dB. The player plays it when there is one.
 
 ```
-python tools/master.py --candidates versions/seed-1
+python tools/master.py --candidates versions/seed-1b
 ```
 
-makes a few candidates into `build/masters/seed-1/`. Then listen to
-them side by side: http://localhost:8733/engine/master.html?v=seed-1
+makes a few candidates into `build/masters/seed-1b/`. Then listen to
+them side by side: http://localhost:8733/engine/master.html?v=seed-1b
 
 ```
-python tools/master.py --keep NAME versions/seed-1
+python tools/master.py --keep NAME versions/seed-1b
 ```
 
-keeps the one named as `versions/seed-1/master.flac`.
+keeps the one named as `versions/seed-1b/master.flac`.
 
 - The version's own sound is never written over.
 - `python tools/master.py --selftest` checks the tool.

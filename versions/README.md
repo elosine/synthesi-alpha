@@ -5,7 +5,12 @@ folder named by the seed that made it.
 
 | version | made | length | what it is |
 |---|---|---|---|
-| `seed-1` | 2026-10-12 | 10 min 05.8 s (the last sound at 10 min 00.5 s) | the final draft — mastered 2026-10-12 (`safe`: the limiter only, true peak −1.0 dB) |
+| `seed-1b` | 2026-10-12 | 10 min 06.1 s (the last sound at 10 min 00.8 s) | the final draft, taken again with the buffer override's joins mended — heard and kept by the composer ("clicks are gone, keep it"); mastered (`safe`: the limiter only, true peak −1.0 dB) |
+
+**Taken off the shelf, 2026-10-12, at his word: `seed-1`** — the final draft's first
+recording. He heard clicks in its pages 11 and 12: the buffer override's joins
+(`docs/RUNNING_LOG.md` §11 … §14). It is in git's history (the commit before the one
+that removed it), and `seed-1b` is the same piece taken again.
 
 **The recording is the version. The seed is its label** — not a
 promise that it can be made again sample for sample (the hall of the

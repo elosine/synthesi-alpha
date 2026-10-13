@@ -3,7 +3,7 @@
  "kind": "version",
  "piece": "Sýnthesi Alpha",
  "voice": "v-alpha",
- "name": "seed-1",
+ "name": "seed-1b",
  "seed": 1,
  "made": "2026-10-12",
  "partial": null,
@@ -12,18 +12,18 @@
   "sampleRate": 48000,
   "channels": 2,
   "bits": 16,
-  "frames": 29079296,
-  "seconds": 605.819,
-  "bytes": 34982691,
-  "wavBytes": 116317228,
+  "frames": 29094656,
+  "seconds": 606.139,
+  "bytes": 34418800,
+  "wavBytes": 116378668,
   "peakDb": 0.16,
-  "rmsDb": -22.81,
+  "rmsDb": -22.79,
   "samplesOverFull": 15
  },
  "length": {
-  "mainEnds": 582.466,
-  "lastSoundEnds": 600.808,
-  "all": 605.819
+  "mainEnds": 582.4553,
+  "lastSoundEnds": 600.797,
+  "all": 606.139
  },
  "picture": {
   "file": "picture.json",
@@ -32,7 +32,7 @@
  },
  "recorder": {
   "gaps": 0,
-  "chunks": 606
+  "chunks": 607
  },
  "check": {
   "runs": 13,
@@ -45,9 +45,8 @@
   "held": 582.146
  },
  "workshop": {
-  "repo": "live-electronics-engine",
-  "commit": "f66ec1edf2098a42d76de2033159ba8717f517e1",
+  "repo": "synthesi-alpha",
+  "commit": "ee393c54ed3743550fc5431a5cf008ec22351c2d",
   "clean": true
- },
- "journal": "260"
+ }
 }

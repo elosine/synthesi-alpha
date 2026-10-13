@@ -19,14 +19,14 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► He heard clicks
-in pages 11 and 12 of version 1. Found: the buffer override's joins;
-mended at the source, the samples made again, and the piece TAKEN
-AGAIN — `seed-1b`, a candidate, mastered, 0 hard breaks. HIS EAR ON IT
-IS THE NEXT THING: http://localhost:8733/player/?candidate=seed-1b .
-Version 1 stays on the shelf until he says. The repo is public
-(`github.com/elosine/synthesi-alpha`). Then, at his word: B4, the
-stage set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
+**State of the piece (keep this line current):** **► THE KEPT VERSION
+IS `seed-1b` — heard by him and kept ("clicks are gone, keep it"),
+mastered; the player plays it: http://localhost:8733/player/ . It is
+the final draft taken again with the buffer override's joins mended;
+`seed-1`, which clicked, is off the shelf at his word. The repo is
+public (`github.com/elosine/synthesi-alpha`). Next, at his word: B4,
+the stage set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start
+block.**
 
 ## READ FIRST — how to work here
 
