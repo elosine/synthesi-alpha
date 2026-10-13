@@ -223,7 +223,30 @@ export function initScenario(deps) {
     const r = await fetch(SCENARIO, { cache: 'no-store' });
     if (!r.ok) throw new Error(`fetch ${SCENARIO}: ${r.status}`);
     scn = await r.json();
+    // THE SEED IN THE ADDRESS (the piece's plan, B5; its log §20): &seed=N — the piece rolled from
+    // another seed than the scenario file's own. Everything the seed rolls is rolled from it: the
+    // waits, the designs, the sequences — and the samples of pages 8 … 12, which are made for it.
+    scn.fileSeed = scn.seed;
+    const s = +new URLSearchParams(location.search).get('seed');
+    if (Number.isInteger(s) && s > 0) scn.seed = s;
     return scn;
+  }
+  // The pre-processed samples of a seed. The scenario file's own are the piece's
+  // (voices/v-alpha/renders/); another seed's are made by the server, once, the first time they
+  // are wanted (tools/icy_render.py, tools/page_samples.py → build/seeds/seed-N/renders/) — a few
+  // minutes — and found there after.
+  const samplesOf = new Map();
+  const seedRoot = () => (scn.seed === scn.fileSeed ? '../voices/v-alpha/' : `../build/seeds/seed-${scn.seed}/`);
+  function seedSamples() {
+    const seed = scn.seed;
+    if (seed === scn.fileSeed) return Promise.resolve();
+    if (!samplesOf.has(seed)) samplesOf.set(seed, (async () => {
+      say(`seed ${seed} · its samples are being made — a few minutes…`);
+      const r = await fetch(`/samples?seed=${seed}`, { method: 'POST' });
+      if (!r.ok) { samplesOf.delete(seed); throw new Error(`the samples of seed ${seed}: ${r.status} ${await r.text()}`); }
+      say(`seed ${seed} · its samples are made`, 4000);
+    })());
+    return samplesOf.get(seed);
   }
   // which page the URL asks for (&page=N) — START begins there, and the
   // sampler and the play-in take that page's phrases and accents (P2e)
@@ -326,6 +349,7 @@ export function initScenario(deps) {
     // pages take the two sets turn about; a page's reads are over before the
     // page after next begins.
     designs.clear();
+    await seedSamples();
     for (const s of scn.sections) if (s.design && s.design.source) await loadRenders(s);
     const designed = scn.sections.filter(s => s.design);
     const most = Math.max(0, ...designed.map(s => s.design.atOnce || 4));
@@ -495,7 +519,7 @@ export function initScenario(deps) {
   const renders = new Map();        // page → [{ set, t0, t1, speed, lasts, buffer }]
   async function loadRenders(sec) {
     if (renders.has(sec.page)) return;
-    const dir = `../voices/v-alpha/${sec.design.source}/`;
+    const dir = `${seedRoot()}${sec.design.source}/`;
     const man = await (await fetch(dir + 'manifest.json', { cache: 'no-store' })).json();
     renders.set(sec.page, await Promise.all(man.containers.map(async c =>
       ({ ...c, buffer: c.file ? await ctx.decodeAudioData(await (await fetch(dir + c.file)).arrayBuffer()) : engine.buffer }))));
@@ -897,6 +921,14 @@ export function initScenario(deps) {
         rolled: +runs.reduce((s, r) => s + r.wait + (r.t1 - r.t0), 0).toFixed(3),      // START → the end of electronics main, as rolled
         held: stops.length ? +(stops[stops.length - 1].ctxTime - me.started).toFixed(3) : 0,    // … and as it went
       };
+      // … AND THE SOUNDS: each began when it was asked for? The lines above measure electronics main,
+      // which runs on the audio clock; the sounds are CALLED from a page timer, and a page whose timers
+      // are held back calls them late, in clumps — a take was lost to that with every figure above
+      // right (the piece's log §13). A sound more than 50 ms late spoils the take.
+      const lateBy = me.sounds.map(s => (s.row.actual != null ? s.row.actual - s.row.when : 0));
+      check.sounds = me.sounds.length;
+      check.soundsLate = lateBy.filter(v => v > 0.05).length;
+      check.soundLateWorstMs = ms(Math.max(0, ...lateBy));
       const body = {
         name, seed: scn.seed, piece: 'Sýnthesi Alpha', voice: scn.piece, scenario: scn.name,
         sampleRate: took.sampleRate, frames: took.frames, gaps: took.gaps, chunks: took.chunks,
@@ -911,7 +943,10 @@ export function initScenario(deps) {
       open = false;
       me.out = await r.json();
       rig.lastVersion = me.out;
-      say(`version ${name} made · ${fmtT(me.out.sound.seconds)} · ${(me.out.sound.bytes / 1e6).toFixed(1)} MB`, 30000);
+      say(check.soundsLate
+        ? `version ${name} is SPOILED — ${check.soundsLate} sounds began late (up to ${(check.soundLateWorstMs / 1000).toFixed(1)} s): do not keep it`
+        : `version ${name} made · ${fmtT(me.out.sound.seconds)} · ${(me.out.sound.bytes / 1e6).toFixed(1)} MB · no sound late`
+          + (me.out.master ? ` · mastered (true peak ${me.out.master.truePeakDb} dB)` : ' · NOT mastered'), 3600000);
       return me.out;
     } catch (e) {
       if (open) await recorder.abort().catch(() => {});

@@ -9,6 +9,8 @@ journal 263). A version's folder is versions/seed-N in the piece, build/versions
                                                                then listen: engine/master.html?v=seed-1
     python tools/master.py --keep NAME versions/seed-1     ->  versions/seed-1/master.flac + master.json   (at his word)
     python tools/master.py versions/seed-1                 ->  build/masters/seed-1/master.flac, at the voice's dials
+    python tools/master.py --into build/versions/seed-7    ->  build/versions/seed-7/master.flac, beside the sound
+                                                               (what making a version ends with)
     python tools/master.py IN.flac OUT.flac [--lowpass HZ] [--comp] [--ceiling DB]
 
 FILE IN, FILE OUT. The piece is not played again: the master is made from the version's own sound,
@@ -449,6 +451,7 @@ if __name__ == "__main__":
     ap.add_argument("--candidates", action="store_true", help="make what the voice's master.json puts to his ear")
     ap.add_argument("--keep", metavar="NAME", help="keep a candidate as the version's master")
     ap.add_argument("--over", action="store_true", help="with --keep: replace a master already kept")
+    ap.add_argument("--into", action="store_true", help="a version, at its voice's dials: the master beside its sound")
     ap.add_argument("--lowpass", type=float)
     ap.add_argument("--comp", action="store_true", help="the compressor on, at its starting numbers")
     ap.add_argument("--ceiling", type=float)
@@ -462,7 +465,10 @@ if __name__ == "__main__":
     elif len(a.paths) == 1:                                           # a version, at its voice's dials
         vdir, facts, src = version_of(a.paths[0])
         spec, _ = spec_of(facts.get("voice"))
-        master(src, BUILD / vdir.name / "master.flac", {**DIALS, **spec["dials"]})
+        out = (vdir if a.into else BUILD / vdir.name) / "master.flac"
+        if a.into and out.exists():
+            raise SystemExit(f"{out} is already made - a master is not written over")
+        master(src, out, {**DIALS, **spec["dials"]})
     elif len(a.paths) == 2:                                           # any file
         d = {**DIALS, "lowpassHz": a.lowpass, "compressor": dict(COMP) if a.comp else None}
         if a.ceiling is not None:

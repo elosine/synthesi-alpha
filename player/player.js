@@ -94,10 +94,14 @@ async function openShelf() {
   // that it can be heard with its picture before it is kept. Its master, if one is made, is played.
   const cand = new URLSearchParams(location.search).get('candidate');
   if (cand && /^[a-z0-9-]{1,40}$/.test(cand)) {
-    const dir = `../build/versions/${cand}/`, m = `../build/masters/${cand}/master.flac`;
-    const mastered = (await fetch(m, { method: 'HEAD', cache: 'no-store' })).ok;
-    rows.unshift({ folder: cand, what: 'a CANDIDATE — made, not on the shelf', verdict: null, dir,
-                   facts: await getJson(dir + 'version.json'), plays: mastered ? `../../masters/${cand}/master.flac` : undefined });
+    const dir = `../build/versions/${cand}/`;
+    const there = async url => (await fetch(url, { method: 'HEAD', cache: 'no-store' })).ok;
+    // its master: beside it (what making a version ends with — B5), or made apart (tools/master.py)
+    const plays = await there(dir + 'master.flac') ? 'master.flac'
+      : await there(`../build/masters/${cand}/master.flac`) ? `../../masters/${cand}/master.flac` : undefined;
+    const facts = await getJson(dir + 'version.json'), late = (facts.check || {}).soundsLate;
+    rows.unshift({ folder: cand, verdict: null, dir, facts, plays,
+                   what: late ? `a CANDIDATE — SPOILED: ${late} sounds began late` : 'a CANDIDATE — made, not on the shelf' });
   }
   const body = $('rows');
   body.innerHTML = '';

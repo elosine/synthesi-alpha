@@ -1,6 +1,7 @@
 """A page's containers, PRE-PROCESSED through icy (first-scenario plan P2g, page 8; journal §242).
 
     python tools/icy_render.py 8     ->  voices/v-alpha/renders/page-8/set31.ogg … + manifest.json
+    python tools/icy_render.py 8 7   ->  the same for SEED 7: build/seeds/seed-7/renders/page-8/…
 
 J, §242: "the containers are processed with the IC and then the IC processed
 containers become the new samples essentially. So the main electronic reads
@@ -42,8 +43,14 @@ replay = json.loads((ROOT / "voices/v-alpha/score/replay-index.json").read_text(
 windows = json.loads((ROOT / "engine/grain-windows.json").read_text(encoding="utf-8"))["windows"]
 
 page = int(sys.argv[1])
+# A SEED OF ITS OWN (the plan's B5; log §20): `… <page> <seed>`. The samples of another seed than the
+# scenario file's are made APART - build/seeds/seed-N/renders/ - and are not in git: they are made
+# again from the seed whenever they are wanted. Without a seed: the file's own, into the piece's folder.
+seed = int(sys.argv[2]) if len(sys.argv) > 2 else scn["seed"]
+own = seed == scn["seed"]
+scn["seed"] = seed
 sec = scn["sections"][page - 1]
-out_dir = ROOT / f"voices/v-alpha/renders/page-{page}"
+out_dir = ROOT / (f"voices/v-alpha/renders/page-{page}" if own else f"build/seeds/seed-{seed}/renders/page-{page}")
 out_dir.mkdir(parents=True, exist_ok=True)
 x, sr = sf.read(ROOT / "voices/v-alpha/layers" / (replay["audio"] + ".flac"), always_2d=True)
 

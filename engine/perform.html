@@ -83,6 +83,29 @@ function grainsIn(t0, t1) {
 const MAKE = new URLSearchParams(location.search).has('make');
 // it says so, before anything is pressed — J took it for the plain page (journal §261)
 if (MAKE) { $('mk').style.display = 'block'; document.title += ' — MAKES A VERSION'; }
+// which seed (the piece's plan, B5): &seed=N — said before anything is pressed, too
+const SEED = +new URLSearchParams(location.search).get('seed');
+if (MAKE && Number.isInteger(SEED) && SEED > 0)
+  $('mk').textContent = `THIS PAGE MAKES A VERSION OF SEED ${SEED} — ENTER plays the piece and RECORDS it`;
+// A VERSION'S MAKING DOES NOT HANG ON THE PAGE'S TIMERS (the piece's log §13: a take was lost).
+// The sounds are called from a timer (patterns.js), and a page that is hidden and silent has its
+// timers held back by the browser — to one a second, then to one a minute: the sounds then begin
+// late, in clumps. On the page that makes a version the timers are paced from a WORKER's, which
+// are not held back. (So "the tab may sit in the background" is true, and it may be muted.)
+if (MAKE) {
+  const w = new Worker(URL.createObjectURL(new Blob(['setInterval(() => postMessage(0), 10)'], { type: 'text/javascript' })));
+  let id = 1e6; const T = new Map();
+  window.setTimeout = (fn, ms = 0, ...a) => { const k = id++; T.set(k, { fn: () => fn(...a), at: performance.now() + (+ms || 0), every: 0 }); return k; };
+  window.setInterval = (fn, ms = 0, ...a) => { const k = id++; T.set(k, { fn: () => fn(...a), at: performance.now() + (+ms || 0), every: Math.max(1, +ms || 0) }); return k; };
+  window.clearTimeout = window.clearInterval = k => { T.delete(k); };
+  w.onmessage = () => {
+    const now = performance.now();
+    for (const [k, t] of [...T]) {
+      if (t.at <= now && T.has(k)) { if (t.every) t.at = now + t.every; else T.delete(k); try { t.fn(); } catch (e) { console.error(e); } }
+    }
+  };
+  window.pacedTimers = true;
+}
 const ctx = new AudioContext(MAKE ? { sampleRate: 48000 } : undefined);
 try {
   engine = await PlayheadEngine.create(ctx, './playhead-processor.js');

@@ -22,6 +22,7 @@ import re
 import shutil
 import socket
 import subprocess
+import sys
 import threading
 import time
 
@@ -37,12 +38,14 @@ PORT = 8733
 #   build/versions/<name>/   sound.flac     the piece, lossless (16-bit, packed)
 #                            picture.json   where electronics main was, and every sound called
 #                            version.json   the seed, the length, the levels, the check, what made it
-#                            scenario.json  the scenario file as it stood
+#                            scenario.json  the scenario file as it stood, with the version's seed
+#                            master.flac    the master (tools/master.py), and master.json, its report
 #
 # build/ is not in git: these are CANDIDATES. One that is kept is copied to
 # versions/ (the shelf), which is. A folder that already holds a version is
 # not written over unless the page says so (&over=1).
 VERSIONS = pathlib.Path("build/versions")
+SHELF = pathlib.Path("versions")
 SCENARIO = pathlib.Path("voices/v-alpha/scenario/scenario-1.json")
 PATTERNS = pathlib.Path("voices/v-alpha/library/patterns")
 version_chunks = {}
@@ -72,7 +75,15 @@ def finish_version(d, body):
                     "-af", "aresample=osf=s16:dither_method=triangular", "-c:a", "flac", "-compression_level", "8",
                     str(flac)], check=True)
     raw.unlink()
-    shutil.copy(SCENARIO, d / "scenario.json")
+    # the scenario file as it stood - with the seed the version was made from, where that is not the
+    # file's own (the seed in the address: docs/PLAN.md B5)
+    scn = json.loads(SCENARIO.read_text(encoding="utf-8"))
+    if body.get("seed") is not None and body["seed"] != scn.get("seed"):
+        scn["seed"] = body["seed"]
+        (d / "scenario.json").write_text(json.dumps(scn, indent=1, ensure_ascii=False) + "\n", encoding="utf-8",
+                                         newline="\n")
+    else:
+        shutil.copy(SCENARIO, d / "scenario.json")
     git = lambda *a: subprocess.run(["git", *a], capture_output=True, text=True).stdout.strip()
     picture = body.pop("picture")
     last = max([s["end"] for s in picture["sounds"]] + [m["c1"] for m in picture["main"]] + [0])
@@ -96,7 +107,54 @@ def finish_version(d, body):
                                     encoding="utf-8", newline="\n")
     (d / "version.json").write_text(json.dumps(version, indent=1, ensure_ascii=False) + "\n",
                                     encoding="utf-8", newline="\n")
+    # THE STEP ENDS WITH THE MASTER (docs/PLAN.md S7.5, B5): made beside the sound, at the voice's dials
+    # (tools/master.py --into). A take that could not be mastered is still a take: it says so.
+    m = subprocess.run([sys.executable, "tools/master.py", "--into", str(d)], capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
+    rep = d / "master.json"
+    if m.returncode == 0 and rep.exists():
+        a = json.loads(rep.read_text(encoding="utf-8"))
+        version["master"] = {"file": a["file"], "dials": a["dials"], "lufs": a["after"]["lufs"],
+                             "rangeLu": a["after"]["rangeLu"], "truePeakDb": a["after"]["truePeakDb"],
+                             "limiter": {k: a["limiter"][k] for k in ("secondsTurnedDown", "moments", "deepestDb")}}
+    else:
+        version["master"] = None
+        version["masterFailed"] = (m.stderr or m.stdout or "")[-300:]
+    (d / "version.json").write_text(json.dumps(version, indent=1, ensure_ascii=False) + "\n",
+                                    encoding="utf-8", newline="\n")
     return version
+
+
+# ---- A SEED'S SAMPLES (docs/PLAN.md B5) ----------------------------------------
+# The pre-processed samples of pages 8 ... 12 are made FROM THE SEED. The scenario file's own seed has
+# its samples in the piece (voices/v-alpha/renders/, in git). Another seed's are made here, the first
+# time a page asks (/samples?seed=N), into build/seeds/seed-N/renders/ - a few minutes - and are found
+# there after. One making at a time.
+SAMPLES_LOCK = threading.Lock()
+
+
+def make_samples(seed):
+    scn = json.loads(SCENARIO.read_text(encoding="utf-8"))
+    if seed == scn.get("seed"):
+        return {"seed": seed, "own": True, "made": [], "had": []}
+    made, had = [], []
+    with SAMPLES_LOCK:
+        for sec in scn["sections"]:
+            D = sec.get("design") or {}
+            if not D.get("source"):
+                continue
+            page = sec["page"]
+            man = pathlib.Path(f"build/seeds/seed-{seed}") / D["source"] / "manifest.json"
+            if man.exists() and json.loads(man.read_text(encoding="utf-8")).get("seed") == seed:
+                had.append(page)
+                continue
+            tool = "tools/page_samples.py" if D.get("samples") else "tools/icy_render.py"
+            r = subprocess.run([sys.executable, tool, str(page), str(seed)], capture_output=True, text=True,
+                               encoding="utf-8", errors="replace")
+            if r.returncode != 0 or not man.exists():
+                raise RuntimeError(f"page {page}: {(r.stderr or r.stdout)[-300:]}")
+            made.append(page)
+    return {"seed": seed, "own": False, "made": made, "had": had}
 
 
 # ---- THE STAGE (docs/PLAN.md S4) ---------------------------------------------
@@ -203,6 +261,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             raw = d / "sound.f32"
             try:
                 if op == "begin":
+                    if (SHELF / name).exists():
+                        self.send_error(409, "a version of this name is on the shelf")
+                        return
                     if (d / "sound.flac").exists() and not over:
                         self.send_error(409, "this version is already made")
                         return
@@ -241,6 +302,22 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return
             self.send_response(204)
             self.end_headers()
+            return
+        if self.path.startswith("/samples"):
+            m = re.fullmatch(r"/samples\?seed=(\d{1,6})", self.path)
+            if not m:
+                self.send_error(400, "bad samples request")
+                return
+            try:
+                out = json.dumps(make_samples(int(m.group(1)))).encode()
+            except Exception as e:
+                self.send_error(500, str(e)[:300])
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(out)))
+            self.end_headers()
+            self.wfile.write(out)
             return
         # A take: the workshop page records its own output (compressed, the
         # browser's own recorder) and posts it here — for a clip, not a version.
