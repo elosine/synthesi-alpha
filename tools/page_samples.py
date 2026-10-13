@@ -94,7 +94,17 @@ def icy_read(src, o):
 def override(src, fit=(0.4, 0.2)):
     """`src` through the buffer override, one turn of its wave across the whole of it: the unit's own
     loop (engine/override-processor.js) — forced buffers, the first sliver of each repeated, the joins
-    crossfaded with equal power — its rate and its size moving together"""
+    crossfaded with equal power — its rate and its size moving together.
+
+    THREE JOINS MENDED, here and in the unit alike (the piece's log §11, §12 · engine journal 264). Each
+    had been a cut, and on a long loud wave a click:
+      1. a forced buffer begins — it CROSSES IN over one join's length, the sliver that was repeating
+         running on under it (it used to cut in, mid-wave);
+      2. a pass begins shorter than the one before — the pass that fades out is read on from where IT
+         ended (it used to be read from where a pass of the new length would have);
+      3. a pass is never cut short to fit what is left of the forced buffer — it begins whole, and the
+         next forced buffer crosses in over it (a pass used to be shortened to fit, its join with it:
+         down to eight samples, with a join of one)."""
     n = len(src)
     D = n / sr
     T, S = fit[0] * D, fit[1] * D
@@ -106,30 +116,52 @@ def override(src, fit=(0.4, 0.2)):
 
     ia, ib = np.zeros(n, dtype=np.int64), np.zeros(n, dtype=np.int64)
     ga, gb = np.ones(n), np.zeros(n)
+    # the sliver that is ending, under a forced buffer's first join — and the forced buffer coming in
+    ic, id_ = np.zeros(n, dtype=np.int64), np.zeros(n, dtype=np.int64)
+    gc, gd, hn = np.zeros(n), np.zeros(n), np.ones(n)
     left = start = ph = 0
-    period = fade = 8
+    period = fade = tail = 8
     first = True
     for i in range(n):
         if left <= 0:
+            was = (start, ph, fade, first, tail, i - start) if i else None
             u = along(i / sr)
             left = max(64, int(round(b0 * (b1 / b0) ** u * sr)))
             start, ph, first = i, 0, True
             period = max(8, min(left, int(round(sr / (r0 * (r1 / r0) ** u)))))
             fade = max(1, min(period, int(round(period * sm / (1 - sm)))))
+            tail = period
+            # MEND 1. (A sliver still in its first pass IS the sound as it comes: there is nothing to cross.)
+            if was and not was[3]:
+                os_, oph, ofade, _, otail, olen = was
+                xn = max(64, min(left // 2, fade))
+                for k in range(min(xn, n - i)):
+                    h = k / xn
+                    hn[i + k], ho = math.sin(math.pi / 2 * h), math.cos(math.pi / 2 * h)
+                    a = os_ + oph + k
+                    if oph + k < ofade and oph + otail <= olen:      # it was itself in a join: both of its halves run on
+                        g = (oph + k) / ofade
+                        ic[i + k], gc[i + k] = a, math.sqrt(g) * ho
+                        id_[i + k], gd[i + k] = a + otail, math.sqrt(1 - g) * ho
+                    else:
+                        ic[i + k], gc[i + k] = a, ho
         a = start + ph
         ia[i] = a
         if not first and ph < fade:
             g = ph / fade
-            ga[i], gb[i], ib[i] = math.sqrt(g), math.sqrt(1 - g), a + period
+            ga[i], gb[i], ib[i] = math.sqrt(g), math.sqrt(1 - g), a + tail          # MEND 2: `tail`, not `period`
         ph += 1
         if ph >= period:
             ph, first = 0, False
-            p2 = max(8, min(left, int(round(sr / (r0 * (r1 / r0) ** along(i / sr))))))
+            tail = period
+            p2 = max(8, int(round(sr / (r0 * (r1 / r0) ** along(i / sr)))))          # MEND 3: not min(left, …)
             if p2 < period:
                 period = p2
                 fade = max(1, min(period, int(round(period * sm / (1 - sm)))))
         left -= 1
-    out = src[ia] * ga[:, None] + src[np.minimum(ib, n - 1)] * gb[:, None]
+    lim = lambda v: np.minimum(v, n - 1)
+    out = ((src[ia] * ga[:, None] + src[lim(ib)] * gb[:, None]) * hn[:, None]
+           + src[lim(ic)] * gc[:, None] + src[lim(id_)] * gd[:, None])
     # brought to the level of what it was made from - and then the effect's own makeup (J, journal 245: +3 dB)
     return out * (rms(src) / rms(out)) * 10 ** (OVR.get("makeupDb", 0) / 20)
 

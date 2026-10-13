@@ -28,6 +28,16 @@
 // rate = divisor ÷ size at both ends, and both move by equal ratios in equal
 // times, so the rate between them is the same curve it always was.
 //
+// THREE JOINS MENDED, here and in the samples' tool alike (tools/page_samples.py `override`; the piece's
+// log §11, §12 · engine journal 264). Each had been a cut, and on a long loud wave a click:
+//   1. a forced buffer begins — it CROSSES IN over one join's length, the sliver that was repeating
+//      running on under it (it used to cut in, mid-wave);
+//   2. a pass begins shorter than the one before — the pass that fades out is read on from where IT
+//      ended (it used to be read from where a pass of the new length would have);
+//   3. a pass is never cut short to fit what is left of the forced buffer — it begins whole, and the
+//      next forced buffer crosses in over it (a pass used to be shortened to fit, its join with it:
+//      down to eight samples, with a join of one).
+//
 // Messages: { type: 'on', at, buf, rate, over, pattern, hold, stay, smooth, mix, gain } · { type: 'off', at }
 // — `at` a context time. Off, the sound passes as it is. { type: 'set', … } changes the numbers of the
 // shape that is running WITHOUT beginning it again (a dial turned in the override lab). While a shape
@@ -45,6 +55,9 @@ class OverrideProcessor extends AudioWorkletProcessor {
     this.gain = 1;
     this.left = 0;                             // frames left of the forced buffer
     this.start = 0; this.ph = 0; this.period = 8; this.fade = 1; this.first = true;
+    this.tail = 8;                             // the length of the pass that last ended (mend 2)
+    this.was = null; this.xk = 0; this.xn = 0; // the sliver that is ending, and how far its crossing has come (mend 1)
+    this.len = 0;                              // frames since the forced buffer began
     this.port.onmessage = e => { this.queue.push(e.data); this.queue.sort((a, b) => a.at - b.at); };
   }
 
@@ -90,7 +103,7 @@ class OverrideProcessor extends AudioWorkletProcessor {
       const m = this.queue.shift();
       if (m.type === 'set') { if (this.cur) { this.cur = { ...this.cur, ...m, type: 'on', t0: this.cur.t0 }; this.gain = m.gain ?? this.gain; } continue; }
       this.cur = m.type === 'on' ? { ...m, t0: currentFrame } : null;
-      if (this.cur) { this.left = 0; this.gain = m.gain ?? 1; }
+      if (this.cur) { this.left = 0; this.gain = m.gain ?? 1; this.was = null; this.xn = 0; this.len = 0; this.first = true; }
     }
     if (this.cur && (this.told = (this.told || 0) + n) >= sampleRate / 20) {
       this.told = 0;
@@ -105,21 +118,41 @@ class OverrideProcessor extends AudioWorkletProcessor {
       let yl = 0, yr = 0;
       if (this.cur) {
         if (this.left <= 0) {                    // a forced buffer begins: the mini-buffer is cut from HERE
+          // MEND 1: the sliver that was repeating runs on under it. (One still in its first pass IS
+          // the sound as it comes: there is nothing to cross.)
+          const was = this.len > 0 && !this.first
+            ? { start: this.start, ph: this.ph, fade: this.fade, tail: this.tail, len: this.len } : null;
           const bufFrames = Math.max(64, Math.min(this.N - 4096,
             Math.round(this.buf((currentFrame - this.cur.t0) / sampleRate) * sampleRate)));
-          this.left = bufFrames; this.start = this.w; this.ph = 0; this.first = true;
+          this.left = bufFrames; this.start = this.w; this.ph = 0; this.first = true; this.len = 0;
           this.setPeriod(true, bufFrames);
+          this.tail = this.period;
+          this.was = was; this.xk = 0; this.xn = was ? Math.max(64, Math.min(bufFrames >> 1, this.fade)) : 0;
         }
         // the mini-buffer's head — on the first pass it is the sound itself,
         // as it is being written; after that its tail fades out under it
         const a = (this.start + this.ph) % N;
         if (this.first || this.ph >= this.fade) { yl = L[a]; yr = R[a]; }
         else {
-          const g = this.ph / this.fade, gA = Math.sqrt(g), gB = Math.sqrt(1 - g), b = (a + this.period) % N;
+          const g = this.ph / this.fade, gA = Math.sqrt(g), gB = Math.sqrt(1 - g), b = (a + this.tail) % N;   // MEND 2: tail, not period
           yl = L[a] * gA + L[b] * gB; yr = R[a] * gA + R[b] * gB;
         }
-        if (++this.ph >= this.period) { this.ph = 0; this.first = false; this.setPeriod(false, this.left); }
-        this.left--;
+        if (this.xk < this.xn) {                 // MEND 1: sine and cosine — the power held, and no corner
+          const o = this.was, h = this.xk / this.xn, hn = Math.sin(Math.PI / 2 * h), ho = Math.cos(Math.PI / 2 * h);
+          const oa = (o.start + o.ph + this.xk) % N;
+          let zl = L[oa], zr = R[oa];
+          if (o.ph + this.xk < o.fade && o.ph + o.tail <= o.len) {   // it was itself in a join: both of its halves run on
+            const g = (o.ph + this.xk) / o.fade, gA = Math.sqrt(g), gB = Math.sqrt(1 - g), ob = (oa + o.tail) % N;
+            zl = L[oa] * gA + L[ob] * gB; zr = R[oa] * gA + R[ob] * gB;
+          }
+          yl = yl * hn + zl * ho; yr = yr * hn + zr * ho;
+          this.xk++;
+        }
+        // MEND 3: the next pass is as long as the rate says — not cut to what is left of the forced buffer
+        if (++this.ph >= this.period) {
+          this.ph = 0; this.first = false; this.tail = this.period; this.setPeriod(false, Infinity);
+        }
+        this.left--; this.len++;
       }
       this.wet += (target - this.wet) * k;
       oL[i] = xl + (yl * this.gain - xl) * this.wet;

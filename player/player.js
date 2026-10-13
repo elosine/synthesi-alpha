@@ -59,6 +59,16 @@ async function openShelf() {
   const list = await getJson(SHELF + 'shelf.json');
   const rows = await Promise.all(list.versions.map(async v =>
     ({ ...v, dir: `${SHELF}${v.folder}/`, facts: await getJson(`${SHELF}${v.folder}/version.json`) })));
+  // A CANDIDATE — a version made and not yet kept (build/versions/, not in git; the plan's S5: "he
+  // listens; the kept ones go on the shelf"). ?candidate=<its folder> puts it first in the list, so
+  // that it can be heard with its picture before it is kept. Its master, if one is made, is played.
+  const cand = new URLSearchParams(location.search).get('candidate');
+  if (cand && /^[a-z0-9-]{1,40}$/.test(cand)) {
+    const dir = `../build/versions/${cand}/`, m = `../build/masters/${cand}/master.flac`;
+    const mastered = (await fetch(m, { method: 'HEAD', cache: 'no-store' })).ok;
+    rows.unshift({ folder: cand, what: 'a CANDIDATE — made, not on the shelf', verdict: null, dir,
+                   facts: await getJson(dir + 'version.json'), plays: mastered ? `../../masters/${cand}/master.flac` : undefined });
+  }
   const body = $('rows');
   body.innerHTML = '';
   for (const v of rows) {

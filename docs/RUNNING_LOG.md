@@ -868,4 +868,89 @@ override on the bus) was not listened to or counted apart — pages 1 … 10 hol
 breaks between them · whether the 12 ms of the bus matter to the picture: it is the same
 live as in a version, and the score's lag was set by his eye with it there.
 
+## §12. The override mended at its source; the samples of pages 9, 11 and 12 made again
+
+**What was put to him** with §11: (a) mend it at the source — the override's joins, the
+samples of pages 9 to 12, and the piece played again, a new take; the AI's pick · (b) keep
+this take and repair the finished file — faster, not built, small clicks may remain, and
+new seeds would still need (a).
+
+**His answer:** "a, go"
+
+**The mend, in its two homes** — `tools/page_samples.py` (`override`, which makes the
+samples) and `engine/override-processor.js` (the live unit: page 6's override on the
+bus). The same three changes in each, and each file says so at its head:
+
+1. *A forced buffer begins:* it CROSSES IN over one join's length (the join of its own
+   first pass; never under 64 samples, never over half the forced buffer), the sliver that
+   was repeating running on under it. Sine and cosine — the power held, and neither side
+   starts with a corner. A sliver still in its first pass is the sound as it comes: there
+   is nothing to cross, and nothing is done.
+2. *A pass begins shorter than the one before:* the pass that fades out is read on from
+   where IT ended — its own length kept beside the new one.
+3. *A pass is never cut short to fit what is left of the forced buffer.* It begins whole,
+   and the next forced buffer crosses in over it.
+
+**The third was restated on the way.** First it read "a last pass shorter than 64 samples
+is not begun". That left one small step in the live unit, on one sample of eight (0.021
+of full scale): a last pass 124 samples long had been begun, and a pass that short gets a
+join of 14 — a corner. The cause was not the 64: it was that a pass was being shortened to
+FIT at all, and its join with it. The plugin this is made after does not do that; it lets
+the forced buffer's end cut the pass. With the first mend that cut is a crossing — so the
+shortening went.
+
+**The two homes, tested on every override sample** (the unit run outside a browser, by
+node, block by block as a browser runs it; against the unit as it was, from git):
+
+| the sample | the unit as it was: hard · all breaks | the unit, mended | the tool, mended |
+|---|---|---|---|
+| page 9 `set35` · `set36` · `set37` · `set38` | 0 · 4 — 0 · 10 — 0 · 7 — 0 · 14 | 0 · 0, all four | 0 · 0, all four |
+| page 11 `set45` | 1 · 17 | 0 · 0 | 0 · 0 |
+| page 12 `set47` | 13 · 67 | 0 · 0 | 0 · 0 |
+| page 12 `set46` | 4 · 98 | 0 · 0 | 0 · 0 |
+| page 12 `set48` | 0 · 88 | 0 · 0 | 0 · 0 |
+
+The unit's level, mended against as it was: within 0.03 dB on every one. The sound sits
+where it sat: moved by 0 samples.
+
+*Seen in passing:* the tool and the unit are the same loop and not the same samples — set
+against each other they stand 1 to 16 dB apart in difference. The unit reads its clock
+once a block of 128 samples, the tool at every sample, so the forced buffers fall a few
+samples differently and the slicing drifts. That was so before the mend. The tool's own
+head says "ported sample for sample"; of the override that is not exact. Left as it is:
+it changes no decision.
+
+**The samples made again** — `python tools/page_samples.py 9`, `11`, `12` (page 10 holds
+no override). The tool rewrites every file of a page; the four that are icy only came out
+**the same sound to the last sample** (the largest difference 0.000000) and only their
+packing differed, so the kept files were put back — nine files change, and no other:
+
+| the sample | kind | level, dB | peak, dB | hard breaks | all breaks |
+|---|---|---|---|---|---|
+| page 9 `set35` | override | −39.77 → −39.77 | −20.25 → −20.25 | 0 → 0 | 3 → 0 |
+| page 9 `set36` | override | −35.30 → −35.33 | −18.41 → −19.14 | 0 → 0 | 10 → 0 |
+| page 9 `set37` | override | −30.22 → −30.21 | −13.70 → −13.75 | 1 → 0 | 11 → 0 |
+| page 9 `set38` | override | −29.93 → −29.94 | −13.37 → −13.50 | 0 → 0 | 13 → 0 |
+| page 11 `set43` | override | −32.03 → −32.03 | −22.12 → −22.30 | 0 → 0 | 1 → 0 |
+| page 11 `set45` | override | −30.50 → −30.51 | −14.58 → −14.57 | 3 → 0 | 22 → 0 |
+| page 12 `set46` | icy + override | −29.89 → −29.89 | −11.45 → −11.24 | 6 → 0 | 93 → 0 |
+| page 12 `set47` | icy + override | −23.15 → −23.15 | −3.85 → −5.23 | 17 → 0 | 51 → 0 |
+| page 12 `set48` | icy + override | −32.58 → −32.57 | −15.49 → −15.48 | 2 → 0 | 83 → 0 |
+| **all fifteen samples of pages 9 … 12** | | | | **29 → 0** | **289 → 2** |
+
+Every one the same length as before; the level the same to 0.03 dB. (`set47`'s peak fell
+1.4 dB: its peak had been a click. The two breaks left are in page 10's `set39`, an icy
+sample this did not touch.) Under the icy-then-override samples the icy layer is the one
+it was — the tool draws the same numbers from the seed — so what changed is the joins and
+nothing else.
+
+**Decided by the AI, told to him:** the crossing's law is sine and cosine, not the square
+roots the passes join with — the square root starts with a corner, which is the thing
+being mended; the passes' own joins were left as they are: they are part of how the
+override sounds, and he chose that sound · the crossing's length is the pass's own join —
+no new dial.
+
+**Not done, not claimed in this entry.** His ear on the mended override — in the samples,
+and on page 6, where the unit runs live · the piece played again: §13.
+
 ---
