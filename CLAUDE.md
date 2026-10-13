@@ -19,14 +19,15 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► THE KEPT VERSION
-IS `seed-1b` — heard by him and kept ("clicks are gone, keep it"),
-mastered; the player plays it: http://localhost:8733/player/ . It is
-the final draft taken again with the buffer override's joins mended;
-`seed-1`, which clicked, is off the shelf at his word. The repo is
-public (`github.com/elosine/synthesi-alpha`). Next, at his word: B4,
-the stage set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start
-block.**
+**State of the piece (keep this line current):** **► THE STAGE
+SET-UPS ARE BUILT (B4, log §15): one machine has the sound, the
+others the picture only and keep to it; ENTER and ESCAPE on any
+machine; a trim; the fixed 1920 × 1080 shape — checked on ONE machine,
+two pages. TWO REAL MACHINES ARE HIS TO TRY (`docs/STAGE.md`). The
+kept version is `seed-1b`: http://localhost:8733/player/ . The repo
+is public (`github.com/elosine/synthesi-alpha`). Next, at his word:
+B5, a new seed in one step. `docs/PROJECT_JOURNAL.md` §2 is the
+cold-start block.**
 
 ## READ FIRST — how to work here
 
@@ -105,12 +106,14 @@ locally; ask "push now?" at session end. No push in between.
 |---|---|
 | `player/index.html` · `player.js` | THE PLAYER — plays a kept version: the sound file, and the picture drawn from `picture.json`. No engine inside. `?candidate=<folder>` adds a version made and not yet kept (`build/versions/`) |
 | `player/record.js` | how a picture record is read — pure, no page; the one place that says what the record means |
+| `player/sync.js` | THE STAGE — several machines kept together: a machine's clock against the small server's, and a picture-only machine's clock kept to the sound (`makeFollower`) |
+| `docs/STAGE.md` | on stage: the set-ups, the kit, the steps, what was measured |
 | `engine/perform.html` | THE WORKSHOP — plays the piece live; `?make` records a version |
 | `engine/scenario.js` | the scenario runner: the form, the pages, `makeVersion()` |
 | `engine/voices.js` · `patterns.js` | what the cursors play, and his sequences sounded again |
 | `engine/playhead-*.js` · `override-processor.js` | the granular reader; the buffer override |
 | `engine/version.js` · `version-recorder.js` | a version's sound, taken sample for sample |
-| `tools/serve.py` | the server — port **8733** |
+| `tools/serve.py` | the server — port **8733**; and the stage's few words, `/sync/…`. It keeps connections open and listens on both kinds of address — both matter to how well a clock is known (log §15) |
 | `tools/icy_render.py` · `page_samples.py` | make the pre-processed samples of pages 8 … 12 from the seed |
 | `tools/pace_timers.js` | run in the make page before [begin] when it is hidden: the page's timers paced from a worker (machine notes, below) |
 | `tools/master.py` | THE MASTERING STAGE — a version's finished sound in, its master out. `--selftest` · `--candidates` · `--keep`. The same file is in `live-electronics-engine` — keep the two the same |

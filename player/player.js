@@ -12,21 +12,42 @@
 // Keys: ENTER = play from the top · ESCAPE = stop. A second ENTER while it
 // plays does nothing.
 //
+// THE STAGE (the plan's S4; B4; log §15). A machine begins as one of two things:
+//   sound and picture   it plays the sound, and draws the picture off the sound's clock;
+//   picture only        it loads no sound, draws on its own clock, and keeps that clock to
+//                       where the sound is (sync.js).
+// Exactly one machine has the sound. ENTER and ESCAPE on ANY machine begin and stop them
+// all (his "a": ESCAPE on any machine stops everything). The network gone, every machine
+// goes on by itself, and each can be begun and stopped by hand.
+//   LEFT and RIGHT   the picture a little later / earlier on THIS machine (10 ms; SHIFT: 1 ms) —
+//             a projector delays its picture, and software cannot know by how much. (The arrows:
+//             they sit where they sit on every keyboard; [ and ] do not)
+//   H         what this machine knows of the others, in a corner
+// The picture keeps the shape the form was cut to (1920 × 1080), bars filling the rest.
+//
 // The drawing is the workshop's, copied — engine/perform.html (paintV1,
 // makeLens) and engine/scenario.js (paintPic). There it is drawn from the live
 // engine; here the same lines are drawn from the record (record.js). The
 // animation core is the one file both pages load: engine/score-anim.js.
 
 import { mainAt, soundAt, fracAt, checkPicture, SETTLE, SETTLE_BACK } from './record.js';
+import { makeSync, makeFollower } from './sync.js';
 
 const SD = window.SCORE_DATA;
 const SHELF = '../versions/';                       // shelf.json, and a folder a version
 const STRIP = '../picture/score-strip.svg';
 const CONST = { MID: SD.MID, TON0: SD.TON0, TON1: SD.TON1, PXS: SD.PXS, X0: SD.X0 };
 const CY0 = 26, CH = 600;                           // the strip's content band (the workshop's)
-// the stage — the whole window today. The fixed 1920 × 1080 shape (S4, B4)
-// changes these two lines and nothing else: every place below is cut from them.
-const W = () => innerWidth, H = () => innerHeight;
+// the stage — a box of the shape the form was cut to (1920 × 1080: the picture's record says
+// it), as large as the window lets it be, bars filling the rest (S4: "a page must be the same
+// page on any projector"). Every place below is cut from these two.
+const W = () => v1.clientWidth, H = () => v1.clientHeight;
+function fit() {
+  const [sw, sh] = (ver && ver.pic.screen) || [1920, 1080], k = Math.min(innerWidth / sw, innerHeight / sh);
+  const w = Math.round(sw * k), h = Math.round(sh * k);
+  Object.assign(v1.style, { width: w + 'px', height: h + 'px', left: ((innerWidth - w) >> 1) + 'px', top: ((innerHeight - h) >> 1) + 'px' });
+}
+addEventListener('resize', () => { if (begun) fit(); });
 const $ = id => document.getElementById(id);
 const say = m => { $('lst').textContent = m; };
 const fmtT = t => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
@@ -84,12 +105,13 @@ async function openShelf() {
   player.shelf = rows;
 }
 
-// ---------- a version, loaded: its picture, and its sound — whole ----------
+// ---------- a version, picked: its picture — and, on the machine that has the sound, its sound, whole ----------
 let picking = 0;
+const buttons = on => { $('go').disabled = $('goScreen').disabled = !on; };
 async function pick(v, tr) {
   if (begun) return;
   const mine = ++picking, stale = () => mine !== picking;
-  $('go').disabled = true;
+  buttons(false);
   ver = null;
   for (const r of $('rows').children) r.classList.toggle('on', r === tr);
   try {
@@ -102,50 +124,127 @@ async function pick(v, tr) {
       stripDoc = new DOMParser().parseFromString(await (await fetch(STRIP, { cache: 'no-store' })).text(), 'image/svg+xml');
     }
     if (stale()) return;
-    const bytes = await getBytes(v.dir + (v.plays || v.facts.sound.file),
-      f => { if (!stale()) say(`${v.folder} — the sound… ${(f * 100) | 0}%`); });
-    if (stale()) return;
-    say(`${v.folder} — unpacking the sound…`);
-    // the context runs at the sound's own rate: every sample of the file in
-    // its place, none made up in between (log §5: checked against the file)
-    if (ctx) await ctx.close();
-    ctx = new AudioContext({ sampleRate: v.facts.sound.sampleRate });
-    const buffer = await ctx.decodeAudioData(bytes);
-    if (stale()) return;
-    ver = { ...v, pic, buffer };
-    say(`${v.folder} — ready · ${fmtT(buffer.duration)}`);
-    $('go').disabled = false;
+    ver = { ...v, pic, buffer: null, seconds: v.facts.sound.seconds };
+    say(`${v.folder} — picked · ${fmtT(ver.seconds)} · now: does this machine have the sound?`);
+    buttons(true);
   } catch (e) {
     if (!stale()) say('FAILED: ' + e.message);
     throw e;
   }
 }
+// the sound is loaded only where it is played — a machine that shows the picture alone never fetches it
+async function loadSound() {
+  const v = ver;
+  const bytes = await getBytes(v.dir + (v.plays || v.facts.sound.file), f => say(`${v.folder} — the sound… ${(f * 100) | 0}%`));
+  say(`${v.folder} — unpacking the sound…`);
+  // the context runs at the sound's own rate: every sample of the file in
+  // its place, none made up in between (log §5: checked against the file)
+  if (ctx) await ctx.close();
+  ctx = new AudioContext({ sampleRate: v.facts.sound.sampleRate });
+  v.buffer = await ctx.decodeAudioData(bytes);
+  v.seconds = v.buffer.duration;
+}
 
 // ---------- the sound, and THE ONE CLOCK ----------
+// role: 'sound' — this machine plays the sound, and its clock IS the sound's ·
+//       'screen' — the picture only: its own clock, kept to the sound's (sync.js)
+let role = null, sync = null;
+const follow = makeFollower();
 let src = null, startAt = 0, playing = false, restAt = 0;
 const latency = () => ctx.outputLatency || ctx.baseLatency || 0;
 // seconds of the sound file being HEARD now; at rest, where it rests
-const heard = () => playing ? Math.max(0, ctx.currentTime - startAt - latency()) : restAt;
-function play() {
+const heard = () => !playing ? restAt
+  : role === 'sound' ? Math.max(0, ctx.currentTime - startAt - latency())
+  : Math.max(0, follow.now(performance.now()));
+// THE TRIM: this machine's picture a little earlier (+) or later (−) than its clock says — ms, kept on
+// the machine. A projector, a television, delay their picture; nothing in software can know by how much.
+let trim = 0;
+try { trim = +localStorage.getItem('synthesi-alpha.trim') || 0; } catch (e) {}
+const shown = () => (playing ? heard() + trim / 1000 : heard());
+
+// where the sound IS, for the others: "at this moment of the server's clock, file time tau was heard".
+// The context's clock is read through a main thread that sees it a few ms stale and never early, so of
+// the last readings the FRESHEST is kept: the largest (context time − machine time). Twenty seconds
+// of them — a busy moment on the page must not leave only stale ones (one word in thirty came 9 ms
+// stale from a window of two seconds: log §15); the two clocks drift apart by far less than that in 20 s.
+const fresh = [];
+function soundNow() {
+  const p = performance.now(), d = ctx.currentTime - p / 1000;
+  fresh.push([p, d]);
+  while (fresh.length > 2400 || fresh[0][0] < p - 20000) fresh.shift();
+  let best = -Infinity;
+  for (const f of fresh) if (f[1] > best) best = f[1];
+  return { p, tau: p / 1000 + best - startAt - latency() };
+}
+function tell(op) {
+  if (!sync || role !== 'sound' || !playing) return;
+  const w = soundNow();
+  sync.post(op, { serverTime: sync.toServer(w.p), fileTime: w.tau, version: ver.folder });
+}
+let telling = 0;
+
+// BEGIN THE PIECE — on this machine; and, unless the word came from another, on all of them
+function play(told) {
   if (playing || !ver) return;                      // a second ENTER does not begin the piece again
+  if (role === 'screen') {
+    // ahead of the sound's own word, by this machine's clock: with no network this IS the start
+    // ("each machine can be started by hand. Close, not exact"); with one, the sound's first word
+    // sets it right, in the three seconds the score stands still
+    follow.start(performance.now(), 0);
+    playing = true;
+    if (sync && !told) sync.post('go');
+    return;
+  }
   if (ctx.state !== 'running') ctx.resume();
   const s = ctx.createBufferSource(), g = ctx.createGain();
   s.buffer = ver.buffer;
   s.connect(g).connect(ctx.destination);
   startAt = ctx.currentTime + 0.1;
   s.start(startAt);
-  s.onended = () => { if (src && src.s === s) { src = null; playing = false; restAt = ver.buffer.duration; } };
+  s.onended = () => {                               // the end of the file: it stops by itself, and says so
+    if (src && src.s === s) { src = null; playing = false; restAt = ver.buffer.duration; clearInterval(telling); if (sync) sync.post('stop'); }
+  };
   src = { s, g };
   playing = true;
+  // the others are told where the sound is: at once ("it has begun"), again a second on — by when the
+  // context's clock has been read often enough to be read WELL — and every two seconds after
+  fresh.length = 0;
+  let last = performance.now(), gap = 1000;
+  clearInterval(telling);
+  telling = setInterval(() => {
+    const w = soundNow();
+    if (w.p - last >= gap) { last = w.p; gap = 2000; tell('report'); }
+  }, 25);
+  tell('play');
 }
-function stop() {
+// STOP — on this machine; and, unless the word came from another, on all of them
+function stop(told) {
   if (!playing) return;
   restAt = heard();                                 // the picture stops with the sound
-  const { s, g } = src, t = ctx.currentTime;
-  g.gain.setTargetAtTime(0, t, 0.012);              // out in a breath — no click
-  s.stop(t + 0.08);
-  src = null; playing = false;
+  playing = false;
+  if (role === 'screen') follow.stop(performance.now());
+  else {
+    const { s, g } = src, t = ctx.currentTime;
+    g.gain.setTargetAtTime(0, t, 0.012);            // out in a breath — no click
+    s.stop(t + 0.08);
+    src = null;
+    clearInterval(telling);
+  }
+  if (sync && !told) sync.post('stop');
 }
+// the others' words
+const heardFrom = {
+  onGo() { if (begun && role === 'sound') play(true); },            // a screen asked: the sound begins, and says where it is
+  onStop() { if (begun) stop(true); },
+  onSound(w) {                                                      // where the sound is — a screen sets its clock by it
+    if (!begun || role !== 'screen') return;
+    const c = sync.clock(), p = performance.now();
+    const tau = w.fileTime + (sync.toServer(p) - w.serverTime) / 1000;
+    // the score stands still until electronics main's first run: three seconds in which a place can be set unseen
+    const did = follow.hear(tau, p, c.unc, tau < ver.pic.main[0].c0 - 0.3);
+    if (did === 'began') playing = true;
+  },
+};
 
 // ---------- the picture: the score, scrolled under electronics main ----------
 function initV1() {
@@ -284,33 +383,94 @@ function paint(tau) {
     }
   }
 }
+// ---------- what this machine knows of the others (H) ----------
+let hudOn = false, noteUntil = 0, noteText = '';
+const note = (text, ms = 2500) => { noteText = text; noteUntil = performance.now() + ms; };
+const trimSays = () => trim === 0 ? 'the picture as its clock says' : `the picture ${Math.abs(trim)} ms ${trim > 0 ? 'earlier' : 'later'}`;
+function paintHud() {
+  const hud = $('hud'), now = performance.now(), lines = [];
+  if (now < noteUntil) lines.push(noteText);
+  if (hudOn) {
+    lines.push(`${role === 'sound' ? 'SOUND and picture' : 'picture only'} · ${ver.folder} · ${trimSays()}`);
+    if (!sync) lines.push('no small server here: this machine is by itself');
+    else {
+      const s = sync.state(), c = sync.clock(), m = s && s.machines;
+      lines.push(`${sync.down() ? 'THE NETWORK IS GONE — going on alone' : 'the network: ' + (m ? `${m.sound} with the sound, ${m.screen} picture only` : '…')}`
+        + (c ? ` · its clock known to ±${(c.unc * 1000).toFixed(1)} ms` : ''));
+      if (s && s.version && s.version !== ver.folder) lines.push(`THE SOUND MACHINE HAS ${s.version} — this one has ${ver.folder}`);
+      if (role === 'screen') {
+        const l = follow.log[follow.log.length - 1], since = sync.sinceSound();
+        if (!playing) lines.push('at rest');
+        else if (!l) lines.push('begun by hand — no word from the sound yet');
+        else lines.push(`from the sound: ${l.e >= 0 ? '+' : '−'}${Math.abs(l.e * 1000).toFixed(1)} ms at its last word (${l.did}) · ${since == null ? '' : since.toFixed(0) + ' s ago'}`
+          + (follow.rate(now) !== 1 ? ` · running ${((follow.rate(now) - 1) * 100).toFixed(1)} % ${follow.rate(now) > 1 ? 'fast' : 'slow'}` : ''));
+      }
+    }
+    lines.push('ENTER begin · ESCAPE stop — on every machine · LEFT / RIGHT the picture later / earlier · H hide');
+  }
+  hud.style.display = lines.length ? 'block' : 'none';
+  if (lines.length) hud.textContent = lines.join('\n');
+}
 function frame() {
-  paint(heard());
+  if (playing && role === 'sound') soundNow();       // one more look at the context's clock, at a moment of the frame's own
+  paint(shown());
+  paintHud();
   requestAnimationFrame(frame);
 }
 
 // ---------- begin ----------
-$('go').addEventListener('click', async () => {
+async function begin(as, force) {
   if (!ver || begun) return;
+  buttons(false);
+  try {
+    if (sync) {
+      const r = await sync.hello(as, ver.folder, force);
+      if (as === 'sound' && r.status === 409) {       // exactly one machine has the sound
+        say('ANOTHER MACHINE HAS THE SOUND. Begin this one with the picture only — or click "sound and picture" again to take the sound here.');
+        taking = true;
+        buttons(true);
+        return;
+      }
+      const s = sync.state();
+      if (as === 'screen' && s && s.version && s.version !== ver.folder) note(`the sound machine has ${s.version} — this one has ${ver.folder}`, 8000);
+    }
+    if (as === 'sound') { await loadSound(); await ctx.resume(); }
+  } catch (e) { say('FAILED: ' + e.message); buttons(true); throw e; }
+  role = as;
   begun = true;
-  $('go').blur();
-  await ctx.resume();
+  $('go').blur(); $('goScreen').blur();
   initV1();
   $('start').style.display = 'none';
+  document.body.classList.add('stage');
   v1.style.display = 'block';
+  fit();
   frame();
-});
+}
+let taking = false;
+$('go').addEventListener('click', () => begin('sound', taking));
+$('goScreen').addEventListener('click', () => begin('screen'));
 addEventListener('keydown', e => {
   if (!begun || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;   // chords are the browser's
   if (e.code === 'Enter' || e.code === 'NumpadEnter') { e.preventDefault(); play(); }
   else if (e.code === 'Escape') { e.preventDefault(); stop(); }
+  else if (e.code === 'KeyH' || e.key === 'h' || e.key === 'H') { hudOn = !hudOn; }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    trim += (e.key === 'ArrowRight' ? 1 : -1) * (e.shiftKey ? 1 : 10);
+    try { localStorage.setItem('synthesi-alpha.trim', String(trim)); } catch (err) {}
+    note(trimSays() + ' on this machine');
+  }
 });
 
-// what a check, and the stage set-ups (B4), read
+// what a check reads
 const player = window.player = {
-  shelf: [], ver: () => ver, ctx: () => ctx, heard, play, stop, paint, live, holders,
-  playing: () => playing, begun: () => begun, startAt: () => startAt,
+  shelf: [], ver: () => ver, ctx: () => ctx, heard, shown, play, stop, paint, fit, live, holders, follow,
+  playing: () => playing, begun: () => begun, startAt: () => startAt, role: () => role, sync: () => sync,
+  trim: v => { if (v != null) trim = v; return trim; }, stage: () => [W(), H()], source: () => src,
   record: { mainAt, soundAt, fracAt, checkPicture, SETTLE, SETTLE_BACK },
 };
 if (!SD || !SD.G) say('FAILED: the score (picture/score-data.js) did not load');
-else openShelf().catch(e => { say('FAILED: ' + e.message); throw e; });
+else {
+  openShelf().catch(e => { say('FAILED: ' + e.message); throw e; });
+  makeSync(heardFrom).then(s => { sync = s; $('net').textContent = s ? 'the small server is here: other machines can be kept with this one' : 'no small server here: this machine plays by itself'; });
+}

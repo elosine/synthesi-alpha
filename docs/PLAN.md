@@ -55,9 +55,11 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   taken again: `seed-1b`. **☑ Heard and kept by him — "clicks are
   gone, keep it" — and `seed-1` taken off the shelf at his word (log
   §14).**
-- **B4 ► The stage set-ups** (S4) — the small server, screens that keep
-  to the sound, the trim, the fixed shape; measured.
-- **B5 A new seed in one step** (S5) — the seed in the address, the
+- **B4 ☑ The stage set-ups** (S4) — the small server, screens that keep
+  to the sound, the trim, the fixed shape; measured. **Built and
+  checked on ONE machine, two pages (log §15); two real machines, a
+  house network and a projector are his to try — `docs/STAGE.md`.**
+- **B5 ► A new seed in one step** (S5) — the seed in the address, the
   samples a seed; a first batch of candidates. **The step ends with
   the master, at the piece's dials (S7.5).** Two things it must also
   hold, found the hard way (log §13): the make page paces its own
@@ -187,8 +189,8 @@ file.
 > solve the smoothness problem now."
 
 **S4. The stage set-ups** (one sound machine; every screen keeps to
-its sound; nothing stops if the network does — agreed by him, §254) ☐
-not built
+its sound; nothing stops if the network does — agreed by him, §254) ☑
+built (B4, log §15) — on one machine; the machines themselves are his
 
 Result when done: the sound comes from ONE machine, always. Every
 screen — the sound machine's own, the projection, his view on stage —
@@ -211,29 +213,41 @@ coordinated".
     his laptop or iPad on stage: his view.
   - *three* — a laptop at the desk: sound · a video machine:
     projection · an iPad on stage: his view.
-- One sound machine — the player has a sound switch; exactly one
-  machine has it on. No second sound is ever coordinated.
-- GO — one message, from any machine (his, on stage); every machine
-  starts by its own clock.
-- Pictures keep to the sound — the sound machine reports where its
+- ☑ One sound machine — the player has a sound switch; exactly one
+  machine has it on. No second sound is ever coordinated. *(Two ways to
+  begin: "sound and picture" · "picture only". A second machine asking
+  for the sound is told another has it. His, at the build: the sound
+  machine shows the picture too.)*
+- ☑ GO — one message, from any machine (his, on stage); every machine
+  starts by its own clock. *(ENTER. And ESCAPE on any machine stops
+  them all — his "a", log §15.)*
+- ☑ Pictures keep to the sound — the sound machine reports where its
   sound really is; each screen closes in on that, early and tiny,
-  never a jump. **The sound itself is never corrected.**
-- The floor rule — the network gone, or looking wrong: each screen
-  runs on its own clock. Nothing stops.
-- The small server — one program, two homes: his Hetzner share · a
+  never a jump. **The sound itself is never corrected.** *(Every two
+  seconds; nothing done inside 8 ms or what the clock may be wrong by;
+  past that at most 1.5 % fast or slow; a place is SET only at the
+  start, while the score stands still, or when more than 0.25 s out.)*
+- ☑ The floor rule — the network gone, or looking wrong: each screen
+  runs on its own clock. Nothing stops. *(Pulled for 4 min 40 s on one
+  machine: 0.4 ms out when it came back.)*
+- ◐ The small server — one program, two homes: his Hetzner share · a
   laptop on the house network (or, the rare case, his own router).
-- No network at the start — each machine can be started by hand.
+  *(The laptop's: built — `tools/serve.py`, `/sync/…`; the other
+  machines need a browser only. Hetzner: B6.)*
+- ☑ No network at the start — each machine can be started by hand.
   Close, not exact.
-- A trim on each screen — the picture earlier or later against the
+- ☑ A trim on each screen — the picture earlier or later against the
   sound (a projector delays its picture; software cannot know by how
-  much).
-- The picture keeps its 1920 × 1080 shape on every screen, bars
+  much). *(LEFT and RIGHT, 10 ms; SHIFT, 1 ms; kept on the machine.)*
+- ☑ The picture keeps its 1920 × 1080 shape on every screen, bars
   filling the rest — the form was cut to that screen (§214), and a
   page must be the same page on any projector.
-- Measured, and shown to him: how far each screen is from the sound —
-  with the network, and after it is pulled.
-- The kit list — for each set-up: what he brings, what the venue
-  gives.
+- ◐ Measured, and shown to him: how far each screen is from the sound —
+  with the network, and after it is pulled. *(On one machine: log §15,
+  `docs/STAGE.md`. `H` on a picture-only machine shows it live. On real
+  machines: his.)*
+- ☑ The kit list — for each set-up: what he brings, what the venue
+  gives. *(`docs/STAGE.md`.)*
 - *Where the design is taken from:* `for_seven_tubas/docs/
   ENGINE_BRIEF.md` §3 — the one-tuple sync, "after GO, zero network
   needed", THE FLOOR RULE (summarised in journal §253). The smallest

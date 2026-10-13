@@ -20,10 +20,16 @@ python tools/serve.py
 
 Then open http://localhost:8733/player/
 
-- Click a version on the shelf. It loads whole — a second or two.
-- [begin], then ENTER plays it from the top. ESCAPE stops.
+- Click a version on the shelf.
+- [begin — sound and picture]. The sound loads whole — a second or two.
+- ENTER plays it from the top. ESCAPE stops.
 - After ENTER nothing is fetched from anywhere.
 - To go back to the shelf, reload the page.
+- The picture keeps its 1920 × 1080 shape in any window (F11 for the full screen).
+
+**On more than one machine** — one has the sound, the others the picture only, and
+ENTER or ESCAPE on any of them begins or stops them all: [`docs/STAGE.md`](docs/STAGE.md),
+the set-ups and what to bring.
 - A version just made and not yet kept (a candidate, in
   `build/versions/`) is heard the same way:
   http://localhost:8733/player/?candidate=seed-N
@@ -95,6 +101,7 @@ then ENTER. Leave it ten minutes; the tab may sit in the background.
 | `engine/` · `tools/` | the workshop — the program that plays the piece, makes a version, and masters it |
 | `voices/v-alpha/` | what the piece is made from — the recording, its map, the scenario, the nineteen played sequences, the pre-processed samples |
 | `picture/` | the drawn score |
+| `docs/STAGE.md` | on stage: the set-ups, the kit, how the machines are kept together |
 | `docs/PLAN.md` | the plan of the standalone piece, and where the build stands |
 | `docs/PROJECT_JOURNAL.md` | §2 Resume Here — the state, for a cold start |
 | `docs/RUNNING_LOG.md` | the lab journal of this repo |

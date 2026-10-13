@@ -1125,4 +1125,177 @@ the player and has not said how it looks · what the plan still holds (B4 … B7
 **Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ · BM ☑ · the clicks ☑ ·
 **► B4 the stage set-ups, at his word.**
 
+## §15. B4 — the stage set-ups
+
+His word: "next B4".
+
+**What was put to him.** What it is: the same player on two or three machines — one plays
+the sound, the others show the picture only and keep it with that sound. The one thing to
+understand: it can be tested here on one machine only, two pages of a browser; a second
+laptop or iPad, the house wifi, the network pulled on purpose are his. The top line: the
+fixed shape · sound or picture only · GO from any machine · screens keep to the sound · the
+trim · measured, and the kit list. How the machines connect: his laptop runs the small
+server; any other machine opens its address in a browser, nothing installed. The one
+decision — what stops the show:
+
+| | |
+|---|---|
+| a | ESCAPE on any machine stops everything — the same as GO: one key, from wherever he is. The AI's pick |
+| b | only the sound machine can stop the sound — safer against a stray key on a screen, but not from his stage view |
+
+**His answer:** "a but sound machine can have image too right?"
+
+**Answered:** yes — the sound machine shows the picture too; one laptop by itself does
+both, as before; "picture only" is for the extra screens. The plan's S4 had it so ("one —
+one laptop: sound, projection, his view"). His "a" was taken as the word to build: the
+question changed nothing in the design.
+
+**What was built.**
+
+| | |
+|---|---|
+| `player/sync.js` | the stage: a machine's clock against the small server's; a picture-only machine's clock kept to the sound (`makeFollower`) |
+| `player/player.js` · `index.html` | two ways to begin; ENTER and ESCAPE to every machine; the trim; `H`; the fixed shape |
+| `tools/serve.py` | `/sync/…` — its own clock, who has the sound, the last few words said |
+| `docs/STAGE.md` | the set-ups, the kit, the steps, what was measured |
+
+- **Two ways to begin:** "sound and picture" · "picture only". The sound is fetched only
+  where it is played — at that button, not at the pick. A picture-only machine fetches no
+  sound and opens no audio at all.
+- **Exactly one machine has the sound:** a second one asking is told "ANOTHER MACHINE HAS
+  THE SOUND" and may take it with a second click. A machine keeps its name through a
+  reload of the page, so the sound machine, reloaded, still has it.
+- **ENTER on any machine.** On the sound machine: the sound begins, and it says so. On a
+  picture-only machine: it begins at once by its own clock — with no network that IS the
+  start, "close, not exact" — and asks; the sound machine begins; its first word sets the
+  asker right.
+- **ESCAPE on any machine** stops them all (his "a").
+- **How a screen keeps to the sound.** The sound machine says where its sound is — at the
+  start, a second on, then every two seconds: "at this moment of the server's clock, file
+  time τ was heard". A screen brings that to its own clock and compares:
+  - inside 8 ms, or inside what its clock estimate may itself be wrong by: nothing;
+  - past that: it runs at most 1.5 % fast or slow, aiming to be back in 4 s;
+  - it SETS its place — a jump — only at the first word after a start, at the second if
+    the score is still at rest (the piece's first three seconds), or when it is more than
+    a quarter of a second out.
+- **The floor rule:** no word, no change. The loop that listens needs no timer and no
+  frame of the page's.
+- **The trim:** LEFT / RIGHT, the picture 10 ms later / earlier on that machine; SHIFT,
+  1 ms; kept on the machine.
+- **`H`:** what the machine knows — its part, the version, the trim, the network, and on a
+  picture-only machine how far it stood from the sound at the last word.
+- **The fixed shape:** the stage is a box of the form's own shape (the picture's record
+  says 1920 × 1080), as large as the window allows, black bars around it.
+
+**Decided by the AI, told to him.**
+
+- *The wire is the small Python server, asked and answered* (a question held open until
+  there is news), *not a WebSocket server in Node* — which is what the tubas' brief names.
+  The repo needs Python and a browser, and still does; the words are few and none is in a
+  hurry: the clock is not carried by the wire, only checked over it.
+- *A screen keeps to the SOUND, by the sound machine's own words* — the plan's one
+  departure from the brief, kept.
+- *The numbers* — 8 ms, 1.5 %, 4 s, 0.25 s — are the brief's "early and tiny", the AI's to
+  begin with; his eye may move them.
+- *A different version on a screen than on the sound machine is said, not refused.*
+- *The trim on the arrows* (below).
+
+**What was tried, in order — and what it found.**
+
+*1. A screen's clock, with made-up words* (`makeFollower`, by itself, in node; a frame
+every 16 ms for 606 s; the sound's clock 30 parts in a million fast):
+
+| | from the sound, once in step | nudged · set | most off its own speed | the largest move in a frame, once the score moves |
+|---|---|---|---|---|
+| a good network | 2.9 ms mean, 7.0 most | 2 · 2 | 0.22 % | 0.04 ms |
+| begun by hand 0.3 s early | 2.8 · 7.1 | 2 · 2 | 0.21 % | 0.03 ms |
+| a poor network (clock known to ±15 ms) | 6.9 · 15.2 | 51 · 2 | 0.68 % | 0.11 ms |
+| the network gone from minute 1 to minute 9 | — | 1 · 2 | 0.46 % | 0.07 ms — and 16.4 ms out when it came back |
+| a sound card 200 ppm fast | 3.7 · 8.5 | 13 · 2 | 0.24 % | 0.04 ms |
+| no word at all | runs alone | 0 · 0 | 0 | 0 |
+
+*(First the second SET was allowed on any second word: with the words a second apart in
+the test's first form it fell after the score had begun to move — a jump of 2.8 ms, 17 on
+the poor network. It is now allowed only while the score is at rest.)*
+
+*2. The fixed shape, in the running app.* A window of 1024 × 768 gives a stage of
+1024 × 576, 96 px down, black around. From its centre to its edge: 7.619 s of score — the
+form's own 7.62. `seed-1b` replayed in it, 1,213 moments: 0 errors, the scroll on its line,
+the lenses the record's, every cursor on its read, 848 of 848.
+
+*3. The server, as it was, could not tell a clock.* A machine's question came back in
+300 ms — its clock known to ±151 ms. Two causes, both this server's: a new connection for
+every question; and `localhost`, which a browser tries on the new kind of address (IPv6)
+first, where this server did not listen. Now it keeps a connection open and listens on
+both: **a question answered in 1.0 … 2.4 ms, the clock known to ±0.6 … 0.9 ms.** The
+workshop was tried again on the changed server — the short pass of page 12: 54 sounds,
+rolled 27.341 s, held 27.338 s, 78 blocks, none lost; as before.
+
+*4. Two pages, one with the sound and one with the picture only.*
+
+- ENTER on the picture-only page → the sound began **143 ms** later (the sound's own
+  0.1 s of lead and its 40 ms to the ear; the wire, 3 ms). That page had begun at the key
+  by its own clock; the sound's first word set it back 142.7 ms — in the first second,
+  where nothing moves.
+- ENTER on the sound page → the other "began"; the second word set it 0.6 ms; then, word
+  by word: 0.00 · +0.21 · −0.03 · +0.07 · −0.33 ms.
+- ESCAPE on the picture-only page → both stopped: at 91.649 s and 91.646 s. ESCAPE on the
+  sound page → both.
+- A picture-only page began in 0.45 s; it held no sound and no audio context.
+- A second page asking for the sound: refused, with the sentence above.
+
+*5. By another road* — each page asked, apart, where IT was against the server's clock.
+First: **10.2 ms apart.** Not real: the sound page's timers were being paced for the
+check on a 10 ms beat (the page is hidden: §13), the sound card hands the page its clock
+in steps of 8 and 10.7 ms, and every reading fell at the same stale place. With the
+pacing made uneven, as a page's own timers are: **0.26 ms apart**, each clock known to
+about 1 ms; and by the screen's own log, from the sound's words: −1.22 … +0.21 ms, the
+median 0.00.
+
+*6. The network pulled* — the picture-only page told to stop asking, for 279.7 s. It went
+on alone, at its own speed. When it asked again the sound's first word found it
+**0.39 ms** out (its own clock estimate, grown stale, then good for ±9 ms; a moment later
+±0.75). That is 1.4 parts in a million — ONE machine's two clocks, its sound card's and
+its own. Two machines' will differ by more.
+
+*7. One word in thirty came 9 ms stale* (the screen nudged once, 0.2 % for four seconds).
+The sound page had kept only two seconds of readings of its clock, and a busy moment left
+it only stale ones. It keeps twenty now. *Not measured again over a long run after the
+change.*
+
+*8. The trim keys.* `[` and `]` first: the check's keys did not reach them — and on a
+keyboard where they are typed with a second key they would not reach them either, since
+the page leaves such chords to the browser. Moved to LEFT and RIGHT, which sit where they
+sit on every keyboard. RIGHT, RIGHT, SHIFT+LEFT: "the picture 19 ms earlier on this
+machine", kept on the machine, and the picture's time 19 ms ahead of its clock while it
+played. (Put back to nothing after.)
+
+**Seen on the way, and left.** The browser gives two accounts of what is being heard:
+the context's time less its "output latency" (what the player and the workshop use), and
+its "output timestamp", which on this machine stands 12 ms later. Which is right cannot be
+told without a microphone. The score's lag was set by his eye over the first; the trim is
+there for the rest.
+
+**Rejected.** A WebSocket server (above). · A countdown after GO, so that every machine
+could begin on one stroke: the piece's own first three seconds are that countdown — the
+score stands still — and the sound should begin when he presses. · Correcting the sound
+toward anything: never (his, engine journal §254).
+
+**Not done, not claimed.**
+
+- **Two real machines.** A house wifi, an iPad, a projector's delay, a real network
+  pulled, Safari, Firefox: none tried. Windows will ask, the first time, whether Python
+  may be reached from the network.
+- **Nobody has seen it** — the fixed shape, the bars, `H`: placed, not looked at.
+- A screen cannot keep itself awake (that needs a secure address; the laptop's is not
+  one): sleep is turned off by hand — `docs/STAGE.md`.
+- The small server's other home, his Hetzner share: B6.
+- With the files opened from a share and no small server, every machine is by itself —
+  by design; not tried.
+
+**The checks made no sound on his machine** (the source was turned to nothing each time).
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ · BM ☑ · the clicks ☑ · B4 ☑ built, on one
+machine — **the machines are his** · ► B5 a new seed in one step, at his word.
+
 ---
