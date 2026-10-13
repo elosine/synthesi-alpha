@@ -24,6 +24,9 @@ Then open http://localhost:8733/player/
 - [begin], then ENTER plays it from the top. ESCAPE stops.
 - After ENTER nothing is fetched from anywhere.
 - To go back to the shelf, reload the page.
+- A version just made and not yet kept (a candidate, in
+  `build/versions/`) is heard the same way:
+  http://localhost:8733/player/?candidate=seed-N
 
 Needs Python 3 and a current browser.
 

@@ -19,13 +19,14 @@ to a venue and played, and re-made from a new seed.
   a LEAN kit (his choice, engine journal §261). Every departure is a
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
-**State of the piece (keep this line current):** **► Version 1 is
-MASTERED — `safe`, the limiter only, his "a" (BM, the plan's S7) —
-and the player plays the master: http://localhost:8733/player/ . The
-player is built (B3); HIS EYES AND EARS ON IT ARE PENDING. The repo is
-public (`github.com/elosine/synthesi-alpha`). Next, at his word: B4,
-the stage set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start
-block.**
+**State of the piece (keep this line current):** **► He heard clicks
+in pages 11 and 12 of version 1. Found: the buffer override's joins;
+mended at the source, the samples made again, and the piece TAKEN
+AGAIN — `seed-1b`, a candidate, mastered, 0 hard breaks. HIS EAR ON IT
+IS THE NEXT THING: http://localhost:8733/player/?candidate=seed-1b .
+Version 1 stays on the shelf until he says. The repo is public
+(`github.com/elosine/synthesi-alpha`). Then, at his word: B4, the
+stage set-ups. `docs/PROJECT_JOURNAL.md` §2 is the cold-start block.**
 
 ## READ FIRST — how to work here
 
@@ -102,7 +103,7 @@ locally; ask "push now?" at session end. No push in between.
 
 | | |
 |---|---|
-| `player/index.html` · `player.js` | THE PLAYER — plays a kept version: the sound file, and the picture drawn from `picture.json`. No engine inside |
+| `player/index.html` · `player.js` | THE PLAYER — plays a kept version: the sound file, and the picture drawn from `picture.json`. No engine inside. `?candidate=<folder>` adds a version made and not yet kept (`build/versions/`) |
 | `player/record.js` | how a picture record is read — pure, no page; the one place that says what the record means |
 | `engine/perform.html` | THE WORKSHOP — plays the piece live; `?make` records a version |
 | `engine/scenario.js` | the scenario runner: the form, the pages, `makeVersion()` |
@@ -111,6 +112,7 @@ locally; ask "push now?" at session end. No push in between.
 | `engine/version.js` · `version-recorder.js` | a version's sound, taken sample for sample |
 | `tools/serve.py` | the server — port **8733** |
 | `tools/icy_render.py` · `page_samples.py` | make the pre-processed samples of pages 8 … 12 from the seed |
+| `tools/pace_timers.js` | run in the make page before [begin] when it is hidden: the page's timers paced from a worker (machine notes, below) |
 | `tools/master.py` | THE MASTERING STAGE — a version's finished sound in, its master out. `--selftest` · `--candidates` · `--keep`. The same file is in `live-electronics-engine` — keep the two the same |
 | `engine/master.html` | the listening page — a version's candidate masters, side by side |
 | `voices/v-alpha/master.json` | the piece's mastering dials, and the candidates put to his ear |
@@ -134,5 +136,16 @@ Windows. Python 3 with `numpy` and `soundfile`; `ffmpeg` on the path.
   it. To check one there, pace the page's own loops from a worker's
   timer — set before [begin]. A background tab is the same.
 - **A check in the pane plays its sound out of his speakers.**
+- **MAKING A VERSION in the AI's pane (log §13) — a take was lost to this.**
+  The piece's sounds are called from a page timer, and a page that is
+  hidden AND silent has its timers held back, to one a minute. So:
+  - commit first — the version names the commit that made it;
+  - BEFORE [begin], pace the page's timers from a worker: run
+    `tools/pace_timers.js` in the page;
+  - muting (`rig.engine.out.gain.value = 0`) is then safe: the recorder
+    takes the sound before it;
+  - AFTER, look for late sounds in `picture.json`: an attack's `end −
+    when` against its `dur`. **The version's own check does not see
+    them.**
 - The engine's own server is port 8732; this repo's is 8733. Both can
   run.

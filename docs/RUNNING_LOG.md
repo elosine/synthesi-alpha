@@ -953,4 +953,131 @@ no new dial.
 **Not done, not claimed in this entry.** His ear on the mended override — in the samples,
 and on page 6, where the unit runs live · the piece played again: §13.
 
+## §13. The piece played again — a take spoiled, and the take that is good: `seed-1b`
+
+The second half of his "a, go" (§12): play the piece again, and master it as before.
+
+**The first take was spoiled — by the AI — and thrown away.** It was made in the AI's
+pane (hidden), as version 1 and every short pass had been, and this time with the
+speakers MUTED (`engine.out` at 0 — after the recorder's tap, so the recording was whole),
+to spare him ten minutes of sound he had not asked to hear.
+
+| the spoiled take | | version 1 |
+|---|---|---|
+| length | 682.9 s | 605.8 s |
+| the last sound ends | 650.5 s | 600.8 s |
+| the loudest sample | +1.48 dB, 81 over full scale | +0.16 dB, 15 |
+| the version's own check: rolled · held | 582.164 · 582.146 s — **passed** | the same |
+
+*What had happened.* The picture's record gave it away: a sound's END stood far from the
+moment it was ASKED for. 159 sounds of pages 11 and 12 began late — by up to 58.4 s — and
+in clumps: 91 of them ending together at 563.3 s, the next clump at 623.3 s. A minute
+apart. A page that is hidden AND silent has its timers held back by the browser, after
+some minutes to one a minute; and the piece's sounds are CALLED from a timer
+(`engine/patterns.js`: a tick every 100 ms, looking 0.35 s ahead — 1.5 s when hidden,
+which is enough for a timer held to one a second, not one a minute). Muted, the page was
+silent. Each time the timer woke it called everything it was behind with, at once.
+
+*Two things this showed, both written into `CLAUDE.md`:*
+
+- **A version is not made muted in a hidden page** — or its timers are paced from
+  somewhere the browser does not hold back.
+- **The version's own check is blind to it.** It measures electronics main, which runs on
+  the audio clock and was right to the fiftieth of a millisecond. Nothing in it counts a
+  sound that begins late. By the record's measure version 1 — made unmuted — has **0**
+  sounds late: it was not touched by this.
+
+**The second take.** The mended code was committed first (so that the version names a
+clean commit: `ee393c5`); the page's own timers were paced from a worker's, 100 a second,
+measured over the whole pass; still muted. `rig.scenario.makeVersion({ name: 'seed-1b' })`,
+10.4 minutes.
+
+| `seed-1b`, as made | | version 1 |
+|---|---|---|
+| length | 606.139 s (29,094,656 frames) | 605.819 s |
+| the last sound ends | 600.797 s | 600.808 s |
+| the loudest sample | +0.16 dB, 15 over full scale | +0.16 dB, 15 |
+| level (RMS) | −22.79 dB | −22.81 dB |
+| runs · sounds called | 13 · 848 | 13 · 848 |
+| the check: rolled · held | 582.164 · 582.146 s | the same |
+| worst stop · start | 0.354 · 2.566 ms | the same |
+| blocks lost | 0 | 0 |
+| sounds that began late | **0** | 0 |
+
+**Against version 1, sound by sound:** the same 848 called, in the same pages, the same
+ways · a sound's start (from START) differs by 8.0 ms at most · its length by 0.1 ms at
+most · the thirteen runs by 0.1 ms at most. The same piece, taken again.
+
+**The clicks.**
+
+| hard breaks (a step over 0.12 of full scale) | version 1 | `seed-1b` |
+|---|---|---|
+| pages 1 … 10 | 6 | **0** |
+| page 11 | 53 | **0** |
+| page 12 and the play-out | 46 | **0** |
+
+And by the rougher count that takes a sharp attack for a click too (§11) — so that the
+pages the override does not touch serve as a measure of the count itself:
+
+| page | 1 | 2 | 3 | 4 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | out |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| version 1 | 117 | 40 | 89 | 6 | 51 | 37 | 60 | 140 | 59 | 192 | 120 | 64 |
+| `seed-1b` | 116 | 41 | 80 | 0 | 2 | 42 | 46 | 33 | 41 | 36 | 38 | 3 |
+
+Pages 1, 2, 3, 7 stand where they stood — attacks. Page 6, where the override runs LIVE
+on the bus, fell from 51 to 2: the mended unit, heard in a take. Pages 9, 11, 12 and the
+play-out fell with their samples. (Pages 4, 8 and 10 moved a little without the override
+in them — 6 → 0, 60 → 46, 59 → 41: sounds from the pages beside them ring on into these,
+and the grain's small stray is drawn afresh in every take. Not looked into further.)
+
+**Mastered as version 1 was** — `python tools/master.py build/versions/seed-1b`, the
+piece's dials (the limiter only): −17.3 LUFS · loudness range 16.3 LU · true peak −1.0 dB
+· the limiter worked on 2.06 s of the piece in 48 moments, 1.03 dB at most · of the
+samples it did not turn down, 0 changed. → `build/masters/seed-1b/master.flac`.
+
+**The player takes a candidate** — `player/?candidate=<its folder>`: a version made and
+not yet kept is put first in the shelf's list, marked "a CANDIDATE — made, not on the
+shelf", and its master is played if one is made. (The plan's S5 wants this anyway: "he
+listens; the kept ones go on the shelf".) Checked in the running app: the row reads
+`seed-1b · a CANDIDATE … · 10:06.1 · mastered · synthesi-alpha · ee393c5`; it holds the
+master (29,094,656 frames, its loudest sample at −1.0 dB); and its picture's record
+replayed whole — 2,425 moments, 0 errors, the lenses on screen the record's at every one,
+848 of 848 sounds seen, nothing left lifted at the end.
+
+**In `live-electronics-engine`:** the mended unit and tool; its own tool, run there,
+makes the same sound as here (the largest difference 0.000000); the nine sample files are
+the same in both repos, byte for byte; its journal 264, two clips; its
+`docs/plan/mastering-stage.md` says what a make page must know. Committed there, not
+pushed. The tag `v-alpha-final-draft` is not moved.
+
+**Decided by the AI, told to him.**
+
+- *The take is named `seed-1b`* — the same seed, the samples mended. A made version is not
+  written over, so it is not `seed-1`.
+- *It is a CANDIDATE, not on the shelf, not in git* (`build/versions/seed-1b/`, its master
+  in `build/masters/seed-1b/`): only what he has heard and kept goes there, and he has not
+  heard it. Version 1 stays on the shelf as it is until he says.
+- *Muting the pass* — the AI's, and the cause of the lost take. The second was muted too,
+  with the timers paced.
+
+**Not done, not claimed.**
+
+- **His ear on `seed-1b`** — whether the clicks are gone to HIM, and whether the override
+  still sounds as he chose it.
+- Whether `seed-1b` goes on the shelf, and whether `seed-1` stays there.
+- The make page does not yet pace its own timers, and its check does not yet count late
+  sounds: both are named for B5. Until then a version is made by the steps in
+  `CLAUDE.md`.
+- Timers a second late — what a hidden page that is NOT silent gets — were not measured
+  for what they do to a take: the reverb's send is closed by a timer, 0.3 s after a stop
+  (`engine/scenario.js`). Version 1 was made that way. `seed-1b`, with its timers paced,
+  was not.
+
+**The checks made no sound on his machine** this time, but for a few seconds of the
+player.
+
+**Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ (his eyes and ears pending) · BM ☑ ·
+**the clicks: mended and taken again — HIS EAR on `seed-1b` is the next thing** · then
+B4.
+
 ---

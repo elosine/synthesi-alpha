@@ -49,11 +49,19 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   ☑ Built: the tool, version 1's four candidates, the listening page,
   the player's part; the same in the engine repo. **Version 1's master
   is kept — `safe`, his "a" (log §10) — and the player plays it.**
-- **B4 ► The stage set-ups** (S4) — the small server, screens that keep
+- **(his ear, 2026-10-12 — log §11 … §13) The clicks of pages 11 and
+  12.** ☑ Found — the buffer override's joins; mended at the source,
+  in the tool and the live unit; nine samples made again; the piece
+  taken again: `seed-1b`, a candidate, mastered. **► His ear on it;
+  then it goes on the shelf at his word.**
+- **B4 The stage set-ups** (S4) — the small server, screens that keep
   to the sound, the trim, the fixed shape; measured.
 - **B5 A new seed in one step** (S5) — the seed in the address, the
   samples a seed; a first batch of candidates. **The step ends with
-  the master, at the piece's dials (S7.5).**
+  the master, at the piece's dials (S7.5).** Two things it must also
+  hold, found the hard way (log §13): the make page paces its own
+  timers, so that a hidden, silent page cannot call the sounds late;
+  and a version's check counts the sounds that began late.
 - **B6 The repo finished** (S6) — the front page, the pointers, the
   fresh-clone test; ~~public at his word~~ ☑ done early (log §3);
   Hetzner, his sign-in.
