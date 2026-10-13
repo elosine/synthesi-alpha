@@ -101,7 +101,8 @@ def finish_version(d, body):
         "recorder": {"gaps": body.get("gaps"), "chunks": body.get("chunks")},
         "check": body.get("check"),
         "workshop": {"repo": "synthesi-alpha", "commit": git("rev-parse", "HEAD"),
-                     "clean": git("status", "--porcelain") == ""},
+                     # clean = nothing uncommitted in what MAKES a version (the record may be being written)
+                     "clean": git("status", "--porcelain", "--", "engine", "tools", "voices", "picture") == ""},
     }
     (d / "picture.json").write_text(json.dumps(picture, ensure_ascii=False, separators=(",", ":")) + "\n",
                                     encoding="utf-8", newline="\n")
