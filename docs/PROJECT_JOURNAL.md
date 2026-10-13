@@ -56,7 +56,20 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   - **NOT tried — his:** two real machines, a house wifi, an iPad, a projector's delay,
     a real network pulled, Safari / Firefox. Windows will ask whether Python may be
     reached from the network.
-- **► THE NEXT CONCRETE STEP: B5, a new seed in one step (S5)** — put its proposal to him
+- **HIS TRY OF B4: "ok works" (log §18)** — he did not say with which machines. A first
+  refusal ("another machine has the sound") was this session's own page, or another
+  agent's; a second was another agent's, rightly refused (log §16, §17). Mended: a page
+  on its shelf holds no sound. Added: http://localhost:8733/sync/who — who is on the
+  stage.
+- **ANOTHER AGENT IS USING THE SAME SMALL SERVER for a recording test (2026-10-12).**
+  Until he says it is done: do not start the server again, do not open the player's
+  page, do not make a version.
+- **► THE NEXT CONCRETE STEP: B5, a new seed in one step (S5)** — its proposal WAS PUT
+  to him (log §18): the seed in the address · the seed's own samples · the pass, its
+  timers paced by the page · the check counts late sounds · the master at the end · a
+  first batch. The one decision asked: the first batch — three, seeds 2, 3, 4 (the
+  AI's pick), or his. **His answer is awaited; nothing is built.** If the chat is
+  cleared, put it to him again
   first. It must hold three things found the hard way: the step ends with the MASTER, at
   the piece's dials · the make page paces its own timers (`tools/pace_timers.js` is the
   stop-gap) · a version's check counts the sounds that began late. Then a first batch of

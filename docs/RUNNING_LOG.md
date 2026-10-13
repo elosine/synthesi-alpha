@@ -1357,4 +1357,22 @@ page that opens the player on it is on the same stage — a second session, a fo
 tab. For a concert that is what is wanted. For two people (or two agents) trying things
 at once on one laptop it is not, and nothing tells them apart but `/sync/who`.
 
+## §18. B4 on his try: "ok works"
+
+His words: "ok works can I continue recording test with other agent and then go for b5"
+
+**What that says, and what it does not.** B4 worked on his try — the first word of anyone
+but the AI on the stage set-ups. He did not say what the try was: how many machines, which
+ones, whether a second machine or a second page. So: "it works for him", and nothing more
+exact is claimed. Two real machines, a house network, a projector stay "not tried" until
+he says.
+
+**Answered:** yes — and while the other agent's recording test runs, this session keeps
+off the small server and off the player's page: every page on that server is on one
+stage (§17), an ESCAPE here would stop a sound there, and a server started again would
+cut a recording being sent to it.
+
+**B5's proposal was put to him in the same turn,** to be answered when the other test is
+done. Nothing of B5 is built or begun.
+
 ---
