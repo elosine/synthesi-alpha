@@ -22,7 +22,8 @@ Then open http://localhost:8733/player/
 
 - Click a version on the shelf.
 - [begin — sound and picture]. The sound loads whole — a second or two.
-- ENTER plays it from the top. ESCAPE stops.
+- ENTER plays it from the top. ESCAPE stops. (On a tablet: [GO]; press and hold two
+  seconds to stop.)
 - After ENTER nothing is fetched from anywhere.
 - To go back to the shelf, reload the page.
 - The picture keeps its 1920 × 1080 shape in any window (F11 for the full screen).

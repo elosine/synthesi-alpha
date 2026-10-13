@@ -61,6 +61,10 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   agent's; a second was another agent's, rightly refused (log §16, §17). Mended: a page
   on its shelf holds no sound. Added: http://localhost:8733/sync/who — who is on the
   stage.
+- **A START WITHOUT A KEYBOARD (his, log §19: "tablets won't have access to enter").**
+  Built, his "a": [GO] on the resting picture of a touched screen; press and hold two
+  seconds to stop. Checked with made-up touches; NO TABLET HAS BEEN TOUCHED. The trim
+  and `H` are still keys only. `player/?alone` keeps a page off the stage's wire.
 - **ANOTHER AGENT IS USING THE SAME SMALL SERVER for a recording test (2026-10-12).**
   Until he says it is done: do not start the server again, do not open the player's
   page, do not make a version.

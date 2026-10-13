@@ -1375,4 +1375,64 @@ cut a recording being sent to it.
 **B5's proposal was put to him in the same turn,** to be answered when the other test is
 done. Nothing of B5 is built or begun.
 
+## §19. A start without a keyboard — [GO], and a held press to stop
+
+His words: "tablets won't have access to enter, can we come up with another start,"
+
+A thing B4 had not seen: its set-ups put an iPad on the stage as his view, and every
+control it built was a key.
+
+**What was put to him:**
+
+| | |
+|---|---|
+| a | a [GO] button on the resting screen — only on touch screens, so a projected laptop stays clean; gone the moment the piece begins; it starts every machine, as ENTER does. The AI's pick |
+| b | tap anywhere on the picture to begin — nothing drawn at all; the risk: a stray touch while the tablet is set on its stand begins the sound in the hall |
+
+And, in either case, to stop: press and hold anywhere for two seconds — a brush of the hand
+does nothing. ENTER and ESCAPE keep working where there is a keyboard.
+
+**His answer:** "a, go"
+
+**What was built** (`player/player.js`, `player/index.html`).
+
+- **[GO]** — on the resting picture of a screen that is TOUCHED: a tablet or a phone from
+  the first (the browser says its pointer is a coarse one), any other screen once a finger
+  has been on it. It does what ENTER does. It is there whenever the piece is at rest — at
+  the start, after a stop, at the end — and not while it plays.
+- **A held press stops** — two seconds, anywhere, by a finger or a pen; not by a mouse,
+  which has a keyboard beside it. A bar fills while it is held, with the words "hold to
+  stop". Letting go, or a finger that travels more than 30 px, ends it and nothing
+  happens. The browser's own long-press menu is kept off the stage.
+- **`?alone`** in the address — the page asks the small server nothing and tells it
+  nothing. Made for this very check (another agent was using the stage: §17, §18), and
+  kept: it is the way to try the player while something else is on the wire.
+
+**Checked in the running app** — a page begun with the picture only, `?alone`, its touches
+made by the check (no tablet was touched):
+
+| | |
+|---|---|
+| a screen not yet touched | no button |
+| after one touch, at rest | [GO] shown |
+| [GO] | playing; the button gone |
+| a press of 0.6 s | the bar shown while held; let go — still playing, the bar gone |
+| a finger that travels 70 px | the hold ended; still playing |
+| held 1.5 s | still playing, the bar filling |
+| held past 2 s | stopped, at 3.49 s; [GO] back |
+| [GO] again | from the top |
+| on the stage's wire | no — `?alone` |
+| errors on the page | none |
+
+It made no sound (a picture-only page has none) and sent the other machines nothing.
+
+**Not done, not claimed.**
+
+- **No tablet has been touched.** An iPad's own browser, its long-press, its way of going
+  full screen: not tried.
+- The trim (LEFT / RIGHT) and `H` are still keys only — said to him; not asked for.
+- [GO] and the hold going to OTHER machines was not tried again here (it is `play()` and
+  `stop()`, the same two that ENTER and ESCAPE call, checked in §15) — the stage was
+  another agent's at the time.
+
 ---

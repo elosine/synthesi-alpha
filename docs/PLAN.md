@@ -220,7 +220,9 @@ coordinated".
   machine shows the picture too.)*
 - ☑ GO — one message, from any machine (his, on stage); every machine
   starts by its own clock. *(ENTER. And ESCAPE on any machine stops
-  them all — his "a", log §15.)*
+  them all — his "a", log §15. Without a keyboard — "tablets won't have
+  access to enter": a [GO] button on the resting picture of a touched
+  screen; press and hold two seconds to stop — his "a", log §19.)*
 - ☑ Pictures keep to the sound — the sound machine reports where its
   sound really is; each screen closes in on that, early and tiny,
   never a jump. **The sound itself is never corrected.** *(Every two

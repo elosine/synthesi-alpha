@@ -25,6 +25,15 @@
 //   H         what this machine knows of the others, in a corner
 // The picture keeps the shape the form was cut to (1920 × 1080), bars filling the rest.
 //
+// WITHOUT A KEYBOARD (his, log §19: "tablets won't have access to enter") — on a screen that is
+// touched, the resting picture carries one button, [GO]: it does what ENTER does, on every machine,
+// and is gone the moment the piece begins. To stop: press and HOLD anywhere for two seconds — a
+// brush of the hand does nothing. (His "a": a button, not "tap anywhere" — a stray touch while the
+// tablet is set on its stand must not begin the sound in the hall.)
+//
+// ?alone in the address: this machine by itself — it asks the small server nothing and tells it
+// nothing, whatever else is on the stage.
+//
 // The drawing is the workshop's, copied — engine/perform.html (paintV1,
 // makeLens) and engine/scenario.js (paintPic). There it is drawn from the live
 // engine; here the same lines are drawn from the record (record.js). The
@@ -234,15 +243,15 @@ function stop(told) {
 }
 // the others' words
 const heardFrom = {
-  onGo() { if (begun && role === 'sound') play(true); },            // a screen asked: the sound begins, and says where it is
-  onStop() { if (begun) stop(true); },
+  onGo() { if (begun && role === 'sound') { play(true); controls(); } },   // a screen asked: the sound begins, and says where it is
+  onStop() { if (begun) { stop(true); controls(); } },
   onSound(w) {                                                      // where the sound is — a screen sets its clock by it
     if (!begun || role !== 'screen') return;
     const c = sync.clock(), p = performance.now();
     const tau = w.fileTime + (sync.toServer(p) - w.serverTime) / 1000;
     // the score stands still until electronics main's first run: three seconds in which a place can be set unseen
     const did = follow.hear(tau, p, c.unc, tau < ver.pic.main[0].c0 - 0.3);
-    if (did === 'began') playing = true;
+    if (did === 'began') { playing = true; controls(); }
   },
 };
 
@@ -411,10 +420,45 @@ function paintHud() {
   hud.style.display = lines.length ? 'block' : 'none';
   if (lines.length) hud.textContent = lines.join('\n');
 }
+// ---------- a start, and a stop, without a keyboard ----------
+// A screen that is touched: a tablet, a phone — or any screen, once a finger has been on it.
+let touchy = matchMedia('(pointer: coarse)').matches;
+const HOLD = 2000;                                   // ms a press must last to stop the piece
+let hold = null;
+function controls() {
+  $('touchGo').style.display = touchy && begun && !playing ? 'block' : 'none';
+  if (hold && !playing) endHold();
+}
+function endHold() {
+  if (!hold) return;
+  clearTimeout(hold.t);
+  hold = null;
+  $('hold').classList.remove('on');
+}
+addEventListener('pointerdown', e => {
+  if (e.pointerType === 'mouse') return;             // a mouse has a keyboard beside it
+  touchy = true;
+  controls();
+  if (!begun || !playing) return;
+  endHold();
+  hold = { id: e.pointerId, x: e.clientX, y: e.clientY,
+           t: setTimeout(() => { endHold(); stop(); note('stopped — on every machine'); controls(); }, HOLD) };
+  void $('hold').offsetWidth;                        // the bar begins from nothing each time
+  $('hold').classList.add('on');
+}, true);
+for (const ev of ['pointerup', 'pointercancel'])
+  addEventListener(ev, e => { if (hold && e.pointerId === hold.id) endHold(); }, true);
+addEventListener('pointermove', e => {               // a finger that travels is not a hold
+  if (hold && e.pointerId === hold.id && Math.hypot(e.clientX - hold.x, e.clientY - hold.y) > 30) endHold();
+}, true);
+addEventListener('contextmenu', e => { if (begun) e.preventDefault(); });   // a long press is ours, not the browser's menu
+$('touchGo').addEventListener('click', () => { play(); controls(); });
+
 function frame() {
   if (playing && role === 'sound') soundNow();       // one more look at the context's clock, at a moment of the frame's own
   paint(shown());
   paintHud();
+  controls();
   requestAnimationFrame(frame);
 }
 
@@ -442,6 +486,7 @@ async function begin(as, force) {
   initV1();
   $('start').style.display = 'none';
   document.body.classList.add('stage');
+  controls();
   v1.style.display = 'block';
   fit();
   frame();
@@ -451,8 +496,8 @@ $('go').addEventListener('click', () => begin('sound', taking));
 $('goScreen').addEventListener('click', () => begin('screen'));
 addEventListener('keydown', e => {
   if (!begun || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;   // chords are the browser's
-  if (e.code === 'Enter' || e.code === 'NumpadEnter') { e.preventDefault(); play(); }
-  else if (e.code === 'Escape') { e.preventDefault(); stop(); }
+  if (e.code === 'Enter' || e.code === 'NumpadEnter') { e.preventDefault(); play(); controls(); }
+  else if (e.code === 'Escape') { e.preventDefault(); stop(); controls(); }
   else if (e.code === 'KeyH' || e.key === 'h' || e.key === 'H') { hudOn = !hudOn; }
   else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
     e.preventDefault();
@@ -467,10 +512,12 @@ const player = window.player = {
   shelf: [], ver: () => ver, ctx: () => ctx, heard, shown, play, stop, paint, fit, live, holders, follow,
   playing: () => playing, begun: () => begun, startAt: () => startAt, role: () => role, sync: () => sync,
   trim: v => { if (v != null) trim = v; return trim; }, stage: () => [W(), H()], source: () => src,
+  touchy: () => touchy, holding: () => !!hold,
   record: { mainAt, soundAt, fracAt, checkPicture, SETTLE, SETTLE_BACK },
 };
 if (!SD || !SD.G) say('FAILED: the score (picture/score-data.js) did not load');
 else {
   openShelf().catch(e => { say('FAILED: ' + e.message); throw e; });
-  makeSync(heardFrom).then(s => { sync = s; $('net').textContent = s ? 'the small server is here: other machines can be kept with this one' : 'no small server here: this machine plays by itself'; });
+  if (new URLSearchParams(location.search).has('alone')) $('net').textContent = 'by itself — asked for in the address (?alone): nothing is said to the other machines';
+  else makeSync(heardFrom).then(s => { sync = s; $('net').textContent = s ? 'the small server is here: other machines can be kept with this one' : 'no small server here: this machine plays by itself'; });
 }

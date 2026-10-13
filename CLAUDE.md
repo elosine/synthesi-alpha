@@ -104,7 +104,7 @@ locally; ask "push now?" at session end. No push in between.
 
 | | |
 |---|---|
-| `player/index.html` · `player.js` | THE PLAYER — plays a kept version: the sound file, and the picture drawn from `picture.json`. No engine inside. `?candidate=<folder>` adds a version made and not yet kept (`build/versions/`) |
+| `player/index.html` · `player.js` | THE PLAYER — plays a kept version: the sound file, and the picture drawn from `picture.json`. No engine inside. `?candidate=<folder>` adds a version made and not yet kept (`build/versions/`) · `?alone` keeps the page off the stage's wire — **use it for any check of the player while something else is on the stage** |
 | `player/record.js` | how a picture record is read — pure, no page; the one place that says what the record means |
 | `player/sync.js` | THE STAGE — several machines kept together: a machine's clock against the small server's, and a picture-only machine's clock kept to the sound (`makeFollower`) |
 | `docs/STAGE.md` | on stage: the set-ups, the kit, the steps, what was measured |

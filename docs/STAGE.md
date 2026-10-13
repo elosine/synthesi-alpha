@@ -7,6 +7,8 @@
 - **One machine has the sound, always.** It shows the picture too.
 - Every other machine shows **the picture only**, and keeps it to the sound.
 - **ENTER on any machine begins them all. ESCAPE on any machine stops them all.**
+- **On a tablet, with no keyboard: [GO] begins them all; press and hold two seconds
+  to stop them all.**
 - **If the network goes, nothing stops.** Every machine carries on by itself.
 
 ## The three set-ups
@@ -60,6 +62,18 @@ Things that bite:
   one's part, its address, and which has the sound. Any page that opens the player on
   this server is on the same stage: a forgotten tab counts.
 
+## A tablet — no keyboard
+
+On a screen that is touched, the resting picture carries one button:
+
+- **[GO]** — what ENTER does, on every machine. It is gone the moment the piece begins,
+  and back when it is at rest again.
+- **To stop: press and HOLD anywhere for two seconds.** A bar fills while you hold. A
+  brush of the hand, or a finger that travels, does nothing.
+- A screen that is not touched shows no button: a projected laptop stays clean. (Touch
+  it once, and it has one.)
+- The trim and `H` are keys only, so far.
+
 ## The trim — a screen whose picture comes late
 
 A projector or a television delays its picture, and nothing in software can know by how
@@ -81,6 +95,9 @@ it stood from the sound at the sound's last word, and what it did about it.
   can. Close, not exact; the sound is never touched.
 - **With no small server at all** (the files opened from a share): every machine is by
   itself, begun and stopped by hand.
+- **A machine kept apart on purpose:** add `?alone` to the address —
+  `…/player/?alone`. It asks the others nothing and tells them nothing. For trying
+  something while another thing is on the stage.
 
 ## How it keeps together, in four lines
 
