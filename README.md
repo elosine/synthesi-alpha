@@ -81,17 +81,24 @@ keeps the one named as `versions/seed-1b/master.flac`.
 python tools/serve.py
 ```
 
-Then open http://localhost:8733/engine/perform.html?make — [begin],
-then ENTER. Leave it ten minutes; the tab may sit in the background.
+Then open http://localhost:8733/engine/perform.html?make&seed=7 — the
+seed you want in the address — [begin], then ENTER. Leave it eleven
+minutes; the tab may sit in the background.
+
+That one step makes the seed's samples (the first time: a minute),
+plays the piece and records it, checks it, and masters it.
 
 - The version lands in `build/versions/seed-N/` — a **candidate**. Git
   does not keep `build/`.
-- A version you keep is copied to `versions/` — the shelf — and
-  committed. Only kept versions go into git.
+- Hear it, with its picture: http://localhost:8733/player/?candidate=seed-N
+- The page says so if a take is SPOILED (sounds that began late). Such
+  a take is not kept.
+- A version you keep goes onto the shelf:
+  `python tools/shelve.py seed-N --what "…" --verdict "…"`, then commit.
+  Only kept versions go into git.
 - A version already made is never written over.
-- Needs also `numpy` and `ffmpeg`.
-- **Today the seed is the one in the scenario file — seed 1.** A new
-  seed in one step is not built yet (`docs/PLAN.md`, B5).
+- Without `&seed=`, the seed is the scenario file's own: 1.
+- Needs also `numpy`, `soundfile` and `ffmpeg`.
 
 ## What is here
 

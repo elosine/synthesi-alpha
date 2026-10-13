@@ -108,14 +108,15 @@ locally; ask "push now?" at session end. No push in between.
 | `player/record.js` | how a picture record is read — pure, no page; the one place that says what the record means |
 | `player/sync.js` | THE STAGE — several machines kept together: a machine's clock against the small server's, and a picture-only machine's clock kept to the sound (`makeFollower`) |
 | `docs/STAGE.md` | on stage: the set-ups, the kit, the steps, what was measured |
-| `engine/perform.html` | THE WORKSHOP — plays the piece live; `?make` records a version |
+| `engine/perform.html` | THE WORKSHOP — plays the piece live; `?make` records a version; `&seed=N` — from that seed |
 | `engine/scenario.js` | the scenario runner: the form, the pages, `makeVersion()` |
 | `engine/voices.js` · `patterns.js` | what the cursors play, and his sequences sounded again |
 | `engine/playhead-*.js` · `override-processor.js` | the granular reader; the buffer override |
 | `engine/version.js` · `version-recorder.js` | a version's sound, taken sample for sample |
 | `tools/serve.py` | the server — port **8733**; and the stage's few words, `/sync/…`. It keeps connections open and listens on both kinds of address — both matter to how well a clock is known (log §15) |
-| `tools/icy_render.py` · `page_samples.py` | make the pre-processed samples of pages 8 … 12 from the seed |
-| `tools/pace_timers.js` | run in the make page before [begin] when it is hidden: the page's timers paced from a worker (machine notes, below) |
+| `tools/icy_render.py` · `page_samples.py` | make the pre-processed samples of pages 8 … 12 from the seed. `<page> <seed>`: another seed's, apart, in `build/seeds/` |
+| `tools/shelve.py` | a kept candidate → the shelf, at his word: `python tools/shelve.py seed-N --what … --verdict …` |
+| `tools/pace_timers.js` | a hidden page's timers paced from a worker — for checks of pages other than the make page, which has it built in (machine notes, below) |
 | `tools/master.py` | THE MASTERING STAGE — a version's finished sound in, its master out. `--selftest` · `--candidates` · `--keep`. The same file is in `live-electronics-engine` — keep the two the same |
 | `engine/master.html` | the listening page — a version's candidate masters, side by side |
 | `voices/v-alpha/master.json` | the piece's mastering dials, and the candidates put to his ear |
@@ -142,16 +143,18 @@ Windows. Python 3 with `numpy` and `soundfile`; `ffmpeg` on the path.
 - **Leave the pane OFF the player's page when a check is done** (log §16):
   a page left there is a machine on the stage's wire, and it got in his
   way.
-- **MAKING A VERSION in the AI's pane (log §13) — a take was lost to this.**
-  The piece's sounds are called from a page timer, and a page that is
-  hidden AND silent has its timers held back, to one a minute. So:
+- **MAKING A VERSION in the AI's pane** (log §13: a take was lost; §20:
+  mended). The piece's sounds are called from a page timer, and a page
+  that is hidden AND silent has its timers held back, to one a minute.
+  The make page now paces its own timers from a worker, and a version's
+  check counts the sounds that began late (`check.soundsLate` — 0, or
+  the take is spoiled). So:
   - commit first — the version names the commit that made it;
-  - BEFORE [begin], pace the page's timers from a worker: run
-    `tools/pace_timers.js` in the page;
-  - muting (`rig.engine.out.gain.value = 0`) is then safe: the recorder
-    takes the sound before it;
-  - AFTER, look for late sounds in `picture.json`: an attack's `end −
-    when` against its `dur`. **The version's own check does not see
-    them.**
+  - `engine/perform.html?make&seed=N` · [begin] ·
+    `rig.engine.out.gain.value = 0` (his speakers; the recorder takes
+    the sound before it) · `rig.scenario.makeVersion()`;
+  - one at a time, about eleven minutes each;
+  - `tools/pace_timers.js` is still the way to pace a page that is NOT
+    the make page (the player, in a check).
 - The engine's own server is port 8732; this repo's is 8733. Both can
   run.

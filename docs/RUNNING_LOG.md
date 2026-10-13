@@ -1435,4 +1435,90 @@ It made no sound (a picture-only page has none) and sent the other machines noth
   `stop()`, the same two that ENTER and ESCAPE call, checked in §15) — the stage was
   another agent's at the time.
 
+## §20. B5 — a new seed in one step
+
+His words: "works, a go for b5" — the tablet's [GO] works on his try (he did not say more),
+and his "a" to B5's one decision: the first batch is three candidates, seeds 2, 3 and 4.
+
+**What had been put to him** (§18): what it is — one address makes a whole new version
+from a new seed: the samples made, the piece played and recorded, checked, mastered. The
+one thing to understand — a browser still has to play the piece, so a version takes about
+ten and a half minutes; he opens one address and presses ENTER, and the rest runs by
+itself. The top line: the seed in the address · that seed's own samples · the pass, its
+timers paced by the page · the check counts late sounds · the master at the end · a first
+batch. The one decision — the first batch: a) three, seeds 2, 3, 4, about 35 minutes of
+machine time (the AI's pick) · b) he names the seeds, or how many.
+
+**What was built.**
+
+| | |
+|---|---|
+| `engine/scenario.js` | `&seed=N` in the address; a seed's samples asked for and found; the check counts late sounds |
+| `engine/perform.html` | the make page says which seed, and paces its own timers |
+| `tools/icy_render.py` · `page_samples.py` | a second word, the seed: another seed's samples are made apart |
+| `tools/serve.py` | `/samples?seed=N` · the version's own scenario · the master at the end · nothing made over the shelf |
+| `tools/master.py` | `--into`: the master beside a version's sound (and so in the engine repo too) |
+| `tools/shelve.py` | a kept candidate → the shelf |
+| `player/player.js` | a candidate's own master is played; a spoiled one says so |
+
+- **The seed in the address:** `engine/perform.html?make&seed=7`. The scenario file's own
+  seed (1) stays in the file; the address overrides it for that page. Everything the seed
+  rolls is rolled from it — the waits, the designs, the sequences, and the samples of
+  pages 8 … 12. (`?seed=7` without `make` plays seed 7 live, the same way.)
+- **A seed's own samples.** The file's own seed has its samples in the piece
+  (`voices/v-alpha/renders/`, in git). Another seed's are made by the server the first
+  time a page wants them — `/samples?seed=N` runs the two tools — into
+  `build/seeds/seed-N/renders/`, not in git: they are made again from the seed whenever
+  wanted.
+- **The page paces its own timers** — on the page that makes a version, from a worker's
+  (§13's stop-gap, built in). So the tab may sit in the background, and may be muted.
+- **The check counts the sounds:** how many were called · how many began more than 50 ms
+  after they were asked for · the worst. One late sound and the page says "SPOILED … do
+  not keep it"; `tools/shelve.py` refuses it; the player marks it.
+- **The step ends with the master** — beside the sound, at the piece's dials; the
+  version's facts carry its figures. A take that cannot be mastered is still a take, and
+  says so.
+- **The version's scenario** carries the seed it was made from.
+- **Nothing is made over the shelf:** a name that is on the shelf is refused.
+- **`tools/shelve.py <name> --what … --verdict …`** — at his word, with his words: the
+  candidate copied to `versions/`, the copy compared with what was made, its row added to
+  `shelf.json`, its line to the shelf's table, the candidate cleared. It does not commit.
+
+**Decided by the AI, told to him.**
+
+- *"One step" is one address and ENTER* — not one command. The piece is played by a
+  browser, and a browser wants a hand on it before it will sound.
+- *A seed's samples are not kept in git, even when its version is.* The version is the
+  recording; the samples are made again from the seed by the same two tools.
+- *A version's "clean" now means: nothing uncommitted in what MAKES a version* — engine,
+  tools, voices, picture — so that the record can be written while a pass runs.
+- *The workshop here is no longer the engine's, line for line:* `engine/scenario.js` and
+  `engine/perform.html` carry B5's changes and the engine repo's do not; the two sample
+  tools carry the seed's second word here only. What must stay the same in both is said
+  at the head of each: the override's loop.
+
+**What was tried.**
+
+*1. Seed 2's samples, asked of the server:* made in 20.5 s — pages 8, 9, 10, 11, 12, twenty
+sounds and five manifests in `build/seeds/seed-2/renders/`. The piece's own samples were
+not touched. Dealt differently from seed 1's, as a seed should:
+
+| page | seed 1 | seed 2 |
+|---|---|---|
+| 8 | icy decel · 17x · 10x · accel · accel long | icy 15x short · accel · 17x · 10x · decel long |
+| 10 | icy decel long · icy accel long | icy accel long · icy decel |
+| 11 | override · icy accel · override · icy 10x short | icy 15x short · override · icy 10x · override |
+| 12 | three icy + override, two icy | two icy, three icy + override — other icys, other containers |
+
+Breaks in all of seed 2's samples, the small ones too: **0** — the mended override.
+
+*2. A short pass with seed 2* (`perform.html?make&seed=2`; page 12, the stand cut to 4 s).
+The page said "THIS PAGE MAKES A VERSION OF SEED 2"; its timers were paced; it read its
+samples from seed 2's folder. Made: 32 sounds (seed 1's same pass calls 54 — another
+piece of the same piece), rolled 27.341 s, held 27.338 s, **0 sounds late**; mastered
+beside the sound (true peak −1.0 dB); its scenario carrying seed 2. The player listed it
+as a candidate and took its own master. The test's folder was removed.
+
+**Not done, not claimed in this entry.** The batch itself: §21.
+
 ---

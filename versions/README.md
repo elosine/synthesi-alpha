@@ -20,6 +20,11 @@ in each grain's length).
 Only a version the composer has heard and kept is put here. Candidates
 are made into `build/versions/`, which git does not keep.
 
+- **To make one:** `engine/perform.html?make&seed=N` — one address, ENTER.
+- **To hear one:** `player/?candidate=seed-N`.
+- **To keep one:** `python tools/shelve.py seed-N --what "…" --verdict "…"`,
+  then commit.
+
 ## The shelf's list — `shelf.json`
 
 The player (`player/`) opens on this list. A version put on the shelf
