@@ -1298,4 +1298,33 @@ toward anything: never (his, engine journal §254).
 **Where the build stands:** B1 ☑ · B2 ☑ · B3 ☑ · BM ☑ · the clicks ☑ · B4 ☑ built, on one
 machine — **the machines are his** · ► B5 a new seed in one step, at his word.
 
+## §16. His first try: "says another machine has the sound" — the AI's own page was holding it
+
+His words, on trying B4: "says another machine has the sound"
+
+**What it was.** The AI's pane had been left on the player's page after §15's checks. That
+page had been the sound machine in the checks; reloaded, it kept its name (so that a sound
+machine, reloaded, is still the one with the sound — §15) and sat on its shelf, asking the
+server for news every fifteen seconds. To the server it was still there, so it still held
+the sound — though it was playing nothing and had not asked to. His click was refused by
+a page he could not see.
+
+**Two faults, one the AI's housekeeping and one the design's.**
+
+- The pane was left on the page. It is on another page now, and `CLAUDE.md` says to
+  leave it off the player when a check is done.
+- A machine held the sound for as long as it was THERE. It holds it now only while it is
+  there AS the sound machine: one that has gone, or sits on its shelf again, does not.
+
+**Checked on the running server**, with two made-up machines: A asks, has it · B asks,
+refused · A goes back to its shelf · B asks, has it · A asks, refused · A takes it with a
+second click. As meant.
+
+**Also mended, seen while there:** the server's count of words began at 0 each time it
+was started — a server started again in mid-session would have counted from behind what
+the machines held, and they would have taken its words for old ones. It begins at the
+clock's seconds now, so it is always ahead.
+
+**Not claimed.** His second try.
+
 ---

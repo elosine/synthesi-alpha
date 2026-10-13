@@ -112,7 +112,9 @@ def finish_version(d, body):
 # Every word carries k, the count it was said at; a machine asks /sync/wait with
 # the count it has and is answered when there is something newer (or after 15 s).
 # Nothing here plays, draws or decides. If this server is gone the machines run on.
-SYNC = {"n": 0, "version": None, "sound": None, "playing": False, "go": None, "play": None, "stop": None,
+# n begins at the clock's seconds, so that a server started again never counts from behind what the
+# machines already hold
+SYNC = {"n": int(time.time()), "version": None, "sound": None, "playing": False, "go": None, "play": None, "stop": None,
         "report": None}
 SYNC_CV = threading.Condition()
 SYNC_SEEN = {}                    # machine -> (role, when last heard from)
@@ -130,8 +132,12 @@ def sync_say(op, b):
     if op == "hello":
         role = b.get("role")
         if role == "sound":
+            # the sound is another machine's only while that machine is THERE AS the sound machine: one
+            # that has gone, or been reloaded and sits on its shelf again, no longer holds it (his first
+            # try, log 16: a page left on the shelf was still "the machine with the sound")
             has = SYNC["sound"]
-            alive = has and has != who and time.monotonic() - SYNC_SEEN.get(has, (None, 0))[1] < 20
+            was, at = SYNC_SEEN.get(has, (None, 0))
+            alive = has and has != who and was == "sound" and time.monotonic() - at < 20
             if alive and not b.get("force"):
                 return 409, {"sound": has}
             SYNC["sound"], SYNC["version"] = who, b.get("version")

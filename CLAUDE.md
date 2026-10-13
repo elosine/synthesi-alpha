@@ -139,6 +139,9 @@ Windows. Python 3 with `numpy` and `soundfile`; `ffmpeg` on the path.
   it. To check one there, pace the page's own loops from a worker's
   timer — set before [begin]. A background tab is the same.
 - **A check in the pane plays its sound out of his speakers.**
+- **Leave the pane OFF the player's page when a check is done** (log §16):
+  a page left there is a machine on the stage's wire, and it got in his
+  way.
 - **MAKING A VERSION in the AI's pane (log §13) — a take was lost to this.**
   The piece's sounds are called from a page timer, and a page that is
   hidden AND silent has its timers held back, to one a minute. So:
