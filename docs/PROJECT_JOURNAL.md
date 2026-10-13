@@ -33,66 +33,85 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### SESSION 2, IN PROGRESS (2026-10-12) — THE SHELF HOLDS FOUR VERSIONS (`seed-1b`, and seeds 2, 3, 4: "keep all three"). B1 … B5 are built. Pushed. Next, at his word: B6.
+### OPEN AT SESSION END — (mid-session checkpoint, 2026-10-12, session 2) — B1 … B5 are built, the shelf holds four versions, all is pushed. B6's proposal WAS PUT; his answer to its one decision is awaited.
 
-- **The task:** build the standalone piece by `docs/PLAN.md`'s build order.
-- **Where it stands · the deliverable:** B1 ☑ · B2 ☑ this repo, public · B3 ☑ the player
-  (log §5) · BM ☑ the master (S7, log §6 … §10) · the clicks ☑ (log §11 … §14) · B4 ☑ the
-  stage set-ups (log §15 … §19; his try: "ok works", "works") · B5 ☑ a new seed in one
-  step (log §20 … §22) · **► B6 next, at his word.**
-  - ON THE SHELF, in git: `versions/seed-1b/` (the final draft, the override mended —
-    "clicks are gone, keep it") · `versions/seed-2/`, `seed-3/`, `seed-4/` (other
-    playings, from other seeds — "keep all three"). Each: the sound as made, its master
-    (the limiter only, true peak −1.0 dB), which the player plays, its picture's record,
-    its facts, its scenario. Seed 3 is 9:28; loudness runs −14.9 … −18.0 LUFS.
-  - PUSHED 2026-10-12, at his word ("comitt push") — this repo and
-    `live-electronics-engine`. From here: commit locally, "push now?" at session end.
-- **Then, at his word: B6, the repo finished (S6)** — the front page, the pointers, the
-  fresh-clone test; his Hetzner share (his sign-in). Put its proposal to him first.
-- **B5, in short (log §20).** `engine/perform.html?make&seed=N`, [begin], ENTER: the
-  seed's samples are made by the server the first time (`build/seeds/seed-N/`, not in
-  git), the piece is played and recorded, checked (`check.soundsLate` must be 0 — the
-  page says SPOILED otherwise, and `tools/shelve.py` refuses it), and mastered beside
-  its sound. The make page paces its own timers. About eleven minutes a version.
-- **MAKING A VERSION in the AI's pane:** commit first · the address with its seed ·
-  [begin] · `rig.engine.out.gain.value = 0` · `rig.scenario.makeVersion()` · one at a
-  time (`CLAUDE.md`, machine notes).
-- **THE STAGE IS ONE ROOM.** Any page that opens the player on this server is on the
-  same stage. He has had a laptop, a tablet and another agent's pages on it. **For any
-  check of the player use `player/?alone`; leave the pane off the player when done;
-  http://localhost:8733/sync/who shows who is there.** Starting the server again cuts
-  the others' wire for a moment (they go on alone and come back).
-- **Done this session:** the licence ☑ (log §2 — MIT for `engine/`, `tools/`, `player/`;
-  the piece and its record all rights reserved; **a new top-level folder is named in
-  `LICENSE-PIECE.md` the day it is made**) · public ☑ (log §3) · the push rule ☑ (log §4:
-  commit locally, "push now?" at session end) · B3 · BM · the clicks · B4 (with the
-  tablet's [GO] and held press, his "a", log §19) · B5.
-  - **Commits since the last push are local — in this repo AND in
-    `live-electronics-engine` (four there: journal 263 … 265, and `tools/master.py`'s
-    `--into`; its own rule is commit and push before the session ends).**
-  - ONE FILE IN TWO REPOS, change both: `tools/master.py` · `engine/master.html` ·
-    `engine/override-processor.js`. NO LONGER the same, by B5 and B4: `engine/scenario.js`,
-    `engine/perform.html`, the two sample tools (their `override` must still match the
-    unit's), `tools/serve.py`.
-- **`Resume reads:`** `docs/RUNNING_LOG.md` §20, §21 · `docs/PLAN.md` (the build order;
-  S6) · `docs/STAGE.md` · `README.md` (B6 finishes it) ·
-  `live-electronics-engine/docs/reference/ui-preferences.md` (before any interface work).
-- **Pending him:**
-  - **his ear on seeds 2, 3 and 4 — which are kept;**
-  - two real machines on the stage set-ups, said plainly (he has said "works"; not with
-    what) — and the trim and `H` on a tablet, if he wants them there;
+*For an AI that has not seen the conversation. After `/postclear`: play this back, then
+STOP and ask (the rule at the head of §2).*
+
+- **The task:** build the standalone piece by `docs/PLAN.md`'s build order. **Its state:**
+  B1 ☑ make a version · B2 ☑ this repo, public · B3 ☑ the player · BM ☑ the master ·
+  the clicks ☑ mended · B4 ☑ the stage set-ups (his try: "ok works", "works") · B5 ☑ a
+  new seed in one step · **► B6 the repo finished — proposed, not begun** · B7 the video.
+- **The latest deliverable:** the shelf — `versions/seed-1b/` (the final draft, the
+  override mended: "clicks are gone, keep it") and `versions/seed-2/`, `seed-3/`,
+  `seed-4/` ("keep all three"). The player plays each one's master:
+  http://localhost:8733/player/ . Pushed: `82f0560` here, `3da7d96` in
+  `live-electronics-engine`; GitHub's `main` is the local one in both.
+- **► THE NEXT CONCRETE STEP: ask him B6's one decision again, word for word** (log §23):
+  - a) B6 without Hetzner now — the front page, the pointers, the fresh-clone test;
+    Hetzner its own step when he is ready to sign in. *(The AI's pick.)*
+  - b) Hetzner included now — he says what the share is (plain web space, or a machine
+    that can run a program) and signs in himself.
+- **On his "a, go" — B6's three steps, as instructions** (build → verify → write down →
+  commit; one at a time):
+  1. *The front page.* Read `README.md` top to bottom; run every command and open every
+     address in it as written; mend what is not true. It must say, in a few lines each:
+     to play it · to make a version · what each folder is · where it came from.
+  2. *The pointers.* `live-electronics-engine` (its `README.md`, its `CLAUDE.md`) must
+     point at this repo; `composition-system/INDEX.md` has NO line for the piece — add
+     one. Both are other repos: say so to him before committing there, and ask each
+     one's push rule if it is not written in it.
+  3. *The fresh-clone test* (the plan's test of done). `git clone
+     https://github.com/elosine/synthesi-alpha` into an EMPTY scratch folder. The clone's
+     server needs its own port — `tools/serve.py` has 8733 fixed: give it a port as its
+     first word, default 8733. In the clone, on the other port: the player (`?alone`)
+     loads a version, picture and sound · `/samples?seed=5` makes a seed's samples · a
+     short version is made (`engine/perform.html?make`, [begin],
+     `rig.scenario.makeVersion({ page: 12, wait: 4, name: 'clone-check' })`: 0 sounds
+     late, mastered). Nothing may come from outside the clone. Mind: his git checks text
+     out with CRLF — the clone is the first place the files have it. Write the numbers
+     in the log; remove the clone.
+- **`Resume reads:`** `docs/PLAN.md` — the build order and S6 only · `README.md`.
+  *(Everything else the next step needs is in this block and in `CLAUDE.md`.)*
+- **Decisions pending him:**
+  - **B6: a or b** (above);
+  - the words on what each of seeds 2, 3, 4 IS are the AI's (the loudest · the shortest
+    · the sparest) — his to replace (`versions/shelf.json`, `versions/README.md`);
+  - two real machines on the stage, said plainly — he has said "works", not with what;
+    the trim and `H` on a tablet, if he wants them there;
   - his eyes on the player's picture, the fixed shape and its bars;
   - the engine's LIVE bus: its "safety limiter" does not hold −1 dB — his to ask for;
-  - whether the score-drawing tool should travel here too (it did not);
+  - whether the score-drawing tool should travel here (it did not);
   - the build order is the AI's — his to change.
-- **Not proven:** how any of it LOOKS · a real tablet's own browser · the one step run by
-  HIS hand in his own browser · the stage's numbers (8 ms, 1.5 %, 4 s, 0.25 s) and the
-  limiter's speeds are the AI's starting numbers · an iPad as the SOUND machine (233 MB
-  unpacked).
-- **To check a picture in the AI's pane:** hidden, it gives no frames — pace the page's
-  own loops from a worker's timer, set before [begin] (log §5, `CLAUDE.md`). A background
-  tab is slower still: front the one being measured.
-- **Deliberately uncommitted:** nothing. (`build/` is not in git, by design.)
+- **Three things that bit this session — do not learn them again:**
+  - **THE STAGE IS ONE ROOM.** Any page that opens the player on this server is on it —
+    his laptop, his tablet, another agent's pages have all been there. For any check of
+    the player use `player/?alone`; leave the pane OFF the player when done;
+    http://localhost:8733/sync/who shows who is there. Starting the server again cuts
+    the others' wire for a moment.
+  - **MAKING A VERSION** — `CLAUDE.md`, machine notes: commit first · the address with
+    its seed · [begin] · `rig.engine.out.gain.value = 0` · `rig.scenario.makeVersion()` ·
+    one at a time, about eleven minutes. `check.soundsLate` must be 0.
+  - **THE PUSH RULE** (his, log §4): commit locally; "push now?" at session end. He
+    pushed once in mid-session at his own word ("comitt push"); that was that push.
+- **ONE FILE IN TWO REPOS, change both:** `tools/master.py` · `engine/master.html` ·
+  `engine/override-processor.js`. No longer the same, by B4 and B5: `engine/scenario.js`,
+  `engine/perform.html`, the two sample tools (their `override` must still match the
+  unit's), `tools/serve.py`.
+- **Not proven:** how any of it LOOKS (the AI's pane does not draw) · a real tablet's own
+  browser · the one step run by HIS hand in his own browser · anything on a second
+  machine by measurement · an iPad as the SOUND machine (233 MB unpacked).
+- **Deliberately uncommitted** (`git status --short` is empty in both repos; what
+  follows is outside git on purpose):
+  - `build/masters/` (306 MB) — the mastering candidates of `seed-1` and `seed-1b` his
+    ear chose from; kept in case he wants to compare. Safe to remove at his word.
+  - `build/seeds/seed-2/`, `seed-3/`, `seed-4/` (22 MB) — those seeds' samples; made
+    again from the seed by the server whenever wanted.
+  - `build/versions/previews/` (41 MB) — the three full-length mp3s sent to him.
+  - `build/click-previews/` (6 MB) — the before/after files of the clicks, and the
+    scripts that found them (`how/`).
+  - `.claude/settings.local.json` — this machine's own settings; not the repo's.
+  - The small server may still be running on 8733 (started by this session).
 
 ---
 

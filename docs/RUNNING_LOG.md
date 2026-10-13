@@ -1628,4 +1628,29 @@ GitHub's guidance of about 1 GB.
 **Pushed, at his word** — this repo and `live-electronics-engine` (whose own rule is
 commit and push before the session ends).
 
+## §23. The push, as it went; B6's proposal put; a checkpoint
+
+**The push.** Before it, the text about to go public was searched for the addresses of
+his machines, keys, passwords, e-mail: none. Then: `synthesi-alpha` `580a4c2..82f0560` (20
+commits, about 310 MB new — no file over 40 MB) · `live-electronics-engine`
+`5900d65..3da7d96` (4 commits). In both, GitHub's `main` read back as the local one.
+
+**B6's proposal, put to him in answer to his "next?"** — what it is: the last tidy-up, so
+that in two years he opens one repo and needs to remember nothing. The top line: 1 the
+front page, a final pass · 2 the pointers — this repo, the engine repo and
+`composition-system`'s index each pointing at the others · 3 the fresh-clone test — the
+repo cloned from GitHub into an empty folder, a version played and one made, nothing
+fetched from anywhere else · 4 his Hetzner share. The one decision:
+
+| | |
+|---|---|
+| a | B6 without Hetzner now — steps 1 to 3; Hetzner its own step when he is ready to sign in. The AI's pick |
+| b | Hetzner included now — he says what the share is (plain web space, or a machine that can run a program) and signs in himself |
+
+Said with it: the fresh-clone test will be on THIS machine, in an empty folder; a truly
+different machine is his.
+
+**He did not answer it: he asked for a checkpoint** (`/checkpoint`) — the chat is to be
+cleared and the same work gone on with. Nothing of B6 is built.
+
 ---
