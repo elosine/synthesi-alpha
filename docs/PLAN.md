@@ -67,9 +67,26 @@ The AI's (§260), put to him — his to change. Not the order of deciding.
   hold, found the hard way (log §13): the make page paces its own
   timers, so that a hidden, silent page cannot call the sounds late;
   and a version's check counts the sounds that began late.
-- **B6 ► The repo finished** (S6) — next, at his word — the front page, the pointers, the
-  fresh-clone test; ~~public at his word~~ ☑ done early (log §3);
-  Hetzner, his sign-in.
+- **B6 ⏸ The repo finished** (S6) — **ON HOLD, his word, 2026-10-14 (log §29):** "just
+  hold on this for now". How the piece reaches its performers is to be settled with the
+  way his performance scores are served — worked out in his other repo: "when I figure
+  that out … I'll come back to these or I'll include these into that build". It may be
+  rebuilt then. ~~public at his word~~ ☑ done early (log §3). The structure, as far as it
+  went (log §24 … §28):
+  - **Who gets the piece:** performers, who take it to a venue. Listeners: the video
+    (B7).
+  - **How, as it stands:** downloaded once, from GitHub · the performer's laptop runs the
+    small server (Python 3) · every machine at the venue opens the player from it · no
+    internet at the concert · two venues never meet.
+  - **His website** (his Hetzner server — the quartet's, `string_quartet_no1-composer/
+    docs/MAINTENANCE.md`): a pointer to this repo at most; it plays no part in a
+    performance. A stage run from it would put every venue on ONE stage — each
+    performance would need its own.
+  - **Open:** is "download once, the laptop runs it" the way at all · what a performer
+    downloads — everything (about 345 MB, as now) or the program and one version (about
+    55 MB) · the terminal and Python, a performer's rough spot.
+  - **Its parts, when taken up:** the front page · the pointers · the fresh-clone test ·
+    the website's part. Steps 1 … 3 as instructions: `docs/PROJECT_JOURNAL.md` §2.
 - **B7 The video** (S3's fallback).
 
 > **THE VERSION ON THE SHELF IS `seed-1b`** (log §14). Where this plan

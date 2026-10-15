@@ -33,7 +33,7 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
-### OPEN AT SESSION END — (mid-session checkpoint, 2026-10-12, session 2) — B1 … B5 are built, the shelf holds four versions, all is pushed. B6's proposal WAS PUT; his answer to its one decision is awaited.
+### OPEN — (2026-10-14) — B1 … B5 are built, the shelf holds four versions. B6 is ON HOLD, his word (log §29).
 
 *For an AI that has not seen the conversation. After `/postclear`: play this back, then
 STOP and ask (the rule at the head of §2).*
@@ -41,19 +41,19 @@ STOP and ask (the rule at the head of §2).*
 - **The task:** build the standalone piece by `docs/PLAN.md`'s build order. **Its state:**
   B1 ☑ make a version · B2 ☑ this repo, public · B3 ☑ the player · BM ☑ the master ·
   the clicks ☑ mended · B4 ☑ the stage set-ups (his try: "ok works", "works") · B5 ☑ a
-  new seed in one step · **► B6 the repo finished — proposed, not begun** · B7 the video.
+  new seed in one step · **⏸ B6 the repo finished — ON HOLD (his, log §29)** · B7 the video.
 - **The latest deliverable:** the shelf — `versions/seed-1b/` (the final draft, the
   override mended: "clicks are gone, keep it") and `versions/seed-2/`, `seed-3/`,
   `seed-4/` ("keep all three"). The player plays each one's master:
   http://localhost:8733/player/ . Pushed: `82f0560` here, `3da7d96` in
   `live-electronics-engine`; GitHub's `main` is the local one in both.
-- **► THE NEXT CONCRETE STEP: ask him B6's one decision again, word for word** (log §23):
-  - a) B6 without Hetzner now — the front page, the pointers, the fresh-clone test;
-    Hetzner its own step when he is ready to sign in. *(The AI's pick.)*
-  - b) Hetzner included now — he says what the share is (plain web space, or a machine
-    that can run a program) and signs in himself.
-- **On his "a, go" — B6's three steps, as instructions** (build → verify → write down →
-  commit; one at a time):
+- **► THE NEXT CONCRETE STEP: none here until his word.** B6 is held: how the piece
+  reaches performers waits on how all his performance scores will be served — worked out
+  in his other repo; "it probably has to be rebuilt". He chose "b" (Hetzner in) first,
+  then held it. The structure so far: `docs/PLAN.md` B6 (who gets it · how, as it stands ·
+  the website's part · what is open). B7 (the video) is not begun.
+- **If B6 is taken up as it was planned — its three steps, as instructions** (build →
+  verify → write down → commit; one at a time):
   1. *The front page.* Read `README.md` top to bottom; run every command and open every
      address in it as written; mend what is not true. It must say, in a few lines each:
      to play it · to make a version · what each folder is · where it came from.
@@ -71,10 +71,12 @@ STOP and ask (the rule at the head of §2).*
      late, mastered). Nothing may come from outside the clone. Mind: his git checks text
      out with CRLF — the clone is the first place the files have it. Write the numbers
      in the log; remove the clone.
-- **`Resume reads:`** `docs/PLAN.md` — the build order and S6 only · `README.md`.
+- **`Resume reads:`** `docs/PLAN.md` — the build order (B6's hold) ·
+  `docs/RUNNING_LOG.md` §24 … §29.
   *(Everything else the next step needs is in this block and in `CLAUDE.md`.)*
 - **Decisions pending him:**
-  - **B6: a or b** (above);
+  - **B6: held** — when he takes it up: is "download once, the laptop runs it" the way;
+    what a performer downloads (PLAN.md B6);
   - the words on what each of seeds 2, 3, 4 IS are the AI's (the loudest · the shortest
     · the sparest) — his to replace (`versions/shelf.json`, `versions/README.md`);
   - two real machines on the stage, said plainly — he has said "works", not with what;

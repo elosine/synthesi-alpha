@@ -23,9 +23,10 @@ to a venue and played, and re-made from a new seed.
 FOUR VERSIONS — `seed-1b` and seeds 2, 3, 4 (his: "keep all three");
 the player plays each one's master: http://localhost:8733/player/ .
 B1 … B5 are built; the stage set-ups work on his try. Pushed
-2026-10-12 (`github.com/elosine/synthesi-alpha`, public). Next: B6,
-the repo finished — its proposal was put, his answer to its one
-decision is awaited (log §23). `docs/PROJECT_JOURNAL.md` §2 is the
+2026-10-12 (`github.com/elosine/synthesi-alpha`, public). B6, the
+repo finished, is ON HOLD at his word (log §29): how the piece
+reaches performers waits on how his performance scores will be
+served, worked out in his other repo. `docs/PROJECT_JOURNAL.md` §2 is the
 cold-start block.**
 
 ## READ FIRST — how to work here

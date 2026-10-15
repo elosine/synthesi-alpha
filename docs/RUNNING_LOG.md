@@ -1654,3 +1654,183 @@ different machine is his.
 cleared and the same work gone on with. Nothing of B6 is built.
 
 ---
+
+## §24. B6: "b" — Hetzner included now; what his share is, found
+
+His words: "b there might be some info about the hetzner in piece 1 string quartet, or
+walk me thru the set up"
+
+**Decided (his):** b — B6 takes in Hetzner now, not as a later step.
+
+**Looked for, in order:** "hetzner" across `string_quartet_no1-composer` — five files.
+Read: `docs/MAINTENANCE.md` (its server table and its common operations) and two lines of
+`docs/SERVER_AUDIT.md`.
+
+**Found — the share is a MACHINE THAT RUNS A PROGRAM, already set up:**
+
+- a Hetzner virtual server, the small kind (CPX11), behind his domain `justinwenloyang.com`
+  (through Cloudflare);
+- nginx in front, with a certificate (Let's Encrypt); a non-root `deploy` user;
+- the quartet lives there as a git clone, its server run by PM2, at
+  `/string-quartet-no1`;
+- the way in is SSH with a key already on this machine; a deploy is a `git pull` there.
+
+*(Its address and the key's path are in the quartet's docs, not here: this repo is
+public.)*
+
+**Not checked:** whether the server answers, whether the key still opens it, how much room
+is on it. Nothing was sent to it.
+
+**Put to him next:** what Hetzner is FOR in this piece — the plan's S6 says only "pointers
+both ways … on the Hetzner page".
+
+---
+
+## §25. How the Hetzner share is billed; what 270 MB would cost it
+
+Put to him after §24: a) a pointer only — a line on his website linking to this repo (the
+AI's pick) · b) the player online. He asked how a) works (one link on the site's home
+page; nothing of the piece on the server — where that page lives is not yet looked at),
+then: "how the Hertzner share works? I seem to get billed every once in a while … it's
+not consistent … I'm surprised that anyone's visiting it at all. And what would be the
+impact if it's 270 megabytes?"
+
+**From Hetzner's own documentation** (two web searches, `docs.hetzner.com` and
+`hetzner.com` only — his account and his invoices were not looked at):
+
+- a cloud server is billed by the hour, up to a monthly cap, for as long as it EXISTS —
+  used or not, switched on or off; visitors do not enter into it;
+- billed after the month, not before;
+- no invoice is made until the amount owed passes €10 (or three months go by): small
+  months add up and are invoiced together. A small server is under €10 a month, so this
+  alone gives invoices "every once in a while", each of a different size. If his card is
+  not in euros, the exchange rate is a second cause — not checked which currency he pays
+  in;
+- a CPX11 has 40 GB of disk; traffic out is included up to a limit — at least 1 TB a
+  month in the US, more in Europe. Which location his server is in: not checked.
+
+**The 270 MB, worked out (not measured on the server):** under 1 % of a 40 GB disk ·
+no change to the bill — disk is in the price · a listener downloads one master, about 35
+MB (the shelf's 270 MB over eight files), so 1 TB is about 29,000 listens a month before
+traffic costs anything extra.
+
+---
+
+## §26. How the versions reach people — the planning method entered
+
+His words: "can we think about the versions or like a different solution? I don't think
+everyone needs to download all the versions every time. So like one possibility is that
+we keep some versions on the server and they just get one, or they download the engine
+and just need to know to generate a version if they want to use a different one. Um,
+I'll take recommendations here."
+
+Taken as a planning question (the plan-item method, phase 1: state and restate).
+
+**Measured** (`ls`, `du`, this machine):
+
+| | |
+|---|---|
+| one version on the shelf | `master.flac` 32 … 34.5 MB · `sound.flac` (the take) the same · four small files, 0.1 MB with the picture's record |
+| what the player fetches to play one | its master and its picture — about 34 MB |
+| the workshop and what it makes from (`engine` · `player` · `voices` · `picture`) | about 21 MB |
+| the shelf (`versions/`) | 257 MB |
+| git's own store (`.git`) — what a clone downloads | 345 MB |
+
+**The answer put first:** to HEAR a version nobody downloads them all — the player
+fetches only the one picked. All versions come only with the repo (a git clone).
+
+**Put to him:** his idea read back; the AI's recommendation in three lines (the website
+plays one at a time · the repo stays the shelf's safe home, since a server goes when its
+bill stops · a performer gets a small download of the player and one version); and the
+one question: who is "everyone" — listeners, players taking it to a venue, or both.
+
+**Held aside:** git's history keeps the four versions for good (shrinking it means
+rewriting a public history) · the plan's ceiling of about a dozen versions in git · each
+version carries two sound files and the player needs only the master.
+
+---
+
+## §27. "Walk me through what's actually happening" — the performance, as it is
+
+His words: "could you simplify for me? … So this would be performers or players, I think
+B. Listeners can just watch the YouTube video. … they go to the website and then it
+downloads … the begin page … and that sound file is still … 270 megabytes. And then, how
+about like the second machine? … What if there happens to be two performances at the
+same time and they pick the same version and then the other venue can't get the sound
+and picture because it's locked? … walk me through what's actually happening and let's
+figure out the right scenarios."
+
+**Answered (his):** "everyone" is the PERFORMERS — §26's b. Listeners: the video (B7).
+
+**Put right, from `docs/STAGE.md`:**
+
+- one version's sound is about 35 MB; 270 MB is the four together;
+- today the website plays no part. The performer's laptop holds the piece and runs the
+  small server; every machine at the venue opens the player from the laptop, over the
+  venue's network; the sound machine fetches its 35 MB once, at [begin]; after ENTER
+  nothing is fetched, and nothing goes over the internet;
+- a picture-only machine talks to the laptop, not to any website: the sound machine says
+  every two seconds where its sound is, and the picture follows;
+- two performances at once do not meet — each venue's laptop is its own stage; and a
+  file served is never locked.
+
+**A point of theory — where they WOULD meet:** if the stage ran from the website, every
+venue would be on one stage — "the stage is one room" (§15, §16), and ENTER in one would
+begin the other. So the stage stays on the performer's laptop, and the website has no
+part in a performance; at most it points to the download.
+
+**Put to him:** the read-back (performers take the piece to a venue · listeners get the
+video · the website plays nothing) and the one question — what a performer downloads:
+a) everything, as now, about 345 MB, nothing to build (the AI's pick, while the shelf is
+small) · b) the program and the one version picked, about 55 MB, a new thing to build.
+
+---
+
+## §28. "I thought … it was being served from the cloud"
+
+His words: "So the piece isn't served from the share. And number one, they go to the
+website to download the piece. Is that what happens? … I think the thing I thought it
+was, was it was being served from the cloud."
+
+**Put plainly to him:** it is not served from any cloud. Once, beforehand, the performer
+downloads the piece from GitHub; at the venue their laptop runs it and the other
+machines connect to the laptop; no internet at the concert. His website has no part
+today; with a pointer it links to GitHub.
+
+**Held back:** §27's question (what a performer downloads) — it rests on this way of
+doing it. Asked first: is "download once, the laptop runs it" the way he wants, or did he
+want it served from the cloud.
+
+---
+
+## §29. B6 is held — "it probably has to be rebuilt"
+
+**Before it**, he asked for the whole walk-through: GitHub against Hetzner, and what a
+performer sees after the download. Put to him: for a download the two do the same job (a
+place that stores files · a computer he rents, which can also run a program); the piece
+is already on GitHub. Then the five steps — download the ZIP · a folder, its README · `python
+tools/serve.py` (Python 3, not Node) · http://localhost:8733/player/ · a version,
+[begin], ENTER — and more machines by `docs/STAGE.md`. Found on the way: the sound files
+are plain git files, no large-file store, so a ZIP from GitHub carries them whole. Not
+checked: the ZIP route itself.
+
+His words: "let's hold on this. Maybe you can just assemble the sort of structure for
+now. It probably has to be rebuilt. What we're doing in my other repo is figuring out
+the performance score, the way all those scores will be served. And so then when I
+figure that out, how to … run a notation score and how to link an ensemble, et cetera,
+for performance and whatnot, then I'll come back to these or I'll include these into that
+build. … So just hold on this for now."
+
+**Decided (his):** B6 is on hold. How this piece reaches performers waits on how all his
+performance scores will be served — a notation score, an ensemble linked — worked out in
+another repo (not named here).
+
+**Done — the structure assembled, nothing built:** `docs/PLAN.md` B6 now carries who gets
+the piece, how it goes as it stands, the website's part, what is open, and its parts when
+taken up. §2 of the journal says B6 is held.
+
+**Read by the AI as:** all of B6 is held — the front page and the fresh-clone test too,
+since both would change if the way it reaches performers is rebuilt. Said to him, his to
+correct.
+
+---
