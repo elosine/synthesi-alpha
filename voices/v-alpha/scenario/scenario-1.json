@@ -8,14 +8,14 @@
   "_about": "The first scenario. One seed rolls it. Every number is a policy: {\"fixed\": v}, {\"pick\": [a, b, c]} or {\"range\": [lo, hi]} — all draws from the seed, so the same seed gives the same run.",
   "seed": 1,
   "layer1": {
-    "_about": "Electronics main starts and stops. A run = a wait, then whole sections from where the last run stopped, then a stop on a section's end. run: \"page\" — a run is one PAGE: it stops on that page's stop (\"sections\" below, written by tools/page_form.py), and after the last page's stop one more run plays the score out (P2e, journal 214); without it, runSections = how many sections a run plays. runs: how many runs to roll; \"all\" rolls to the end of the piece. betweenWait: how long electronics main stands still on a stop before it moves on — J: \"45 seconds with jitter so each formal container isn't the same length\" (journal 210), the jitter ± 20 %, the AI's number; then \"lets reroll/restructure to hit closer to 9-10 min\" (journal 215): 32 s ± 6, which makes the piece about nine and a half minutes; then, for TENOR 2027's ten-minute limit, \"lets reduce all by 30%\" (log §30, 2026-10-24): 26 … 38 × 0.7 = 18.2 … 26.6 — the same draws, so every stand is 70 % of seed-1b's. stop: \"plain\" · \"reverb\" · \"fade + reverb\" — J's verdict 2026-10-11: the reverb, for all of them (journal 197); then, with the click gone, fade + reverb (journal 198).",
+    "_about": "Electronics main starts and stops. A run = a wait, then whole sections from where the last run stopped, then a stop on a section's end. run: \"page\" — a run is one PAGE: it stops on that page's stop (\"sections\" below, written by tools/page_form.py), and after the last page's stop one more run plays the score out (P2e, journal 214); without it, runSections = how many sections a run plays. runs: how many runs to roll; \"all\" rolls to the end of the piece. betweenWait: how long electronics main stands still on a stop before it moves on — J: \"45 seconds with jitter so each formal container isn't the same length\" (journal 210), the jitter ± 20 %, the AI's number; then \"lets reroll/restructure to hit closer to 9-10 min\" (journal 215): 32 s ± 6, which makes the piece about nine and a half minutes; then, for TENOR 2027's ten-minute limit, \"lets reduce all by 30%\" (log §30, 2026-10-24): 26 … 38 × 0.7 = 18.2 … 26.6 — the same draws, so every stand is 70 % of seed-1b's; then \"a little bit more, maybe something like, seven minutes, 15 seconds\" (log §31): 26 … 38 × 0.59 = 15.34 … 22.42 — every stand 59 % of seed-1b's, about 7:15 of sound. stop: \"plain\" · \"reverb\" · \"fade + reverb\" — J's verdict 2026-10-11: the reverb, for all of them (journal 197); then, with the click gone, fade + reverb (journal 198).",
     "startWait": {
       "fixed": 3
     },
     "betweenWait": {
       "range": [
-        18.2,
-        26.6
+        15.34,
+        22.42
       ]
     },
     "run": "page",

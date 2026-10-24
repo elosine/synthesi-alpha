@@ -1869,3 +1869,22 @@ stand.
 for.
 
 ---
+
+## §31. Shorter again — "something like, seven minutes, 15 seconds"
+
+**His words:** "Let's do a little bit more, maybe something like, seven minutes, 15 seconds,
+something like that."
+
+**Worked out from `seed-1b` (§30's numbers):** 597.5 s of sound, of which the stands are 397 s;
+the rest (the start wait, the 13 runs, the tail) about 200.5 s, and it stays. For 7:15 (435 s)
+the stands come to about 234.5 s: × 0.59 of seed-1b's.
+
+**Done:** `betweenWait` 18.2 … 26.6 → **15.34 … 22.42** (26 … 38 × 0.59), its `_about` with it.
+Every stand 59 % of seed-1b's — 19.8 · 15.3 · 19.1 · 22.3 · 22.2 · 17.3 · 19.7 · 20.4 · 18.3 ·
+22.4 · 18.6 · 18.8, 234 s. **Expected, not made:** about 7:15 of sound, about 7:24 as a file
+with its silences. The tail after the last run (18 s in seed-1b) may move with page 12's shorter
+stand.
+
+**Not done:** the version itself.
+
+---
