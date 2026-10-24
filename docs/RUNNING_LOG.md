@@ -1960,3 +1960,18 @@ holds a ceiling only; it does not bring the loudness back up.
 http://localhost:8733/player/?candidate=seed-1-cut-icy6 . **Not done:** his ear; the shelf.
 
 ---
+
+## §35. To 6:30 — "let's trim to 6.5"
+
+**His words:** "Okay, let's trim to 6.5, please." Read as 6:30 of sound.
+
+**Worked out from the two made cuts:** the sound is about 231 s + the stands after pages 1 … 11
+(`seed-1b`: 597.5 = 232.4 + 365.1 · `seed-1-cut`: 446.4 = 231.0 + 215.4). Page 12's stand
+hardly counts: its reads ring on past the play-out, so its stand and the tail together stay
+near 49 s (31.9 + 18.3 · 18.8 + 30.0). For 390 s: 365.1 × f = 159 → f = 0.4355.
+
+**Done:** `betweenWait` 15.34 … 22.42 → **11.32 … 16.55** (26 … 38 × 0.4355), its `_about`
+with it. The stands: 14.6 · 11.3 · 14.1 · 16.5 · 16.4 · 12.8 · 14.5 · 15.1 · 13.5 · 16.5 · 13.7
+· 13.9. **Expected, not made:** about 6:30 of sound.
+
+---
