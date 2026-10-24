@@ -1942,3 +1942,21 @@ sound and with the files left as they are:
 **Not checked:** how it sounds; a version made with it — next.
 
 ---
+
+## §34. `seed-1-cut-icy6` made — the cut with every icy sound 6 dB down
+
+**Done:** §33 committed (`bcd82e7`, clean) · the make page reloaded (the server says no-store)
+· [begin] · gain 0 · `makeVersion({ name: 'seed-1-cut-icy6' })`. Before it ran: `standOf(2)`
+15.36 (§31's stands) · page 8's renders loaded with their icys named (icy decel · icy 17x · icy
+10x · icy accel · icy accel long) — what `icyLevel` reads.
+
+**Measured (`build/versions/seed-1-cut-icy6/`, a candidate):** 7:34.5 as a file · 7:26.4 of
+sound · 543 sounds (as `seed-1-cut`: the same roll) · `soundsLate` 0 · gaps 0 · peak −0.06 dB ·
+RMS −24.72 dB (`seed-1-cut`: −22.56) · mastered −18.8 LUFS (`seed-1-cut`: −17.0), true peak
+−1.0 dB. The whole is 1.8 LU quieter with the icy alone turned down — the trim took. The master
+holds a ceiling only; it does not bring the loudness back up.
+
+**Sent to him:** `build/versions/previews/synthesi-alpha-seed-1-cut-icy6.mp3`. The player:
+http://localhost:8733/player/?candidate=seed-1-cut-icy6 . **Not done:** his ear; the shelf.
+
+---
