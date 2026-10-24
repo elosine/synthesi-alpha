@@ -1834,3 +1834,38 @@ since both would change if the way it reaches performers is rebuilt. Said to him
 correct.
 
 ---
+
+## §30. The stands cut by 30 % — for TENOR 2027's ten minutes
+
+**Prompted by** TENOR 2027 (artistic presentations at most 10 minutes; the work is run from
+`paperSubmissions`, its running order step 6). His words: "I want to actually cut down, if
+possible, the piece, and then I'll re-record a new piano part." Then, the options laid out
+(silences only · shorter stands · whole pages lost · seed 3): "let me manage the cut" —
+and he asked, "if we just shorten those … pauses between sections, then will everything else
+just automate under it?"
+
+**Answered from the code (not heard):** yes. Every page reads its stand from the one roll
+(`standOf`, `engine/scenario.js`): the designed pages begin entries only while the page
+stands; the sequence pages deal patterns "just enough to fill the whole page time period";
+page 6's override turns once across its stand; a read that has begun plays to its end. Pages
+1 … 3 play his pattern lists whole — with a shorter stand more of their tails fall off the
+left edge when the score moves on. Nothing is played in again.
+
+**Measured, `seed-1b`:** 10:06.1 as a file, 9:57.5 of sound. The stands after pages 1 … 12:
+33.5 · 26.0 · 32.3 · 37.8 · 37.6 · 29.4 · 33.4 · 34.6 · 31.1 · 37.9 · 31.5 · 31.9 — 397 s,
+about 6:37. The score moving (13 runs): 182 s. The tail after the last run: 18 s.
+
+**His word:** "lets reduce all by 30%".
+
+**Done:** `betweenWait` 26 … 38 → **18.2 … 26.6** (× 0.7) in
+`voices/v-alpha/scenario/scenario-1.json`, its `_about` with it. The waits are one stream of
+draws, one draw a stand (`rollLayer1`), so seed 1 gives the same draws: every stand is 70 % of
+seed-1b's — 23.5 · 18.2 · 22.6 · 26.5 · 26.3 · 20.6 · 23.4 · 24.2 · 21.8 · 26.5 · 22.1 · 22.3,
+278 s. **Expected, not made:** about 2:00 shorter — about 8:00 of sound. The designed pages'
+own draws are their own streams and stay as rolled; what they hold changes with the shorter
+stand.
+
+**Not done:** the version itself (seed 1, about eleven minutes to make) — his to make or ask
+for.
+
+---
