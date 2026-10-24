@@ -2041,3 +2041,25 @@ d. as it is: one icy bridge over pages 4 … 6. **The AI recommends a**, with th
 may enter. To be read from the roll before the take is kept.
 
 ---
+
+## §38. `seed-1-cut630-icy45` made — §37 in the sound
+
+**The roll, read 5 s into the take** (`designOf`): page 4 — set 17 plain, icy 15x short,
+30.93 s, span 52.287 … 54.35 (the last 2.06 s of 50.37 … 54.35) · set 19 reversed, icy 10x,
+enters at 12.93 s, 18.00 s, span 56.82 … 58.62 (the first 1.80 s of 2.95) — TWO reads (§36:
+one). Page 5 — set 21 reversed, icy decel, 13.56 s, whole · set 22, decel long, 28.86 s, span
+69.442 … 72.07 · set 20 reversed, accel long, 25.08 s, 61.016 … 63.3 · set 23, accel, 19.79 s,
+72.377 … 76.244 · set 22 reversed, accel long, 15.07 s, 68.83 … 70.202 — FIVE reads (§36:
+three). Every cut read ends on the next stop (page 4: 30.93 · page 5: 29.98 … 30.00 s after its
+own); page 4's still sounding at page 5's stop: 0.003 s.
+
+**Made** (`75daf5c`, clean; muted): 6:27.4 as a file · 6:19.2 of sound (as §36: the end is page
+12's, untouched) · 418 sounds · `soundsLate` 0 · gaps 0 · −19.0 LUFS, true peak −1.0 dB. In the
+take: page 4 1:37.6 … 2:08.6 (page 5 stops 2:08.3) · page 5 2:08.5 … 2:38.5 (page 6 stops
+2:38.3). The icy of pages 4 and 5 is over by 2:38.5 (§36: 3:11.0).
+
+**Sent:** `build/versions/previews/synthesi-alpha-seed-1-cut630-icy45.mp3`. The player:
+http://localhost:8733/player/?candidate=seed-1-cut630-icy45 . **Not checked:** how a read that
+begins inside a container sounds at its start — his ear.
+
+---
