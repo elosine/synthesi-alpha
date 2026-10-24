@@ -9,6 +9,7 @@ folder named by the seed that made it.
 | `seed-2` | 2026-10-12 | 10 min 02.7 s | another playing of the piece, from seed 2 — the loudest of the four, and the widest in range — the composer's word, 2026-10-12: "keep all three"; mastered |
 | `seed-3` | 2026-10-12 | 9 min 28.4 s | another playing of the piece, from seed 3 — the shortest: nine and a half minutes — the composer's word, 2026-10-12: "keep all three"; mastered |
 | `seed-4` | 2026-10-12 | 10 min 05.7 s | another playing of the piece, from seed 4 — the sparest: the fewest sounds, the quietest — the composer's word, 2026-10-12: "keep all three"; mastered |
+| `seed-1-cut630-icy45` | 2026-10-24 | 6 min 27.4 s | the cut for TENOR 2027 — the stands at 43.55 % of seed-1b's, every icy sound 6 dB down, the icy reads of pages 4 and 5 begun later to end on the next page's stop — the composer's word: kept 2026-10-24 — "go ahead and keep that one"; mastered |
 
 **Taken off the shelf, 2026-10-12, at his word: `seed-1`** — the final draft's first
 recording. He heard clicks in its pages 11 and 12: the buffer override's joins

@@ -1,0 +1,1165 @@
+{
+  "schema": 1,
+  "kind": "scenario",
+  "name": "scenario 1",
+  "piece": "v-alpha",
+  "plan": "docs/plan/first-scenario-plan.md",
+  "journal": "196, 197, 198, 200, 201, 202, 204, 207, 210, 214, 215, 217, 218, 219, 220, 221, 222, 228, 229, 231, 232, 233, 234, 235, 236, 237, 239, 240, 241, 242, 243, 245",
+  "_about": "The first scenario. One seed rolls it. Every number is a policy: {\"fixed\": v}, {\"pick\": [a, b, c]} or {\"range\": [lo, hi]} — all draws from the seed, so the same seed gives the same run.",
+  "seed": 1,
+  "layer1": {
+    "_about": "Electronics main starts and stops. A run = a wait, then whole sections from where the last run stopped, then a stop on a section's end. run: \"page\" — a run is one PAGE: it stops on that page's stop (\"sections\" below, written by tools/page_form.py), and after the last page's stop one more run plays the score out (P2e, journal 214); without it, runSections = how many sections a run plays. runs: how many runs to roll; \"all\" rolls to the end of the piece. betweenWait: how long electronics main stands still on a stop before it moves on — J: \"45 seconds with jitter so each formal container isn't the same length\" (journal 210), the jitter ± 20 %, the AI's number; then \"lets reroll/restructure to hit closer to 9-10 min\" (journal 215): 32 s ± 6, which makes the piece about nine and a half minutes; then, for TENOR 2027's ten-minute limit, \"lets reduce all by 30%\" (log §30, 2026-10-24): 26 … 38 × 0.7 = 18.2 … 26.6 — the same draws, so every stand is 70 % of seed-1b's; then \"a little bit more, maybe something like, seven minutes, 15 seconds\" (log §31): 26 … 38 × 0.59 = 15.34 … 22.42 — every stand 59 % of seed-1b's, about 7:15 of sound (made: 7:26); then \"let's trim to 6.5\" (log §35): 26 … 38 × 0.4355 = 11.32 … 16.55 — every stand 43.55 % of seed-1b's, about 6:30 of sound. stop: \"plain\" · \"reverb\" · \"fade + reverb\" — J's verdict 2026-10-11: the reverb, for all of them (journal 197); then, with the click gone, fade + reverb (journal 198).",
+    "startWait": {
+      "fixed": 3
+    },
+    "betweenWait": {
+      "range": [
+        11.32,
+        16.55
+      ]
+    },
+    "run": "page",
+    "stop": "fade + reverb",
+    "runs": "all"
+  },
+  "form": {
+    "_about": "The form by page (plan P2e; journal 208, 212, 214). screen = the shape the form is made for; with the score's content band (contentHeight, px) filling its height, pxPerSecond of strip and the picture's cursorLag (s), one screen shows screenSeconds of score and the strip is `pages` screens. A run of electronics main is one page: it stops on the section end whose picture is nearest the middle of that screen. \"On screen\" is this shape in any window. Change screen here, then run tools/page_form.py.",
+    "screen": [
+      1920,
+      1080
+    ],
+    "contentHeight": 600,
+    "pxPerSecond": 70,
+    "cursorLag": 0.2,
+    "screenSeconds": 15.238,
+    "pages": 12,
+    "tool": "tools/page_form.py"
+  },
+  "sections": [
+    {
+      "_about": "The pages (tools/page_form.py writes this list; journal 214). At each stop of electronics main a page's section begins: its patterns (J's, played in - voices/v-alpha/library/patterns) one after another. stopSet / stopAt = the section end it stops on; window = what the screen shows there; containers = the sets WHOLLY on that screen (what a designed page reads, journal 234); showing = every set that shows there, with the part of it that is on screen (a designed page with \"of\": \"showing\", journal 239); phrases / accents = the scan's picks on that screen (ids of voices/v-alpha/score/replay-index.json) - the page's material for the sampler and the play-in (perform.html?sampler=1&page=N, ?playin=1&page=N). patterns · lead · gap · overlay are J's and are kept when the tool is run again: lead = seconds before the stop that the patterns begin (0 = at the stop); gap = seconds between one pattern and the next; overlay = the name of one of \"overlays\" laid over every phrase of the page from START (\"off\" = none; left out = each hit as it was played in). A sound is called only while its place is on screen (journal 203-204).",
+      "name": "page 1",
+      "page": 1,
+      "stopSet": 2,
+      "stopAt": 9.18,
+      "window": [
+        1.361,
+        16.599
+      ],
+      "containers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "showing": [
+        {
+          "set": 0,
+          "t0": 1.366,
+          "t1": 3.64
+        },
+        {
+          "set": 1,
+          "t0": 3.64,
+          "t1": 6.28
+        },
+        {
+          "set": 2,
+          "t0": 6.28,
+          "t1": 9.18
+        },
+        {
+          "set": 3,
+          "t0": 9.18,
+          "t1": 11.9
+        },
+        {
+          "set": 4,
+          "t0": 11.9,
+          "t1": 16.33
+        }
+      ],
+      "phrases": [
+        "0c",
+        "1a",
+        "2a",
+        "3a",
+        "4a"
+      ],
+      "accents": [
+        "a9",
+        "a32",
+        "m1a",
+        "a1",
+        "a2",
+        "a3",
+        "a10",
+        "m4a"
+      ],
+      "patterns": [
+        "pt1",
+        "pt2",
+        "pt3",
+        "pt4",
+        "pt5",
+        "pt6",
+        "pt7"
+      ],
+      "lead": 0,
+      "gap": 0
+    },
+    {
+      "name": "page 2",
+      "page": 2,
+      "stopSet": 6,
+      "stopAt": 22.39,
+      "window": [
+        14.571,
+        29.809
+      ],
+      "containers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "showing": [
+        {
+          "set": 4,
+          "t0": 14.576,
+          "t1": 16.33
+        },
+        {
+          "set": 5,
+          "t0": 16.33,
+          "t1": 18.88
+        },
+        {
+          "set": 6,
+          "t0": 18.88,
+          "t1": 22.39
+        },
+        {
+          "set": 7,
+          "t0": 22.39,
+          "t1": 26.15
+        },
+        {
+          "set": 8,
+          "t0": 26.15,
+          "t1": 28.94
+        }
+      ],
+      "phrases": [
+        "5a",
+        "5b",
+        "7a",
+        "7b",
+        "8a"
+      ],
+      "accents": [
+        "a7",
+        "a8",
+        "a33",
+        "m7a",
+        "m7b",
+        "m8a"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "overlay": "cresc"
+    },
+    {
+      "name": "page 3",
+      "page": 3,
+      "stopSet": 11,
+      "stopAt": 37.18,
+      "window": [
+        29.361,
+        44.599
+      ],
+      "containers": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "showing": [
+        {
+          "set": 9,
+          "t0": 29.366,
+          "t1": 31.47
+        },
+        {
+          "set": 10,
+          "t0": 31.47,
+          "t1": 34.43
+        },
+        {
+          "set": 11,
+          "t0": 34.43,
+          "t1": 37.18
+        },
+        {
+          "set": 12,
+          "t0": 37.18,
+          "t1": 39.76
+        },
+        {
+          "set": 13,
+          "t0": 39.76,
+          "t1": 42.44
+        },
+        {
+          "set": 14,
+          "t0": 42.44,
+          "t1": 44.594
+        }
+      ],
+      "phrases": [
+        "9a",
+        "10a",
+        "12a",
+        "12b",
+        "13a",
+        "14a"
+      ],
+      "accents": [
+        "a11",
+        "a4",
+        "a22",
+        "a24",
+        "a31",
+        "a20",
+        "a34"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "overlay": "trem waves"
+    },
+    {
+      "name": "page 4",
+      "page": 4,
+      "stopSet": 17,
+      "stopAt": 54.35,
+      "window": [
+        46.531,
+        61.769
+      ],
+      "containers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "showing": [
+        {
+          "set": 16,
+          "t0": 47.51,
+          "t1": 50.37
+        },
+        {
+          "set": 17,
+          "t0": 50.37,
+          "t1": 54.35
+        },
+        {
+          "set": 18,
+          "t0": 54.35,
+          "t1": 56.82
+        },
+        {
+          "set": 19,
+          "t0": 56.82,
+          "t1": 59.77
+        },
+        {
+          "set": 20,
+          "t0": 59.77,
+          "t1": 61.764
+        }
+      ],
+      "phrases": [
+        "15c",
+        "16a",
+        "16b",
+        "17a",
+        "18a"
+      ],
+      "accents": [
+        "a25",
+        "a28",
+        "a13",
+        "a14",
+        "a16",
+        "m18a"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "A DESIGNED page (plan P2h; journal 233, 234) - not played in: his rule. kind \"accrete\": the page's whole containers (\"containers\" above) are read, each through an overlay dealt from a shuffled deck of `overlays` (shuffled again when all are dealt), the first container by a draw; the next enters when the one before is enter[0] of its way through, the one after at enter[1] of that one's, and so on, the last value serving for the rest - \"they start a little sooner each time\" - each moved by up to +/- jitter. atOnce = how many may sound together (they have voices of their own). Entries begin only while the page stands; what has begun plays out to its own end, over the next page. Rolled from the seed. reverse \"every other\" = the 2nd, 4th ... entry reads its container BACKWARD (J, journal 235: \"make every other one a reverse instead of forward\"); left out = all forward. reverse \"every other, from the first\" = the 1st, 3rd ... backward. continues = a page number: this page's overlays go on from THAT page's deck - the ones it did not deal - and it shuffles again only when they are used up (journal 236). A designed page's reads that are still sounding when the next designed page begins hold their voices: the next page's entries wait rather than cut them. J (journal 237): \"we only use the straightforward IC ones, not the [accel] or [decel]\" - this page's deck is the four steady icys. endBy \"next stop\" (J, log §37, 2026-10-24: \"start it later in the container and let it end on the end of the container\"): a read that would sound past the NEXT page's stop begins later in its container, so as to end on that stop - where it ends now (a reversed read on the container's start); its speed, grain and ending as they were. Left out = every read whole (page 12).",
+        "kind": "accrete",
+        "enter": [
+          0.4,
+          0.3,
+          0.2,
+          0.1
+        ],
+        "jitter": 0.05,
+        "overlays": [
+          "icy 10x",
+          "icy 10x short",
+          "icy 17x",
+          "icy 15x short"
+        ],
+        "atOnce": 4,
+        "reverse": "every other",
+        "endBy": "next stop"
+      }
+    },
+    {
+      "name": "page 5",
+      "page": 5,
+      "stopSet": 21,
+      "stopAt": 68.83,
+      "window": [
+        61.011,
+        76.249
+      ],
+      "containers": [
+        21,
+        22
+      ],
+      "showing": [
+        {
+          "set": 20,
+          "t0": 61.016,
+          "t1": 66.18
+        },
+        {
+          "set": 21,
+          "t0": 66.18,
+          "t1": 68.83
+        },
+        {
+          "set": 22,
+          "t0": 68.83,
+          "t1": 72.07
+        },
+        {
+          "set": 23,
+          "t0": 72.07,
+          "t1": 76.244
+        }
+      ],
+      "phrases": [
+        "20b",
+        "20c",
+        "21a",
+        "22a",
+        "23a"
+      ],
+      "accents": [
+        "m20a",
+        "m20b",
+        "m21a",
+        "m21b",
+        "a26",
+        "m23a",
+        "m23b"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "The second icy page (journal 236): \"similar, except\" - it starts with the reversed one and alternates; the second enters quite soon, at about 10 % of the first, and each later one a little LATER - about 15 %, 20 %, 25 % ...; the jitter small, \"just enough so that the entries aren't periodic\". Its deck is the four icys that CHANGE SPEED - the AI's reading of journal 237 (page 4 has the four steady ones; \"we'll program a specific sequence for these\", journal 222), to be confirmed by him. The fields are explained in page 4's design. of \"showing\" (journal 239): it reads every container that SHOWS on the page - the two whole ones and the two cut by the screen's edges, each as much as shows - so that the entries use different containers; left out, a design reads the page's whole containers only.",
+        "kind": "accrete",
+        "enter": [
+          0.1,
+          0.15,
+          0.2,
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ],
+        "jitter": 0.02,
+        "overlays": [
+          "icy accel",
+          "icy decel",
+          "icy accel long",
+          "icy decel long"
+        ],
+        "atOnce": 4,
+        "reverse": "every other, from the first",
+        "of": "showing",
+        "endBy": "next stop"
+      }
+    },
+    {
+      "name": "page 6",
+      "page": 6,
+      "stopSet": 23,
+      "stopAt": 82.42,
+      "window": [
+        74.601,
+        89.839
+      ],
+      "containers": [
+        24
+      ],
+      "showing": [
+        {
+          "set": 23,
+          "t0": 74.606,
+          "t1": 82.42
+        },
+        {
+          "set": 24,
+          "t0": 82.42,
+          "t1": 87.8
+        },
+        {
+          "set": 25,
+          "t0": 87.8,
+          "t1": 89.834
+        }
+      ],
+      "phrases": [
+        "25a"
+      ],
+      "accents": [
+        "a15"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "Page 6 (journal 240), his: the containers that show, ONE AT A TIME - each begins when the one before ends - backward, forward, backward ..., which one by a roll; read as they are (no icy); and over all of it the buffer override, ONE FULL TURN across the time the page stands: from its start settings up to its top, a plateau, and back down to the start (bus.fit = the shares of the page for the rise and the plateau; the fall takes as long as the rise). The other fields are explained in page 4's design.",
+        "kind": "one at a time",
+        "of": "showing",
+        "enter": [
+          1
+        ],
+        "jitter": 0,
+        "overlays": [],
+        "atOnce": 1,
+        "reverse": "every other, from the first",
+        "bus": {
+          "overlay": "override wave",
+          "fit": [
+            0.4,
+            0.2
+          ]
+        }
+      }
+    },
+    {
+      "name": "page 7",
+      "page": 7,
+      "stopSet": 28,
+      "stopAt": 100.06,
+      "window": [
+        92.241,
+        107.479
+      ],
+      "containers": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "showing": [
+        {
+          "set": 27,
+          "t0": 93.56,
+          "t1": 96.18
+        },
+        {
+          "set": 28,
+          "t0": 96.18,
+          "t1": 100.06
+        },
+        {
+          "set": 29,
+          "t0": 100.06,
+          "t1": 103.0
+        },
+        {
+          "set": 30,
+          "t0": 103.0,
+          "t1": 105.93
+        },
+        {
+          "set": 31,
+          "t0": 105.93,
+          "t1": 107.474
+        }
+      ],
+      "phrases": [
+        "27a",
+        "27b",
+        "28a"
+      ],
+      "accents": [
+        "m27a",
+        "m27b",
+        "m28a",
+        "m28b"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "A page of SEQUENCES (journal 241), his: his played-in sequences are reused - their RHYTHMS kept, their KEYS given this page's sounds as its play-in page would give them (an attack key = the next of the page's attacks; the k-th phrase key = the page's k-th phrase, forward or reversed as played; a key the page has no sound for = one of the page's phrases or accents, rolled once). The seed deals which sequences and in what order, just enough to fill the time the page stands - once for each of `streams`, which sound TOGETHER, each on voices and a bus of its own and under its own overlay.",
+        "kind": "sequences",
+        "streams": [
+          {
+            "overlay": "trem rush"
+          },
+          {
+            "overlay": "cresc"
+          }
+        ]
+      }
+    },
+    {
+      "name": "page 8",
+      "page": 8,
+      "stopSet": 33,
+      "stopAt": 113.67,
+      "window": [
+        105.851,
+        121.089
+      ],
+      "containers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "showing": [
+        {
+          "set": 31,
+          "t0": 105.93,
+          "t1": 108.67
+        },
+        {
+          "set": 32,
+          "t0": 108.67,
+          "t1": 111.18
+        },
+        {
+          "set": 33,
+          "t0": 111.18,
+          "t1": 113.67
+        },
+        {
+          "set": 34,
+          "t0": 113.67,
+          "t1": 116.39
+        },
+        {
+          "set": 35,
+          "t0": 116.39,
+          "t1": 121.084
+        }
+      ],
+      "phrases": [
+        "31a",
+        "32a",
+        "33a",
+        "34a",
+        "35a"
+      ],
+      "accents": [
+        "m31a",
+        "m31b",
+        "m32a",
+        "m33a",
+        "m33b",
+        "m34a",
+        "m34b",
+        "a30"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "Page 8 (journal 242), his: the page's containers are PRE-PROCESSED through icy (tools/icy_render.py 8 -> the sound files and manifest in `source`, one rolled icy a container) and 'become the new samples': the cursors and the accents read the icy version, wherever they are reading from; electronics main reads the sound as it is. Over that, two of his sequences together (as on page 7), both under a tremolo - two different ones, the AI's choice, so that the two streams do not pulse as one.",
+        "kind": "sequences",
+        "source": "renders/page-8",
+        "streams": [
+          {
+            "overlay": "trem waves"
+          },
+          {
+            "overlay": "trem rush"
+          }
+        ]
+      }
+    },
+    {
+      "name": "page 9",
+      "page": 9,
+      "stopSet": 36,
+      "stopAt": 130.96,
+      "window": [
+        123.141,
+        138.379
+      ],
+      "containers": [
+        36,
+        37,
+        38
+      ],
+      "showing": [
+        {
+          "set": 35,
+          "t0": 123.146,
+          "t1": 127.27
+        },
+        {
+          "set": 36,
+          "t0": 127.27,
+          "t1": 130.96
+        },
+        {
+          "set": 37,
+          "t0": 130.96,
+          "t1": 134.08
+        },
+        {
+          "set": 38,
+          "t0": 134.08,
+          "t1": 137.58
+        }
+      ],
+      "phrases": [
+        "35b",
+        "35c",
+        "36a",
+        "36b",
+        "37a",
+        "38a",
+        "38b"
+      ],
+      "accents": [
+        "a35",
+        "a18",
+        "m37a",
+        "m37b",
+        "m38a",
+        "m38b"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "Page 9 (journal 243), his: the containers that show are PRE-PROCESSED with the buffer override, each through one turn of its wave - 'low to high, then back down to low for the duration of that container' - and become the samples; two of his sequences together over them, both under the crescendo. The samples: python tools/page_samples.py 9.",
+        "kind": "sequences",
+        "source": "renders/page-9",
+        "samples": {
+          "mix": [
+            "override"
+          ]
+        },
+        "streams": [
+          {
+            "overlay": "cresc"
+          },
+          {
+            "overlay": "cresc"
+          }
+        ]
+      }
+    },
+    {
+      "name": "page 10",
+      "page": 10,
+      "stopSet": 40,
+      "stopAt": 143.16,
+      "window": [
+        135.341,
+        150.579
+      ],
+      "containers": [
+        39,
+        40,
+        41
+      ],
+      "showing": [
+        {
+          "set": 38,
+          "t0": 135.346,
+          "t1": 137.58
+        },
+        {
+          "set": 39,
+          "t0": 137.58,
+          "t1": 140.74
+        },
+        {
+          "set": 40,
+          "t0": 140.74,
+          "t1": 143.16
+        },
+        {
+          "set": 41,
+          "t0": 143.16,
+          "t1": 146.97
+        },
+        {
+          "set": 42,
+          "t0": 146.97,
+          "t1": 150.574
+        }
+      ],
+      "phrases": [
+        "38b",
+        "39a",
+        "39b",
+        "40a",
+        "40b",
+        "40c",
+        "41a"
+      ],
+      "accents": [
+        "m38a",
+        "m38b",
+        "a23",
+        "a29",
+        "a5",
+        "a6",
+        "a17"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "Page 10 (journal 243), his: half of the containers that show are processed with the icys that change speed (accel / decel), half are 'just normal, the original'; THREE streams of his sequences together, 'crescendos and tremolos' - which stream has which is the AI's choice.",
+        "kind": "sequences",
+        "source": "renders/page-10",
+        "samples": {
+          "mix": [
+            "icy moving",
+            "original"
+          ]
+        },
+        "streams": [
+          {
+            "overlay": "cresc"
+          },
+          {
+            "overlay": "trem rush"
+          },
+          {
+            "overlay": "cresc"
+          }
+        ]
+      }
+    },
+    {
+      "name": "page 11",
+      "page": 11,
+      "stopSet": 44,
+      "stopAt": 161.79,
+      "window": [
+        153.971,
+        169.209
+      ],
+      "containers": [
+        43,
+        44,
+        45
+      ],
+      "showing": [
+        {
+          "set": 43,
+          "t0": 154.21,
+          "t1": 157.69
+        },
+        {
+          "set": 44,
+          "t0": 157.69,
+          "t1": 161.79
+        },
+        {
+          "set": 45,
+          "t0": 161.79,
+          "t1": 166.11
+        },
+        {
+          "set": 46,
+          "t0": 166.11,
+          "t1": 169.204
+        }
+      ],
+      "phrases": [
+        "45a",
+        "45b",
+        "45c",
+        "46a"
+      ],
+      "accents": [
+        "a27",
+        "m46a",
+        "m46b"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "Page 11 (journal 243), his: 'a mix of IC and buffer override for the containers ... like half and half'; three streams, crescendo and tremolo - which has which is the AI's choice.",
+        "kind": "sequences",
+        "source": "renders/page-11",
+        "samples": {
+          "mix": [
+            "icy",
+            "override"
+          ]
+        },
+        "streams": [
+          {
+            "overlay": "trem waves"
+          },
+          {
+            "overlay": "cresc"
+          },
+          {
+            "overlay": "chop accel"
+          }
+        ]
+      }
+    },
+    {
+      "name": "page 12",
+      "page": 12,
+      "stopSet": 48,
+      "stopAt": 174.35,
+      "window": [
+        166.531,
+        181.769
+      ],
+      "containers": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "showing": [
+        {
+          "set": 46,
+          "t0": 166.536,
+          "t1": 169.29
+        },
+        {
+          "set": 47,
+          "t0": 169.29,
+          "t1": 171.79
+        },
+        {
+          "set": 48,
+          "t0": 171.79,
+          "t1": 174.35
+        },
+        {
+          "set": 49,
+          "t0": 174.35,
+          "t1": 177.03
+        },
+        {
+          "set": 50,
+          "t0": 177.03,
+          "t1": 179.59
+        }
+      ],
+      "phrases": [
+        "46a",
+        "46b",
+        "47a",
+        "47b",
+        "47c",
+        "48a",
+        "49a",
+        "50a",
+        "50b"
+      ],
+      "accents": [
+        "m46a",
+        "m46b",
+        "m47a",
+        "m47b",
+        "a19",
+        "a21",
+        "m50a",
+        "m50b"
+      ],
+      "patterns": [],
+      "lead": 0,
+      "gap": 0,
+      "design": {
+        "_about": "Page 12, the last (journal 243), his: ALL the containers processed with icys, 'half of those processed additionally with buffer override ... it's like in layers'. One sequence 'like the original icy sequence' - whole (processed) containers, one starting and the next entering over it (the accretion of page 4: enter 0.4, 0.3, 0.2 - he remembered it as 'like 50%'; the original's numbers are used), every other one backward; and with it two streams of his played sequences, both under a tremolo, reading the same processed samples.",
+        "kind": "accrete",
+        "source": "renders/page-12",
+        "samples": {
+          "mix": [
+            "icy"
+          ],
+          "over half": "override"
+        },
+        "of": "renders",
+        "enter": [
+          0.4,
+          0.3,
+          0.2,
+          0.1
+        ],
+        "jitter": 0.05,
+        "overlays": [],
+        "atOnce": 4,
+        "reverse": "every other",
+        "streams": [
+          {
+            "overlay": "trem waves"
+          },
+          {
+            "overlay": "trem rush"
+          }
+        ]
+      }
+    }
+  ],
+  "reverb": {
+    "_about": "The light reverb on a stop. send = how much of the sound it drinks; capture = for how many seconds before the stop.",
+    "send": 0.5,
+    "capture": 0.6
+  },
+  "fade": {
+    "_about": "The fade of \"fade + reverb\": the sound fades out over this many seconds, ENDING on the section end.",
+    "seconds": 0.12
+  },
+  "sampler": {
+    "_about": "The sampler (perform.html?sampler=1, journal 200-201): what the cursors play, to be heard. sets = which sections' picks; phraseFade = the fade into a phrase's end, seconds; phraseEnd / phraseReverbSend = how a phrase ends - J's verdict (201): fade + reverb, the reverb dialled down slightly from the stop's 0.5; transformed = how many phrases are also played transformed; variants = the transformed reads - J (201): \"let's use the plain and reverse versions\" (slow and fast heard and set aside; their matched makeup was 8 and 7.5 dB) - with the makeup (dB) that matches each to the plain read, measured; impacts = how every impact is played - J (202): the louder start, and normalized (each attack brought to one loudness by the gain the scan measured, gainDb in replay-index.json).",
+    "sets": [
+      0,
+      4
+    ],
+    "gap": 0.7,
+    "gapReverb": 1.8,
+    "phraseFade": 0.08,
+    "phraseEnd": "fade + reverb",
+    "phraseReverbSend": 0.35,
+    "transformed": 2,
+    "variants": {
+      "reverse": {
+        "speed": 1,
+        "backward": true,
+        "makeupDb": 10
+      }
+    },
+    "impacts": {
+      "accent": {
+        "db": 4,
+        "ms": 40
+      },
+      "normalize": true
+    }
+  },
+  "playin": {
+    "_about": "The play-in (perform.html?playin=1, journal 204): J plays the section's attacks and phrases on his MIDI keyboard, and what he plays is recorded as patterns. sets = which sections' material; the keys are MIDI note numbers (36 = C2, 48 = C3, 60 = C4, 84 = C6): attackBase = one octave, any key a different attack; phraseBase / reverseBase = white keys, one phrase a key; recordNote starts and stops a recording; voices = how many phrases can sound at once. How a phrase and an attack sound is the sampler's settings above.",
+    "sets": [
+      0,
+      4
+    ],
+    "attackBase": 36,
+    "phraseBase": 48,
+    "reverseBase": 60,
+    "recordNote": 84,
+    "voices": 4
+  },
+  "overlays": {
+    "_about": "The overlays (plan P2f; journal 216, 217): effects laid over what the cursors play - electronics main is not touched. presets = the buttons of the play-in page (perform.html?playin=1&page=N), in order, one on at a time; a hit played in keeps the overlay it sounded with. A page may name one in its section (\"overlay\": \"cresc\") and START lays it over every phrase of that page; \"off\" = none; no name = each hit as it was played in. kind \"swell\" (workshop 1) = a line through a phrase, in dB, from fromDb at its start to toDb at its end (bend 1 = straight in dB; over 1 it moves late, under 1 early). On these phrases - each begins on an attack and ends in a dip - 12 dB only holds a phrase level; 24 dB turns it round (the screen: python tools/overlay_levels.py --screen). Loudness: the page gives every swelled phrase a makeup of its own, so that its loudest 50 ms is what it is untouched (engine/voices.js; tools/overlay_levels.py prints the measures). J's verdict on workshop 1 (journal 218): \"lets go with regular cres as the overlay\" - cresc, 24 dB, is the one kept; cresc molto (-48 to 0), decresc (0 to -24) and decresc molto (0 to -48) were heard and left out of the row. kind \"tremolo\" (workshop 2, journal 219) = one LFO over EVERYTHING the cursors play, on the bus, whatever is playing: shape sine / triangle / chop (a square with its corners off); depthDb = how far the gain dips (60 = to silence); rate = its speed in Hz, or [from, to] with over = seconds from one to the other and pattern \"accel\" (up, and begin again) or \"waves\" (up and back down). It runs from the moment its page's section begins. Its makeup keeps the power of the sound what it was. On these hits an LFO under 6 Hz does not fit twice in an attack: it is heard across the hits, not inside them. J's verdict on workshop 2 (journal 220): \"let's do the last three, the rush, waves, and [accel]\" - trem rush, trem waves and chop accel are kept; trem (8 Hz steady) and trem accel (4 to 24 Hz over 8 s, a sine) were heard and left out of the row. kind \"icy\" (workshop 3, journal 220) = his slow read - his freeze of 2015, Warp1 in Approaching (live-electronics-system sc/process.scd) - laid on each PHRASE: the read point crawls at speed of real time (0.0333 = thirty times slower) while grains win seconds long, overlaps of them at once, each read forward at pitch through window (one of his ten, engine/grain-windows.json; expodec the one he used most), each grain's length straying by rand. His numbers in Approaching: 30 times slower, 0.6 s, 17, rand 0.2, expodec. A phrase then lasts 1/speed as long. makeupDb = what brings the stretch's level (RMS) back to the untouched phrase's, measured (tools/overlay_levels.py --icy, and from takes). J's verdict on workshop 3 (journal 221): icy 10x, icy 10x short, and two he named - icy 17x, and icy 15x short with grains \"slightly longer than 0.15. Maybe let's try 0.21\"; icy 4x, icy 30x and icy 10x long were heard and left out. Workshop 4: speed as [from, to] = the read speeding up or slowing down through the phrase, pitch held (the speed moves by equal ratios in equal times). J's verdict on workshop 4 (journal 222): \"lets keep all 4\" - icy accel, icy decel, icy accel long, icy decel long; all wet, none of the original sound (as built: the stretch alone). kind \"override\" (workshop 5, journal 222) = the buffer override, over EVERYTHING the cursors play, on the bus (engine/override-processor.js): the sound is cut into forced buffers of buf seconds; the first sliver of each is repeated until the next begins - rate = repeats a second (8 = distinct impulses; from about 30 up they fuse into a fuzz with a pitch at that rate), steady, or [from, to] moving over `over` seconds and beginning again, or with pattern \"shift\": hold seconds at the first rate, over seconds to the second, stay seconds there, and again. smooth = how much of each repeat is crossfaded into the next; mix 1 = the override alone. J's override, set by him in the override lab (journal 228): divisor 4.8 at a forced buffer of 0.48 s (10 repeats a second) to divisor 8 at 0.2 s (40 a second) - buf may be [from, to], the size moving with the divisor - on pattern \"wave\": up over `over` seconds, eased like a sine, `stay` seconds at the top, down over `over`, `hold` seconds at the bottom, and again. The times (4, 2, 4, 2 s) are the AI's, his to move. The five first-round candidates (blur accel, blur accel long, blur, blur low, blur shift) are out of the row. The steady states along his path are effect presets in voices/v-alpha/library/overrides/. The override wave's makeupDb 3: J (journal 245), \"buffer override is quiet is there a way to boost at the fx level? lets try 3db first\" - the unit's own output gain, live, and the same 3 dB on every sample pre-processed with it (tools/page_samples.py). An icy's levelDb: J (log §33, 2026-10-24), \"all of the time stretch/icy ones can we turn the level down? … like -6db\" - a trim AFTER its makeup (the makeup still matches the read to the plain one), on every sound that is icy: a live read under an icy overlay, and a phrase or an attack played from a render made through one (pages 8, 10, 11, 12 - the render's manifest names its icy). Applied as it plays (engine/voices.js); the renders themselves are unchanged.",
+    "presets": [
+      {
+        "name": "cresc",
+        "kind": "swell",
+        "fromDb": -24,
+        "toDb": 0,
+        "bend": 1
+      },
+      {
+        "name": "trem rush",
+        "kind": "tremolo",
+        "shape": "sine",
+        "depthDb": 24,
+        "rate": [
+          4,
+          24
+        ],
+        "over": 3,
+        "pattern": "accel"
+      },
+      {
+        "name": "trem waves",
+        "kind": "tremolo",
+        "shape": "sine",
+        "depthDb": 24,
+        "rate": [
+          4,
+          24
+        ],
+        "over": 8,
+        "pattern": "waves"
+      },
+      {
+        "name": "chop accel",
+        "kind": "tremolo",
+        "shape": "chop",
+        "depthDb": 60,
+        "rate": [
+          4,
+          24
+        ],
+        "over": 8,
+        "pattern": "accel"
+      },
+      {
+        "name": "icy 10x",
+        "speed": 0.1,
+        "kind": "icy",
+        "win": 0.6,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy 10x short",
+        "speed": 0.1,
+        "kind": "icy",
+        "win": 0.15,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy 17x",
+        "speed": 0.0588,
+        "kind": "icy",
+        "win": 0.6,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy 15x short",
+        "speed": 0.0667,
+        "kind": "icy",
+        "win": 0.21,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy accel",
+        "speed": [
+          0.05,
+          0.5
+        ],
+        "kind": "icy",
+        "win": 0.6,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy decel",
+        "speed": [
+          0.5,
+          0.05
+        ],
+        "kind": "icy",
+        "win": 0.6,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy accel long",
+        "speed": [
+          0.02,
+          0.25
+        ],
+        "kind": "icy",
+        "win": 0.6,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "icy decel long",
+        "speed": [
+          0.25,
+          0.02
+        ],
+        "kind": "icy",
+        "win": 0.6,
+        "overlaps": 17,
+        "rand": 0.2,
+        "window": "expodec",
+        "makeupDb": 9,
+        "levelDb": -6
+      },
+      {
+        "name": "override wave",
+        "kind": "override",
+        "buf": [
+          0.48,
+          0.2
+        ],
+        "rate": [
+          10,
+          40
+        ],
+        "pattern": "wave",
+        "over": 4,
+        "stay": 2,
+        "hold": 2,
+        "smooth": 0.1,
+        "makeupDb": 3
+      }
+    ]
+  },
+  "picture": {
+    "_about": "The colours of the cursors and bursts drawn over the score - the hue list of Approaching's composer score (decibel_TENOR_2026 score/public/compiler.js, HUES).",
+    "hues": [
+      "#1565C0",
+      "#2E7D32",
+      "#7B1FA2",
+      "#C62828",
+      "#E6A23C",
+      "#00838F",
+      "#6D4C41",
+      "#283593",
+      "#00695C",
+      "#AD1457"
+    ]
+  }
+}

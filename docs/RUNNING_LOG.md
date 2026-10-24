@@ -2063,3 +2063,20 @@ http://localhost:8733/player/?candidate=seed-1-cut630-icy45 . **Not checked:** h
 begins inside a container sounds at its start — his ear.
 
 ---
+
+## §39. Kept — `seed-1-cut630-icy45` on the shelf
+
+**His words:** "go ahead and keep that one."
+
+**Done:** `python tools/shelve.py seed-1-cut630-icy45 --what "the cut for TENOR 2027 — …"
+--verdict "kept 2026-10-24 — \"go ahead and keep that one\""` → `versions/seed-1-cut630-icy45/`
+(6 files, each the same as made; 41 MB), its row in `versions/shelf.json` and its line in
+`versions/README.md`; the candidate cleared. The other candidates of today (`seed-1-cut`,
+`seed-1-cut-icy6`, `seed-1-cut630`) stay in `build/versions/`, outside git.
+
+**Found for the next step:** `jwy_audioEngineering`'s recording tools default to `seed-1b`
+(`tools/stage.js`, `tools/listen.js` — the version is their argument). The piano take over the
+cut names this version to them. Not looked into: how the ELEC track of the recording session gets
+its file.
+
+---

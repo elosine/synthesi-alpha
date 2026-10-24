@@ -1,0 +1,56 @@
+{
+ "schema": 1,
+ "kind": "master",
+ "made": "2026-10-24",
+ "file": "master.flac",
+ "frames": 18595712,
+ "sampleRate": 48000,
+ "channels": 2,
+ "bits": 16,
+ "bytes": 21077242,
+ "source": {
+  "file": "build/versions/seed-1-cut630-icy45/sound.flac",
+  "sha256": "65ea0c0a7254f85e7cdd502715880f2a82cd1185172c9f54772089997e505406",
+  "frames": 18595712
+ },
+ "dials": {
+  "ceilingDb": -1.0,
+  "lowpassHz": null,
+  "compressor": null
+ },
+ "before": {
+  "lufs": -19.0,
+  "rangeLu": 17.3,
+  "truePeakDb": -0.1,
+  "truePeakDbOwn": -0.077,
+  "samplePeakDb": -0.081,
+  "centroidHz": 1414.8
+ },
+ "after": {
+  "lufs": -19.0,
+  "rangeLu": 17.2,
+  "truePeakDb": -1.0,
+  "truePeakDbOwn": -1.0,
+  "samplePeakDb": -1.0,
+  "centroidHz": 1415.1
+ },
+ "limiter": {
+  "ceilingDb": -1.0,
+  "samplesOverIt": 293,
+  "samplesTurnedDown": 13412,
+  "secondsTurnedDown": 0.279,
+  "moments": 7,
+  "deepestDb": 0.92,
+  "attackMsPerDb": 1.5,
+  "releaseMsPerDb": 60.0,
+  "askedOfItDb": -1.0,
+  "rounds": 1
+ },
+ "compressor": null,
+ "untouchedSamplesThatChanged": 0,
+ "tool": {
+  "repo": "synthesi-alpha",
+  "commit": "75daf5c2f6e05ee3fc1ee75fa9dfddac3645a388",
+  "clean": true
+ }
+}

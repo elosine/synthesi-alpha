@@ -33,6 +33,16 @@
 play back, then **STOP and ask**. No edits, no builds, no tool calls beyond the resume
 reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, then work.)*
 
+### 2026-10-24 — THE CUT FOR TENOR 2027, kept (log §30 … §39; worked from `paperSubmissions`, its running order step 6)
+
+- **On the shelf:** `versions/seed-1-cut630-icy45/` — 6:19 of sound. The stands 11.32 … 16.55 s
+  (43.55 % of seed-1b's) · every icy sound −6 dB (`levelDb` on the icy presets, as it plays) · the
+  icy reads of pages 4 and 5 begun later to end on the next page's stop (`endBy`); page 12 as it was.
+  `scenario-1.json` NOW MAKES THIS CUT — seed-1b's settings are in git history (before `b8d146d`).
+- **Next, in `jwy_audioEngineering`:** the piano recorded over it. Its tools default to `seed-1b` —
+  name this version to them.
+- **Not pushed** at the time of writing — ask.
+
 ### OPEN — (2026-10-14) — B1 … B5 are built, the shelf holds four versions. B6 is ON HOLD, his word (log §29).
 
 *For an AI that has not seen the conversation. After `/postclear`: play this back, then

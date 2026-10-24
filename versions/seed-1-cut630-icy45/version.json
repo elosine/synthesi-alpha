@@ -1,0 +1,71 @@
+{
+ "schema": 1,
+ "kind": "version",
+ "piece": "Sýnthesi Alpha",
+ "voice": "v-alpha",
+ "name": "seed-1-cut630-icy45",
+ "seed": 1,
+ "made": "2026-10-24",
+ "partial": null,
+ "sound": {
+  "file": "sound.flac",
+  "sampleRate": 48000,
+  "channels": 2,
+  "bits": 16,
+  "frames": 18595712,
+  "seconds": 387.411,
+  "bytes": 21077316,
+  "wavBytes": 74382892,
+  "peakDb": -0.08,
+  "rmsDb": -25.09,
+  "samplesOverFull": 0
+ },
+ "length": {
+  "mainEnds": 358.026,
+  "lastSoundEnds": 382.199,
+  "all": 387.411
+ },
+ "picture": {
+  "file": "picture.json",
+  "runs": 13,
+  "sounds": 418
+ },
+ "recorder": {
+  "gaps": 0,
+  "chunks": 388
+ },
+ "check": {
+  "runs": 13,
+  "stops": 13,
+  "stopWorstMs": 0.354,
+  "startWorstMs": 2.46,
+  "waitWorstMs": 2.46,
+  "runWorstMs": 0.021,
+  "rolled": 358.031,
+  "held": 358.015,
+  "sounds": 418,
+  "soundsLate": 0,
+  "soundLateWorstMs": 0
+ },
+ "workshop": {
+  "repo": "synthesi-alpha",
+  "commit": "75daf5c2f6e05ee3fc1ee75fa9dfddac3645a388",
+  "clean": true
+ },
+ "master": {
+  "file": "master.flac",
+  "dials": {
+   "ceilingDb": -1.0,
+   "lowpassHz": null,
+   "compressor": null
+  },
+  "lufs": -19.0,
+  "rangeLu": 17.2,
+  "truePeakDb": -1.0,
+  "limiter": {
+   "secondsTurnedDown": 0.279,
+   "moments": 7,
+   "deepestDb": 0.92
+  }
+ }
+}

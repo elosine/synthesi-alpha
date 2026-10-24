@@ -25,6 +25,12 @@
    "what": "another playing of the piece, from seed 4 — the sparest: the fewest sounds, the quietest",
    "verdict": "kept 2026-10-12 — \"keep all three\"",
    "plays": "master.flac"
+  },
+  {
+   "folder": "seed-1-cut630-icy45",
+   "what": "the cut for TENOR 2027 — the stands at 43.55 % of seed-1b's, every icy sound 6 dB down, the icy reads of pages 4 and 5 begun later to end on the next page's stop",
+   "verdict": "kept 2026-10-24 — \"go ahead and keep that one\"",
+   "plays": "master.flac"
   }
  ]
 }

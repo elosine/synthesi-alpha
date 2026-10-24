@@ -20,7 +20,9 @@ to a venue and played, and re-made from a new seed.
   line in `docs/PROTOCOL_DEVIATIONS.md`.
 
 **State of the piece (keep this line current):** **► THE SHELF HOLDS
-FOUR VERSIONS — `seed-1b` and seeds 2, 3, 4 (his: "keep all three");
+FIVE VERSIONS — `seed-1b` and seeds 2, 3, 4 (his: "keep all three"),
+and `seed-1-cut630-icy45`, THE CUT FOR TENOR 2027 (6:19 of sound; kept
+2026-10-24, log §30 … §39 — the version the piano is recorded over);
 the player plays each one's master: http://localhost:8733/player/ .
 B1 … B5 are built; the stage set-ups work on his try. Pushed
 2026-10-12 (`github.com/elosine/synthesi-alpha`, public). B6, the
