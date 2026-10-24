@@ -2018,3 +2018,26 @@ time — the icy itself changes. c. a fade at a set time: the beginning kept, th
 d. as it is: one icy bridge over pages 4 … 6. **The AI recommends a**, with that rule.
 
 ---
+
+## §37. Pages 4 and 5 — the icy reads begin later, and end by the next stop
+
+**His words:** "a but can you leave p12? its fine how it is" — §36's road a, on pages 4 and 5.
+
+**Done:**
+
+- `endBy: "next stop"` in the designs of pages 4 and 5 (not 12), page 4's `_about` with it.
+- `engine/scenario.js` `rollDesign`: the next stop, in seconds after the page's own stop, is
+  its stand + the run to the next page's stop. A read that would sound past it begins later —
+  by as much of its span as it is too long (a read's time is its span × the icy's stretch) — and
+  ends where it ends whole: a plain read on the container's end, a reversed one on its start.
+  The event carries the `span` it reads; its `lasts` is the cut read's, so the next entry comes
+  that much sooner. `cutTo` gives the cut read an id of its own for the dwell; the event keeps
+  the container's id (the picture's hue).
+- `spanned(lookup)` — a designed page's lookup reads an event's span; `engine/patterns.js`
+  hands the event to the lookup (`lookup(e.id, e)`; the other lookups ignore it).
+
+**Expected from §36 (this version's stands):** page 4's set 17 59.7 → 30.7 s, page 5's set 22
+35.6 → 28.6 s and set 20 56.7 → 24.0 s, set 21 as it is — and, the reads shorter, more of them
+may enter. To be read from the roll before the take is kept.
+
+---

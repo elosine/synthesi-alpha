@@ -387,6 +387,11 @@ export function initScenario(deps) {
              len: part.t1 - part.t0, fadeIn: 0.02 };
   };
   const lookup = id => /^set\d+/.test(id) ? containerOf(id) : picks[id];
+  // a container read only from a to b — a read that begins later in it (a design's endBy, log §37); an
+  // id of its own, so that what is measured of the whole read (its dwell) is not taken for the part
+  const cutTo = (x, a, b) => ({ ...x, id: `${x.id}~${a}-${b}`, t0: a, t1: b, len: b - a });
+  // … and the lookup a designed page plays with: an event that carries a span reads that span
+  const spanned = look => (id, e) => { const x = look(id); return x && e && e.span ? cutTo(x, ...e.span) : x; };
   // THE DESIGN OF A PAGE, rolled from the seed (his rule, §233): whole
   // containers read through an overlay, ACCRETING — the first by a draw, the
   // next entering when the one before is `enter[0]` of its way through, the
@@ -421,6 +426,11 @@ export function initScenario(deps) {
                                       : (sec.containers || []).map(i => 'set' + i);
     const nextSet = deal(things), nextOverlay = deal(D.overlays || [], o.deck0, o.last0, true);
     const events = [], atOnce = D.atOnce || 4;
+    // endBy "next stop" (J, log §37: "start it later in the container and let it end on the end of the
+    // container"): no read sounds past the next page's stop — the page's stand, then the run to that stop
+    const after = scn.sections[sec.page];
+    const endBy = D.endBy === 'next stop' && after
+      ? stand + (engine.sections[after.stopSet].t1 - engine.sections[sec.stopSet].t1) : null;
     for (let k = 0, t = 0; k < (D.most ?? 12) && things.length; k++) {
       // never more than `atOnce` together: with that many sounding, the next
       // waits for one to END — nothing is cut short to make room (the first
@@ -433,9 +443,16 @@ export function initScenario(deps) {
       const variant = (D.reverse === 'every other' && k % 2 === 1) ||
                       (D.reverse === 'every other, from the first' && k % 2 === 0) ? 'reverse' : 'plain';
       const x = (D.of === 'renders' ? renderedContainer(sec) : containerOf)(nextSet()), overlay = nextOverlay();
-      const lasts = x.render ? x.render.lasts : VD.readOf(x, variant, overlay).dur;
+      let lasts = x.render ? x.render.lasts : VD.readOf(x, variant, overlay).dur, span = null;
+      // past the next stop: the read begins later, by as much of the container as it is too long (a read's
+      // time is its span times the icy's stretch), and ends where it ends whole — a reversed one on t0
+      if (endBy != null && !x.render && t + lasts > endBy) {
+        const keep = (x.t1 - x.t0) * (endBy - t) / lasts;
+        span = (variant === 'reverse' ? [x.t0, x.t0 + keep] : [x.t1 - keep, x.t1]).map(v => +v.toFixed(3));
+        lasts = VD.readOf(cutTo(x, ...span), variant, overlay).dur;
+      }
       const at = D.enter[Math.min(k, D.enter.length - 1)] + (D.jitter || 0) * (2 * rnd() - 1);
-      events.push({ t: +t.toFixed(3), kind: 'phrase', id: x.id, variant, overlay,
+      events.push({ t: +t.toFixed(3), kind: 'phrase', id: x.id, variant, overlay, ...(span ? { span } : {}),
                     lasts: +lasts.toFixed(2), nextAt: +Math.max(0.02, at).toFixed(3) });
       t += Math.max(0.02, at) * lasts;
     }
@@ -619,7 +636,7 @@ export function initScenario(deps) {
     if (sec.design && sec.design.kind !== 'sequences' && VD) {
       lastDesign = designOf(sec);
       const pd = makePatternPlayer({ ctx, V: voicesOf(sec), visible,
-        lookup: sec.design.of === 'renders' ? renderedContainer(sec) : lookup,
+        lookup: spanned(sec.design.of === 'renders' ? renderedContainer(sec) : lookup),
         onSound: (row, x) => heard(row, x, k) });
       pd.section = lastDesign.name;
       pd.play(lastDesign.bus ? { ...lastDesign, events: [lastDesign.bus, ...lastDesign.events] } : lastDesign);

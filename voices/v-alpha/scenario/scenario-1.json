@@ -300,7 +300,7 @@
       "lead": 0,
       "gap": 0,
       "design": {
-        "_about": "A DESIGNED page (plan P2h; journal 233, 234) - not played in: his rule. kind \"accrete\": the page's whole containers (\"containers\" above) are read, each through an overlay dealt from a shuffled deck of `overlays` (shuffled again when all are dealt), the first container by a draw; the next enters when the one before is enter[0] of its way through, the one after at enter[1] of that one's, and so on, the last value serving for the rest - \"they start a little sooner each time\" - each moved by up to +/- jitter. atOnce = how many may sound together (they have voices of their own). Entries begin only while the page stands; what has begun plays out to its own end, over the next page. Rolled from the seed. reverse \"every other\" = the 2nd, 4th ... entry reads its container BACKWARD (J, journal 235: \"make every other one a reverse instead of forward\"); left out = all forward. reverse \"every other, from the first\" = the 1st, 3rd ... backward. continues = a page number: this page's overlays go on from THAT page's deck - the ones it did not deal - and it shuffles again only when they are used up (journal 236). A designed page's reads that are still sounding when the next designed page begins hold their voices: the next page's entries wait rather than cut them. J (journal 237): \"we only use the straightforward IC ones, not the [accel] or [decel]\" - this page's deck is the four steady icys.",
+        "_about": "A DESIGNED page (plan P2h; journal 233, 234) - not played in: his rule. kind \"accrete\": the page's whole containers (\"containers\" above) are read, each through an overlay dealt from a shuffled deck of `overlays` (shuffled again when all are dealt), the first container by a draw; the next enters when the one before is enter[0] of its way through, the one after at enter[1] of that one's, and so on, the last value serving for the rest - \"they start a little sooner each time\" - each moved by up to +/- jitter. atOnce = how many may sound together (they have voices of their own). Entries begin only while the page stands; what has begun plays out to its own end, over the next page. Rolled from the seed. reverse \"every other\" = the 2nd, 4th ... entry reads its container BACKWARD (J, journal 235: \"make every other one a reverse instead of forward\"); left out = all forward. reverse \"every other, from the first\" = the 1st, 3rd ... backward. continues = a page number: this page's overlays go on from THAT page's deck - the ones it did not deal - and it shuffles again only when they are used up (journal 236). A designed page's reads that are still sounding when the next designed page begins hold their voices: the next page's entries wait rather than cut them. J (journal 237): \"we only use the straightforward IC ones, not the [accel] or [decel]\" - this page's deck is the four steady icys. endBy \"next stop\" (J, log §37, 2026-10-24: \"start it later in the container and let it end on the end of the container\"): a read that would sound past the NEXT page's stop begins later in its container, so as to end on that stop - where it ends now (a reversed read on the container's start); its speed, grain and ending as they were. Left out = every read whole (page 12).",
         "kind": "accrete",
         "enter": [
           0.4,
@@ -316,7 +316,8 @@
           "icy 15x short"
         ],
         "atOnce": 4,
-        "reverse": "every other"
+        "reverse": "every other",
+        "endBy": "next stop"
       }
     },
     {
@@ -394,7 +395,8 @@
         ],
         "atOnce": 4,
         "reverse": "every other, from the first",
-        "of": "showing"
+        "of": "showing",
+        "endBy": "next stop"
       }
     },
     {

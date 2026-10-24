@@ -51,7 +51,7 @@ export function makePatternPlayer({ ctx, V, lookup, visible, onSound, overlay, f
       while (me.i < evs.length && me.base + evs[me.i].t < until) {
         const e = evs[me.i++], when = me.base + e.t;
         if (e.kind === 'bus') { if (me.over === undefined) V.busOverlay(e.name, when); continue; }
-        const x = lookup(e.id);
+        const x = lookup(e.id, e);                  // the event too: a designed read may carry its span
         if (!x) continue;                           // a sound no longer among the picks
         const called = !visible || visible(x, when);
         const row = { ...e, when, called, actual: null, end: null };
