@@ -41,7 +41,7 @@ reads. Start only on his word. *(At `/session-start`: orient, agree the agenda, 
   `scenario-1.json` NOW MAKES THIS CUT — seed-1b's settings are in git history (before `b8d146d`).
 - **Next, in `jwy_audioEngineering`:** the piano recorded over it. Its tools default to `seed-1b` —
   name this version to them.
-- **Not pushed** at the time of writing — ask.
+- **Pushed** 2026-10-24, his word ("Yes, push synthesi-alpha now.").
 
 ### OPEN — (2026-10-14) — B1 … B5 are built, the shelf holds four versions. B6 is ON HOLD, his word (log §29).
 
