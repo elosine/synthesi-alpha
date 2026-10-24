@@ -1888,3 +1888,29 @@ stand.
 **Not done:** the version itself.
 
 ---
+
+## §32. The cut made — `seed-1-cut`
+
+**His words:** "You make the version from seed 1 in your pane, with the sound muted."
+
+**Done, as CLAUDE.md's machine notes say:** committed first (`8726526`, clean) · his server
+already up on 8733 · `engine/perform.html?make&seed=1` in the AI's pane · [begin] ·
+`rig.engine.out.gain.value = 0` · `rig.scenario.makeVersion({ name: 'seed-1-cut' })`. Before
+it ran, the page's roll read: `standOf(1)` 19.78 · `standOf(2)` 15.36 · `standOf(12)` 18.80 —
+§31's numbers.
+
+**Measured (`build/versions/seed-1-cut/`, a candidate, not on the shelf):** 7:34.6 as a file
+(454.6 s) · the first sound 0:03.0, the last ends 7:29.4 — **7:26.4 of sound** · 13 runs, 13
+stops · 543 sounds (seed-1b: 848) · `soundsLate` 0 · gaps 0 · peak 0.16 dB, 5 samples over ·
+mastered: −17.0 LUFS, true peak −1.0 dB. The stands as made: 19.8 · 15.4 · 19.1 · 22.3 · 22.2 ·
+17.3 · 19.7 · 20.4 · 18.4 · 22.4 · 18.6 · 18.8.
+
+**Against §31's 7:15:** 11 s long. The tail after electronics main ends is 30.0 s (seed-1b:
+18.3 s): with page 12's stand shorter, the play-out run comes sooner and page 12's reads ring on
+past it. Not looked into further.
+
+**Sent to him:** `build/versions/previews/synthesi-alpha-seed-1-cut.mp3` (the master, 192 kb/s).
+The player: http://localhost:8733/player/?candidate=seed-1-cut . **Not done:** his ear; the
+shelf (`tools/shelve.py`, at his word).
+
+---
