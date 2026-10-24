@@ -1975,3 +1975,46 @@ with it. The stands: 14.6 · 11.3 · 14.1 · 16.5 · 16.4 · 12.8 · 14.5 · 15.
 · 13.9. **Expected, not made:** about 6:30 of sound.
 
 ---
+
+## §36. `seed-1-cut630` made · the icy reads of pages 4 and 5, read
+
+**Made** (`27db59d`, clean; muted): 6:27.5 as a file · **6:19.2 of sound** (§35 aimed at 6:30) ·
+415 sounds · `soundsLate` 0 · gaps 0 · −18.5 LUFS, true peak −1.0 dB. The stops: 0:12.2 · 0:40.0
+· 1:06.1 · 1:37.4 · 2:08.3 · 2:38.3 · 3:08.7 · 3:36.8 · 4:09.2 · 4:35.0 · 5:10.1 · 5:36.4 · 5:58.0
+(the end of electronics main). The tail 24.2 s (`seed-1-cut`: 30.0): page 12 got one whole
+container through icy this time — set 49, icy 17x, 45.6 s, 5:36.6 … 6:22.2 — and it IS the
+ending. 11 s under §35's sum: its "page 12's stand and the tail stay near 49 s" held for two
+versions, not for this one. Sent: `build/versions/previews/synthesi-alpha-seed-1-cut630.mp3`.
+
+**His question:** "can you tell me about the ICs on 4 and 5 … how do they get their length and
+what would be the best way to shorten them? It looks like it plays through a whole container.
+So maybe just start it later in the container and let it end on the end of the container."
+
+**How long a read is** (`readOf`, `engine/voices.js`): the stretch of score it reads × the
+icy's factor — icy 10x, 10x short ×10 · 15x short ×15 · 17x ×17 · accel, decel ×5.1 (ln 10 /
+0.45) · accel long, decel long ×11.0 (ln 12.5 / 0.23). He is right: page 4 reads WHOLE
+containers (16 … 19: 2.86 · 3.98 · 2.47 · 2.95 s), page 5 the part of each container on its
+screen (20: 5.16 · 21: 2.65 · 22: 3.24 · 23: 4.17 s), start to end — end to start, reversed.
+How many enter (`rollDesign`): only while the page stands, the next when the one before is
+`enter` of its way through (page 4: 40 %; page 5: 10 %, 15 %, 20 % …).
+
+**In this version:**
+
+- page 4 (stops 1:37.4, stand 16.5): ONE read — set 17, icy 15x short, 59.7 s, 1:37.6 … 2:37.3;
+  a second would enter at 40 % of it, 23.9 s, after the stand. It sounds through page 5 and
+  ends inside the run to page 6.
+- page 5 (stops 2:08.3, stand 16.4): three — set 21 reversed, icy decel, 13.6 s, 2:08.5 … 2:22.1
+  · set 22, icy decel long, 35.6 s, 2:09.7 … 2:45.2 · set 20 reversed, icy accel long, 56.7 s,
+  2:14.3 … 3:11.0 — past page 6 (stops 2:38.3) and page 7's stop (3:08.7). A fourth (set 23)
+  would enter after the stand.
+
+**Put to him, the AI's (his to choose):** a. HIS — start later, end where the read ends now:
+the same speed and grain, the same ending; the read's beginning is lost (a reversed read keeps
+its end too, the container's START). With the rule "a read ends by the next page's stop":
+set 17 → 30.7 s (the last 2.05 s of 3.98) · set 22 → 28.6 s (2.6 of 3.24) · set 20 → 24.0 s
+(2.2 of 5.16) · set 21 as it is. Shorter reads let more ENTER (page 4's second at 40 % of
+30.7 = 12.3 s, inside its stand). b. a smaller factor (×15 → ×7): the same span, half the
+time — the icy itself changes. c. a fade at a set time: the beginning kept, the ending lost.
+d. as it is: one icy bridge over pages 4 … 6. **The AI recommends a**, with that rule.
+
+---
