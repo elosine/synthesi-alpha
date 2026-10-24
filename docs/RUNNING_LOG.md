@@ -1914,3 +1914,31 @@ The player: http://localhost:8733/player/?candidate=seed-1-cut . **Not done:** h
 shelf (`tools/shelve.py`, at his word).
 
 ---
+
+## §33. Every icy sound 6 dB down
+
+**His words:** "all of the time stretch/icy ones can we turn the level down? how involved is
+this like -6db" — and, told what it takes: "Yes, turn all the icy ones down 6 dB, then make a
+new version."
+
+**Where icy is, read from the scenario and the manifests:** live reads under an icy overlay on
+pages 4 and 5; pre-made renders on page 8 (all five, `tools/icy_render.py`), 10 (two of five),
+11 (two of four) and 12 (all five, three of them with the override as well) —
+`tools/page_samples.py`. No icy on pages 1 … 3, 6, 7, 9 (no played-in pattern names one).
+
+**Two roads, the one taken:** the icy's `makeupDb` 9 → 3 would not do it — the playhead's
+`makeup` has `minValue: 1` (0 dB), and on page 5 the dwell is taken off the makeup, so some
+reads would fall less than 6 dB; and the renders are levelled to their containers by their own
+tools. Put to him as "remake the renders 6 dB down"; done instead AS IT PLAYS, the same in the
+sound and with the files left as they are:
+
+- `levelDb: -6` on each of the eight icy presets (`voices/v-alpha/scenario/scenario-1.json`),
+  the overlays' `_about` with it;
+- `engine/voices.js` — `icyLevel(name)`, the preset's `levelDb` as a gain, on the three paths
+  a sound takes: `sing` (a live read — the voice's own gain, after the makeup), `singRender` (a
+  phrase or a container from a render — the manifest's `icy` names the preset) and `strike` (an
+  attack read from a render).
+
+**Not checked:** how it sounds; a version made with it — next.
+
+---

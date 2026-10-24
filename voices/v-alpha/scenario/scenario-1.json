@@ -980,7 +980,7 @@
     "voices": 4
   },
   "overlays": {
-    "_about": "The overlays (plan P2f; journal 216, 217): effects laid over what the cursors play - electronics main is not touched. presets = the buttons of the play-in page (perform.html?playin=1&page=N), in order, one on at a time; a hit played in keeps the overlay it sounded with. A page may name one in its section (\"overlay\": \"cresc\") and START lays it over every phrase of that page; \"off\" = none; no name = each hit as it was played in. kind \"swell\" (workshop 1) = a line through a phrase, in dB, from fromDb at its start to toDb at its end (bend 1 = straight in dB; over 1 it moves late, under 1 early). On these phrases - each begins on an attack and ends in a dip - 12 dB only holds a phrase level; 24 dB turns it round (the screen: python tools/overlay_levels.py --screen). Loudness: the page gives every swelled phrase a makeup of its own, so that its loudest 50 ms is what it is untouched (engine/voices.js; tools/overlay_levels.py prints the measures). J's verdict on workshop 1 (journal 218): \"lets go with regular cres as the overlay\" - cresc, 24 dB, is the one kept; cresc molto (-48 to 0), decresc (0 to -24) and decresc molto (0 to -48) were heard and left out of the row. kind \"tremolo\" (workshop 2, journal 219) = one LFO over EVERYTHING the cursors play, on the bus, whatever is playing: shape sine / triangle / chop (a square with its corners off); depthDb = how far the gain dips (60 = to silence); rate = its speed in Hz, or [from, to] with over = seconds from one to the other and pattern \"accel\" (up, and begin again) or \"waves\" (up and back down). It runs from the moment its page's section begins. Its makeup keeps the power of the sound what it was. On these hits an LFO under 6 Hz does not fit twice in an attack: it is heard across the hits, not inside them. J's verdict on workshop 2 (journal 220): \"let's do the last three, the rush, waves, and [accel]\" - trem rush, trem waves and chop accel are kept; trem (8 Hz steady) and trem accel (4 to 24 Hz over 8 s, a sine) were heard and left out of the row. kind \"icy\" (workshop 3, journal 220) = his slow read - his freeze of 2015, Warp1 in Approaching (live-electronics-system sc/process.scd) - laid on each PHRASE: the read point crawls at speed of real time (0.0333 = thirty times slower) while grains win seconds long, overlaps of them at once, each read forward at pitch through window (one of his ten, engine/grain-windows.json; expodec the one he used most), each grain's length straying by rand. His numbers in Approaching: 30 times slower, 0.6 s, 17, rand 0.2, expodec. A phrase then lasts 1/speed as long. makeupDb = what brings the stretch's level (RMS) back to the untouched phrase's, measured (tools/overlay_levels.py --icy, and from takes). J's verdict on workshop 3 (journal 221): icy 10x, icy 10x short, and two he named - icy 17x, and icy 15x short with grains \"slightly longer than 0.15. Maybe let's try 0.21\"; icy 4x, icy 30x and icy 10x long were heard and left out. Workshop 4: speed as [from, to] = the read speeding up or slowing down through the phrase, pitch held (the speed moves by equal ratios in equal times). J's verdict on workshop 4 (journal 222): \"lets keep all 4\" - icy accel, icy decel, icy accel long, icy decel long; all wet, none of the original sound (as built: the stretch alone). kind \"override\" (workshop 5, journal 222) = the buffer override, over EVERYTHING the cursors play, on the bus (engine/override-processor.js): the sound is cut into forced buffers of buf seconds; the first sliver of each is repeated until the next begins - rate = repeats a second (8 = distinct impulses; from about 30 up they fuse into a fuzz with a pitch at that rate), steady, or [from, to] moving over `over` seconds and beginning again, or with pattern \"shift\": hold seconds at the first rate, over seconds to the second, stay seconds there, and again. smooth = how much of each repeat is crossfaded into the next; mix 1 = the override alone. J's override, set by him in the override lab (journal 228): divisor 4.8 at a forced buffer of 0.48 s (10 repeats a second) to divisor 8 at 0.2 s (40 a second) - buf may be [from, to], the size moving with the divisor - on pattern \"wave\": up over `over` seconds, eased like a sine, `stay` seconds at the top, down over `over`, `hold` seconds at the bottom, and again. The times (4, 2, 4, 2 s) are the AI's, his to move. The five first-round candidates (blur accel, blur accel long, blur, blur low, blur shift) are out of the row. The steady states along his path are effect presets in voices/v-alpha/library/overrides/. The override wave's makeupDb 3: J (journal 245), \"buffer override is quiet is there a way to boost at the fx level? lets try 3db first\" - the unit's own output gain, live, and the same 3 dB on every sample pre-processed with it (tools/page_samples.py).",
+    "_about": "The overlays (plan P2f; journal 216, 217): effects laid over what the cursors play - electronics main is not touched. presets = the buttons of the play-in page (perform.html?playin=1&page=N), in order, one on at a time; a hit played in keeps the overlay it sounded with. A page may name one in its section (\"overlay\": \"cresc\") and START lays it over every phrase of that page; \"off\" = none; no name = each hit as it was played in. kind \"swell\" (workshop 1) = a line through a phrase, in dB, from fromDb at its start to toDb at its end (bend 1 = straight in dB; over 1 it moves late, under 1 early). On these phrases - each begins on an attack and ends in a dip - 12 dB only holds a phrase level; 24 dB turns it round (the screen: python tools/overlay_levels.py --screen). Loudness: the page gives every swelled phrase a makeup of its own, so that its loudest 50 ms is what it is untouched (engine/voices.js; tools/overlay_levels.py prints the measures). J's verdict on workshop 1 (journal 218): \"lets go with regular cres as the overlay\" - cresc, 24 dB, is the one kept; cresc molto (-48 to 0), decresc (0 to -24) and decresc molto (0 to -48) were heard and left out of the row. kind \"tremolo\" (workshop 2, journal 219) = one LFO over EVERYTHING the cursors play, on the bus, whatever is playing: shape sine / triangle / chop (a square with its corners off); depthDb = how far the gain dips (60 = to silence); rate = its speed in Hz, or [from, to] with over = seconds from one to the other and pattern \"accel\" (up, and begin again) or \"waves\" (up and back down). It runs from the moment its page's section begins. Its makeup keeps the power of the sound what it was. On these hits an LFO under 6 Hz does not fit twice in an attack: it is heard across the hits, not inside them. J's verdict on workshop 2 (journal 220): \"let's do the last three, the rush, waves, and [accel]\" - trem rush, trem waves and chop accel are kept; trem (8 Hz steady) and trem accel (4 to 24 Hz over 8 s, a sine) were heard and left out of the row. kind \"icy\" (workshop 3, journal 220) = his slow read - his freeze of 2015, Warp1 in Approaching (live-electronics-system sc/process.scd) - laid on each PHRASE: the read point crawls at speed of real time (0.0333 = thirty times slower) while grains win seconds long, overlaps of them at once, each read forward at pitch through window (one of his ten, engine/grain-windows.json; expodec the one he used most), each grain's length straying by rand. His numbers in Approaching: 30 times slower, 0.6 s, 17, rand 0.2, expodec. A phrase then lasts 1/speed as long. makeupDb = what brings the stretch's level (RMS) back to the untouched phrase's, measured (tools/overlay_levels.py --icy, and from takes). J's verdict on workshop 3 (journal 221): icy 10x, icy 10x short, and two he named - icy 17x, and icy 15x short with grains \"slightly longer than 0.15. Maybe let's try 0.21\"; icy 4x, icy 30x and icy 10x long were heard and left out. Workshop 4: speed as [from, to] = the read speeding up or slowing down through the phrase, pitch held (the speed moves by equal ratios in equal times). J's verdict on workshop 4 (journal 222): \"lets keep all 4\" - icy accel, icy decel, icy accel long, icy decel long; all wet, none of the original sound (as built: the stretch alone). kind \"override\" (workshop 5, journal 222) = the buffer override, over EVERYTHING the cursors play, on the bus (engine/override-processor.js): the sound is cut into forced buffers of buf seconds; the first sliver of each is repeated until the next begins - rate = repeats a second (8 = distinct impulses; from about 30 up they fuse into a fuzz with a pitch at that rate), steady, or [from, to] moving over `over` seconds and beginning again, or with pattern \"shift\": hold seconds at the first rate, over seconds to the second, stay seconds there, and again. smooth = how much of each repeat is crossfaded into the next; mix 1 = the override alone. J's override, set by him in the override lab (journal 228): divisor 4.8 at a forced buffer of 0.48 s (10 repeats a second) to divisor 8 at 0.2 s (40 a second) - buf may be [from, to], the size moving with the divisor - on pattern \"wave\": up over `over` seconds, eased like a sine, `stay` seconds at the top, down over `over`, `hold` seconds at the bottom, and again. The times (4, 2, 4, 2 s) are the AI's, his to move. The five first-round candidates (blur accel, blur accel long, blur, blur low, blur shift) are out of the row. The steady states along his path are effect presets in voices/v-alpha/library/overrides/. The override wave's makeupDb 3: J (journal 245), \"buffer override is quiet is there a way to boost at the fx level? lets try 3db first\" - the unit's own output gain, live, and the same 3 dB on every sample pre-processed with it (tools/page_samples.py). An icy's levelDb: J (log §33, 2026-10-24), \"all of the time stretch/icy ones can we turn the level down? … like -6db\" - a trim AFTER its makeup (the makeup still matches the read to the plain one), on every sound that is icy: a live read under an icy overlay, and a phrase or an attack played from a render made through one (pages 8, 10, 11, 12 - the render's manifest names its icy). Applied as it plays (engine/voices.js); the renders themselves are unchanged.",
     "presets": [
       {
         "name": "cresc",
@@ -1033,7 +1033,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy 10x short",
@@ -1043,7 +1044,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy 17x",
@@ -1053,7 +1055,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy 15x short",
@@ -1063,7 +1066,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy accel",
@@ -1076,7 +1080,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy decel",
@@ -1089,7 +1094,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy accel long",
@@ -1102,7 +1108,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "icy decel long",
@@ -1115,7 +1122,8 @@
         "overlaps": 17,
         "rand": 0.2,
         "window": "expodec",
-        "makeupDb": 9
+        "makeupDb": 9,
+        "levelDb": -6
       },
       {
         "name": "override wave",

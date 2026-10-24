@@ -74,6 +74,9 @@ export function makeVoices({ engine, ctx, cfg, bus: busKey = 'main' }) {
   // by name — or an overlay handed over whole (a designed page fits one to its own length: journal §240)
   const overlayOf = name => !name || name === 'off' ? null : typeof name === 'object' ? name
     : ((cfg().overlays || {}).presets || []).find(o => o.name === name) || null;
+  // an icy's own level (linear): its "levelDb", a trim after the makeup — on a live read under it, and on
+  // whatever is played from a render made through it (J, log §33: "turn the level down ... like -6db")
+  const icyLevel = name => { const o = overlayOf(name); return o && o.kind === 'icy' ? 10 ** ((o.levelDb ?? 0) / 20) : 1; };
   // a swell's line, in dB: u = how far through the phrase (0 … 1)
   const swellDb = (o, u) => o.fromDb + (o.toDb - o.fromDb) * u ** (o.bend ?? 1);
   // ONE LOUDNESS, phrase by phrase: the makeup (dB) that brings this phrase's
@@ -237,7 +240,9 @@ export function makeVoices({ engine, ctx, cfg, bus: busKey = 'main' }) {
     src.buffer = r ? r.buffer : engine.buffer;
     const g = ctx.createGain(); g.gain.value = 0;
     const when = Math.max(o.when ?? 0, ctx.currentTime + 0.005);
-    g.gain.setValueCurveAtTime(impactCurve(a, r ? false : o.normalize), when, a.dur);
+    const c = impactCurve(a, r ? false : o.normalize), k = r ? icyLevel(r.icy) : 1;
+    if (k !== 1) for (let i = 0; i < c.length; i++) c[i] *= k;
+    g.gain.setValueCurveAtTime(c, when, a.dur);
     src.connect(g); g.connect(bus);
     src.start(when, r ? r.at : a.at, a.dur + 0.05);
     src.stop(when + a.dur + 0.06);
@@ -307,7 +312,7 @@ export function makeVoices({ engine, ctx, cfg, bus: busKey = 'main' }) {
       }
       mk = m0 > 0 && m1 > 0 ? Math.max(-6, Math.min(18, 10 * Math.log10(m0 / m1))) : 0;
     }
-    const level = u => GAIN * (sw ? 10 ** ((swellDb(sw, u) + mk) / 20) : 1) *
+    const level = u => GAIN * icyLevel(r.icy) * (sw ? 10 ** ((swellDb(sw, u) + mk) / 20) : 1) *
       Math.min(1, (u * dur) / fin, ((1 - u) * dur) / fout);
     g.gain.setValueAtTime(0, when);
     for (let i = 1; i <= N; i++) g.gain.linearRampToValueAtTime(Math.max(0, level(i / N)), when + dur * i / N);
@@ -349,7 +354,7 @@ export function makeVoices({ engine, ctx, cfg, bus: busKey = 'main' }) {
       const N = 24, mk = swellMakeup(ph, ov, back), g = u => GAIN * 10 ** ((swellDb(ov, u) + mk) / 20);
       gp.setValueAtTime(g(0), when);
       for (let i = 1; i <= N; i++) gp.linearRampToValueAtTime(g(i / N), when + dur * i / N);
-    } else gp.setValueAtTime(GAIN, when);
+    } else gp.setValueAtTime(GAIN * icyLevel(ov), when);
     // its own reverb send, on the audio clock: open for the last `capture`
     // seconds of sound (all of it, if shorter), closed just after the end
     const g = voice.send.gain;
